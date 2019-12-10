@@ -15,7 +15,28 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@smarthome/common": ["libs/common/src/index.ts"],
+      "@smarthome/data": ["libs/data/src/index.ts"],
+      "@smarthome/screen": ["libs/screen/src/index.ts"],
+      "@smarthome/feature": ["libs/feature/src/index.ts"],
+      "@smarthome/store": ["libs/store/src/index.ts"],
+      "@smarthome/common-ui": ["libs/common-ui/src/index.ts"],
+      "@smarthome/common/ui": ["libs/common/ui/src/index.ts"],
+      "@smarthome/common/logic": ["libs/common/logic/src/index.ts"],
+      "@smarthome/common/store": ["libs/common/store/src/index.ts"],
+      "@smarthome/common/service": ["libs/common/service/src/index.ts"],
+      "@smarthome/feature/service": ["libs/feature/service/src/index.ts"],
+      "@smarthome/feature/ui": ["libs/feature/ui/src/index.ts"],
+      "@smarthome/feature/store": ["libs/feature/store/src/index.ts"],
+      "@smarthome/feature/logic": ["libs/feature/logic/src/index.ts"],
+      "@smarthome/screen/logic": ["libs/screen/logic/src/index.ts"],
+      "@smarthome/screen/ui": ["libs/screen/ui/src/index.ts"],
+      "@smarthome/screen/service": ["libs/screen/service/src/index.ts"],
+      "@smarthome/screen/store": ["libs/screen/store/src/index.ts"],
+      "@smarthome/screen/state": ["libs/screen/state/src/index.ts"],
+      "@smarthome/common/state": ["libs/common/state/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

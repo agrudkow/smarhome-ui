@@ -13,6 +13,63 @@
     },
     "smarthome-e2e": {
       "tags": []
+    },
+    "common": {
+      "tags": []
+    },
+    "data": {
+      "tags": []
+    },
+    "screen": {
+      "tags": []
+    },
+    "feature": {
+      "tags": []
+    },
+    "store": {
+      "tags": []
+    },
+    "common-ui": {
+      "tags": []
+    },
+    "common-logic": {
+      "tags": []
+    },
+    "common-store": {
+      "tags": []
+    },
+    "common-service": {
+      "tags": []
+    },
+    "feature-service": {
+      "tags": []
+    },
+    "feature-ui": {
+      "tags": []
+    },
+    "feature-store": {
+      "tags": []
+    },
+    "feature-logic": {
+      "tags": []
+    },
+    "screen-logic": {
+      "tags": []
+    },
+    "screen-ui": {
+      "tags": []
+    },
+    "screen-service": {
+      "tags": []
+    },
+    "screen-store": {
+      "tags": []
+    },
+    "screen-state": {
+      "tags": []
+    },
+    "common-state": {
+      "tags": []
     }
   }
 }
