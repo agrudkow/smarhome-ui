@@ -61,5 +61,10 @@
     "eslint-plugin-react-hooks": "2.3.0",
     "@types/styled-components": "4.4.0",
     "@babel/preset-react": "7.7.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
