@@ -74,5 +74,4 @@
       "pre-commit": "yarn format:check --base HEAD"
     }
   }
-
 }
