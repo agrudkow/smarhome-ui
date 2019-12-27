@@ -16,7 +16,7 @@ stages:
   image: node:latest
   stage: test
   before_script:
-    - npm install yarn -g
+    - npm install yarn -g || true
     - yarn
 
 lint_web_all:
@@ -27,18 +27,20 @@ lint_web_all:
   script:
     - yarn format:check --all
     - yarn nx workspace-lint
-    - yarn nx affected:lint --all
-
-  
+    - yarn nx affected:lint --all -- parallel | tee lintresult
+    - '! cat lintresult | grep -q warning'
+    
+    
 lint_web:
   <<: *lint_web_definition
   except:
     - develop
     - master
-  script:
-    - yarn format:check --base develop
-    - yarn nx workspace-lint
-    - yarn nx affected:lint --base develop
+    script:
+      - yarn format:check --base develop
+      - yarn nx workspace-lint
+      - yarn nx affected:lint --parallel --base develop | tee lintresult
+      - '! cat lintresult | grep -q warning'
     
 
 .build_web_template: &build_web_definition
@@ -48,7 +50,7 @@ lint_web:
     paths:
       - dist/
   before_script:
-    - npm install yarn -g
+    - npm install yarn -g || true
     - yarn
 
 build_web_dev:
