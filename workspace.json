@@ -109,33 +109,6 @@
         }
       }
     },
-    "common": {
-      "root": "libs/common",
-      "sourceRoot": "libs/common/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/common/.eslintrc",
-            "tsConfig": [
-              "libs/common/tsconfig.lib.json",
-              "libs/common/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/common/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/common/jest.config.js",
-            "tsConfig": "libs/common/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "data": {
       "root": "libs/data",
       "sourceRoot": "libs/data/src",
@@ -159,33 +132,6 @@
           "options": {
             "jestConfig": "libs/data/jest.config.js",
             "tsConfig": "libs/data/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "screen": {
-      "root": "libs/screen",
-      "sourceRoot": "libs/screen/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/screen/.eslintrc",
-            "tsConfig": [
-              "libs/screen/tsconfig.lib.json",
-              "libs/screen/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/screen/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/screen/jest.config.js",
-            "tsConfig": "libs/screen/tsconfig.spec.json"
           }
         }
       }

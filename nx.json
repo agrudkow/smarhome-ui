@@ -14,13 +14,7 @@
     "smarthome-e2e": {
       "tags": []
     },
-    "common": {
-      "tags": []
-    },
     "data": {
-      "tags": []
-    },
-    "screen": {
       "tags": []
     },
     "store": {
