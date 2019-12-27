@@ -27,7 +27,7 @@ lint_web_all:
   script:
     - yarn format:check --all
     - yarn nx workspace-lint
-    - yarn nx affected:lint --all -- parallel | tee lintresult
+    - yarn nx affected:lint --all --parallel | tee lintresult
     - '! cat lintresult | grep -q warning'
         
 lint_web:
