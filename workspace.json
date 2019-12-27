@@ -271,33 +271,6 @@
         }
       }
     },
-    "common-store": {
-      "root": "libs/common/store",
-      "sourceRoot": "libs/common/store/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/common/store/.eslintrc",
-            "tsConfig": [
-              "libs/common/store/tsconfig.lib.json",
-              "libs/common/store/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/common/store/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/common/store/jest.config.js",
-            "tsConfig": "libs/common/store/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "common-service": {
       "root": "libs/common/service",
       "sourceRoot": "libs/common/service/src",
@@ -402,33 +375,6 @@
           "options": {
             "jestConfig": "libs/screen/service/jest.config.js",
             "tsConfig": "libs/screen/service/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "screen-store": {
-      "root": "libs/screen/store",
-      "sourceRoot": "libs/screen/store/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/screen/store/.eslintrc",
-            "tsConfig": [
-              "libs/screen/store/tsconfig.lib.json",
-              "libs/screen/store/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/screen/store/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/screen/store/jest.config.js",
-            "tsConfig": "libs/screen/store/tsconfig.spec.json"
           }
         }
       }
