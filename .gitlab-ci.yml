@@ -57,14 +57,14 @@ build_web_dev:
   only:
     - develop
   script:
-    - yarn run smarthome:build --prod
+    - yarn nx run smarthome:build --prod
 
 build_web_prod:
   <<: *build_web_definition
   only:
     - master
   script:
-    - yarn run smarthome:build --prod
+    - yarn nx run smarthome:build --prod
 
 .deploy_web_template: &deploy_web_definition
   image: python:latest
