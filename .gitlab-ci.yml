@@ -58,7 +58,7 @@ build_web_dev:
   script:
     - yarn run wygodne-uslugi:build --prod
 
-build_web_pr0d:
+build_web_prod:
   <<: *build_web_definition
   only:
     - master
