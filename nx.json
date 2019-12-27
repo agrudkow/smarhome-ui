@@ -23,9 +23,6 @@
     "screen": {
       "tags": []
     },
-    "feature": {
-      "tags": []
-    },
     "store": {
       "tags": []
     },
@@ -39,18 +36,6 @@
       "tags": []
     },
     "common-service": {
-      "tags": []
-    },
-    "feature-service": {
-      "tags": []
-    },
-    "feature-ui": {
-      "tags": []
-    },
-    "feature-store": {
-      "tags": []
-    },
-    "feature-logic": {
       "tags": []
     },
     "screen-logic": {
