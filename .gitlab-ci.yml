@@ -1,0 +1,92 @@
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+  AWS_REGION: eu-central-1
+
+cache:
+  paths:
+  - node_modules
+
+stages:
+  - test
+  - build
+  - deploy
+
+
+.lint_web_template: &lint_web_definition
+  image: node:latest
+  stage: test
+  before_script:
+    - npm install yarn -g
+    - yarn
+
+lint_web_all:
+  <<: *lint_web_definition
+  only:
+    - develop
+    - master
+  script:
+    - yarn format:check --all
+    - yarn nx workspace-lint
+    - yarn nx affected:lint --all
+
+  
+lint_web:
+  <<: *lint_web_definition
+  except:
+    - develop
+    - master
+  script:
+    - yarn format:check --base develop
+    - yarn nx workspace-lint
+    - yarn nx affected:lint --base develop
+    
+
+.build_web_template: &build_web_definition
+  image: "node:latest"
+  stage: build
+  artifacts:
+    paths:
+      - dist/
+  before_script:
+    - npm install yarn -g
+    - yarn
+
+build_web_dev:
+  <<: *build_web_definition
+  only:
+    - develop
+  script:
+    - yarn run wygodne-uslugi:build --prod
+
+build_web_prd:
+  <<: *build_web_definition
+  only:
+    - master
+  script:
+    - yarn run wygodne-uslugi:build --prod
+
+.deploy_web_template: &deploy_web_definition
+  image: python:latest
+  stage: deploy
+  before_script:
+    - pip install awscli
+  script:
+    - aws s3 sync dist/apps/smarthome s3://$AWS_BUCKET_NAME --region $AWS_REGION --delete
+
+deploy_web_dev:
+  <<: *deploy_web_definition
+  dependencies:
+    - build_web_dev
+  only:
+    - develop
+  variables:
+    AWS_BUCKET_NAME: smarthome-app-dev
+
+deploy_web_prod:
+  <<: *deploy_web_definition
+  dependencies:
+    - build_web_prod
+  only:
+    - master
+  variables:
+    AWS_BUCKET_NAME: smarthome-app-prod

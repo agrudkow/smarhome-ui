@@ -1,13 +1,13 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const StyledApp = styled.div`
   /*
  * Remove template code below
  */
 
-  font-family: sans-serif;
+  font-family: 'Quicksand', sans-serif;
   min-width: 300px;
   max-width: 600px;
   margin: 50px auto;
