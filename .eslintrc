@@ -29,14 +29,7 @@
           { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
         ]
       }
-    ],
-    "comma-dangle": ["warn", {
-      "arrays": "always",
-      "objects": "always",
-      "imports": "never",
-      "exports": "never",
-      "functions": "never"
-    }]
+    ]
   },
   "overrides": [
     {
