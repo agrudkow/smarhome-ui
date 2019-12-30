@@ -91,3 +91,5 @@ deploy_web_prod:
     - master
   variables:
     AWS_BUCKET_NAME: smarthome-app-prod
+  script:
+    - yarn release
