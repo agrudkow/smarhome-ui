@@ -1,18 +1,13 @@
 import React from 'react';
-
 import styled from 'styled-components';
+import { CommonUi } from '@smarthome/common/ui';
 
-/* eslint-disable-next-line */
-export interface ScreenUiProps {}
+const StyledScreenUi = styled.div``;
 
-const StyledScreenUi = styled.div`
-  color: pink;
-`;
-
-export const ScreenUi = (props: ScreenUiProps) => {
+export const ScreenUi: React.FC = () => {
   return (
     <StyledScreenUi>
-      <h1>Welcome to screen-ui component!</h1>
+      <CommonUi />
     </StyledScreenUi>
   );
 };

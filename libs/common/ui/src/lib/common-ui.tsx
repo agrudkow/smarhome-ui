@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export interface CommonUiProps {}
 
 const StyledCommonUi = styled.div`
-  color: pink;
+  color: ${({ theme }) => theme.palette.primary};
 `;
 
 export const CommonUi = (props: CommonUiProps) => {
