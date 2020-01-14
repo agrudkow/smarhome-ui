@@ -1,13 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, ReactNode } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { ArrowheadRight } from '../assets';
+import { DoubbleArrowHeadRight } from '../assets';
 import { regularStyle } from '../p';
 import SidebarListItem from './sidebar-list-item';
+
+interface Items {
+  text: string;
+  icon: ReactNode;
+}
 
 interface SidebarProps {
   show: boolean;
   onClick: () => void;
-  items: string[];
+  items: Items[];
 }
 
 interface ContainerProps {
@@ -71,6 +76,7 @@ const CollapseButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const ButtonText = styled.div<{ show: boolean }>`
@@ -101,7 +107,7 @@ const StyledList = styled.ul`
 `;
 
 const IconContainer = styled.div<{ rotated: boolean }>`
-  max-width: 18px;
+  max-width: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,13 +131,18 @@ export const SideBar: React.FC<SidebarProps> = ({
         <div>
           <StyledList>
             {items.map((item, index) => (
-              <SidebarListItem showText={show} text={item} key={index + item} />
+              <SidebarListItem
+                showText={show}
+                text={item.text}
+                key={index + item.text}
+                icon={item.icon}
+              />
             ))}
           </StyledList>
         </div>
         <CollapseButton onClick={onClick}>
           <IconContainer rotated={show}>
-            <ArrowheadRight
+            <DoubbleArrowHeadRight
               iconColor={primarySidebarBackground}
               width={'20px'}
               height={'20px'}

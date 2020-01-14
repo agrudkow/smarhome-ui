@@ -1,12 +1,11 @@
-import React, { ReactNode, useState, useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { User } from '../assets/user';
+import React, { ReactNode, useState } from 'react';
+import styled from 'styled-components';
 import { regularStyle } from '../p';
 
 export interface SidebarListItemProps {
   text: string;
   showText: boolean;
-  icon?: ReactNode;
+  icon: ReactNode;
 }
 
 const StyledSidebarListItem = styled.div<{ clicked: boolean }>`
@@ -20,6 +19,7 @@ const StyledSidebarListItem = styled.div<{ clicked: boolean }>`
   justify-content: flex-start;
   align-items: center;
   transition: background-color 0.3s ease-in-out, border-left 0.3s ease-in-out;
+  cursor: pointer;
 `;
 
 const Text = styled.div<{ show: boolean; clicked: boolean }>`
@@ -42,23 +42,24 @@ const Text = styled.div<{ show: boolean; clicked: boolean }>`
   }
 `;
 
-const IconContainer = styled.div`
-  max-width: 18px;
+const IconContainer = styled.div<{ clicked: boolean }>`
+  min-width: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   path {
     transition: fill 0.3s ease-in-out;
+    fill: ${({ clicked, theme }) =>
+      clicked ? theme.palette.primary : theme.palette.primarySidebarBackground};
   }
 `;
 
 export const SidebarListItem: React.FC<SidebarListItemProps> = ({
   text,
-  showText
+  showText,
+  icon
 }) => {
-  const {
-    palette: { primarySidebarBackground, primary }
-  } = useContext(ThemeContext);
   const [clicked, setClicked] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -67,13 +68,7 @@ export const SidebarListItem: React.FC<SidebarListItemProps> = ({
   return (
     <li>
       <StyledSidebarListItem onClick={handleClick} clicked={clicked}>
-        <IconContainer>
-          <User
-            iconColor={clicked ? primary : primarySidebarBackground}
-            width={'20px'}
-            height={'20px'}
-          />
-        </IconContainer>
+        <IconContainer clicked={clicked}>{icon}</IconContainer>
         <Text clicked={clicked} show={showText}>
           {text}
         </Text>

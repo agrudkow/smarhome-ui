@@ -25,7 +25,7 @@ export const BaseTheme: DefaultTheme = {
   layout: {
     sidebarWidth: {
       desktop: 220,
-      mobile: 50
+      mobile: 60
     }
   }
 };

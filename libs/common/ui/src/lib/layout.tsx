@@ -1,14 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { SideBar } from './hamburger-menu';
 import Header from './header';
+import {
+  CogsIcon,
+  DataBaseIcon,
+  PollIcon,
+  UserIcon,
+  BrainIcon
+} from './assets';
 
-const SideBarMock: string[] = [
-  'Test item',
-  'Test item',
-  'Test item',
-  'Test item',
-  'Test item',
-  'Test item'
+const SidebarLinks = [
+  {
+    text: 'Algorithms',
+    icon: <BrainIcon iconColor={''} />
+  },
+  {
+    text: 'Datasets',
+    icon: <DataBaseIcon iconColor={''} />
+  },
+  {
+    text: 'Analitics',
+    icon: <PollIcon iconColor={''} />
+  },
+  {
+    text: 'User',
+    icon: <UserIcon iconColor={''} />
+  }
 ];
 
 export const Layout: React.FC = ({ children }) => {
@@ -21,7 +38,7 @@ export const Layout: React.FC = ({ children }) => {
   return (
     <>
       <Header showViewName={!showSidebar} />
-      <SideBar show={showSidebar} onClick={handleClick} items={SideBarMock}>
+      <SideBar show={showSidebar} onClick={handleClick} items={SidebarLinks}>
         {children}
       </SideBar>
     </>

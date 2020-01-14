@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const User: React.FC<
+export const UserIcon: React.FC<
   JSX.IntrinsicElements['svg'] & { iconColor: string }
 > = ({ iconColor, ...restProps }) => (
   <svg
