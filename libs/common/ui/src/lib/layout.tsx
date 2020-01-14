@@ -1,13 +1,7 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState } from 'react';
 import { SideBar } from './hamburger-menu';
 import Header from './header';
-import {
-  CogsIcon,
-  DataBaseIcon,
-  PollIcon,
-  UserIcon,
-  BrainIcon
-} from './assets';
+import { DataBaseIcon, PollIcon, UserIcon, BrainIcon } from './assets';
 
 const SidebarLinks = [
   {
@@ -37,7 +31,7 @@ export const Layout: React.FC = ({ children }) => {
 
   return (
     <>
-      <Header showViewName={!showSidebar} />
+      <Header showViewName={!showSidebar} onButtonClick={handleClick} />
       <SideBar show={showSidebar} onClick={handleClick} items={SidebarLinks}>
         {children}
       </SideBar>

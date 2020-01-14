@@ -21,6 +21,7 @@ interface ContainerProps {
 
 const SidebarContainer = styled.div<ContainerProps>`
   position: fixed;
+  z-index: 9999;
   width: ${({
     show,
     theme: {
@@ -28,7 +29,7 @@ const SidebarContainer = styled.div<ContainerProps>`
         sidebarWidth: { desktop, mobile }
       }
     }
-  }) => (show ? desktop : mobile)}px;
+  }) => (show ? desktop : '0')}px;
   height: calc(100% - 40px);
   top: 40px;
   left: 0;
@@ -40,30 +41,45 @@ const SidebarContainer = styled.div<ContainerProps>`
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    z-index: 0;
+    width: ${({
+      show,
+      theme: {
+        layout: {
+          sidebarWidth: { desktop, mobile }
+        }
+      }
+    }) => (show ? desktop : mobile)}px;
+  }
 `;
 
 const Content = styled.div<ContainerProps>`
   position: relative;
-  margin-left: ${({
-    show,
-    theme: {
-      layout: {
-        sidebarWidth: { desktop, mobile }
-      }
-    }
-  }) => (show ? desktop : mobile)}px;
-  width: calc(
-    100vw -
-      ${({
-        show,
-        theme: {
-          layout: {
-            sidebarWidth: { desktop, mobile }
-          }
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+    margin-left: ${({
+      show,
+      theme: {
+        layout: {
+          sidebarWidth: { desktop, mobile }
         }
-      }) => (show ? desktop : mobile)}px
-  );
-  transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+      }
+    }) => (show ? desktop : mobile)}px;
+    width: calc(
+      100vw -
+        ${({
+          show,
+          theme: {
+            layout: {
+              sidebarWidth: { desktop, mobile }
+            }
+          }
+        }) => (show ? desktop : mobile)}px
+    );
+  }
 `;
 
 const CollapseButton = styled.div`
@@ -74,7 +90,7 @@ const CollapseButton = styled.div`
   border-top: 1px solid black;
   padding: 10px 16px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   cursor: pointer;
 `;

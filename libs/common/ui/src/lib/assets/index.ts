@@ -11,3 +11,4 @@ export * from './user-cicrcle-icon';
 export * from './user-icon';
 export * from './cogs-icon';
 export * from './brain-icon';
+export * from './hamburger-button-icon';
