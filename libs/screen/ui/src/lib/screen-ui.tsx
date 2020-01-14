@@ -1,14 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import { CommonUi } from '@smarthome/common/ui';
-
-const StyledScreenUi = styled.div``;
+import { Layout, H1 } from '@smarthome/common/ui';
 
 export const ScreenUi: React.FC = () => {
   return (
-    <StyledScreenUi>
-      <CommonUi />
-    </StyledScreenUi>
+    <>
+      <Layout>
+        <H1>This is your app for Eko API</H1>
+      </Layout>
+    </>
   );
 };
 

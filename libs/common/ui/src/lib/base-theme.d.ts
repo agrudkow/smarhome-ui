@@ -5,6 +5,12 @@ declare module 'styled-components' {
     palette: {
       primary: string;
       primaryBackground: string;
+      primarySidebarBackground: string;
+      secondaryBackground: string;
+      secondarySidebarBackground: string;
+      secondarySidebarContrastBackground: string;
+      paragraph: string;
+      heading: string;
     };
     breakpoints: {
       mobile: string;
@@ -13,6 +19,12 @@ declare module 'styled-components' {
       inPixels: {
         mobile: number;
         tablet: number;
+        desktop: number;
+      };
+    };
+    layout: {
+      sidebarWidth: {
+        mobile: number;
         desktop: number;
       };
     };
