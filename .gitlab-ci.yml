@@ -1,16 +1,15 @@
 variables:
-  GIT_SSL_NO_VERIFY: "true"
+  GIT_SSL_NO_VERIFY: 'true'
   AWS_REGION: eu-central-1
 
 cache:
   paths:
-  - node_modules
+    - node_modules
 
 stages:
   - test
   - build
   - deploy
-
 
 .lint_web_template: &lint_web_definition
   image: node:latest
@@ -29,7 +28,7 @@ lint_web_all:
     - yarn nx workspace-lint
     - yarn nx affected:lint --all --parallel | tee lintresult
     - '! cat lintresult | grep -q warning'
-        
+
 lint_web:
   <<: *lint_web_definition
   except:
@@ -40,10 +39,9 @@ lint_web:
     - yarn nx workspace-lint
     - yarn nx affected:lint --parallel --base develop | tee lintresult
     - '! cat lintresult | grep -q warning'
-    
 
 .build_web_template: &build_web_definition
-  image: "node:latest"
+  image: 'node:latest'
   stage: build
   artifacts:
     paths:
@@ -54,12 +52,12 @@ lint_web:
 
 build_web_dev:
   <<: *build_web_definition
-  only:
-    - develop
+  except:
+    - master
   script:
     - yarn nx run smarthome:build --prod
 
-build_web_prod:
+build_web_prd:
   <<: *build_web_definition
   only:
     - master
@@ -83,10 +81,10 @@ deploy_web_dev:
   variables:
     AWS_BUCKET_NAME: smarthome-app-dev
 
-deploy_web_prod:
+deploy_web_prd:
   <<: *deploy_web_definition
   dependencies:
-    - build_web_prod
+    - build_web_prd
   only:
     - master
   variables:
