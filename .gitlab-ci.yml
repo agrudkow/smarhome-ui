@@ -16,7 +16,7 @@ stages:
   image: node:latest
   stage: test
   before_script:
-    - git fetch origin master
+    - git pull
     - npm install yarn -g || true
     - yarn
 
