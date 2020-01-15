@@ -1,19 +1,13 @@
 import React from 'react';
+import { Layout, H1 } from '@smarthome/common/ui';
 
-import styled from 'styled-components';
-
-/* eslint-disable-next-line */
-export interface ScreenUiProps {}
-
-const StyledScreenUi = styled.div`
-  color: pink;
-`;
-
-export const ScreenUi = (props: ScreenUiProps) => {
+export const ScreenUi: React.FC = () => {
   return (
-    <StyledScreenUi>
-      <h1>Welcome to screen-ui component!</h1>
-    </StyledScreenUi>
+    <>
+      <Layout>
+        <H1>This is your app for Eko API</H1>
+      </Layout>
+    </>
   );
 };
 

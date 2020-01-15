@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import CommonUi from './common-ui';
+import Header from './header';
 
-describe(' CommonUi', () => {
+describe(' Header', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<CommonUi />);
+    const { baseElement } = render(<Header />);
     expect(baseElement).toBeTruthy();
   });
 });

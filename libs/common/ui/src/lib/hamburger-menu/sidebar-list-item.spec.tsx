@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import CommonLogic from './common-logic';
+import SidebarListItem from './sidebar-list-item';
 
-describe(' CommonLogic', () => {
+describe(' SidebarListItem', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<CommonLogic />);
+    const { baseElement } = render(<SidebarListItem />);
     expect(baseElement).toBeTruthy();
   });
 });

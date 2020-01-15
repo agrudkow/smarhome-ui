@@ -1,1 +1,1 @@
-export * from './lib/common-logic';
+export * from './lib/use-window-dimensions';
