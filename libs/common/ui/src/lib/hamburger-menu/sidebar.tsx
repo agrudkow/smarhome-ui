@@ -4,15 +4,16 @@ import { DoubbleArrowHeadRight } from '../assets';
 import { regularStyle } from '../p';
 import SidebarListItem from './sidebar-list-item';
 
-interface Items {
+export interface SidebarLinkProps {
   text: string;
   icon: ReactNode;
+  route: string;
 }
 
 interface SidebarProps {
   show: boolean;
   onClick: () => void;
-  items: Items[];
+  items: SidebarLinkProps[];
 }
 
 interface ContainerProps {
@@ -141,6 +142,7 @@ export const SideBar: React.FC<SidebarProps> = ({
   const {
     palette: { primarySidebarBackground }
   } = useContext(ThemeContext);
+
   return (
     <>
       <SidebarContainer show={show}>
@@ -152,6 +154,7 @@ export const SideBar: React.FC<SidebarProps> = ({
                 text={item.text}
                 key={index + item.text}
                 icon={item.icon}
+                linkRoute={item.route}
               />
             ))}
           </StyledList>

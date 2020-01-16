@@ -1,25 +1,28 @@
 import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { regularStyle } from '../p';
 
 export interface SidebarListItemProps {
   text: string;
   showText: boolean;
   icon: ReactNode;
+  linkRoute: string;
 }
 
-const StyledSidebarListItem = styled.div<{ clicked: boolean }>`
+const StyledSidebarListItem = styled(NavLink)<{ clicked: boolean }>`
   height: 45px;
   padding: 12px 16px;
   background-color: ${({ clicked, theme }) =>
     clicked ? theme.palette.secondarySidebarContrastBackground : 'transparent'};
-  border-left: 1px solid
+  border-left: 2px solid
     ${({ theme, clicked }) => (clicked ? theme.palette.primary : 'transparent')};
   display: flex;
   justify-content: flex-start;
   align-items: center;
   transition: background-color 0.3s ease-in-out, border-left 0.3s ease-in-out;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 const Text = styled.div<{ show: boolean; clicked: boolean }>`
@@ -58,7 +61,8 @@ const IconContainer = styled.div<{ clicked: boolean }>`
 export const SidebarListItem: React.FC<SidebarListItemProps> = ({
   text,
   showText,
-  icon
+  icon,
+  linkRoute
 }) => {
   const [clicked, setClicked] = useState<boolean>(false);
 
@@ -67,7 +71,11 @@ export const SidebarListItem: React.FC<SidebarListItemProps> = ({
   };
   return (
     <li>
-      <StyledSidebarListItem onClick={handleClick} clicked={clicked}>
+      <StyledSidebarListItem
+        to={linkRoute}
+        onClick={handleClick}
+        clicked={clicked}
+      >
         <IconContainer clicked={clicked}>{icon}</IconContainer>
         <Text clicked={clicked} show={showText}>
           {text}
