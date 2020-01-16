@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SideBar, SidebarLinkProps } from './hamburger-menu';
+import { Sidebar, SidebarLinkProps } from './hamburger-menu';
 import Header from './header';
 
 interface LayoutProps {
@@ -16,9 +16,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, sidebarLinks }) => {
   return (
     <>
       <Header showViewName={!showSidebar} onButtonClick={handleClick} />
-      <SideBar show={showSidebar} onClick={handleClick} items={sidebarLinks}>
+      <Sidebar show={showSidebar} onClick={handleClick} items={sidebarLinks}>
         {children}
-      </SideBar>
+      </Sidebar>
     </>
   );
 };

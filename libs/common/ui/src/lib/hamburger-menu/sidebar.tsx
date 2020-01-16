@@ -133,7 +133,7 @@ const IconContainer = styled.div<{ rotated: boolean }>`
   transform: rotateZ(${({ rotated }) => (rotated ? '180deg' : '0')});
 `;
 
-export const SideBar: React.FC<SidebarProps> = ({
+export const Sidebar: React.FC<SidebarProps> = ({
   items,
   show,
   onClick,
