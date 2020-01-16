@@ -1,28 +1,12 @@
 import React, { useState } from 'react';
-import { SideBar } from './hamburger-menu';
+import { SideBar, SidebarLinkProps } from './hamburger-menu';
 import Header from './header';
-import { DataBaseIcon, PollIcon, UserIcon, BrainIcon } from './assets';
 
-const SidebarLinks = [
-  {
-    text: 'Algorithms',
-    icon: <BrainIcon iconColor={''} />
-  },
-  {
-    text: 'Datasets',
-    icon: <DataBaseIcon iconColor={''} />
-  },
-  {
-    text: 'Analitics',
-    icon: <PollIcon iconColor={''} />
-  },
-  {
-    text: 'User',
-    icon: <UserIcon iconColor={''} />
-  }
-];
+interface LayoutProps {
+  sidebarLinks: SidebarLinkProps[];
+}
 
-export const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, sidebarLinks }) => {
   const [showSidebar, setShowSidebar] = useState<boolean>(true);
 
   const handleClick = () => {
@@ -32,7 +16,7 @@ export const Layout: React.FC = ({ children }) => {
   return (
     <>
       <Header showViewName={!showSidebar} onButtonClick={handleClick} />
-      <SideBar show={showSidebar} onClick={handleClick} items={SidebarLinks}>
+      <SideBar show={showSidebar} onClick={handleClick} items={sidebarLinks}>
         {children}
       </SideBar>
     </>
