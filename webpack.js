@@ -13,7 +13,7 @@ function getConfig(config) {
       'process.env.REACT_APP_API': JSON.stringify(process.env.REACT_APP_API),
       'process.env.REACT_APP_AWS_DOMAIN': JSON.stringify(
         process.env.REACT_APP_AWS_DOMAIN
-      )
+      ),
     })
   );
   return config;

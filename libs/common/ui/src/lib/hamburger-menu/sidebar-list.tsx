@@ -21,11 +21,13 @@ export const SidebarList: React.FC<SidebarListProps> = ({ items, show }) => {
 
   const handleListItemClick = useCallback(
     (index: number) => {
-      const newState = listItemsState.map((_, idx) => idx === index ? true : false);
+      const newState = listItemsState.map((_, idx) =>
+        idx === index ? true : false
+      );
       setListItemsState(newState);
     },
-    [listItemsState],
-  )
+    [listItemsState]
+  );
 
   return (
     <StyledList>

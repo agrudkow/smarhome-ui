@@ -43,7 +43,7 @@ const AppName = styled.div<AppNameProps>`
       showViewName ? 'none' : 'translateX(-50%)'};
   }
 
-  ${props => props.theme.breakpoints.desktop} {
+  ${(props) => props.theme.breakpoints.desktop} {
     font-size: 30px;
     line-height: 30px;
   }
@@ -70,14 +70,14 @@ const HamburgerButton = styled.div<{ show: boolean }>`
 
 export const Header: React.FC<HeaderProps> = ({
   showViewName,
-  onButtonClick
+  onButtonClick,
 }) => {
   const { width } = useWindowDimensions();
   const {
     breakpoints: {
-      inPixels: { tablet }
+      inPixels: { tablet },
     },
-    palette: { primarySidebarBackground }
+    palette: { primarySidebarBackground },
   } = useContext(ThemeContext);
 
   const tabletView = width >= tablet;
