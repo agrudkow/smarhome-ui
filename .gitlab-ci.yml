@@ -34,7 +34,7 @@ lint_web:
     - develop
     - master
   script:
-    - yarn format:check --base develop --verbose
+    - yarn format:check --base=origin/develop --verbose
     - yarn nx workspace-lint
     # - yarn nx affected:lint --parallel --base=remotes/origin/develop | tee lintresult
     # - '! cat lintresult | grep -q warning'
