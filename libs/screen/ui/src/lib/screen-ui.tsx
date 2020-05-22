@@ -6,7 +6,7 @@ import {
   DataBaseIcon,
   PollIcon,
   UserIcon,
-  SidebarLinkProps
+  SidebarLinkProps,
 } from '@smarthome/common/ui';
 import { Routes } from '@smarthome/common/service';
 
@@ -14,23 +14,23 @@ const SidebarLinks: SidebarLinkProps[] = [
   {
     text: 'Algorithms',
     icon: <BrainIcon iconColor={''} />,
-    route: Routes.Algorithms
+    route: Routes.Algorithms,
   },
   {
     text: 'Datasets',
     icon: <DataBaseIcon iconColor={''} />,
-    route: Routes.Datasets
+    route: Routes.Datasets,
   },
   {
     text: 'Analitics',
     icon: <PollIcon iconColor={''} />,
-    route: Routes.Analitics
+    route: Routes.Analitics,
   },
   {
     text: 'User',
     icon: <UserIcon iconColor={''} />,
-    route: Routes.User
-  }
+    route: Routes.User,
+  },
 ];
 
 export const ScreenUi: React.FC = () => {

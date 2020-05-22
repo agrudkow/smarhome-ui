@@ -2,7 +2,7 @@ import React, { useContext, ReactNode } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { DoubbleArrowHeadRight } from '../assets';
 import { regularStyle } from '../p';
-import SidebarListItem from './sidebar-list-item';
+import SidebarList from './sidebar-list';
 
 export interface SidebarLinkProps {
   text: string;
@@ -27,9 +27,9 @@ const SidebarContainer = styled.div<ContainerProps>`
     show,
     theme: {
       layout: {
-        sidebarWidth: { desktop, mobile }
-      }
-    }
+        sidebarWidth: { desktop, mobile },
+      },
+    },
   }) => (show ? desktop : '0')}px;
   height: calc(100% - 40px);
   top: 40px;
@@ -49,9 +49,9 @@ const SidebarContainer = styled.div<ContainerProps>`
       show,
       theme: {
         layout: {
-          sidebarWidth: { desktop, mobile }
-        }
-      }
+          sidebarWidth: { desktop, mobile },
+        },
+      },
     }) => (show ? desktop : mobile)}px;
   }
 `;
@@ -65,9 +65,9 @@ const Content = styled.div<ContainerProps>`
       show,
       theme: {
         layout: {
-          sidebarWidth: { desktop, mobile }
-        }
-      }
+          sidebarWidth: { desktop, mobile },
+        },
+      },
     }) => (show ? desktop : mobile)}px;
     width: calc(
       100vw -
@@ -75,9 +75,9 @@ const Content = styled.div<ContainerProps>`
           show,
           theme: {
             layout: {
-              sidebarWidth: { desktop, mobile }
-            }
-          }
+              sidebarWidth: { desktop, mobile },
+            },
+          },
         }) => (show ? desktop : mobile)}px
     );
   }
@@ -96,7 +96,7 @@ const CollapseButton = styled.div`
   cursor: pointer;
 `;
 
-const ButtonText = styled.div<{ show: boolean }>`
+const ButtonText = styled(({ show: boolean, ...props }) => <div {...props} />)`
   ${regularStyle};
   color: ${({ theme }) => theme.palette.primarySidebarBackground};
   display: flex;
@@ -111,19 +111,18 @@ const ButtonText = styled.div<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
   padding: ${({ show }) => (show ? '2px 10px 0' : 0)};
 
-  ${props => props.theme.breakpoints.desktop} {
+  ${(props) => props.theme.breakpoints.desktop} {
     font-size: 20px;
     line-height: 26px;
   }
 `;
 
-const StyledList = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-`;
-
-const IconContainer = styled.div<{ rotated: boolean }>`
+const IconContainer = styled(
+  <T extends { rotated: boolean } & React.HTMLProps<HTMLDivElement>>({
+    rotated,
+    ...props
+  }: T) => <div {...props} />
+)`
   max-width: 24px;
   display: flex;
   justify-content: center;
@@ -137,28 +136,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
   items,
   show,
   onClick,
-  children
+  children,
 }) => {
   const {
-    palette: { primarySidebarBackground }
+    palette: { primarySidebarBackground },
   } = useContext(ThemeContext);
 
   return (
     <>
       <SidebarContainer show={show}>
-        <div>
-          <StyledList>
-            {items.map((item, index) => (
-              <SidebarListItem
-                showText={show}
-                text={item.text}
-                key={index + item.text}
-                icon={item.icon}
-                linkRoute={item.route}
-              />
-            ))}
-          </StyledList>
-        </div>
+        <SidebarList items={items} show={show} />
         <CollapseButton onClick={onClick}>
           <IconContainer rotated={show}>
             <DoubbleArrowHeadRight

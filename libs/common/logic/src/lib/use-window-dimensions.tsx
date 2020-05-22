@@ -4,7 +4,7 @@ function getWindowDimensions() {
   const { outerWidth: width, outerHeight: height } = window;
   return {
     width,
-    height
+    height,
   };
 }
 
