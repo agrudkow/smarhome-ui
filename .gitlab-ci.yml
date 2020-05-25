@@ -25,8 +25,8 @@ lint_web_all:
   script:
     - yarn format:check --all
     - yarn nx workspace-lint
-    # - yarn nx affected:lint --all --parallel | tee lintresult
-    # - '! cat lintresult | grep -q warning'
+    - yarn nx affected:lint --all --parallel | tee lintresult
+    - '! cat lintresult | grep -q warning'
 
 lint_web:
   <<: *lint_web_definition
@@ -36,8 +36,8 @@ lint_web:
   script:
     - yarn format:check --base=origin/develop --verbose
     - yarn nx workspace-lint
-    # - yarn nx affected:lint --parallel --base=remotes/origin/develop | tee lintresult
-    # - '! cat lintresult | grep -q warning'
+    - yarn nx affected:lint --parallel --base=origin/develop | tee lintresult
+    - '! cat lintresult | grep -q warning'
 
 .build_web_template: &build_web_definition
   image: 'node:latest'
