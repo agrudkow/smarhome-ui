@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import SidebarListItem from './sidebar-list-item';
 import { SidebarLinkProps } from './sidebar';
@@ -6,6 +6,8 @@ import { SidebarLinkProps } from './sidebar';
 export interface SidebarListProps {
   show: boolean;
   items: SidebarLinkProps[];
+  currentViewId: number;
+  onItemClick: (index: number) => void;
 }
 
 const StyledList = styled.ul`
@@ -14,21 +16,12 @@ const StyledList = styled.ul`
   padding: 0;
 `;
 
-export const SidebarList: React.FC<SidebarListProps> = ({ items, show }) => {
-  const [listItemsState, setListItemsState] = useState<boolean[]>(
-    new Array(items.length).fill(false)
-  );
-
-  const handleListItemClick = useCallback(
-    (index: number) => {
-      const newState = listItemsState.map((_, idx) =>
-        idx === index ? true : false
-      );
-      setListItemsState(newState);
-    },
-    [listItemsState]
-  );
-
+export const SidebarList: React.FC<SidebarListProps> = ({
+  items,
+  show,
+  onItemClick,
+  currentViewId,
+}) => {
   return (
     <StyledList>
       {items.map((item, index) => (
@@ -38,9 +31,9 @@ export const SidebarList: React.FC<SidebarListProps> = ({ items, show }) => {
           key={index + item.text}
           icon={item.icon}
           linkRoute={item.route}
-          clicked={listItemsState[index]}
+          clicked={index === currentViewId}
           index={index}
-          onClick={handleListItemClick}
+          onClick={onItemClick}
         />
       ))}
     </StyledList>

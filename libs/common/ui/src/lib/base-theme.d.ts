@@ -11,6 +11,16 @@ declare module 'styled-components' {
       secondarySidebarContrastBackground: string;
       paragraph: string;
       heading: string;
+      rgb: {
+        primary: string;
+        primaryBackground: string;
+        primarySidebarBackground: string;
+        secondaryBackground: string;
+        secondarySidebarBackground: string;
+        secondarySidebarContrastBackground: string;
+        paragraph: string;
+        heading: string;
+      };
     };
     breakpoints: {
       mobile: string;
@@ -27,6 +37,7 @@ declare module 'styled-components' {
         mobile: number;
         desktop: number;
       };
+      headerHeight: number;
     };
   }
 }

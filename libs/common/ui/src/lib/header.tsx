@@ -11,14 +11,15 @@ interface AppNameProps {
 type ViewNameProps = AppNameProps;
 
 interface HeaderProps extends ViewNameProps {
-  onButtonClick: () => void;
+  viewName: string;
+  onButtonClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const StyledHeader = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.palette.secondaryBackground};
   width: 100%;
-  height: 40px;
+  height: ${({ theme }) => theme.layout.headerHeight}px;
   top: 0;
   left: 0;
   right: 0;
@@ -35,6 +36,8 @@ const AppName = styled.div<AppNameProps>`
   margin: 0 15px;
 
   ${({ theme }) => theme.breakpoints.tablet} {
+    font-size: 22px;
+    line-height: 24px;
     position: absolute;
     transition: left 0.3s ease-in-out, transform 0.3s ease-in-out;
     left: ${({ showViewName, theme }) =>
@@ -70,6 +73,7 @@ const HamburgerButton = styled.div<{ show: boolean }>`
 
 export const Header: React.FC<HeaderProps> = ({
   showViewName,
+  viewName,
   onButtonClick,
 }) => {
   const { width } = useWindowDimensions();
@@ -90,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({
         </HamburgerButton>
       )}
       {tabletView && (
-        <ViewName showViewName={showViewName}>Current view</ViewName>
+        <ViewName showViewName={showViewName}>{viewName}</ViewName>
       )}
     </StyledHeader>
   );

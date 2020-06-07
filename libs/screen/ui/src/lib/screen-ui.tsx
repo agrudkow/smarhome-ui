@@ -9,6 +9,7 @@ import {
   SidebarLinkProps,
 } from '@smarthome/common/ui';
 import { Routes } from '@smarthome/common/service';
+import { Analitics } from './analitics';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -38,10 +39,10 @@ export const ScreenUi: React.FC = () => {
     <Router>
       <Layout sidebarLinks={SidebarLinks}>
         <Switch>
-          <Route path="/" />
+          <Route path="/" exact />
           <Route path={`/${Routes.Algorithms}`} />
           <Route path={`/${Routes.Datasets}`} />
-          <Route path={`/${Routes.Analitics}`} />
+          <Route path={`/${Routes.Analitics}`} component={Analitics} exact />
           <Route path={`/${Routes.User}`} />
         </Switch>
       </Layout>

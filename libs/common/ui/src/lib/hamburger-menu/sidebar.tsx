@@ -3,6 +3,7 @@ import styled, { ThemeContext } from 'styled-components';
 import { DoubbleArrowHeadRight } from '../assets';
 import { regularStyle } from '../p';
 import SidebarList from './sidebar-list';
+import { useWindowDimensions } from '@smarthome/common/logic';
 
 export interface SidebarLinkProps {
   text: string;
@@ -12,7 +13,11 @@ export interface SidebarLinkProps {
 
 interface SidebarProps {
   show: boolean;
-  onClick: () => void;
+  currentViewId: number;
+  onShowSidebarClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => void;
+  onSelectViewClick: (indexId: number) => void;
   items: SidebarLinkProps[];
 }
 
@@ -31,7 +36,14 @@ const SidebarContainer = styled.div<ContainerProps>`
       },
     },
   }) => (show ? desktop : '0')}px;
-  height: calc(100% - 40px);
+  height: calc(
+    100vh -
+      ${({
+        theme: {
+          layout: { headerHeight },
+        },
+      }) => headerHeight}px
+  );
   top: 40px;
   left: 0;
   bottom: 0;
@@ -44,7 +56,6 @@ const SidebarContainer = styled.div<ContainerProps>`
   overflow: hidden;
 
   ${({ theme }) => theme.breakpoints.tablet} {
-    z-index: 0;
     width: ${({
       show,
       theme: {
@@ -54,12 +65,53 @@ const SidebarContainer = styled.div<ContainerProps>`
       },
     }) => (show ? desktop : mobile)}px;
   }
+
+  ${({ theme }) => theme.breakpoints.desktop} {
+    z-index: 0;
+  }
 `;
 
 const Content = styled.div<ContainerProps>`
   position: relative;
+  overflow: hidden;
+  height: calc(
+    100vh -
+      ${({
+        theme: {
+          layout: { headerHeight },
+        },
+      }) => headerHeight}px
+  );
+  max-height: calc(
+    100vh -
+      ${({
+        theme: {
+          layout: { headerHeight },
+        },
+      }) => headerHeight}px
+  );
 
   ${({ theme }) => theme.breakpoints.tablet} {
+    margin-left: ${({
+      theme: {
+        layout: {
+          sidebarWidth: { mobile },
+        },
+      },
+    }) => mobile}px;
+    max-width: calc(
+      100vw -
+        ${({
+          theme: {
+            layout: {
+              sidebarWidth: { mobile },
+            },
+          },
+        }) => mobile}px
+    );
+  }
+
+  ${({ theme }) => theme.breakpoints.desktop} {
     transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out;
     margin-left: ${({
       show,
@@ -69,7 +121,7 @@ const Content = styled.div<ContainerProps>`
         },
       },
     }) => (show ? desktop : mobile)}px;
-    width: calc(
+    max-width: calc(
       100vw -
         ${({
           show,
@@ -132,21 +184,54 @@ const IconContainer = styled(
   transform: rotateZ(${({ rotated }) => (rotated ? '180deg' : '0')});
 `;
 
+const Overlay = styled.div`
+  display: block;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  z-index: 300;
+  height: calc(
+    100vh -
+      ${({
+        theme: {
+          layout: { headerHeight },
+        },
+      }) => headerHeight}px
+  );
+
+  ${({ theme }) => theme.breakpoints.desktop} {
+    display: none;
+  }
+`;
+
 export const Sidebar: React.FC<SidebarProps> = ({
   items,
   show,
-  onClick,
+  onShowSidebarClick,
+  onSelectViewClick,
+  currentViewId,
   children,
 }) => {
   const {
     palette: { primarySidebarBackground },
+    breakpoints: {
+      inPixels: { desktop },
+    },
   } = useContext(ThemeContext);
+  const { width } = useWindowDimensions();
+  const notDesktopView = width < desktop;
 
   return (
     <>
       <SidebarContainer show={show}>
-        <SidebarList items={items} show={show} />
-        <CollapseButton onClick={onClick}>
+        <SidebarList
+          items={items}
+          show={show}
+          currentViewId={currentViewId}
+          onItemClick={onSelectViewClick}
+        />
+        <CollapseButton onClick={onShowSidebarClick}>
           <IconContainer rotated={show}>
             <DoubbleArrowHeadRight
               iconColor={primarySidebarBackground}
@@ -157,6 +242,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <ButtonText show={show}>Collapse sidebar</ButtonText>
         </CollapseButton>
       </SidebarContainer>
+      {show && (
+        <Overlay onClick={notDesktopView ? onShowSidebarClick : undefined} />
+      )}
       <Content show={show}>{children}</Content>
     </>
   );
