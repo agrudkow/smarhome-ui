@@ -1,4 +1,6 @@
 import './lib/base-theme.d';
+
+export * from './lib/oval-box-container';
 export * from './lib/layout';
 export * from './lib/p';
 export * from './lib/headings';

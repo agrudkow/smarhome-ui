@@ -28,6 +28,7 @@
   },
   "private": true,
   "dependencies": {
+    "@nivo/line": "^0.62.0",
     "document-register-element": "1.14.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",

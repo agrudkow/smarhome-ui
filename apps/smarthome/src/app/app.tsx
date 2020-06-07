@@ -8,9 +8,13 @@ html, body {
     font-size: 14px;
     background-color: ${({ theme }) => theme.palette.primaryBackground};
     margin: 0;
+    height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
+    ${({ theme }) => theme.breakpoints.tablet} {
+      font-size: 16px;
+    }
     ${({ theme }) => theme.breakpoints.desktop} {
       font-size: 16px;
     }

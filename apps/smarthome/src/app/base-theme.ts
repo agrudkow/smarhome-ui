@@ -11,6 +11,16 @@ export const BaseTheme: DefaultTheme = {
     secondarySidebarContrastBackground: '#4E4E4E',
     paragraph: '#000',
     heading: '#000',
+    rgb: {
+      primary: '27, 189, 206',
+      primaryBackground: '227, 226, 225',
+      primarySidebarBackground: '223, 227, 213',
+      secondaryBackground: '16, 33, 40',
+      secondarySidebarBackground: '46, 44, 45',
+      secondarySidebarContrastBackground: '78, 78, 78',
+      paragraph: '0, 0, 0',
+      heading: '0, 0, 0',
+    },
   },
   breakpoints: {
     mobile: '@media (min-width: 480px)',
@@ -27,5 +37,6 @@ export const BaseTheme: DefaultTheme = {
       desktop: 220,
       mobile: 60,
     },
+    headerHeight: 40,
   },
 };
