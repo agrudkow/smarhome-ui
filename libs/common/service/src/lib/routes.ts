@@ -1,6 +1,6 @@
 export enum Routes {
   Algorithms = 'algorithms',
   Datasets = 'datasets',
-  Analitics = 'analitics',
+  Analytics = 'analytics',
   User = 'user',
 }

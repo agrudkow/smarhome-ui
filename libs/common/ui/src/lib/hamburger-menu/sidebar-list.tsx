@@ -6,8 +6,6 @@ import { SidebarLinkProps } from './sidebar';
 export interface SidebarListProps {
   show: boolean;
   items: SidebarLinkProps[];
-  currentViewId: number;
-  onItemClick: (index: number) => void;
 }
 
 const StyledList = styled.ul`
@@ -16,12 +14,7 @@ const StyledList = styled.ul`
   padding: 0;
 `;
 
-export const SidebarList: React.FC<SidebarListProps> = ({
-  items,
-  show,
-  onItemClick,
-  currentViewId,
-}) => {
+export const SidebarList: React.FC<SidebarListProps> = ({ items, show }) => {
   return (
     <StyledList>
       {items.map((item, index) => (
@@ -31,9 +24,6 @@ export const SidebarList: React.FC<SidebarListProps> = ({
           key={index + item.text}
           icon={item.icon}
           linkRoute={item.route}
-          clicked={index === currentViewId}
-          index={index}
-          onClick={onItemClick}
         />
       ))}
     </StyledList>

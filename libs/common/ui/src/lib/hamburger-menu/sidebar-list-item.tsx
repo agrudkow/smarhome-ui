@@ -1,6 +1,6 @@
-import React, { ReactNode, useCallback } from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { NavLink, NavLinkProps } from 'react-router-dom';
+import { NavLink, NavLinkProps, useLocation } from 'react-router-dom';
 import { regularStyle } from '../p';
 
 export interface SidebarListItemProps {
@@ -8,9 +8,6 @@ export interface SidebarListItemProps {
   showText: boolean;
   icon: ReactNode;
   linkRoute: string;
-  clicked: boolean;
-  index: number;
-  onClick: (index: number) => void;
 }
 
 const StyledSidebarListItem = styled(
@@ -85,22 +82,15 @@ export const SidebarListItem: React.FC<SidebarListItemProps> = ({
   showText,
   icon,
   linkRoute,
-  clicked,
-  index,
-  onClick,
 }) => {
-  const handleListItemClick = useCallback(() => {
-    onClick(index);
-  }, [index, onClick]);
+  const { pathname } = useLocation();
+
+  const isCurrenView = pathname === `/${linkRoute}`;
   return (
     <li>
-      <StyledSidebarListItem
-        to={linkRoute}
-        clicked={clicked}
-        onClick={handleListItemClick}
-      >
-        <IconContainer clicked={clicked}>{icon}</IconContainer>
-        <Text clicked={clicked} show={showText}>
+      <StyledSidebarListItem to={linkRoute} clicked={isCurrenView}>
+        <IconContainer clicked={isCurrenView}>{icon}</IconContainer>
+        <Text clicked={isCurrenView} show={showText}>
           {text}
         </Text>
       </StyledSidebarListItem>
