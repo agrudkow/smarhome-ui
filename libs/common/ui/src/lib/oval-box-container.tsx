@@ -1,10 +1,16 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-const StyledOvalBoxContainer = styled.div`
+interface StyledOvalBoxContainerProps {
+  height?: number;
+}
+
+type OvalBoxContainerProps = StyledOvalBoxContainerProps;
+
+const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   padding: 15px;
-  height: 400px;
-  min-height: 180px;
+  margin: 15px 0;
+  height: ${({ height }) => (height ? `${height}px` : 'auto')};
   border-radius: 15px;
   box-shadow: ${({
     theme: {
@@ -15,8 +21,11 @@ const StyledOvalBoxContainer = styled.div`
   }) => `0 0 10px rgba(${secondaryBackground}, 0.25)`};
 `;
 
-export const OvalBoxContainer: FC = ({ children }) => (
-  <StyledOvalBoxContainer>{children}</StyledOvalBoxContainer>
+export const OvalBoxContainer: FC<OvalBoxContainerProps> = ({
+  height,
+  children,
+}) => (
+  <StyledOvalBoxContainer height={height}>{children}</StyledOvalBoxContainer>
 );
 
 export default OvalBoxContainer;

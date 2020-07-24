@@ -4,11 +4,12 @@ import React, {
   useContext,
   useLayoutEffect,
 } from 'react';
+import { useLocation } from 'react-router-dom';
+import { ThemeContext } from 'styled-components';
 import { Sidebar, SidebarLinkProps } from './hamburger-menu';
 import Header from './header';
 import MainContainer from './main-container';
 import { useWindowDimensions } from '@smarthome/common/logic';
-import { ThemeContext } from 'styled-components';
 
 interface LayoutProps {
   sidebarLinks: SidebarLinkProps[];
@@ -16,10 +17,8 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, sidebarLinks }) => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
-  const [currentView, setCurrentView] = useState<number>(0);
-
+  const { pathname } = useLocation();
   const { width } = useWindowDimensions();
-
   const {
     breakpoints: {
       inPixels: { desktop },
@@ -33,7 +32,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, sidebarLinks }) => {
     },
     []
   );
-  const handleViewClick = (viewId: number) => setCurrentView(viewId);
 
   useLayoutEffect(() => {
     const desktopView = width >= desktop;
@@ -48,14 +46,14 @@ export const Layout: React.FC<LayoutProps> = ({ children, sidebarLinks }) => {
       <Header
         showViewName={!showSidebar}
         onButtonClick={handleShowSidebarClick}
-        viewName={sidebarLinks[currentView].text}
+        viewName={
+          sidebarLinks.find((item) => `/${item.route}` === pathname)?.text ?? ''
+        }
       />
       <Sidebar
         show={showSidebar}
         onShowSidebarClick={handleShowSidebarClick}
         items={sidebarLinks}
-        currentViewId={currentView}
-        onSelectViewClick={handleViewClick}
       >
         <MainContainer>{children}</MainContainer>
       </Sidebar>

@@ -13,11 +13,9 @@ export interface SidebarLinkProps {
 
 interface SidebarProps {
   show: boolean;
-  currentViewId: number;
   onShowSidebarClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => void;
-  onSelectViewClick: (indexId: number) => void;
   items: SidebarLinkProps[];
 }
 
@@ -209,8 +207,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
   items,
   show,
   onShowSidebarClick,
-  onSelectViewClick,
-  currentViewId,
   children,
 }) => {
   const {
@@ -225,12 +221,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <>
       <SidebarContainer show={show}>
-        <SidebarList
-          items={items}
-          show={show}
-          currentViewId={currentViewId}
-          onItemClick={onSelectViewClick}
-        />
+        <SidebarList items={items} show={show} />
         <CollapseButton onClick={onShowSidebarClick}>
           <IconContainer rotated={show}>
             <DoubbleArrowHeadRight
