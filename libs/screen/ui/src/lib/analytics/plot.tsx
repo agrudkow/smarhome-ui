@@ -31,9 +31,9 @@ export const Plot: FC = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Living room data set" stackId="a" fill="#8884d8" />
-        <Bar dataKey="Bedroom data set" stackId="a" fill="#82ca9d" />
-        <Bar dataKey="Data set 3" stackId="a" fill="#b23991" />
+        <Bar dataKey="Living room data set" stackId="a" fill="#8884d8" isAnimationActive={false} />
+        <Bar dataKey="Bedroom data set" stackId="a" fill="#82ca9d" isAnimationActive={false} />
+        <Bar dataKey="Data set 3" stackId="a" fill="#b23991" isAnimationActive={false} />
       </BarChart>
     </ResponsiveContainer>
   );
