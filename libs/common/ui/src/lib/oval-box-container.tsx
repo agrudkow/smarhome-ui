@@ -26,10 +26,12 @@ const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
 
 export const OvalBoxContainer: FC<OvalBoxContainerProps> = ({
   height,
-  width, 
+  width,
   children,
 }) => (
-  <StyledOvalBoxContainer height={height} width={width} >{children}</StyledOvalBoxContainer>
+  <StyledOvalBoxContainer height={height} width={width}>
+    {children}
+  </StyledOvalBoxContainer>
 );
 
 export default OvalBoxContainer;
