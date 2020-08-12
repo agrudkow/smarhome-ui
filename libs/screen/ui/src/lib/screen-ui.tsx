@@ -39,11 +39,10 @@ export const ScreenUi: React.FC = () => {
     <Router>
       <Layout sidebarLinks={SidebarLinks}>
         <Switch>
-          {/* <Route path="/" exact /> */}
-          <Route path={`/${Routes.Algorithms}`} />
-          <Route path={`/${Routes.Datasets}`} />
+          <Route path={`/${Routes.Algorithms}`} exact />
+          <Route path={`/${Routes.Datasets}`} exact />
           <Route path={`/${Routes.Analytics}`} component={Analytics} exact />
-          <Route path={`/${Routes.User}`} />
+          <Route path={`/${Routes.User}`} exact />
         </Switch>
       </Layout>
     </Router>

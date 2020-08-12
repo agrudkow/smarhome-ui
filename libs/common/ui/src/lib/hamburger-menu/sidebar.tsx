@@ -25,24 +25,20 @@ interface ContainerProps {
 
 const SidebarContainer = styled.div<ContainerProps>`
   position: fixed;
-  z-index: 9999;
   width: ${({
     show,
     theme: {
       layout: {
-        sidebarWidth: { desktop, mobile },
+        sidebarWidth: { desktop },
       },
     },
   }) => (show ? desktop : '0')}px;
-  height: calc(
-    100vh -
-      ${({
-        theme: {
-          layout: { headerHeight },
-        },
-      }) => headerHeight}px
-  );
-  top: 40px;
+  z-index: 9999;
+  top: ${({
+    theme: {
+      layout: { headerHeight },
+    },
+  }) => headerHeight}px;
   left: 0;
   bottom: 0;
   background-color: ${({ theme }) => theme.palette.secondarySidebarBackground};
@@ -54,7 +50,9 @@ const SidebarContainer = styled.div<ContainerProps>`
   overflow: hidden;
 
   ${({ theme }) => theme.breakpoints.tablet} {
-    width: ${({
+    position: unset;
+    transition: flex-basis 0.3s ease-in-out, left 0.3s ease-in-out;
+    flex-basis: ${({
       show,
       theme: {
         layout: {
@@ -70,7 +68,7 @@ const SidebarContainer = styled.div<ContainerProps>`
 `;
 
 const Content = styled.div<ContainerProps>`
-  position: relative;
+  flex: 1;
   overflow: hidden;
   height: calc(
     100vh -
@@ -88,49 +86,6 @@ const Content = styled.div<ContainerProps>`
         },
       }) => headerHeight}px
   );
-
-  ${({ theme }) => theme.breakpoints.tablet} {
-    margin-left: ${({
-      theme: {
-        layout: {
-          sidebarWidth: { mobile },
-        },
-      },
-    }) => mobile}px;
-    max-width: calc(
-      100vw -
-        ${({
-          theme: {
-            layout: {
-              sidebarWidth: { mobile },
-            },
-          },
-        }) => mobile}px
-    );
-  }
-
-  ${({ theme }) => theme.breakpoints.desktop} {
-    transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out;
-    margin-left: ${({
-      show,
-      theme: {
-        layout: {
-          sidebarWidth: { desktop, mobile },
-        },
-      },
-    }) => (show ? desktop : mobile)}px;
-    max-width: calc(
-      100vw -
-        ${({
-          show,
-          theme: {
-            layout: {
-              sidebarWidth: { desktop, mobile },
-            },
-          },
-        }) => (show ? desktop : mobile)}px
-    );
-  }
 `;
 
 const CollapseButton = styled.div`
@@ -203,6 +158,10 @@ const Overlay = styled.div`
   }
 `;
 
+const Window = styled.div`
+  display: flex;
+`;
+
 export const Sidebar: React.FC<SidebarProps> = ({
   items,
   show,
@@ -219,7 +178,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const notDesktopView = width < desktop;
 
   return (
-    <>
+    <Window>
       <SidebarContainer show={show}>
         <SidebarList items={items} show={show} />
         <CollapseButton onClick={onShowSidebarClick}>
@@ -237,6 +196,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <Overlay onClick={notDesktopView ? onShowSidebarClick : undefined} />
       )}
       <Content show={show}>{children}</Content>
-    </>
+    </Window>
   );
 };
