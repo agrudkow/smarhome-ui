@@ -7,9 +7,39 @@ export const Analytics: React.FC = () => (
     <OvalBoxContainer>Spendings</OvalBoxContainer>
     <OvalBoxContainer>Spendings</OvalBoxContainer>
     <OvalBoxContainer>Spendings</OvalBoxContainer>
-    <OvalBoxContainer height={400}>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    <OvalBoxContainer>Spendings</OvalBoxContainer>
+    {/* <OvalBoxContainer height={400}>
       <Plot />
-    </OvalBoxContainer>
+    </OvalBoxContainer> */}
   </>
 );
 

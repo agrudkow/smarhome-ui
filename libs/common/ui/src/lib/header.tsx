@@ -16,7 +16,9 @@ interface HeaderProps extends ViewNameProps {
 }
 
 const StyledHeader = styled.div`
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 9999;
   background-color: ${({ theme }) => theme.palette.secondaryBackground};
   width: 100%;
   height: ${({ theme }) => theme.layout.headerHeight}px;

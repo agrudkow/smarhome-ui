@@ -24,7 +24,8 @@ interface ContainerProps {
 }
 
 const SidebarContainer = styled.div<ContainerProps>`
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   width: ${({
     show,
     theme: {
@@ -33,14 +34,20 @@ const SidebarContainer = styled.div<ContainerProps>`
       },
     },
   }) => (show ? desktop : '0')}px;
+  height: calc(
+    100vh -
+      ${({
+        theme: {
+          layout: { headerHeight },
+        },
+      }) => headerHeight}px
+  );
   z-index: 9999;
   top: ${({
     theme: {
       layout: { headerHeight },
     },
   }) => headerHeight}px;
-  left: 0;
-  bottom: 0;
   background-color: ${({ theme }) => theme.palette.secondarySidebarBackground};
   transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
   color: ${({ theme }) => theme.palette.primarySidebarBackground};
@@ -50,7 +57,6 @@ const SidebarContainer = styled.div<ContainerProps>`
   overflow: hidden;
 
   ${({ theme }) => theme.breakpoints.tablet} {
-    position: unset;
     transition: flex-basis 0.3s ease-in-out, left 0.3s ease-in-out;
     flex-basis: ${({
       show,
@@ -70,7 +76,7 @@ const SidebarContainer = styled.div<ContainerProps>`
 const Content = styled.div<ContainerProps>`
   flex: 1;
   overflow: hidden;
-  height: calc(
+  min-height: calc(
     100vh -
       ${({
         theme: {
@@ -78,14 +84,14 @@ const Content = styled.div<ContainerProps>`
         },
       }) => headerHeight}px
   );
-  max-height: calc(
+  /* max-height: calc(
     100vh -
       ${({
         theme: {
           layout: { headerHeight },
         },
       }) => headerHeight}px
-  );
+  ); */
 `;
 
 const CollapseButton = styled.div`

@@ -12,8 +12,8 @@ const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   display: flex;
   padding: 15px;
   margin: 15px 0;
-  height: ${({ height }) => (height ? `${height}px` : 'auto')};
-  width: ${({ width }) => (width ? `${width}px` : 'auto')};
+  height: ${({ height }) => (height ? `${height}px` : '100%')};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
   border-radius: 15px;
   box-shadow: ${({
     theme: {
