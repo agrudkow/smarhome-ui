@@ -24,16 +24,16 @@ html, body {
 ::-webkit-scrollbar {
     width: 10px;
     background-color: ${() => BaseTheme.palette.secondaryBackground};
-    margin-top: 40px;
+    margin-top: ${() => BaseTheme.layout.headerHeight};
 }
  
 ::-webkit-scrollbar-track {
-  margin-top: 40px;
+  margin-top: ${() => BaseTheme.layout.headerHeight};
   background-color: ${() => BaseTheme.palette.primaryBackground};
 }
  
 ::-webkit-scrollbar-thumb {
-  margin-top: 40px;
+  margin-top: ${() => BaseTheme.layout.headerHeight};
   -webkit-border-radius: 10px;
   border-radius: 10px;
   background-color: ${() =>
