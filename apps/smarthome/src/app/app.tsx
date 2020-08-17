@@ -24,16 +24,16 @@ html, body {
 ::-webkit-scrollbar {
     width: 10px;
     background-color: ${() => BaseTheme.palette.secondaryBackground};
-    margin-top: ${() => BaseTheme.layout.headerHeight};
+    margin-top: ${() => BaseTheme.layout.headerHeight}px;
 }
  
 ::-webkit-scrollbar-track {
-  margin-top: ${() => BaseTheme.layout.headerHeight};
+  margin-top: ${() => BaseTheme.layout.headerHeight}px;
   background-color: ${() => BaseTheme.palette.primaryBackground};
 }
  
 ::-webkit-scrollbar-thumb {
-  margin-top: ${() => BaseTheme.layout.headerHeight};
+  margin-top: ${() => BaseTheme.layout.headerHeight}px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
   background-color: ${() =>

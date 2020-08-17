@@ -13,15 +13,11 @@ const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   padding: 15px;
   margin: 15px 0;
   height: ${({ height }) => (height ? `${height}px` : '100%')};
-  width: ${({ width }) => (width ? `${width}px` : '100%')};
-  border-radius: 15px;
-  box-shadow: ${({
-    theme: {
-      palette: {
-        rgb: { secondaryBackground },
-      },
-    },
-  }) => `0 0 10px rgba(${secondaryBackground}, 0.25)`};
+  width: ${({ width }) => (width ? `${width}px` : 'auto')};
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 `;
 
 export const OvalBoxContainer: FC<OvalBoxContainerProps> = ({

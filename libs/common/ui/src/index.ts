@@ -1,5 +1,6 @@
 import './lib/base-theme.d';
 
+export * from './lib/paginated-table';
 export * from './lib/oval-box-container';
 export * from './lib/layout';
 export * from './lib/p';

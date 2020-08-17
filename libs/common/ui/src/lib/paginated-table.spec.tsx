@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import TestTable from './test-table';
+import PaginatedTable from './paginated-table';
 
-describe(' TestTable', () => {
+describe(' PaginatedTable', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<TestTable />);
+    const { baseElement } = render(<PaginatedTable />);
     expect(baseElement).toBeTruthy();
   });
 });
