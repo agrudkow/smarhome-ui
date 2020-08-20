@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { NavLink, NavLinkProps, useLocation } from 'react-router-dom';
-import { regularStyle } from '../p';
+import { regularTypography } from '../p';
 
 export interface SidebarListItemProps {
   text: string;
@@ -40,7 +40,7 @@ const Text = styled(
     ...props
   }: T) => <div {...props} />
 )`
-  ${regularStyle};
+  ${regularTypography};
   color: ${({ clicked, theme }) =>
     clicked ? theme.palette.primary : theme.palette.primarySidebarBackground};
   overflow: hidden;

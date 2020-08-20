@@ -73,8 +73,11 @@ const tableIcons = {
 };
 
 const StyledPaginatedTable = styled.div`
-  & .MuiPaper-root,
-  .MuiTableRow-head,
+  & .MuiPaper-root {
+    padding: 5px 0;
+  }
+
+  & .MuiTableRow-head,
   .MTableHeader-header-1 {
     /* background-color: #f1ff; */
   }
@@ -83,6 +86,11 @@ const StyledPaginatedTable = styled.div`
     border-radius: 8px;
   }
 `;
+
+export enum Order {
+  asc = 'asc',
+  desc = 'desc',
+}
 
 interface PaginatedTableProps<RowData extends object> {
   columns: Column<RowData>[];

@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
-import { PaginatedTable } from '@smarthome/common/ui';
+import { PaginatedTable, InfoHeader, SearchBar } from '@smarthome/common/ui';
+import TestTable from './test-table';
+import EnhancedTable from './test';
 
 interface AlgorithmTableRowType {
   name: string;
@@ -97,7 +99,18 @@ const data: AlgorithmTableRowType[] = [
 
 export const Algorithms: FC = () => {
   return (
-    <PaginatedTable<AlgorithmTableRowType> columns={columns} data={data} />
+    <>
+      <InfoHeader
+        headerText={'List of avaliable algorithms'}
+        infoMessageText={
+          'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating.'
+        }
+      />
+      <SearchBar />
+      {/* <PaginatedTable<AlgorithmTableRowType> columns={columns} data={data} /> */}
+      {/* <TestTable /> */}
+      <EnhancedTable />
+    </>
   );
 };
 
