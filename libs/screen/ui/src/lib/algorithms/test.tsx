@@ -212,7 +212,7 @@ export default function EnhancedTable() {
     setSelected([]);
   };
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_: unknown, newPage: number) => {
     setPage(newPage);
   };
 

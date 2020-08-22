@@ -11,6 +11,7 @@ declare module 'styled-components' {
       secondarySidebarContrastBackground: string;
       paragraph: string;
       heading: string;
+      containerBackgorund: string;
       rgb: {
         primary: string;
         primaryBackground: string;
@@ -20,6 +21,7 @@ declare module 'styled-components' {
         secondarySidebarContrastBackground: string;
         paragraph: string;
         heading: string;
+        containerBackgorund: string;
       };
     };
     breakpoints: {

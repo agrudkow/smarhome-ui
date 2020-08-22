@@ -1,27 +1,16 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, CSSProperties } from 'react';
 import {
   makeStyles,
   createStyles,
-  Theme,
   TableHead,
   TableRow,
   TableCell,
   TableSortLabel,
+  Size,
 } from '@material-ui/core';
-import { Order } from './paginated-table';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
-    root: {
-      width: '100%',
-    },
-    paper: {
-      width: '100%',
-      marginBottom: theme.spacing(2),
-    },
-    table: {
-      minWidth: 750,
-    },
     visuallyHidden: {
       border: 0,
       clip: 'rect(0 0 0 0)',
@@ -36,39 +25,43 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface HeadCell<Data extends Record<string, string | number>> {
-  disablePadding: boolean;
-  id: Extract<keyof Data, string>;
-  label: string;
-  numeric: boolean;
+export enum Order {
+  asc = 'asc',
+  desc = 'desc',
 }
 
-export interface TableHeaderProps<
-  Data extends Record<string, string | number>
-> {
-  classes: ReturnType<typeof useStyles>;
-  numSelected: number;
-  onRequestSort: (property: keyof Data) => void;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
+export interface HeadCell<Keys extends string | symbol | number> {
+  disablePadding: boolean;
+  id: Keys;
+  label: string;
+  numeric: boolean;
+  enableSorting?: boolean;
+  style?: CSSProperties;
+}
+
+export interface TableHeaderProps<Keys extends string | symbol | number> {
+  onRequestSort: (property: Keys) => void;
   order: Order;
-  orderBy: string;
-  rowCount: number;
-  headCells: HeadCell<Data>[];
+  orderBy: Keys;
+  headCells: HeadCell<Keys>[];
+  rowsAlignment: Record<Keys, 'left' | 'right'>;
 }
 
 export type TableHeaderFunctionComponentType = <
-  Data extends Record<string, string | number>
+  Keys extends string | symbol | number
 >(
-  props: PropsWithChildren<TableHeaderProps<Data>>
+  props: PropsWithChildren<TableHeaderProps<Keys>>
 ) => JSX.Element;
 
 export const TableHeader: TableHeaderFunctionComponentType = ({
-  classes,
   order,
   orderBy,
   headCells,
+  rowsAlignment,
   onRequestSort,
 }) => {
+  const classes = useStyles();
+
   const createSortHandler = (
     property: Parameters<typeof onRequestSort>[0]
   ) => () => {
@@ -78,27 +71,32 @@ export const TableHeader: TableHeaderFunctionComponentType = ({
   return (
     <TableHead>
       <TableRow>
-        {headCells.map((headCell) => (
+        {headCells.map((headCell, index) => (
           <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            key={`table-cell-${headCell.id}-${index}`}
+            align={rowsAlignment[headCell.id]}
             padding={headCell.disablePadding ? 'none' : 'default'}
             sortDirection={orderBy === headCell.id ? order : false}
+            style={headCell.style}
           >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : Order.asc}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <span className={classes.visuallyHidden}>
-                  {order === Order.desc
-                    ? 'sorted descending'
-                    : 'sorted ascending'}
-                </span>
-              ) : null}
-            </TableSortLabel>
+            {headCell.enableSorting ? (
+              <TableSortLabel
+                active={orderBy === headCell.id}
+                direction={orderBy === headCell.id ? order : Order.asc}
+                onClick={createSortHandler(headCell.id)}
+              >
+                {headCell.label}
+                {orderBy === headCell.id ? (
+                  <span className={classes.visuallyHidden}>
+                    {order === Order.desc
+                      ? 'sorted descending'
+                      : 'sorted ascending'}
+                  </span>
+                ) : null}
+              </TableSortLabel>
+            ) : (
+              headCell.label
+            )}
           </TableCell>
         ))}
       </TableRow>

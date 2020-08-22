@@ -9,6 +9,14 @@ export interface InputProps {
 const StyledInput = styled.div`
   width: 100%;
   margin: 0 8px;
+
+  & .MuiInput-underline:after {
+    border-color: ${({
+      theme: {
+        palette: { primary },
+      },
+    }) => primary};
+  }
 `;
 
 export const Input: FC<InputProps> = ({ placeholder }) => {

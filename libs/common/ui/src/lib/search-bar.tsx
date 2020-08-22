@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import OvalBoxContainer from './oval-box-container';
 import Input from './input';
 import BaseButton from './base-button';
@@ -7,8 +8,14 @@ import BaseButton from './base-button';
 export interface SearchBarProps {}
 
 export const SearchBar: FC<SearchBarProps> = () => {
+  const {
+    palette: {
+      rgb: { containerBackgorund },
+    },
+  } = useContext(ThemeContext);
+
   return (
-    <OvalBoxContainer backgroundColor={'rgba(255, 255, 255, 0.75)'}>
+    <OvalBoxContainer backgroundColor={`rgba(${containerBackgorund}, 0.75)`}>
       <Input placeholder={'Type search phrase or leave it empty to get all.'} />
       <BaseButton
         onClick={() => console.log('Click1!!!!')}

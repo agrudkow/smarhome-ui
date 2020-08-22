@@ -1,103 +1,265 @@
-import React, { FC } from 'react';
-import { PaginatedTable, InfoHeader, SearchBar } from '@smarthome/common/ui';
-import TestTable from './test-table';
-import EnhancedTable from './test';
+import React, { FC, useState, ReactNode } from 'react';
+import {
+  PaginatedTable,
+  InfoHeader,
+  SearchBar,
+  HeadCell,
+  BaseButton,
+} from '@smarthome/common/ui';
 
-interface AlgorithmTableRowType {
+type Data = {
   name: string;
   description: string;
   rating?: number;
-}
+  button?: ReactNode;
+};
 
-const columns = [
+const headCells: HeadCell<keyof Data>[] = [
   {
-    title: 'Name',
-    field: 'name',
+    id: 'name',
+    label: 'Name',
+    numeric: false,
+    disablePadding: false,
+    enableSorting: true,
   },
   {
-    title: 'Description',
-    field: 'description',
+    id: 'description',
+    label: 'Description',
+    numeric: false,
+    disablePadding: false,
   },
   {
-    title: 'Rating',
-    field: 'rating',
+    id: 'rating',
+    label: 'Rating',
+    numeric: true,
+    disablePadding: false,
+    enableSorting: true,
+  },
+  {
+    id: 'button',
+    label: '',
+    numeric: false,
+    disablePadding: false,
+    style: { width: '100px' },
   },
 ];
 
-const data: AlgorithmTableRowType[] = [
+const data: Data[] = [
   {
-    name: 'Algorithm name 1',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 4.3,
+    rating: 3.4,
+    button: (
+      <BaseButton
+        onClick={() => console.log('Click me boiiii')}
+        style={{
+          width: '70px',
+          height: '30px',
+          fontSize: '12px',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        More
+      </BaseButton>
+    ),
   },
   {
-    name: 'Algorithm name 2',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 3.9,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    rating: 1.2,
+    rating: 3.4,
   },
   {
-    name: 'Algorithm name 3',
+    name: 'Algorithm 1',
     description: 'Test description',
-    // rating: 1.2,
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
+  },
+  {
+    name: 'Algorithm 1',
+    description: 'Test description',
+    rating: 3.4,
   },
 ];
+
+const rowsAlignment: Record<keyof Data, 'left' | 'right'> = {
+  name: 'left',
+  description: 'left',
+  rating: 'right',
+  button: 'right',
+};
 
 export const Algorithms: FC = () => {
+  const [orderBy, setOrderBy] = useState<keyof Data>('rating');
+
   return (
     <>
       <InfoHeader
@@ -107,9 +269,13 @@ export const Algorithms: FC = () => {
         }
       />
       <SearchBar />
-      {/* <PaginatedTable<AlgorithmTableRowType> columns={columns} data={data} /> */}
-      {/* <TestTable /> */}
-      <EnhancedTable />
+      <PaginatedTable<Data>
+        data={data}
+        headCells={headCells}
+        orderBy={orderBy}
+        setOrderBy={setOrderBy}
+        rowsAlignment={rowsAlignment}
+      />
     </>
   );
 };

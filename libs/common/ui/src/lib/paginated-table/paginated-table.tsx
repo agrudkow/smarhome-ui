@@ -1,85 +1,34 @@
-import React, { forwardRef, PropsWithChildren } from 'react';
+import React, {
+  PropsWithChildren,
+  useState,
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  ReactNode,
+  useMemo,
+} from 'react';
 import styled from 'styled-components';
-
-import MaterialTable, { Column } from 'material-table';
-import AddBox from '@material-ui/icons/AddBox';
-import ArrowDownward from '@material-ui/icons/ArrowDownward';
-import Check from '@material-ui/icons/Check';
-import ChevronLeft from '@material-ui/icons/ChevronLeft';
-import ChevronRight from '@material-ui/icons/ChevronRight';
-import Clear from '@material-ui/icons/Clear';
-import DeleteOutline from '@material-ui/icons/DeleteOutline';
-import Edit from '@material-ui/icons/Edit';
-import FilterList from '@material-ui/icons/FilterList';
-import FirstPage from '@material-ui/icons/FirstPage';
-import LastPage from '@material-ui/icons/LastPage';
-import Remove from '@material-ui/icons/Remove';
-import SaveAlt from '@material-ui/icons/SaveAlt';
-import Search from '@material-ui/icons/Search';
-import ViewColumn from '@material-ui/icons/ViewColumn';
-
-const tableIcons = {
-  Add: forwardRef<SVGSVGElement>((props, ref) => (
-    <AddBox {...props} ref={ref} />
-  )),
-  Check: forwardRef<SVGSVGElement>((props, ref) => (
-    <Check {...props} ref={ref} />
-  )),
-  Clear: forwardRef<SVGSVGElement>((props, ref) => (
-    <Clear {...props} ref={ref} />
-  )),
-  Delete: forwardRef<SVGSVGElement>((props, ref) => (
-    <DeleteOutline {...props} ref={ref} />
-  )),
-  DetailPanel: forwardRef<SVGSVGElement>((props, ref) => (
-    <ChevronRight {...props} ref={ref} />
-  )),
-  Edit: forwardRef<SVGSVGElement>((props, ref) => (
-    <Edit {...props} ref={ref} />
-  )),
-  Export: forwardRef<SVGSVGElement>((props, ref) => (
-    <SaveAlt {...props} ref={ref} />
-  )),
-  Filter: forwardRef<SVGSVGElement>((props, ref) => (
-    <FilterList {...props} ref={ref} />
-  )),
-  FirstPage: forwardRef<SVGSVGElement>((props, ref) => (
-    <FirstPage {...props} ref={ref} />
-  )),
-  LastPage: forwardRef<SVGSVGElement>((props, ref) => (
-    <LastPage {...props} ref={ref} />
-  )),
-  NextPage: forwardRef<SVGSVGElement>((props, ref) => (
-    <ChevronRight {...props} ref={ref} />
-  )),
-  PreviousPage: forwardRef<SVGSVGElement>((props, ref) => (
-    <ChevronLeft {...props} ref={ref} />
-  )),
-  ResetSearch: forwardRef<SVGSVGElement>((props, ref) => (
-    <Clear {...props} ref={ref} />
-  )),
-  Search: forwardRef<SVGSVGElement>((props, ref) => (
-    <Search {...props} ref={ref} />
-  )),
-  SortArrow: forwardRef<SVGSVGElement>((props, ref) => (
-    <ArrowDownward {...props} ref={ref} />
-  )),
-  ThirdStateCheck: forwardRef<SVGSVGElement>((props, ref) => (
-    <Remove {...props} ref={ref} />
-  )),
-  ViewColumn: forwardRef<SVGSVGElement>((props, ref) => (
-    <ViewColumn {...props} ref={ref} />
-  )),
-};
+import {
+  Table,
+  makeStyles,
+  Theme,
+  createStyles,
+  Paper,
+} from '@material-ui/core';
+import TableHeader, { HeadCell, Order } from './table-header';
+import TableBody from './table-body';
+import TableFooter from './table-footer';
 
 const StyledPaginatedTable = styled.div`
   & .MuiPaper-root {
     padding: 5px 0;
-  }
-
-  & .MuiTableRow-head,
-  .MTableHeader-header-1 {
-    /* background-color: #f1ff; */
+    background-color: ${({
+      theme: {
+        palette: {
+          rgb: { containerBackgorund },
+        },
+      },
+    }) => `rgba(${containerBackgorund}, 0.75)`};
   }
 
   & .MuiPaper-rounded {
@@ -87,32 +36,97 @@ const StyledPaginatedTable = styled.div`
   }
 `;
 
-export enum Order {
-  asc = 'asc',
-  desc = 'desc',
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      width: '100%',
+      marginBottom: theme.spacing(2),
+    },
+    table: {
+      minWidth: 750,
+    },
+  })
+);
+
+const rowsPerPageOptions = [10, 25, 50];
+
+interface PaginatedTableProps<
+  Data extends { [index in string]: string | number | ReactNode | undefined }
+> {
+  headCells: HeadCell<keyof Data>[];
+  data: Data[];
+  orderBy: keyof Data;
+  setOrderBy: Dispatch<SetStateAction<keyof Data>>;
+  rowsAlignment: Record<keyof Data, 'left' | 'right'>;
 }
 
-interface PaginatedTableProps<RowData extends object> {
-  columns: Column<RowData>[];
-  data: RowData[];
-}
-
-export type PaginatedTableFunctionComponentType = <T extends object>(
+export type PaginatedTableFunctionComponentType = <
+  T extends { [index in string]: string | number | ReactNode | undefined }
+>(
   props: PropsWithChildren<PaginatedTableProps<T>>
 ) => JSX.Element;
 
 export const PaginatedTable: PaginatedTableFunctionComponentType = ({
   data,
-  columns,
+  headCells,
+  orderBy,
+  setOrderBy,
+  rowsAlignment,
 }) => {
+  type Data = typeof data[0];
+
+  const classes = useStyles();
+  const [order, setOrder] = useState<Order>(Order.asc);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const headCellIds = useMemo(() => headCells.map((headCell) => headCell.id), [
+    headCells,
+  ]);
+
+  const handleRequestSort = (property: keyof Data) => {
+    const isAsc = orderBy === property && order === Order.asc;
+    setOrder(isAsc ? Order.desc : Order.asc);
+    setOrderBy(property);
+    console.log('Sort table!!!! -> TODO');
+  };
+
+  const handleChangePage = (_: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <StyledPaginatedTable>
-      <MaterialTable
-        icons={tableIcons}
-        title="List of avaliable algorithms"
-        columns={columns}
-        data={data}
-      />
+      <Paper className={classes.paper}>
+        <Table className={classes.table} size={'medium'} aria-label="table">
+          <TableHeader<keyof Data>
+            order={order}
+            orderBy={orderBy}
+            onRequestSort={handleRequestSort}
+            headCells={headCells}
+            rowsAlignment={rowsAlignment}
+          />
+          <TableBody<Data>
+            rows={data}
+            rowsAlignment={rowsAlignment}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            headCellIds={headCellIds}
+          />
+        </Table>
+        <TableFooter
+          page={page}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={rowsPerPageOptions}
+          totalNumberOfRows={data.length}
+          handleChangePage={handleChangePage}
+          handleChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+      </Paper>
     </StyledPaginatedTable>
   );
 };

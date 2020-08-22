@@ -10,15 +10,30 @@ export interface BaseButtonProps {
 const StyledBaseButton = styled(Button)`
   background-color: ${({
     theme: {
-      palette: { primary },
+      palette: { secondarySidebarContrastBackground },
     },
-  }) => primary};
+  }) => secondarySidebarContrastBackground};
   color: ${({
     theme: {
-      palette: { secondaryBackground },
+      palette: { primaryBackground },
     },
-  }) => secondaryBackground};
+  }) => primaryBackground};
+
   opacity: 0.7;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: ${({
+      theme: {
+        palette: { primary },
+      },
+    }) => primary};
+    color: ${({
+      theme: {
+        palette: { secondaryBackground },
+      },
+    }) => secondaryBackground};
+  }
 
   font-weight: 550;
 `;

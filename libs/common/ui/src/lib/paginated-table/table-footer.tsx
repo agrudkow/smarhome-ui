@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { TablePagination } from '@material-ui/core';
 
-import styled from 'styled-components';
+export interface TableFooterProps {
+  page: number;
+  rowsPerPage: number;
+  rowsPerPageOptions: number[];
+  totalNumberOfRows: number;
+  handleChangePage: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
+    page: number
+  ) => void;
+  handleChangeRowsPerPage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-/* eslint-disable-next-line */
-export interface TableFooterProps {}
-
-const StyledTableFooter = styled.div`
-  color: pink;
-`;
-
-export const TableFooter = (props: TableFooterProps) => {
+export const TableFooter: FC<TableFooterProps> = ({
+  page,
+  rowsPerPage,
+  rowsPerPageOptions,
+  totalNumberOfRows,
+  handleChangePage,
+  handleChangeRowsPerPage,
+}) => {
   return (
-    <StyledTableFooter>
-      <h1>Welcome to table-footer!</h1>
-    </StyledTableFooter>
+    <TablePagination
+      rowsPerPageOptions={rowsPerPageOptions}
+      component="div"
+      count={totalNumberOfRows}
+      rowsPerPage={rowsPerPage}
+      page={page}
+      onChangePage={handleChangePage}
+      onChangeRowsPerPage={handleChangeRowsPerPage}
+    />
   );
 };
 
