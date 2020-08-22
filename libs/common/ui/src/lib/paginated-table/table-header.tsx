@@ -6,7 +6,6 @@ import {
   TableRow,
   TableCell,
   TableSortLabel,
-  Size,
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() =>
