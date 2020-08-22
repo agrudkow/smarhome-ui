@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { regularStyle } from './p';
+import { regularTypography } from './p';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { HamburgerButtonIcon } from './assets';
 
@@ -16,7 +16,9 @@ interface HeaderProps extends ViewNameProps {
 }
 
 const StyledHeader = styled.div`
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 9999;
   background-color: ${({ theme }) => theme.palette.secondaryBackground};
   width: 100%;
   height: ${({ theme }) => theme.layout.headerHeight}px;
@@ -30,7 +32,7 @@ const StyledHeader = styled.div`
 `;
 
 const AppName = styled.div<AppNameProps>`
-  ${regularStyle};
+  ${regularTypography};
   color: ${({ theme }) => theme.palette.primaryBackground};
   white-space: nowrap;
   margin: 0 15px;

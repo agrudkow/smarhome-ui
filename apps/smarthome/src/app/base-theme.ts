@@ -10,7 +10,8 @@ export const BaseTheme: DefaultTheme = {
     secondarySidebarBackground: '#2E2C2D',
     secondarySidebarContrastBackground: '#4E4E4E',
     paragraph: '#000',
-    heading: '#000',
+    heading: '#444',
+    containerBackgorund: '#fff',
     rgb: {
       primary: '27, 189, 206',
       primaryBackground: '227, 226, 225',
@@ -20,6 +21,7 @@ export const BaseTheme: DefaultTheme = {
       secondarySidebarContrastBackground: '78, 78, 78',
       paragraph: '0, 0, 0',
       heading: '0, 0, 0',
+      containerBackgorund: '255, 255, 255',
     },
   },
   breakpoints: {

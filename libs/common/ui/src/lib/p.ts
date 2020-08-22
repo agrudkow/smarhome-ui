@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const regularStyle = css`
+export const regularTypography = css`
   color: ${(props) => props.theme.palette.paragraph};
   font-size: 14px;
   line-height: 20px;
@@ -18,7 +18,7 @@ export const regularStyle = css`
 `;
 
 export const P = styled.p`
-  ${regularStyle}
+  ${regularTypography}
 `;
 
 export default P;
