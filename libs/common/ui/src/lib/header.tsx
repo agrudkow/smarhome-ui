@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { regularStyle } from './p';
+import { regularTypography } from './p';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { HamburgerButtonIcon } from './assets';
 
@@ -32,7 +32,7 @@ const StyledHeader = styled.div`
 `;
 
 const AppName = styled.div<AppNameProps>`
-  ${regularStyle};
+  ${regularTypography};
   color: ${({ theme }) => theme.palette.primaryBackground};
   white-space: nowrap;
   margin: 0 15px;

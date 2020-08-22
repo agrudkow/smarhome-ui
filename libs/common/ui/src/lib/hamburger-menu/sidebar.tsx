@@ -1,7 +1,7 @@
 import React, { useContext, ReactNode } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { DoubbleArrowHeadRight } from '../assets';
-import { regularStyle } from '../p';
+import { regularTypography } from '../p';
 import SidebarList from './sidebar-list';
 import { useWindowDimensions } from '@smarthome/common/logic';
 
@@ -108,7 +108,7 @@ const CollapseButton = styled.div`
 `;
 
 const ButtonText = styled(({ show: boolean, ...props }) => <div {...props} />)`
-  ${regularStyle};
+  ${regularTypography};
   color: ${({ theme }) => theme.palette.primarySidebarBackground};
   display: flex;
   justify-content: center;
