@@ -11,6 +11,7 @@ import {
 import { Routes } from '@smarthome/common/service';
 import { Analytics } from './analytics';
 import { Algorithms } from './algorithms';
+import { Datasets } from './datasets';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -41,7 +42,7 @@ export const ScreenUi: React.FC = () => {
       <Layout sidebarLinks={SidebarLinks}>
         <Switch>
           <Route path={`/${Routes.Algorithms}`} component={Algorithms} exact />
-          <Route path={`/${Routes.Datasets}`} exact />
+          <Route path={`/${Routes.Datasets}`} component={Datasets} exact />
           <Route path={`/${Routes.Analytics}`} component={Analytics} exact />
           <Route path={`/${Routes.User}`} exact />
         </Switch>

@@ -1,264 +1,37 @@
-import React, { FC, useState, ReactNode } from 'react';
+import React, { FC, useState, useEffect, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import {
   PaginatedTable,
   InfoHeader,
   SearchBar,
-  HeadCell,
-  BaseButton,
+  Cell,
 } from '@smarthome/common/ui';
-
-type Data = {
-  name: string;
-  description: string;
-  rating?: number;
-  button?: ReactNode;
-};
-
-const headCells: HeadCell<keyof Data>[] = [
-  {
-    id: 'name',
-    label: 'Name',
-    numeric: false,
-    disablePadding: false,
-    enableSorting: true,
-  },
-  {
-    id: 'description',
-    label: 'Description',
-    numeric: false,
-    disablePadding: false,
-  },
-  {
-    id: 'rating',
-    label: 'Rating',
-    numeric: true,
-    disablePadding: false,
-    enableSorting: true,
-  },
-  {
-    id: 'button',
-    label: '',
-    numeric: false,
-    disablePadding: false,
-    style: { width: '100px' },
-  },
-];
-
-const data: Data[] = [
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '30px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-];
-
-const rowsAlignment: Record<keyof Data, 'left' | 'right'> = {
-  name: 'left',
-  description: 'left',
-  rating: 'right',
-  button: 'right',
-};
+import { useWindowDimensions } from '@smarthome/common/logic';
+import {
+  algorithmsDataParser,
+  algorithmsCellsParser,
+  BaseAlgorithm,
+} from '@smarthome/screen/logic';
+import { fetchAlgorithmsList } from '@smarthome/screen/service';
 
 export const Algorithms: FC = () => {
-  const [orderBy, setOrderBy] = useState<keyof Data>('rating');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [tableData, setTableData] = useState<BaseAlgorithm[]>(
+    algorithmsDataParser(fetchAlgorithmsList())
+  );
+  const [tableCells, setTableCells] = useState<Cell<keyof BaseAlgorithm>[]>([]);
+  const [orderBy, setOrderBy] = useState<keyof BaseAlgorithm>('rating');
+  const { width } = useWindowDimensions();
+  const {
+    breakpoints: {
+      inPixels: { tablet, desktop },
+    },
+  } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const cells = algorithmsCellsParser(width, { desktop, tablet });
+    setTableCells(cells);
+  }, [width, tablet, desktop]);
 
   return (
     <>
@@ -269,12 +42,11 @@ export const Algorithms: FC = () => {
         }
       />
       <SearchBar />
-      <PaginatedTable<Data>
-        data={data}
-        headCells={headCells}
+      <PaginatedTable<BaseAlgorithm>
+        data={tableData}
+        cells={tableCells}
         orderBy={orderBy}
         setOrderBy={setOrderBy}
-        rowsAlignment={rowsAlignment}
       />
     </>
   );

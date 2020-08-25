@@ -1,4 +1,5 @@
-import { HeadCell as IHeadCell } from './table-header';
-export type HeadCell<T extends string | symbol | number> = IHeadCell<T>;
+import { Cell as ICell } from './table-header';
+export type Cell<T extends string | symbol | number> = ICell<T>;
 
 export * from './paginated-table';
+export * from './cell-container';

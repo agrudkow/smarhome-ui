@@ -1,13 +1,13 @@
 import React, { PropsWithChildren } from 'react';
 import { TableBody as MUITableBody, TableCell } from '@material-ui/core';
 import TableRow from '@material-ui/core/TableRow';
+import { Cell } from './table-header';
 
 export interface TableBodyProps<Data extends object> {
   rows: Data[];
-  rowsAlignment: Record<keyof Data, 'left' | 'right'>;
   page: number;
   rowsPerPage: number;
-  headCellIds: Array<keyof Data>;
+  cells: Cell<keyof Data>[];
 }
 
 export type TableBodyFunctionComponentType = <T extends object>(
@@ -18,8 +18,7 @@ export const TableBody: TableBodyFunctionComponentType = ({
   rows,
   page,
   rowsPerPage,
-  rowsAlignment,
-  headCellIds,
+  cells,
 }) => {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
@@ -31,20 +30,21 @@ export const TableBody: TableBodyFunctionComponentType = ({
         .map((row, index) => {
           return (
             <TableRow key={`table-row-${index}`}>
-              {headCellIds.map((property, idx) => (
+              {cells.map((cell, idx) => (
                 <TableCell
                   key={`table-cell-${idx}`}
-                  align={rowsAlignment[property]}
+                  align={cell.align}
+                  style={cell.style}
                 >
-                  {row[property]}
+                  {row[cell.id]}
                 </TableCell>
               ))}
             </TableRow>
           );
         })}
       {emptyRows > 0 && (
-        <TableRow key="empty-row" style={{ height: 53 * emptyRows }}>
-          <TableCell colSpan={Object.keys(rowsAlignment).length} />
+        <TableRow key="empty-row" style={{ height: 58 * emptyRows }}>
+          <TableCell colSpan={Object.keys(cells).length} />
         </TableRow>
       )}
     </MUITableBody>
