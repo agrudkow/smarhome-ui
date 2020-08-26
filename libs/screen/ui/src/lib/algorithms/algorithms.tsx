@@ -13,11 +13,16 @@ import {
   BaseAlgorithm,
 } from '@smarthome/screen/logic';
 import { fetchAlgorithmsList } from '@smarthome/screen/service';
+import { useHistory } from 'react-router';
+import { Routes } from '@smarthome/common/service';
 
 export const Algorithms: FC = () => {
+  const history = useHistory();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [tableData, setTableData] = useState<BaseAlgorithm[]>(
-    algorithmsDataParser(fetchAlgorithmsList())
+    algorithmsDataParser(fetchAlgorithmsList(), (id: string) => () =>
+      history.push(`${Routes.Algorithms}/${id}`)
+    )
   );
   const [tableCells, setTableCells] = useState<Cell<keyof BaseAlgorithm>[]>([]);
   const [orderBy, setOrderBy] = useState<keyof BaseAlgorithm>('rating');

@@ -18,6 +18,7 @@ const StyledInfoHeader = styled(StyledOvalBoxContainer)`
 const HeaderRowContainer = styled.div`
   flex: 1;
   display: flex;
+  align-items: center;
 `;
 
 export const InfoHeader: FC<InfoHeaderProps> = ({
@@ -32,7 +33,7 @@ export const InfoHeader: FC<InfoHeaderProps> = ({
 
   return (
     <StyledInfoHeader
-      backgroundColor={'transparnet'}
+      backgroundColor={'transparent'}
       boxShadow={false}
       opacity={0.8}
     >

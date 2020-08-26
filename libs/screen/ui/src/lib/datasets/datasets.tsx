@@ -1,200 +1,49 @@
-import React, { FC, useState, ReactNode } from 'react';
+import React, { FC, useState, useContext, useEffect } from 'react';
+import { ThemeContext } from 'styled-components';
+import { useQueryParam, StringParam } from 'use-query-params';
 import {
   InfoHeader,
   SearchBar,
   PaginatedTable,
   Cell,
-  BaseButton,
 } from '@smarthome/common/ui';
-
-type Data = {
-  name: string;
-  description: string;
-  button?: ReactNode;
-};
-
-const cells: Cell<keyof Data>[] = [
-  {
-    id: 'name',
-    label: 'Name',
-    align: 'left',
-    disablePadding: false,
-    enableSorting: true,
-  },
-  {
-    id: 'description',
-    label: 'Description',
-    align: 'left',
-    disablePadding: false,
-  },
-  {
-    id: 'button',
-    label: '',
-    align: 'right',
-    disablePadding: true,
-    style: { width: '100px' },
-  },
-];
-
-const data: Data[] = [
-  {
-    name: 'Datasate 1',
-    description: 'Test description',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Datasate 1',
-    description:
-      'Test description This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating.',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Datasate 1',
-    description: 'Test description',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Datasate 1',
-    description: 'Test description',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Datasate 1',
-    description: 'Test description',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Datasate 1',
-    description: 'Test description',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Datasate 1',
-    description: 'Test description',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Datasate 1',
-    description: 'Test description',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Datasate 1',
-    description: 'Test description',
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '25px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-];
+import {
+  BaseDataset,
+  datasetsDataParser,
+  datasetsCellsParser,
+} from '@smarthome/screen/logic';
+import { fetchDatasetsList } from '@smarthome/screen/service';
+import { useWindowDimensions } from '@smarthome/common/logic';
 
 export const Datasets: FC = () => {
-  const [orderBy, setOrderBy] = useState<keyof Data>('name');
+  const [selectQueryParam] = useQueryParam('select', StringParam);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [tableData, setTableData] = useState<BaseDataset[]>(
+    datasetsDataParser(
+      fetchDatasetsList(),
+      selectQueryParam === 'true' ? 'select' : 'more',
+      selectQueryParam === 'true'
+        ? (id: string) => () => {
+            console.log(`Go to result page. ID -> ${id}`);
+          }
+        : (id: string) => () => {
+            console.log(`Go to more page. ID -> ${id}`);
+          }
+    )
+  );
+  const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
+  const [orderBy, setOrderBy] = useState<keyof BaseDataset>('name');
+  const { width } = useWindowDimensions();
+  const {
+    breakpoints: {
+      inPixels: { tablet, desktop },
+    },
+  } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const cells = datasetsCellsParser(width, { desktop, tablet });
+    setTableCells(cells);
+  }, [width, tablet, desktop]);
 
   return (
     <>
@@ -205,9 +54,9 @@ export const Datasets: FC = () => {
         }
       />
       <SearchBar />
-      <PaginatedTable<Data>
-        data={data}
-        cells={cells}
+      <PaginatedTable<BaseDataset>
+        data={tableData}
+        cells={tableCells}
         orderBy={orderBy}
         setOrderBy={setOrderBy}
       />

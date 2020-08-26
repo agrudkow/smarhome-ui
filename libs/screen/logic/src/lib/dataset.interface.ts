@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 
-export type BaseAlgorithm = {
+export type BaseDataset = {
   name: ReactNode;
   briefDescription: ReactNode;
-  rating?: ReactNode;
   button: ReactNode;
 };
 
-export type Algorithm = BaseAlgorithm & {
+export type Dataset = {
+  name: ReactNode;
   description: ReactNode;
+  creator: ReactNode;
 };

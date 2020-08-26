@@ -9,11 +9,11 @@ const getDesktopCells = (): Cell<keyof BaseAlgorithm>[] => {
       disablePadding: false,
       enableSorting: true,
       align: 'left',
-      style: { width: '25%' },
+      style: { width: '20%' },
     },
     {
       id: 'briefDescription',
-      label: 'Description',
+      label: 'Short description',
       disablePadding: false,
       align: 'left',
       style: { maxWidth: '70%' },
@@ -24,7 +24,7 @@ const getDesktopCells = (): Cell<keyof BaseAlgorithm>[] => {
       disablePadding: false,
       enableSorting: true,
       align: 'right',
-      style: { width: '60px' },
+      style: { width: '130px' },
     },
     {
       id: 'button',
@@ -49,19 +49,12 @@ const getTabletCells = (): Cell<keyof BaseAlgorithm>[] => {
       style: { width: '45%' },
     },
     {
-      id: 'briefDescription',
-      label: 'Description',
-      disablePadding: false,
-      align: 'left',
-      style: { maxWidth: '30%' },
-    },
-    {
       id: 'rating',
       label: 'Rating',
       disablePadding: false,
       enableSorting: true,
       align: 'right',
-      style: { width: '50px' },
+      style: { width: '130px' },
     },
     {
       id: 'button',
@@ -91,7 +84,7 @@ const getMobileCells = (): Cell<keyof BaseAlgorithm>[] => {
       disablePadding: false,
       enableSorting: true,
       align: 'right',
-      style: { width: '40px' },
+      style: { width: '75px' },
     },
     {
       id: 'button',

@@ -14,6 +14,15 @@ type OvalBoxContainerProps = StyledOvalBoxContainerProps;
 export const regularSpacing = css`
   padding: 5px 15px;
   margin: 15px 0;
+
+  ${({
+    theme: {
+      breakpoints: { mobileDF },
+    },
+  }) => mobileDF} {
+    padding: 5px 5px;
+    margin: 5px 0;
+  }
 `;
 
 const BoxShadowCSS = css`

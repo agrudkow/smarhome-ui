@@ -36,6 +36,14 @@ const StyledBaseButton = styled(Button)`
   }
 
   font-weight: 550;
+
+  ${({
+    theme: {
+      breakpoints: { mobileDF },
+    },
+  }) => mobileDF} {
+    width: 100%;
+  }
 `;
 
 export const BaseButton: FC<BaseButtonProps> = ({

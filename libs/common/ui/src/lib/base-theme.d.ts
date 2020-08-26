@@ -28,6 +28,9 @@ declare module 'styled-components' {
       mobile: string;
       tablet: string;
       desktop: string;
+      mobileDF: string;
+      tabletDF: string;
+      desktopDF: string;
       inPixels: {
         mobile: number;
         tablet: number;

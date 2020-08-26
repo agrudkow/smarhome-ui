@@ -1,5 +1,9 @@
 import './lib/base-theme.d';
 
+export * from './lib/outlined-button';
+
+export * from './lib/rating';
+
 export * from './lib/base-button';
 export * from './lib/search-bar';
 export * from './lib/info-header';

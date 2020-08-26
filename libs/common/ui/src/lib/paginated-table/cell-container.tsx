@@ -6,7 +6,7 @@ export interface CellContainerProps {
   maxHeight?: string;
 }
 
-const StyledCellContainer = styled.p<CellContainerProps>`
+const StyledCellContainer = styled.div<CellContainerProps>`
   margin: 0;
   padding: 0;
   text-overflow: ellipsis;

@@ -9,7 +9,7 @@ export const BaseTheme: DefaultTheme = {
     secondaryBackground: '#102128',
     secondarySidebarBackground: '#2E2C2D',
     secondarySidebarContrastBackground: '#4E4E4E',
-    paragraph: '#000',
+    paragraph: '#303030',
     heading: '#444',
     containerBackgorund: '#fff',
     rgb: {
@@ -28,6 +28,9 @@ export const BaseTheme: DefaultTheme = {
     mobile: '@media (min-width: 480px)',
     tablet: '@media (min-width: 769px)',
     desktop: '@media (min-width: 1024px)',
+    mobileDF: '@media (max-width: 480px)',
+    tabletDF: '@media (max-width: 769px)',
+    desktopDF: '@media (max-width: 10000000px)',
     inPixels: {
       mobile: 480,
       tablet: 769,

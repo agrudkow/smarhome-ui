@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Data from './data';
+import OutlinedButton from './outlined-button';
 
-describe(' Data', () => {
+describe(' OutlinedButton', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Data />);
+    const { baseElement } = render(<OutlinedButton />);
     expect(baseElement).toBeTruthy();
   });
 });

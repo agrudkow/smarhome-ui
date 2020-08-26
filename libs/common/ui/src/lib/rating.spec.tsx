@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import FetchAlgorithmsList from './fetch-algorithms-list';
+import Rating from './rating';
 
-describe(' FetchAlgorithmsList', () => {
+describe(' Rating', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<FetchAlgorithmsList />);
+    const { baseElement } = render(<Rating />);
     expect(baseElement).toBeTruthy();
   });
 });
