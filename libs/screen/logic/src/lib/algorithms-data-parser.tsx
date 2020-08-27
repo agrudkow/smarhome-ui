@@ -1,7 +1,7 @@
 import React from 'react';
 // import Rating from '@material-ui/lab/Rating';
 import { BaseAlgorithm } from './algorithm.interface';
-import { CellContainer, BaseButton, Rating } from '@smarthome/common/ui';
+import { CellContainer, BaseButton, CustomRating } from '@smarthome/common/ui';
 import { AlgorithmDTO } from '@smarthome/data';
 
 export const algorithmsDataParser: (
@@ -15,7 +15,7 @@ export const algorithmsDataParser: (
         briefDescription: <CellContainer>{algorithmSummary}</CellContainer>,
         rating: (
           <CellContainer>
-            <Rating
+            <CustomRating
               name="rating-component"
               value={algorithmRating}
               precision={0.5}

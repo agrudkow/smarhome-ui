@@ -25,7 +25,7 @@ export const regularSpacing = css`
   }
 `;
 
-const BoxShadowCSS = css`
+const boxShadowCSS = css`
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 `;
@@ -41,7 +41,7 @@ export const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   opacity: ${({ opacity }) => opacity};
   border-radius: 6px;
 
-  ${({ boxShadow }) => boxShadow && BoxShadowCSS}
+  ${({ boxShadow }) => boxShadow && boxShadowCSS}
 `;
 
 export const OvalBoxContainer: FC<OvalBoxContainerProps> = ({

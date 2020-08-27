@@ -8,6 +8,8 @@ export interface BaseButtonProps {
 }
 
 const StyledBaseButton = styled(Button)`
+  width: 100%;
+  font-weight: 550;
   background-color: ${({
     theme: {
       palette: { secondarySidebarContrastBackground },
@@ -33,16 +35,6 @@ const StyledBaseButton = styled(Button)`
         palette: { secondaryBackground },
       },
     }) => secondaryBackground};
-  }
-
-  font-weight: 550;
-
-  ${({
-    theme: {
-      breakpoints: { mobileDF },
-    },
-  }) => mobileDF} {
-    width: 100%;
   }
 `;
 

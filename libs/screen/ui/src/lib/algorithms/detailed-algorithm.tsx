@@ -4,7 +4,7 @@ import {
   InfoHeader,
   OvalBoxContainer,
   H6,
-  Rating,
+  CustomRating,
   BaseButton,
   OutlinedButton,
 } from '@smarthome/common/ui';
@@ -17,6 +17,7 @@ import RatingDialog from './rating-dialog';
 const DescriptionContainer = styled(H6)`
   padding: 0;
   margin: 15px 0;
+  text-align: justify;
 
   ${({
     theme: {
@@ -112,7 +113,7 @@ const OptionButtonContainer = styled.div<{ margin: 'left' | 'right' }>`
     },
   }) => mobileDF} {
     width: 100%;
-    margin: 2px 0;
+    margin: 5px 0;
   }
 `;
 
@@ -178,7 +179,10 @@ export const DetailedAlgorithm: FC = () => {
               <H6>Author:&nbsp;&nbsp;{algorithmData.author}</H6>
               <RatingContainer>
                 <H6>Rating:&nbsp;&nbsp;</H6>
-                <Rating value={algorithmData.algorithmRating} readOnly={true} />
+                <CustomRating
+                  value={algorithmData.algorithmRating}
+                  readOnly={true}
+                />
               </RatingContainer>
             </UnderlinedContainer>
             <OvalBoxContainer>

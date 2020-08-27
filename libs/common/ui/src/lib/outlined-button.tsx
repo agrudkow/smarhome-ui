@@ -20,6 +20,7 @@ const StyledOutlinedButton = styled(Button)`
   }) => paragraph};
   transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
   font-weight: 550;
+  width: 100%;
 
   &:hover {
     color: ${({
@@ -32,14 +33,6 @@ const StyledOutlinedButton = styled(Button)`
         palette: { primary },
       },
     }) => primary};
-  }
-
-  ${({
-    theme: {
-      breakpoints: { mobileDF },
-    },
-  }) => mobileDF} {
-    width: 100%;
   }
 `;
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Rating from './rating';
+import CustomRating from './custom-rating';
 
 describe(' Rating', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Rating />);
+    const { baseElement } = render(<CustomRating />);
     expect(baseElement).toBeTruthy();
   });
 });

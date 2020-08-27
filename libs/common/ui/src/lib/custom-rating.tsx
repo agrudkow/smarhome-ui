@@ -6,9 +6,9 @@ import MUIRating, {
 import { useWindowDimensions } from '@smarthome/common/logic';
 
 /* eslint-disable-next-line */
-export interface RatingProps extends MUIRatingProps {}
+export interface CustomRatingProps extends MUIRatingProps {}
 
-export const Rating: FC<RatingProps> = (props) => {
+export const CustomRating: FC<CustomRatingProps> = (props) => {
   const { width } = useWindowDimensions();
   const {
     breakpoints: {
@@ -20,4 +20,4 @@ export const Rating: FC<RatingProps> = (props) => {
   return <MUIRating {...props} size={isMobile ? 'small' : undefined} />;
 };
 
-export default Rating;
+export default CustomRating;

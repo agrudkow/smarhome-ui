@@ -7,7 +7,8 @@ import {
   DialogContentText,
   DialogActions,
 } from '@material-ui/core';
-import { Rating, OutlinedButton } from '@smarthome/common/ui';
+import { OutlinedButton } from '@smarthome/common/ui';
+import Rating from '@material-ui/lab/Rating';
 
 export interface RatingDialogProps {
   open: boolean;
@@ -24,9 +25,17 @@ const RatingContainer = styled.div`
 
 const ButtonsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  padding: 0 24px;
+
+  ${({
+    theme: {
+      breakpoints: { mobileDF },
+    },
+  }) => mobileDF} {
+    padding: 0;
+  }
 `;
 
 export const RatingDialog: FC<RatingDialogProps> = ({
@@ -56,8 +65,12 @@ export const RatingDialog: FC<RatingDialogProps> = ({
       </DialogContent>
       <DialogActions>
         <ButtonsContainer>
-          <OutlinedButton onClick={onClose}>Close</OutlinedButton>
-          <OutlinedButton onClick={onSend}>Send</OutlinedButton>
+          <OutlinedButton onClick={onSend} style={{ margin: '5px 0 0' }}>
+            Send
+          </OutlinedButton>
+          <OutlinedButton onClick={onClose} style={{ margin: '5px 0 0' }}>
+            Close
+          </OutlinedButton>
         </ButtonsContainer>
       </DialogActions>
     </Dialog>

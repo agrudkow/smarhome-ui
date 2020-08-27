@@ -7,7 +7,7 @@ export interface InputProps {
 }
 
 const StyledInput = styled.div`
-  width: 100%;
+  flex: 1;
   margin: 0 8px;
 
   & .MuiInput-underline:after {
