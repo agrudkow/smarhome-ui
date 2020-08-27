@@ -12,6 +12,7 @@ import { useHistory, useParams } from 'react-router';
 import { Routes } from '@smarthome/common/service';
 import { fetchAlgorithmDetails } from '@smarthome/screen/service';
 import { AlgorithmDetailsDTO } from '@smarthome/data';
+import RatingDialog from './rating-dialog';
 
 const DescriptionContainer = styled(H6)`
   padding: 0;
@@ -118,10 +119,11 @@ const OptionButtonContainer = styled.div<{ margin: 'left' | 'right' }>`
 export const DetailedAlgorithm: FC = () => {
   const history = useHistory();
   const { id: algorithmId } = useParams<{ id: string }>();
-  console.log('algorithmId', algorithmId);
   const [algorithmData, setAlgorithmData] = useState<
     AlgorithmDetailsDTO | undefined
   >(undefined);
+  const [openRatingDialog, setOpenRatingDialog] = useState<boolean>(false);
+  const [rating, setRating] = useState<number>(0);
 
   const handleBackClick = useCallback(() => {
     history.push(`/${Routes.Algorithms}`);
@@ -133,6 +135,26 @@ export const DetailedAlgorithm: FC = () => {
       `/${Routes.Datasets}?algorithm_id=${encodeURIComponent(algorithmId)}`
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleOpenRatingDialog = useCallback(() => {
+    setOpenRatingDialog(true);
+  }, []);
+
+  const handleCloseRatingDialog = useCallback(() => {
+    setOpenRatingDialog(false);
+    setRating(0);
+  }, []);
+
+  const handleSendRating = useCallback(() => {
+    console.log(`sent rating :>> ${rating}`);
+    handleCloseRatingDialog();
+  }, [handleCloseRatingDialog, rating]);
+
+  const handleRatingChange = useCallback((_, newValue: number | null) => {
+    if (newValue !== null) {
+      setRating(newValue);
+    }
   }, []);
 
   useEffect(() => {
@@ -175,7 +197,7 @@ export const DetailedAlgorithm: FC = () => {
               </OptionButtonContainer>
               <OptionButtonContainer margin="left">
                 <OutlinedButton
-                  onClick={() => console.log('Click1!!!!')}
+                  onClick={handleOpenRatingDialog}
                   style={{ width: '100%' }}
                 >
                   Rate algorithm
@@ -183,6 +205,13 @@ export const DetailedAlgorithm: FC = () => {
               </OptionButtonContainer>
             </OptionButtons>
           </div>
+          <RatingDialog
+            rating={rating}
+            open={openRatingDialog}
+            onSend={handleSendRating}
+            onClose={handleCloseRatingDialog}
+            onRatingChange={handleRatingChange}
+          />
           <div>
             <BaseButton onClick={handleBackClick}>Back</BaseButton>
           </div>
