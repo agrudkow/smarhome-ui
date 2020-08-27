@@ -8,7 +8,7 @@ import {
   UserIcon,
   SidebarLinkProps,
 } from '@smarthome/common/ui';
-import { Routes } from '@smarthome/common/service';
+import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
 import { Analytics } from './analytics';
 import { Algorithms, DetailedAlgorithm } from './algorithms';
 import { Datasets } from './datasets';
@@ -50,6 +50,11 @@ export const ScreenUi: React.FC = () => {
             />
             <Route
               path={`/${Routes.Algorithms}/:id`}
+              component={DetailedAlgorithm}
+              exact
+            />
+            <Route
+              path={`/${Routes.Algorithms}/:id/${AlgorithmRoutes.SelectDataset}`}
               component={DetailedAlgorithm}
               exact
             />
