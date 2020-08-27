@@ -16,21 +16,26 @@ import { fetchDatasetsList } from '@smarthome/screen/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
 
 export const Datasets: FC = () => {
-  const [selectQueryParam] = useQueryParam('select', StringParam);
+  const [algorithmIdQueryParam] = useQueryParam('algorithm_id', StringParam);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [tableData, setTableData] = useState<BaseDataset[]>(
     datasetsDataParser(
       fetchDatasetsList(),
-      selectQueryParam === 'true' ? 'select' : 'more',
-      selectQueryParam === 'true'
+      algorithmIdQueryParam ? 'select' : 'more',
+      algorithmIdQueryParam
         ? (id: string) => () => {
-            console.log(`Go to result page. ID -> ${id}`);
+            console.log(
+              `Go to result page. ID -> ${id}, alg id -> ${decodeURIComponent(
+                algorithmIdQueryParam
+              )}`
+            );
           }
         : (id: string) => () => {
             console.log(`Go to more page. ID -> ${id}`);
           }
     )
   );
+
   const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
   const [orderBy, setOrderBy] = useState<keyof BaseDataset>('name');
   const { width } = useWindowDimensions();

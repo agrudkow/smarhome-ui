@@ -6,6 +6,7 @@ export interface AlgorithmDTO {
 }
 
 export interface AlgorithmDetailsDTO extends AlgorithmDTO {
+  author: string;
   algorithmDescription: string;
   linkURL: string;
 }

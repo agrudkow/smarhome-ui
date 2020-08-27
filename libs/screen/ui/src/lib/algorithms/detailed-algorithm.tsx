@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
   InfoHeader,
@@ -8,19 +8,10 @@ import {
   BaseButton,
   OutlinedButton,
 } from '@smarthome/common/ui';
-import { AlgorithmDetailsDTO } from '@smarthome/data';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { Routes } from '@smarthome/common/service';
-
-const data: AlgorithmDetailsDTO = {
-  algorithmId: '123',
-  displayName: 'Test algorithm name',
-  algorithmSummary: 'test test',
-  algorithmDescription:
-    'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating. ',
-  algorithmRating: 4.8,
-  linkURL: 'testlink',
-};
+import { fetchAlgorithmDetails } from '@smarthome/screen/service';
+import { AlgorithmDetailsDTO } from '@smarthome/data';
 
 const DescriptionContainer = styled(H6)`
   padding: 0;
@@ -126,7 +117,11 @@ const OptionButtonContainer = styled.div<{ margin: 'left' | 'right' }>`
 
 export const DetailedAlgorithm: FC = () => {
   const history = useHistory();
-  const { displayName, algorithmRating, algorithmDescription } = data;
+  const { id: algorithmId } = useParams<{ id: string }>();
+  console.log('algorithmId', algorithmId);
+  const [algorithmData, setAlgorithmData] = useState<
+    AlgorithmDetailsDTO | undefined
+  >(undefined);
 
   const handleBackClick = useCallback(() => {
     history.push(`/${Routes.Algorithms}`);
@@ -134,51 +129,65 @@ export const DetailedAlgorithm: FC = () => {
   }, []);
 
   const handleRunOnDatasetClick = useCallback(() => {
-    history.push(`/${Routes.Datasets}?select=true`);
+    history.push(
+      `/${Routes.Datasets}?algorithm_id=${encodeURIComponent(algorithmId)}`
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (algorithmId) {
+      setAlgorithmData(fetchAlgorithmDetails(algorithmId));
+    }
+  }, [algorithmId]);
+
   return (
     <StyledDetailedAlgorithm>
-      <div>
-        <InfoHeader
-          headerText={displayName}
-          infoMessageText={
-            'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating. '
-          }
-        />
-        <UnderlinedContainer>
-          <H6>Author:&nbsp;&nbsp;Jan Kowalski</H6>
-          <RatingContainer>
-            <H6>Rating:&nbsp;&nbsp;</H6>
-            <Rating value={algorithmRating} readOnly={true} />
-          </RatingContainer>
-        </UnderlinedContainer>
-        <OvalBoxContainer>
-          <DescriptionContainer>{algorithmDescription}</DescriptionContainer>
-        </OvalBoxContainer>
-        <OptionButtons>
-          <OptionButtonContainer margin="right">
-            <OutlinedButton
-              onClick={handleRunOnDatasetClick}
-              style={{ width: '100%' }}
-            >
-              Run on dataset
-            </OutlinedButton>
-          </OptionButtonContainer>
-          <OptionButtonContainer margin="left">
-            <OutlinedButton
-              onClick={() => console.log('Click1!!!!')}
-              style={{ width: '100%' }}
-            >
-              Rate algorithm
-            </OutlinedButton>
-          </OptionButtonContainer>
-        </OptionButtons>
-      </div>
-      <div>
-        <BaseButton onClick={handleBackClick}>Back</BaseButton>
-      </div>
+      {algorithmData && (
+        <>
+          <div>
+            <InfoHeader
+              headerText={algorithmData.displayName}
+              infoMessageText={
+                'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating. '
+              }
+            />
+            <UnderlinedContainer>
+              <H6>Author:&nbsp;&nbsp;{algorithmData.author}</H6>
+              <RatingContainer>
+                <H6>Rating:&nbsp;&nbsp;</H6>
+                <Rating value={algorithmData.algorithmRating} readOnly={true} />
+              </RatingContainer>
+            </UnderlinedContainer>
+            <OvalBoxContainer>
+              <DescriptionContainer>
+                {algorithmData.algorithmDescription}
+              </DescriptionContainer>
+            </OvalBoxContainer>
+            <OptionButtons>
+              <OptionButtonContainer margin="right">
+                <OutlinedButton
+                  onClick={handleRunOnDatasetClick}
+                  style={{ width: '100%' }}
+                >
+                  Run on dataset
+                </OutlinedButton>
+              </OptionButtonContainer>
+              <OptionButtonContainer margin="left">
+                <OutlinedButton
+                  onClick={() => console.log('Click1!!!!')}
+                  style={{ width: '100%' }}
+                >
+                  Rate algorithm
+                </OutlinedButton>
+              </OptionButtonContainer>
+            </OptionButtons>
+          </div>
+          <div>
+            <BaseButton onClick={handleBackClick}>Back</BaseButton>
+          </div>
+        </>
+      )}
     </StyledDetailedAlgorithm>
   );
 };

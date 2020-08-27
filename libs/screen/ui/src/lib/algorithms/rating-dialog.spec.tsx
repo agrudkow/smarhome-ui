@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import ScreenService from './screen-service';
+import RatingDialog from './rating-dialog';
 
-describe(' ScreenService', () => {
+describe(' RatingDialog', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<ScreenService />);
+    const { baseElement } = render(<RatingDialog />);
     expect(baseElement).toBeTruthy();
   });
 });
