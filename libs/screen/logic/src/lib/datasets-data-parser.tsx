@@ -2,12 +2,13 @@ import React from 'react';
 import { BaseDataset } from './dataset.interface';
 import { CellContainer, BaseButton } from '@smarthome/common/ui';
 import { DatasetDTO } from '@smarthome/data';
+import { TableDataParser } from './data-parser.type';
 
-export const datasetsDataParser: (
-  data: DatasetDTO[],
-  rowButtonText: string,
-  rowButtonHandlerFactory: (datasetId: string) => () => void
-) => BaseDataset[] = (data, rowButtonText, rowButtonHandlerFactory) => {
+export const datasetsDataParser: TableDataParser<BaseDataset, DatasetDTO> = (
+  data,
+  rowButtonText,
+  rowButtonHandlerFactory
+) => {
   return data.map(({ datasetId, displayName, datasetSummary }) => {
     return {
       name: <CellContainer>{displayName}</CellContainer>,

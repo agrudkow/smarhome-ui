@@ -1,13 +1,13 @@
 import React from 'react';
-// import Rating from '@material-ui/lab/Rating';
 import { BaseAlgorithm } from './algorithm.interface';
 import { CellContainer, BaseButton, CustomRating } from '@smarthome/common/ui';
 import { AlgorithmDTO } from '@smarthome/data';
+import { TableDataParser } from './data-parser.type';
 
-export const algorithmsDataParser: (
-  data: AlgorithmDTO[],
-  clickHandlerFactory: (id: string) => () => void
-) => BaseAlgorithm[] = (data, clickHandlerFactory) => {
+export const algorithmsDataParser: TableDataParser<
+  BaseAlgorithm,
+  AlgorithmDTO
+> = (data, rowButtonText, rowButtonHandlerFactory) => {
   return data.map(
     ({ algorithmId, algorithmSummary, displayName, algorithmRating }) => {
       return {
@@ -25,7 +25,7 @@ export const algorithmsDataParser: (
         ),
         button: (
           <BaseButton
-            onClick={clickHandlerFactory(algorithmId)}
+            onClick={rowButtonHandlerFactory(algorithmId)}
             style={{
               width: '70px',
               height: '25px',
@@ -33,7 +33,7 @@ export const algorithmsDataParser: (
               whiteSpace: 'nowrap',
             }}
           >
-            More
+            {rowButtonText}
           </BaseButton>
         ),
       };

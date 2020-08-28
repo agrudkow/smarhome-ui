@@ -20,8 +20,11 @@ import {
 } from '@smarthome/screen/logic';
 import { fetchDatasetsList } from '@smarthome/screen/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
+import { useHistory } from 'react-router-dom';
+import { Routes } from '@smarthome/common/service';
 
 export const Datasets: FC = () => {
+  const history = useHistory();
   const [tableData, setTableData] = useState<BaseDataset[]>([]);
   const [searchValue, setSearchValue] = useState<string | undefined>();
   const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
@@ -47,11 +50,11 @@ export const Datasets: FC = () => {
     console.log('searchValue :>> ', searchValue);
     setTableData(
       datasetsDataParser(fetchDatasetsList(), 'more', (id: string) => () => {
-        console.log(`Go to more page. ID -> ${id}`);
+        history.push(`${Routes.Datasets}/${encodeURIComponent(id)}`);
       })
     );
     setTableBodyPlaceholder('No results, please try again using diffrent tags');
-  }, [searchValue]);
+  }, [history, searchValue]);
 
   useEffect(() => {
     const cells = datasetsCellsParser(width, { desktop, tablet });

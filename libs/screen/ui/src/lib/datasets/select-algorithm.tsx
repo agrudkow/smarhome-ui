@@ -1,30 +1,31 @@
 import React, {
   FC,
   useState,
-  useEffect,
   useContext,
   useCallback,
   ChangeEvent,
+  useEffect,
 } from 'react';
-import { ThemeContext } from 'styled-components';
+import { useHistory, useParams } from 'react-router-dom';
 import {
-  PaginatedTable,
-  InfoHeader,
-  SearchBar,
-  Cell,
-} from '@smarthome/common/ui';
-import { useWindowDimensions } from '@smarthome/common/logic';
-import {
+  BaseAlgorithm,
   algorithmsDataParser,
   algorithmsCellsParser,
-  BaseAlgorithm,
 } from '@smarthome/screen/logic';
+import { useWindowDimensions } from '@smarthome/common/logic';
+import { ThemeContext } from 'styled-components';
 import { fetchAlgorithmsList } from '@smarthome/screen/service';
-import { useHistory } from 'react-router';
 import { Routes } from '@smarthome/common/service';
+import {
+  InfoHeader,
+  SearchBar,
+  PaginatedTable,
+  Cell,
+} from '@smarthome/common/ui';
 
-export const Algorithms: FC = () => {
+export const SelectAlgorithm: FC = () => {
   const history = useHistory();
+  const { id: datasetId } = useParams<{ id: string }>();
   const [tableData, setTableData] = useState<BaseAlgorithm[]>([]);
   const [searchValue, setSearchValue] = useState<string | undefined>();
   const [tableCells, setTableCells] = useState<Cell<keyof BaseAlgorithm>[]>([]);
@@ -49,29 +50,41 @@ export const Algorithms: FC = () => {
   const handleSearch = useCallback(() => {
     console.log('searchValue :>> ', searchValue);
     setTableData(
-      algorithmsDataParser(fetchAlgorithmsList(), 'more', (id: string) => () =>
-        history.push(`${Routes.Algorithms}/${encodeURIComponent(id)}`)
+      algorithmsDataParser(
+        fetchAlgorithmsList(),
+        'slelect',
+        (id: string) => () => {
+          history.push(
+            `/${Routes.Execute}/${encodeURIComponent(id)}/${encodeURIComponent(
+              datasetId
+            )}`
+          );
+        }
       )
     );
     setTableBodyPlaceholder('No results, please try again using diffrent tags');
-  }, [history, searchValue]);
+  }, [datasetId, history, searchValue]);
 
   useEffect(() => {
     const cells = algorithmsCellsParser(width, { desktop, tablet });
     setTableCells(cells);
   }, [width, tablet, desktop]);
 
+  useEffect(() => {
+    const cells = algorithmsCellsParser(width, { desktop, tablet });
+    setTableCells(cells);
+  }, [width, tablet, desktop]);
   return (
     <>
       <InfoHeader
-        headerText={'List of avaliable algorithms'}
+        headerText={'Select dataset'}
         infoMessageText={
-          'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating.'
+          'This view allows you to search through owned dataset. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name.'
         }
       />
       <SearchBar
         inputPlaceHolder={
-          'Type comma seperated tags or leave it empty to search all datasets'
+          'Type comma seperated tags or leave it empty to search all algorithms'
         }
         inputValue={searchValue || ''}
         onSearch={handleSearch}
@@ -88,4 +101,4 @@ export const Algorithms: FC = () => {
   );
 };
 
-export default Algorithms;
+export default SelectAlgorithm;

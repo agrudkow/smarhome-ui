@@ -12,6 +12,8 @@ declare module 'styled-components' {
       paragraph: string;
       heading: string;
       containerBackgorund: string;
+      error: string;
+      success: string;
       rgb: {
         primary: string;
         primaryBackground: string;
@@ -22,6 +24,8 @@ declare module 'styled-components' {
         paragraph: string;
         heading: string;
         containerBackgorund: string;
+        error: string;
+        success: string;
       };
     };
     breakpoints: {

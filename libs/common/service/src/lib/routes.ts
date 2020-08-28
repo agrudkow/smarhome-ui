@@ -12,4 +12,6 @@ export enum AlgorithmRoutes {
 
 export enum DatasetRoutes {
   SelectAlgorithm = 'select-algorithm',
+  Edit = 'edit',
+  AddEntity = 'add-entity',
 }

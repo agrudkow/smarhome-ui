@@ -8,11 +8,16 @@ import {
   UserIcon,
   SidebarLinkProps,
 } from '@smarthome/common/ui';
-import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
+import {
+  Routes,
+  AlgorithmRoutes,
+  DatasetRoutes,
+} from '@smarthome/common/service';
 import { Analytics } from './analytics';
 import { Algorithms, DetailedAlgorithm, SelectDataset } from './algorithms';
-import { Datasets } from './datasets';
+import { Datasets, DetailedDataset } from './datasets';
 import { QueryParamProvider } from 'use-query-params';
+import SelectAlgorithm from './datasets/select-algorithm';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -59,7 +64,16 @@ export const ScreenUi: React.FC = () => {
               exact
             />
             <Route path={`/${Routes.Datasets}`} component={Datasets} exact />
-            <Route path={`/${Routes.Datasets}/:id`} exact />
+            <Route
+              path={`/${Routes.Datasets}/:id`}
+              component={DetailedDataset}
+              exact
+            />
+            <Route
+              path={`/${Routes.Datasets}/:id/${DatasetRoutes.SelectAlgorithm}`}
+              component={SelectAlgorithm}
+              exact
+            />
             <Route path={`/${Routes.Analytics}`} component={Analytics} exact />
             <Route path={`/${Routes.User}`} exact />
           </Switch>
