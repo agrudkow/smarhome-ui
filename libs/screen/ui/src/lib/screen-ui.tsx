@@ -10,7 +10,7 @@ import {
 } from '@smarthome/common/ui';
 import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
 import { Analytics } from './analytics';
-import { Algorithms, DetailedAlgorithm } from './algorithms';
+import { Algorithms, DetailedAlgorithm, SelectDataset } from './algorithms';
 import { Datasets } from './datasets';
 import { QueryParamProvider } from 'use-query-params';
 
@@ -55,7 +55,7 @@ export const ScreenUi: React.FC = () => {
             />
             <Route
               path={`/${Routes.Algorithms}/:id/${AlgorithmRoutes.SelectDataset}`}
-              component={DetailedAlgorithm}
+              component={SelectDataset}
               exact
             />
             <Route path={`/${Routes.Datasets}`} component={Datasets} exact />

@@ -9,7 +9,7 @@ import {
   OutlinedButton,
 } from '@smarthome/common/ui';
 import { useHistory, useParams } from 'react-router';
-import { Routes } from '@smarthome/common/service';
+import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
 import { fetchAlgorithmDetails } from '@smarthome/screen/service';
 import { AlgorithmDetailsDTO } from '@smarthome/data';
 import RatingDialog from './rating-dialog';
@@ -133,7 +133,9 @@ export const DetailedAlgorithm: FC = () => {
 
   const handleRunOnDatasetClick = useCallback(() => {
     history.push(
-      `/${Routes.Datasets}?algorithm_id=${encodeURIComponent(algorithmId)}`
+      `/${Routes.Algorithms}/${encodeURIComponent(algorithmId)}/${
+        AlgorithmRoutes.SelectDataset
+      }`
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

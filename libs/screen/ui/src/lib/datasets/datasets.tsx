@@ -1,6 +1,12 @@
-import React, { FC, useState, useContext, useEffect } from 'react';
+import React, {
+  FC,
+  useState,
+  useContext,
+  useEffect,
+  useCallback,
+  ChangeEvent,
+} from 'react';
 import { ThemeContext } from 'styled-components';
-import { useQueryParam, StringParam } from 'use-query-params';
 import {
   InfoHeader,
   SearchBar,
@@ -16,34 +22,38 @@ import { fetchDatasetsList } from '@smarthome/screen/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
 
 export const Datasets: FC = () => {
-  const [algorithmIdQueryParam] = useQueryParam('algorithm_id', StringParam);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [tableData, setTableData] = useState<BaseDataset[]>(
-    datasetsDataParser(
-      fetchDatasetsList(),
-      algorithmIdQueryParam ? 'select' : 'more',
-      algorithmIdQueryParam
-        ? (id: string) => () => {
-            console.log(
-              `Go to result page. ID -> ${id}, alg id -> ${decodeURIComponent(
-                algorithmIdQueryParam
-              )}`
-            );
-          }
-        : (id: string) => () => {
-            console.log(`Go to more page. ID -> ${id}`);
-          }
-    )
-  );
-
+  const [tableData, setTableData] = useState<BaseDataset[]>([]);
+  const [searchValue, setSearchValue] = useState<string | undefined>();
   const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
   const [orderBy, setOrderBy] = useState<keyof BaseDataset>('name');
+  const [tableBodyPlaceholder, setTableBodyPlaceholder] = useState<string>(
+    'Click search button to fetch datasets.'
+  );
   const { width } = useWindowDimensions();
   const {
     breakpoints: {
       inPixels: { tablet, desktop },
     },
   } = useContext(ThemeContext);
+
+  const handleSearchInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(event.target.value);
+    },
+    []
+  );
+
+  const handleSearch = useCallback(() => {
+    console.log('searchValue :>> ', searchValue);
+    setTableData(
+      datasetsDataParser(fetchDatasetsList(), 'more', (id: string) => () => {
+        console.log(`Go to more page. ID -> ${id}`);
+      })
+    );
+    setTableBodyPlaceholder(
+      'No results, please try again using diffrent tags.'
+    );
+  }, [searchValue]);
 
   useEffect(() => {
     const cells = datasetsCellsParser(width, { desktop, tablet });
@@ -58,12 +68,20 @@ export const Datasets: FC = () => {
           'This view allows you to search through owned dataset. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which datasets will be searched). Additionaly you can sort result by name.'
         }
       />
-      <SearchBar />
+      <SearchBar
+        inputPlaceHolder={
+          'Type comma seperated tags or leave it empty to search all datasets.'
+        }
+        inputValue={searchValue || ''}
+        onSearch={handleSearch}
+        onInputValueChange={handleSearchInputChange}
+      />
       <PaginatedTable<BaseDataset>
         data={tableData}
         cells={tableCells}
         orderBy={orderBy}
         setOrderBy={setOrderBy}
+        bodyPlaceholderText={tableBodyPlaceholder}
       />
     </>
   );

@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import styled from 'styled-components';
 import { TextField } from '@material-ui/core';
 
 export interface InputProps {
   placeholder: string;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const StyledInput = styled.div`
@@ -19,12 +21,14 @@ const StyledInput = styled.div`
   }
 `;
 
-export const Input: FC<InputProps> = ({ placeholder }) => {
+export const Input: FC<InputProps> = ({ placeholder, value, onChange }) => {
   return (
     <StyledInput>
       <TextField
         id="input-normal"
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         fullWidth
         margin="normal"
         InputLabelProps={{

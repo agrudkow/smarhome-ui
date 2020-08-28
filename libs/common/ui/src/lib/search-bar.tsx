@@ -1,11 +1,15 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, ChangeEvent } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { StyledOvalBoxContainer } from './oval-box-container';
 import Input from './input';
 import BaseButton from './base-button';
 
-/* eslint-disable-next-line */
-export interface SearchBarProps {}
+export interface SearchBarProps {
+  onSearch: () => void;
+  onInputValueChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  inputValue: string;
+  inputPlaceHolder: string;
+}
 
 const StyledSearchBar = styled(StyledOvalBoxContainer)`
   flex-wrap: wrap;
@@ -24,7 +28,12 @@ const SearchButtonContainer = styled.div`
   }
 `;
 
-export const SearchBar: FC<SearchBarProps> = () => {
+export const SearchBar: FC<SearchBarProps> = ({
+  inputPlaceHolder,
+  onInputValueChange,
+  onSearch,
+  inputValue,
+}) => {
   const {
     palette: {
       rgb: { containerBackgorund },
@@ -33,11 +42,13 @@ export const SearchBar: FC<SearchBarProps> = () => {
 
   return (
     <StyledSearchBar backgroundColor={`rgba(${containerBackgorund}, 0.75)`}>
-      <Input placeholder={'Type search phrase or leave it empty to get all.'} />
+      <Input
+        placeholder={inputPlaceHolder}
+        value={inputValue}
+        onChange={onInputValueChange}
+      />
       <SearchButtonContainer>
-        <BaseButton onClick={() => console.log('Click1!!!!')}>
-          Search
-        </BaseButton>
+        <BaseButton onClick={onSearch}>Search</BaseButton>
       </SearchButtonContainer>
     </StyledSearchBar>
   );

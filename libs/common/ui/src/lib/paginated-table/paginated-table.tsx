@@ -56,6 +56,7 @@ interface PaginatedTableProps<
   data: Data[];
   orderBy: keyof Data;
   setOrderBy: Dispatch<SetStateAction<keyof Data>>;
+  bodyPlaceholderText?: string;
 }
 
 export type PaginatedTableFunctionComponentType = <
@@ -69,6 +70,7 @@ export const PaginatedTable: PaginatedTableFunctionComponentType = ({
   data,
   orderBy,
   setOrderBy,
+  bodyPlaceholderText = '',
 }) => {
   type Data = typeof data[0];
 
@@ -108,6 +110,8 @@ export const PaginatedTable: PaginatedTableFunctionComponentType = ({
             rowsPerPage={rowsPerPage}
             page={page}
             cells={cells}
+            showBodyPlaceholder={data.length === 0}
+            bodyPlaceholderText={bodyPlaceholderText}
           />
         </Table>
         <TableFooter
