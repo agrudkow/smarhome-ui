@@ -128,8 +128,7 @@ export const DetailedAlgorithm: FC = () => {
 
   const handleBackClick = useCallback(() => {
     history.push(`/${Routes.Algorithms}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [history]);
 
   const handleRunOnDatasetClick = useCallback(() => {
     history.push(
@@ -137,8 +136,7 @@ export const DetailedAlgorithm: FC = () => {
         AlgorithmRoutes.SelectDataset
       }`
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [algorithmId, history]);
 
   const handleOpenRatingDialog = useCallback(() => {
     setOpenRatingDialog(true);
