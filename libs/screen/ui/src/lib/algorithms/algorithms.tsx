@@ -30,7 +30,7 @@ export const Algorithms: FC = () => {
   const [tableCells, setTableCells] = useState<Cell<keyof BaseAlgorithm>[]>([]);
   const [orderBy, setOrderBy] = useState<keyof BaseAlgorithm>('rating');
   const [tableBodyPlaceholder, setTableBodyPlaceholder] = useState<string>(
-    'Click search button to fetch algorithms.'
+    'Click search button to fetch algorithms'
   );
   const { width } = useWindowDimensions();
   const {
@@ -53,9 +53,7 @@ export const Algorithms: FC = () => {
         history.push(`${Routes.Algorithms}/${encodeURIComponent(id)}`)
       )
     );
-    setTableBodyPlaceholder(
-      'No results, please try again using diffrent tags.'
-    );
+    setTableBodyPlaceholder('No results, please try again using diffrent tags');
   }, [history, searchValue]);
 
   useEffect(() => {
@@ -73,7 +71,7 @@ export const Algorithms: FC = () => {
       />
       <SearchBar
         inputPlaceHolder={
-          'Type comma seperated tags or leave it empty to search all datasets.'
+          'Type comma seperated tags or leave it empty to search all datasets'
         }
         inputValue={searchValue || ''}
         onSearch={handleSearch}

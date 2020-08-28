@@ -27,7 +27,7 @@ export const Datasets: FC = () => {
   const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
   const [orderBy, setOrderBy] = useState<keyof BaseDataset>('name');
   const [tableBodyPlaceholder, setTableBodyPlaceholder] = useState<string>(
-    'Click search button to fetch datasets.'
+    'Click search button to fetch datasets'
   );
   const { width } = useWindowDimensions();
   const {
@@ -50,9 +50,7 @@ export const Datasets: FC = () => {
         console.log(`Go to more page. ID -> ${id}`);
       })
     );
-    setTableBodyPlaceholder(
-      'No results, please try again using diffrent tags.'
-    );
+    setTableBodyPlaceholder('No results, please try again using diffrent tags');
   }, [searchValue]);
 
   useEffect(() => {
@@ -70,7 +68,7 @@ export const Datasets: FC = () => {
       />
       <SearchBar
         inputPlaceHolder={
-          'Type comma seperated tags or leave it empty to search all datasets.'
+          'Type comma seperated tags or leave it empty to search all datasets'
         }
         inputValue={searchValue || ''}
         onSearch={handleSearch}
