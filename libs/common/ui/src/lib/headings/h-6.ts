@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const H6 = styled.h6`
-  color: ${(props) => props.theme.palette.heading};
+  margin: 0;
+  padding: 0;
+  color: ${(props) => props.theme.palette.paragraph};
   font-size: 14px;
   font-weight: bold;
   line-height: 20px;

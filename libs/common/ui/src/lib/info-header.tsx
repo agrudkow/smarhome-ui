@@ -1,6 +1,5 @@
 import React, { FC, useState, useCallback } from 'react';
 import styled from 'styled-components';
-import { StyledOvalBoxContainer } from './oval-box-container';
 import { H3 } from './headings';
 import InfoButton from './info-button';
 import CallapsableMessageBox from './callapsable-message-box';
@@ -10,14 +9,24 @@ export interface InfoHeaderProps {
   infoMessageText: string;
 }
 
-const StyledInfoHeader = styled(StyledOvalBoxContainer)`
-  padding: 5px 0;
+const StyledInfoHeader = styled.div`
+  display: flex;
   flex-direction: column;
+  opacity: 0.8;
 `;
 
 const HeaderRowContainer = styled.div`
   flex: 1;
   display: flex;
+  align-items: center;
+
+  ${({
+    theme: {
+      breakpoints: { mobileDF },
+    },
+  }) => mobileDF} {
+    justify-content: center;
+  }
 `;
 
 export const InfoHeader: FC<InfoHeaderProps> = ({
@@ -31,11 +40,7 @@ export const InfoHeader: FC<InfoHeaderProps> = ({
   }, [showInfoMessage]);
 
   return (
-    <StyledInfoHeader
-      backgroundColor={'transparnet'}
-      boxShadow={false}
-      opacity={0.8}
-    >
+    <StyledInfoHeader>
       <HeaderRowContainer>
         <H3>{headerText}</H3>
         <InfoButton onClick={handleInfoButtonClick} />

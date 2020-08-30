@@ -19,6 +19,8 @@ export const regularTypography = css`
 
 export const P = styled.p`
   ${regularTypography}
+  padding: 0;
+  margin: 0;
 `;
 
 export default P;

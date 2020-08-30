@@ -9,9 +9,11 @@ export const BaseTheme: DefaultTheme = {
     secondaryBackground: '#102128',
     secondarySidebarBackground: '#2E2C2D',
     secondarySidebarContrastBackground: '#4E4E4E',
-    paragraph: '#000',
+    paragraph: '#555',
     heading: '#444',
     containerBackgorund: '#fff',
+    error: '#ff0000',
+    success: '#00c400',
     rgb: {
       primary: '27, 189, 206',
       primaryBackground: '227, 226, 225',
@@ -22,12 +24,17 @@ export const BaseTheme: DefaultTheme = {
       paragraph: '0, 0, 0',
       heading: '0, 0, 0',
       containerBackgorund: '255, 255, 255',
+      error: '255, 0, 0',
+      success: '0, 224, 0',
     },
   },
   breakpoints: {
     mobile: '@media (min-width: 480px)',
     tablet: '@media (min-width: 769px)',
     desktop: '@media (min-width: 1024px)',
+    mobileDF: '@media (max-width: 480px)',
+    tabletDF: '@media (max-width: 769px)',
+    desktopDF: '@media (max-width: 10000000px)',
     inPixels: {
       mobile: 480,
       tablet: 769,
@@ -40,5 +47,6 @@ export const BaseTheme: DefaultTheme = {
       mobile: 60,
     },
     headerHeight: 40,
+    borderRadius: 6,
   },
 };

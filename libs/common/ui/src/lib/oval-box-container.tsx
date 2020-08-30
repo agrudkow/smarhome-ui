@@ -14,9 +14,18 @@ type OvalBoxContainerProps = StyledOvalBoxContainerProps;
 export const regularSpacing = css`
   padding: 5px 15px;
   margin: 15px 0;
+
+  ${({
+    theme: {
+      breakpoints: { mobileDF },
+    },
+  }) => mobileDF} {
+    padding: 5px 5px;
+    margin: 5px 0;
+  }
 `;
 
-const BoxShadowCSS = css`
+const boxShadowCSS = css`
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 `;
@@ -30,9 +39,13 @@ export const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   width: ${({ width }) => (width ? `${width}px` : 'auto')};
   background-color: ${({ backgroundColor }) => backgroundColor};
   opacity: ${({ opacity }) => opacity};
-  border-radius: 6px;
+  border-radius: ${({
+    theme: {
+      layout: { borderRadius },
+    },
+  }) => borderRadius}px;
 
-  ${({ boxShadow }) => boxShadow && BoxShadowCSS}
+  ${({ boxShadow }) => boxShadow && boxShadowCSS}
 `;
 
 export const OvalBoxContainer: FC<OvalBoxContainerProps> = ({

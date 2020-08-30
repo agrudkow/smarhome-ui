@@ -12,6 +12,8 @@ declare module 'styled-components' {
       paragraph: string;
       heading: string;
       containerBackgorund: string;
+      error: string;
+      success: string;
       rgb: {
         primary: string;
         primaryBackground: string;
@@ -22,12 +24,17 @@ declare module 'styled-components' {
         paragraph: string;
         heading: string;
         containerBackgorund: string;
+        error: string;
+        success: string;
       };
     };
     breakpoints: {
       mobile: string;
       tablet: string;
       desktop: string;
+      mobileDF: string;
+      tabletDF: string;
+      desktopDF: string;
       inPixels: {
         mobile: number;
         tablet: number;
@@ -40,6 +47,7 @@ declare module 'styled-components' {
         desktop: number;
       };
       headerHeight: number;
+      borderRadius: number;
     };
   }
 }

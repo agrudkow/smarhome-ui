@@ -1,13 +1,15 @@
-import React, { FC, CSSProperties } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+import { Button, ButtonProps } from '@material-ui/core';
 
-export interface BaseButtonProps {
-  onClick: () => void;
-  style?: CSSProperties;
+export interface BaseButtonProps extends ButtonProps {
+  component?: string;
 }
 
 const StyledBaseButton = styled(Button)`
+  width: 100%;
+  font-weight: 550;
+  white-space: nowrap;
   background-color: ${({
     theme: {
       palette: { secondarySidebarContrastBackground },
@@ -34,22 +36,11 @@ const StyledBaseButton = styled(Button)`
       },
     }) => secondaryBackground};
   }
-
-  font-weight: 550;
 `;
 
-export const BaseButton: FC<BaseButtonProps> = ({
-  children,
-  onClick,
-  style,
-}) => {
+export const BaseButton: FC<BaseButtonProps> = ({ children, ...props }) => {
   return (
-    <StyledBaseButton
-      variant="contained"
-      color="primary"
-      onClick={onClick}
-      style={style}
-    >
+    <StyledBaseButton variant="contained" color="primary" {...props}>
       {children}
     </StyledBaseButton>
   );

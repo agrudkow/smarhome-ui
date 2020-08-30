@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const H5 = styled.h5`
+  margin: 0;
+  padding: 0;
   color: ${(props) => props.theme.palette.heading};
   font-size: 16px;
   font-weight: bold;

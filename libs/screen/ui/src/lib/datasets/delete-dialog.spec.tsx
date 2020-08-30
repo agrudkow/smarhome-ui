@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import ScreenService from './screen-service';
+import DeleteDialog from './delete-dialog';
 
-describe(' ScreenService', () => {
+describe(' DeleteDialog', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<ScreenService />);
+    const { baseElement } = render(<DeleteDialog />);
     expect(baseElement).toBeTruthy();
   });
 });

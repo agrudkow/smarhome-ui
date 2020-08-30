@@ -1,11 +1,9 @@
 import React, {
-  PropsWithChildren,
   useState,
   ChangeEvent,
   Dispatch,
   SetStateAction,
   ReactNode,
-  useMemo,
 } from 'react';
 import styled from 'styled-components';
 import {
@@ -15,7 +13,7 @@ import {
   createStyles,
   Paper,
 } from '@material-ui/core';
-import TableHeader, { HeadCell, Order } from './table-header';
+import TableHeader, { Cell, Order } from './table-header';
 import TableBody from './table-body';
 import TableFooter from './table-footer';
 
@@ -32,7 +30,11 @@ const StyledPaginatedTable = styled.div`
   }
 
   & .MuiPaper-rounded {
-    border-radius: 8px;
+    border-radius: ${({
+      theme: {
+        layout: { borderRadius },
+      },
+    }) => borderRadius}px;
   }
 `;
 
@@ -43,7 +45,8 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: theme.spacing(2),
     },
     table: {
-      minWidth: 750,
+      minWidth: 350,
+      tableLayout: 'fixed',
     },
   })
 );
@@ -53,25 +56,25 @@ const rowsPerPageOptions = [10, 25, 50];
 interface PaginatedTableProps<
   Data extends { [index in string]: string | number | ReactNode | undefined }
 > {
-  headCells: HeadCell<keyof Data>[];
+  cells: Cell<keyof Data>[];
   data: Data[];
   orderBy: keyof Data;
   setOrderBy: Dispatch<SetStateAction<keyof Data>>;
-  rowsAlignment: Record<keyof Data, 'left' | 'right'>;
+  bodyPlaceholderText?: string;
 }
 
 export type PaginatedTableFunctionComponentType = <
   T extends { [index in string]: string | number | ReactNode | undefined }
 >(
-  props: PropsWithChildren<PaginatedTableProps<T>>
+  props: PaginatedTableProps<T>
 ) => JSX.Element;
 
 export const PaginatedTable: PaginatedTableFunctionComponentType = ({
+  cells,
   data,
-  headCells,
   orderBy,
   setOrderBy,
-  rowsAlignment,
+  bodyPlaceholderText = '',
 }) => {
   type Data = typeof data[0];
 
@@ -79,9 +82,6 @@ export const PaginatedTable: PaginatedTableFunctionComponentType = ({
   const [order, setOrder] = useState<Order>(Order.asc);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const headCellIds = useMemo(() => headCells.map((headCell) => headCell.id), [
-    headCells,
-  ]);
 
   const handleRequestSort = (property: keyof Data) => {
     const isAsc = orderBy === property && order === Order.asc;
@@ -107,15 +107,15 @@ export const PaginatedTable: PaginatedTableFunctionComponentType = ({
             order={order}
             orderBy={orderBy}
             onRequestSort={handleRequestSort}
-            headCells={headCells}
-            rowsAlignment={rowsAlignment}
+            cells={cells}
           />
           <TableBody<Data>
             rows={data}
-            rowsAlignment={rowsAlignment}
             rowsPerPage={rowsPerPage}
             page={page}
-            headCellIds={headCellIds}
+            cells={cells}
+            showBodyPlaceholder={data.length === 0}
+            bodyPlaceholderText={bodyPlaceholderText}
           />
         </Table>
         <TableFooter

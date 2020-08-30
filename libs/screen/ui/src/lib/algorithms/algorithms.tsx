@@ -1,264 +1,65 @@
-import React, { FC, useState, ReactNode } from 'react';
+import React, {
+  FC,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  ChangeEvent,
+} from 'react';
+import { ThemeContext } from 'styled-components';
 import {
   PaginatedTable,
   InfoHeader,
   SearchBar,
-  HeadCell,
-  BaseButton,
+  Cell,
 } from '@smarthome/common/ui';
-
-type Data = {
-  name: string;
-  description: string;
-  rating?: number;
-  button?: ReactNode;
-};
-
-const headCells: HeadCell<keyof Data>[] = [
-  {
-    id: 'name',
-    label: 'Name',
-    numeric: false,
-    disablePadding: false,
-    enableSorting: true,
-  },
-  {
-    id: 'description',
-    label: 'Description',
-    numeric: false,
-    disablePadding: false,
-  },
-  {
-    id: 'rating',
-    label: 'Rating',
-    numeric: true,
-    disablePadding: false,
-    enableSorting: true,
-  },
-  {
-    id: 'button',
-    label: '',
-    numeric: false,
-    disablePadding: false,
-    style: { width: '100px' },
-  },
-];
-
-const data: Data[] = [
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-    button: (
-      <BaseButton
-        onClick={() => console.log('Click me boiiii')}
-        style={{
-          width: '70px',
-          height: '30px',
-          fontSize: '12px',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        More
-      </BaseButton>
-    ),
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-  {
-    name: 'Algorithm 1',
-    description: 'Test description',
-    rating: 3.4,
-  },
-];
-
-const rowsAlignment: Record<keyof Data, 'left' | 'right'> = {
-  name: 'left',
-  description: 'left',
-  rating: 'right',
-  button: 'right',
-};
+import { useWindowDimensions } from '@smarthome/common/logic';
+import {
+  algorithmsDataParser,
+  algorithmsCellsParser,
+  BaseAlgorithm,
+} from '@smarthome/screen/logic';
+import { fetchAlgorithmsList } from '@smarthome/screen/service';
+import { useHistory } from 'react-router';
+import { Routes } from '@smarthome/common/service';
 
 export const Algorithms: FC = () => {
-  const [orderBy, setOrderBy] = useState<keyof Data>('rating');
+  const history = useHistory();
+  const [tableData, setTableData] = useState<BaseAlgorithm[]>([]);
+  const [searchValue, setSearchValue] = useState<string | undefined>();
+  const [tableCells, setTableCells] = useState<Cell<keyof BaseAlgorithm>[]>([]);
+  const [orderBy, setOrderBy] = useState<keyof BaseAlgorithm>('rating');
+  const [tableBodyPlaceholder, setTableBodyPlaceholder] = useState<string>(
+    'Click search button to fetch algorithms'
+  );
+  const { width } = useWindowDimensions();
+  const {
+    breakpoints: {
+      inPixels: { tablet, desktop },
+    },
+  } = useContext(ThemeContext);
+
+  const handleSearchInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(event.target.value);
+    },
+    []
+  );
+
+  const handleSearch = useCallback(() => {
+    console.log('searchValue :>> ', searchValue);
+    setTableData(
+      algorithmsDataParser(fetchAlgorithmsList(), 'more', (id: string) => () =>
+        history.push(`${Routes.Algorithms}/${encodeURIComponent(id)}`)
+      )
+    );
+    setTableBodyPlaceholder('No results, please try again using diffrent tags');
+  }, [history, searchValue]);
+
+  useEffect(() => {
+    const cells = algorithmsCellsParser(width, { desktop, tablet });
+    setTableCells(cells);
+  }, [width, tablet, desktop]);
 
   return (
     <>
@@ -268,13 +69,20 @@ export const Algorithms: FC = () => {
           'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating.'
         }
       />
-      <SearchBar />
-      <PaginatedTable<Data>
-        data={data}
-        headCells={headCells}
+      <SearchBar
+        inputPlaceHolder={
+          'Type comma seperated tags or leave it empty to search all datasets'
+        }
+        inputValue={searchValue || ''}
+        onSearch={handleSearch}
+        onInputValueChange={handleSearchInputChange}
+      />
+      <PaginatedTable<BaseAlgorithm>
+        data={tableData}
+        cells={tableCells}
         orderBy={orderBy}
         setOrderBy={setOrderBy}
-        rowsAlignment={rowsAlignment}
+        bodyPlaceholderText={tableBodyPlaceholder}
       />
     </>
   );

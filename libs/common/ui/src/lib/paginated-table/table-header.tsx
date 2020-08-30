@@ -29,11 +29,11 @@ export enum Order {
   desc = 'desc',
 }
 
-export interface HeadCell<Keys extends string | symbol | number> {
+export interface Cell<Keys extends string | symbol | number> {
   disablePadding: boolean;
   id: Keys;
   label: string;
-  numeric: boolean;
+  align: 'left' | 'right' | 'inherit' | 'center' | 'justify';
   enableSorting?: boolean;
   style?: CSSProperties;
 }
@@ -42,8 +42,7 @@ export interface TableHeaderProps<Keys extends string | symbol | number> {
   onRequestSort: (property: Keys) => void;
   order: Order;
   orderBy: Keys;
-  headCells: HeadCell<Keys>[];
-  rowsAlignment: Record<Keys, 'left' | 'right'>;
+  cells: Cell<Keys>[];
 }
 
 export type TableHeaderFunctionComponentType = <
@@ -55,8 +54,7 @@ export type TableHeaderFunctionComponentType = <
 export const TableHeader: TableHeaderFunctionComponentType = ({
   order,
   orderBy,
-  headCells,
-  rowsAlignment,
+  cells,
   onRequestSort,
 }) => {
   const classes = useStyles();
@@ -70,22 +68,22 @@ export const TableHeader: TableHeaderFunctionComponentType = ({
   return (
     <TableHead>
       <TableRow>
-        {headCells.map((headCell, index) => (
+        {cells.map((cell, index) => (
           <TableCell
-            key={`table-cell-${headCell.id}-${index}`}
-            align={rowsAlignment[headCell.id]}
-            padding={headCell.disablePadding ? 'none' : 'default'}
-            sortDirection={orderBy === headCell.id ? order : false}
-            style={headCell.style}
+            key={`table-cell-${cell.id}-${index}`}
+            padding={cell.disablePadding ? 'none' : 'default'}
+            sortDirection={orderBy === cell.id ? order : false}
+            align={cell.align}
+            style={cell.style}
           >
-            {headCell.enableSorting ? (
+            {cell.enableSorting ? (
               <TableSortLabel
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : Order.asc}
-                onClick={createSortHandler(headCell.id)}
+                active={orderBy === cell.id}
+                direction={orderBy === cell.id ? order : Order.asc}
+                onClick={createSortHandler(cell.id)}
               >
-                {headCell.label}
-                {orderBy === headCell.id ? (
+                {cell.label}
+                {orderBy === cell.id ? (
                   <span className={classes.visuallyHidden}>
                     {order === Order.desc
                       ? 'sorted descending'
@@ -94,7 +92,7 @@ export const TableHeader: TableHeaderFunctionComponentType = ({
                 ) : null}
               </TableSortLabel>
             ) : (
-              headCell.label
+              cell.label
             )}
           </TableCell>
         ))}

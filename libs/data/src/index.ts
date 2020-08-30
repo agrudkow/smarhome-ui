@@ -1,1 +1,2 @@
-export * from './lib/data';
+export * from './lib/algorithm.model';
+export * from './lib/dataset.model';

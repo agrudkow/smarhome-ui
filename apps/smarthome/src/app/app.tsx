@@ -24,7 +24,6 @@ html, body {
 ::-webkit-scrollbar {
     width: 10px;
     background-color: ${() => BaseTheme.palette.secondaryBackground};
-    margin-top: ${() => BaseTheme.layout.headerHeight}px;
 }
  
 ::-webkit-scrollbar-track {

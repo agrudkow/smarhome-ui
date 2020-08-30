@@ -13,14 +13,36 @@ interface StyledCallapsableMessageBoxProps extends CallapsableMessageBoxProps {
 const StyledCallapsableMessageBox = styled.div<
   StyledCallapsableMessageBoxProps
 >`
-  ${regularTypography};
+  ${regularTypography}
 
-  margin-top: -20px;
-  margin-left: 2px;
-  width: 100%;
+  padding: 5px;
+  width: calc(100% - 14px);
   height: ${({ show, heightInPixels }) => (show ? `${heightInPixels}px` : 0)};
+  margin: ${({ show }) => (show ? `10px 0` : 0)};
+  visibility: ${({ show }) => (show ? 'visible' : 'hidden')};
   overflow: hidden;
-  transition: height 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out, visibility 0.3s ease-in-out,
+    margin 0.3s ease-in-out;
+  border: 2px dashed
+    ${({
+      theme: {
+        palette: { primary },
+      },
+    }) => primary};
+  border-radius: ${({
+    theme: {
+      layout: { borderRadius },
+    },
+  }) => borderRadius}px;
+  text-align: justify;
+
+  ${({
+    theme: {
+      breakpoints: { mobileDF },
+    },
+  }) => mobileDF} {
+    margin: ${({ show }) => (show ? `5px 0` : 0)};
+  }
 `;
 
 export const CallapsableMessageBox: FC<CallapsableMessageBoxProps> = ({
