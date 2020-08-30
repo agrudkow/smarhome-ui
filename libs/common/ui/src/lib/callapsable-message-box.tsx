@@ -29,7 +29,11 @@ const StyledCallapsableMessageBox = styled.div<
         palette: { primary },
       },
     }) => primary};
-  border-radius: 6px;
+  border-radius: ${({
+    theme: {
+      layout: { borderRadius },
+    },
+  }) => borderRadius}px;
   text-align: justify;
 
   ${({

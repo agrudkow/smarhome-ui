@@ -30,7 +30,11 @@ const StyledPaginatedTable = styled.div`
   }
 
   & .MuiPaper-rounded {
-    border-radius: 8px;
+    border-radius: ${({
+      theme: {
+        layout: { borderRadius },
+      },
+    }) => borderRadius}px;
   }
 `;
 

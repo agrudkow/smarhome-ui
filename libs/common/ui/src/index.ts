@@ -1,5 +1,13 @@
 import './lib/base-theme.d';
 
+export * from './lib/back-button';
+
+export * from './lib/accordion';
+
+export * from './lib/underlined-container';
+
+export * from './lib/upload-button';
+
 export * from './lib/outlined-button';
 export * from './lib/custom-rating';
 export * from './lib/base-button';

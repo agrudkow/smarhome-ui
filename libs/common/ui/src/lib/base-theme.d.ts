@@ -47,6 +47,7 @@ declare module 'styled-components' {
         desktop: number;
       };
       headerHeight: number;
+      borderRadius: number;
     };
   }
 }

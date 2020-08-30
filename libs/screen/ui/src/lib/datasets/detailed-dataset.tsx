@@ -10,9 +10,11 @@ import {
   H6,
   OvalBoxContainer,
   OutlinedButton,
-  BaseButton,
+  UnderlinedContainer,
+  BackButton,
 } from '@smarthome/common/ui';
 import DeleteDialog from './delete-dialog';
+import EditDatasetAccordions from './edit-dataset-accordions';
 
 const StyledDetailedDataset = styled.div`
   min-height: ${({
@@ -72,27 +74,6 @@ const DescriptionContainer = styled(H6)`
   }
 `;
 
-const UnderlinedContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid
-    ${({
-      theme: {
-        palette: { primary },
-      },
-    }) => primary};
-
-  ${({
-    theme: {
-      breakpoints: { mobileDF },
-    },
-  }) => mobileDF} {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-`;
-
 const OptionButtons = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -121,7 +102,7 @@ export const DetailedDataset: FC = () => {
   );
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const {
-    palette: { error, success },
+    palette: { error },
   } = useContext(ThemeContext);
 
   const handleDeleteDialogClose = useCallback(() => {
@@ -149,22 +130,6 @@ export const DetailedDataset: FC = () => {
     );
   }, [datasetId, history]);
 
-  const handleEditDataset = useCallback(() => {
-    history.push(
-      `/${Routes.Datasets}/${encodeURIComponent(datasetId)}/${
-        DatasetRoutes.Edit
-      }`
-    );
-  }, [datasetId, history]);
-
-  const handleAddEntity = useCallback(() => {
-    history.push(
-      `/${Routes.Datasets}/${encodeURIComponent(datasetId)}/${
-        DatasetRoutes.AddEntity
-      }`
-    );
-  }, [datasetId, history]);
-
   useEffect(() => {
     if (datasetId) {
       setDatasetData(fetchDatasetDetails(datasetId));
@@ -188,6 +153,11 @@ export const DetailedDataset: FC = () => {
                 {datasetData.datasetDescription}
               </DescriptionContainer>
             </OvalBoxContainer>
+            <EditDatasetAccordions
+              name={datasetData.displayName}
+              summary={datasetData.datasetSummary}
+              description={datasetData.datasetDescription}
+            />
             <OptionButtons>
               <OptionButtonContainer margin="right">
                 <OutlinedButton
@@ -196,22 +166,6 @@ export const DetailedDataset: FC = () => {
                   customBorderColor={error}
                 >
                   Delete dataset
-                </OutlinedButton>
-              </OptionButtonContainer>
-              <OptionButtonContainer margin="left">
-                <OutlinedButton
-                  onClick={handleAddEntity}
-                  customColor={success}
-                  customBorderColor={success}
-                >
-                  Add new entity
-                </OutlinedButton>
-              </OptionButtonContainer>
-            </OptionButtons>
-            <OptionButtons>
-              <OptionButtonContainer margin="right">
-                <OutlinedButton onClick={handleEditDataset}>
-                  Edit dataset
                 </OutlinedButton>
               </OptionButtonContainer>
               <OptionButtonContainer margin="left">
@@ -226,9 +180,7 @@ export const DetailedDataset: FC = () => {
             onClose={handleDeleteDialogClose}
             onConfirm={handleDeleteDataset}
           />
-          <div>
-            <BaseButton onClick={handleBackClick}>Back</BaseButton>
-          </div>
+          <BackButton onClick={handleBackClick} />
         </>
       )}
     </StyledDetailedDataset>

@@ -5,8 +5,9 @@ import {
   OvalBoxContainer,
   H6,
   CustomRating,
-  BaseButton,
   OutlinedButton,
+  UnderlinedContainer,
+  BackButton,
 } from '@smarthome/common/ui';
 import { useHistory, useParams } from 'react-router';
 import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
@@ -69,27 +70,6 @@ const StyledDetailedAlgorithm = styled.div`
       `calc(100vh - ${
         headerHeight + 10
       }px)`}; //10 -> padding from libs/common/ui/src/lib/main-container.tsx
-  }
-`;
-
-const UnderlinedContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid
-    ${({
-      theme: {
-        palette: { primary },
-      },
-    }) => primary};
-
-  ${({
-    theme: {
-      breakpoints: { mobileDF },
-    },
-  }) => mobileDF} {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
   }
 `;
 
@@ -216,9 +196,7 @@ export const DetailedAlgorithm: FC = () => {
             onClose={handleCloseRatingDialog}
             onRatingChange={handleRatingChange}
           />
-          <div>
-            <BaseButton onClick={handleBackClick}>Back</BaseButton>
-          </div>
+          <BackButton onClick={handleBackClick} />
         </>
       )}
     </StyledDetailedAlgorithm>

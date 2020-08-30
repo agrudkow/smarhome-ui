@@ -39,7 +39,11 @@ export const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   width: ${({ width }) => (width ? `${width}px` : 'auto')};
   background-color: ${({ backgroundColor }) => backgroundColor};
   opacity: ${({ opacity }) => opacity};
-  border-radius: 6px;
+  border-radius: ${({
+    theme: {
+      layout: { borderRadius },
+    },
+  }) => borderRadius}px;
 
   ${({ boxShadow }) => boxShadow && boxShadowCSS}
 `;

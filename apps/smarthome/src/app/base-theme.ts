@@ -9,7 +9,7 @@ export const BaseTheme: DefaultTheme = {
     secondaryBackground: '#102128',
     secondarySidebarBackground: '#2E2C2D',
     secondarySidebarContrastBackground: '#4E4E4E',
-    paragraph: '#303030',
+    paragraph: '#555',
     heading: '#444',
     containerBackgorund: '#fff',
     error: '#ff0000',
@@ -47,5 +47,6 @@ export const BaseTheme: DefaultTheme = {
       mobile: 60,
     },
     headerHeight: 40,
+    borderRadius: 6,
   },
 };
