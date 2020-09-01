@@ -77,7 +77,7 @@ export const SelectAlgorithm: FC = () => {
   return (
     <>
       <InfoHeader
-        headerText={'Select dataset'}
+        headerText={'Select algorithm'}
         infoMessageText={
           'This view allows you to search through owned dataset. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name.'
         }
