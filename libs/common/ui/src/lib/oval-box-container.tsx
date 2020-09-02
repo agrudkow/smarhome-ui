@@ -35,7 +35,7 @@ export const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
 
   flex: 1;
   display: flex;
-  height: ${({ height }) => (height ? `${height}px` : '100%')};
+  height: ${({ height }) => (height ? `${height}px` : 'auto')};
   width: ${({ width }) => (width ? `${width}px` : 'auto')};
   background-color: ${({ backgroundColor }) => backgroundColor};
   opacity: ${({ opacity }) => opacity};

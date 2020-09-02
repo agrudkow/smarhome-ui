@@ -10,6 +10,7 @@ interface CustomButtonProps {
 export interface OutlinedButtonProps extends CustomButtonProps {
   onClick: () => void;
   style?: CSSProperties;
+  disabled?: boolean;
 }
 
 const StyledOutlinedButton = styled(
@@ -55,6 +56,7 @@ export const OutlinedButton: FC<OutlinedButtonProps> = ({
   children,
   customBorderColor,
   customColor,
+  disabled,
 }) => {
   return (
     <StyledOutlinedButton
@@ -64,6 +66,7 @@ export const OutlinedButton: FC<OutlinedButtonProps> = ({
       style={style}
       customBorderColor={customBorderColor}
       customColor={customColor}
+      disabled={disabled}
     >
       {children}
     </StyledOutlinedButton>

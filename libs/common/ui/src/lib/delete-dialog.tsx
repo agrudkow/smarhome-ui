@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import styled from 'styled-components';
 import {
   Dialog,
@@ -7,12 +8,14 @@ import {
   DialogContentText,
   DialogActions,
 } from '@material-ui/core';
-import { OutlinedButton } from '@smarthome/common/ui';
+import OutlinedButton from './outlined-button';
 
 export interface DeleteDialogProps {
   open: boolean;
   onClose: () => void;
   onConfirm: () => void;
+  title: string;
+  description: string;
 }
 
 const ButtonsContainer = styled.div`
@@ -33,17 +36,19 @@ const ButtonsContainer = styled.div`
 export const DeleteDialog: FC<DeleteDialogProps> = ({
   open,
   onClose,
-  onConfirm: onSend,
+  onConfirm,
+  title,
+  description,
 }) => {
   return (
     <Dialog open={open} onClose={onClose} aria-labelledby="delete-dialog">
-      <DialogTitle id="'rating-dialogg-title">Delete datase</DialogTitle>
+      <DialogTitle id="'rating-dialogg-title">{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText>Please confirm deleting dataset.</DialogContentText>
+        <DialogContentText>{description}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <ButtonsContainer>
-          <OutlinedButton onClick={onSend} style={{ margin: '5px 0 0' }}>
+          <OutlinedButton onClick={onConfirm} style={{ margin: '5px 0 0' }}>
             Confirm
           </OutlinedButton>
           <OutlinedButton onClick={onClose} style={{ margin: '5px 0 0' }}>
