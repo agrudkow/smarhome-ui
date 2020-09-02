@@ -19,7 +19,7 @@ const StyledFloatingAddButton = styled.div`
   align-items: center;
 `;
 
-const StyledFloatingButton = styled(Fab)<{ textWidth: number }>`
+const StyledFloatingButton = styled(Fab)<{ textwidth: number }>`
   width: 56px;
   height: 56px;
   border-radius: 26px;
@@ -53,7 +53,7 @@ const StyledFloatingButton = styled(Fab)<{ textWidth: number }>`
         palette: { secondaryBackground },
       },
     }) => secondaryBackground};
-    width: ${({ textWidth }) => textWidth}px;
+    width: ${({ textwidth }) => textwidth}px;
     opacity: 1;
 
     .add-icon {
@@ -84,7 +84,7 @@ export const FloatingAddButton: FC<FloatingAddButtonProps> = ({
         onClick={onClick}
         color="primary"
         aria-label="add"
-        textWidth={textWidth}
+        textwidth={textWidth}
       >
         <AddIcon className="add-icon" />
         <HoverText textWidth={textWidth}>{hoverText}</HoverText>

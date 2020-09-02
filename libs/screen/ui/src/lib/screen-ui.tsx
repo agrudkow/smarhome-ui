@@ -64,6 +64,11 @@ export const ScreenUi: React.FC = () => {
               component={SelectDataset}
               exact
             />
+            <Route
+              path={`/${Routes.Algorithms}/:algorithmId/${AlgorithmRoutes.Execute}/:datasetId`}
+              component={Execute}
+              exact
+            />
             <Route path={`/${Routes.Datasets}`} component={Datasets} exact />
             <Route
               path={`/${Routes.Datasets}/:id`}
@@ -76,7 +81,7 @@ export const ScreenUi: React.FC = () => {
               exact
             />
             <Route
-              path={`/${Routes.Execute}/:algorithmId/:datasetId`}
+              path={`/${Routes.Datasets}/:datasetId/${DatasetRoutes.Execute}/:algorithmId`}
               component={Execute}
               exact
             />

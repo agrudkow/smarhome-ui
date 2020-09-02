@@ -15,7 +15,7 @@ import {
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { ThemeContext } from 'styled-components';
 import { fetchAlgorithmsList } from '@smarthome/screen/service';
-import { Routes } from '@smarthome/common/service';
+import { Routes, DatasetRoutes } from '@smarthome/common/service';
 import {
   InfoHeader,
   SearchBar,
@@ -52,12 +52,12 @@ export const SelectAlgorithm: FC = () => {
     setTableData(
       algorithmsDataParser(
         fetchAlgorithmsList(),
-        'slelect',
+        'select',
         (id: string) => () => {
           history.push(
-            `/${Routes.Execute}/${encodeURIComponent(id)}/${encodeURIComponent(
-              datasetId
-            )}?back=dataset`
+            `/${Routes.Datasets}/${encodeURIComponent(datasetId)}/${
+              DatasetRoutes.Execute
+            }/${encodeURIComponent(id)}`
           );
         }
       )
