@@ -8,6 +8,7 @@ import {
   OutlinedButton,
   UnderlinedContainer,
   BackButton,
+  regularSpaceBetweenViewStyle,
 } from '@smarthome/common/ui';
 import { useHistory, useParams } from 'react-router';
 import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
@@ -30,47 +31,7 @@ const DescriptionContainer = styled(H6)`
 `;
 
 const StyledDetailedAlgorithm = styled.div`
-  min-height: ${({
-    theme: {
-      layout: { headerHeight },
-    },
-  }) =>
-    `calc(100vh - ${
-      headerHeight + 40
-    }px)`}; //40 -> padding from libs/common/ui/src/lib/main-container.tsx
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  ${({
-    theme: {
-      breakpoints: { tabletDF },
-    },
-  }) => tabletDF} {
-    min-height: ${({
-      theme: {
-        layout: { headerHeight },
-      },
-    }) =>
-      `calc(100vh - ${
-        headerHeight + 20
-      }px)`}; // 20 -> padding from libs/common/ui/src/lib/main-container.tsx
-  }
-
-  ${({
-    theme: {
-      breakpoints: { mobileDF },
-    },
-  }) => mobileDF} {
-    min-height: ${({
-      theme: {
-        layout: { headerHeight },
-      },
-    }) =>
-      `calc(100vh - ${
-        headerHeight + 10
-      }px)`}; //10 -> padding from libs/common/ui/src/lib/main-container.tsx
-  }
+  ${regularSpaceBetweenViewStyle}
 `;
 
 const RatingContainer = styled.div`
@@ -139,7 +100,7 @@ export const DetailedAlgorithm: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (algorithmId) {
+    if (algorithmId !== undefined) {
       setAlgorithmData(fetchAlgorithmDetails(algorithmId));
     }
   }, [algorithmId]);

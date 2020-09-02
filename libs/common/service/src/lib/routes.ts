@@ -4,6 +4,7 @@ export enum Routes {
   Analytics = 'analytics',
   User = 'user',
   Execute = 'execute',
+  Dashboard = 'dashboard',
 }
 
 export enum AlgorithmRoutes {

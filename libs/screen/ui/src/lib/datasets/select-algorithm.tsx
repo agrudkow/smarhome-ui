@@ -57,7 +57,7 @@ export const SelectAlgorithm: FC = () => {
           history.push(
             `/${Routes.Execute}/${encodeURIComponent(id)}/${encodeURIComponent(
               datasetId
-            )}`
+            )}?back=dataset`
           );
         }
       )
