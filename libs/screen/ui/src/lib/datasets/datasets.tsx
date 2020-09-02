@@ -6,12 +6,13 @@ import React, {
   useCallback,
   ChangeEvent,
 } from 'react';
-import { ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import {
   InfoHeader,
   SearchBar,
   PaginatedTable,
   Cell,
+  FloatingAddButton,
 } from '@smarthome/common/ui';
 import {
   BaseDataset,
@@ -22,6 +23,10 @@ import { fetchDatasetsList } from '@smarthome/screen/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { useHistory } from 'react-router-dom';
 import { Routes } from '@smarthome/common/service';
+
+const StyledDataset = styled.div`
+  padding-bottom: 60px; //Accommodate floating buttom
+`;
 
 export const Datasets: FC = () => {
   const history = useHistory();
@@ -62,7 +67,7 @@ export const Datasets: FC = () => {
   }, [width, tablet, desktop]);
 
   return (
-    <>
+    <StyledDataset>
       <InfoHeader
         headerText={'List of owned datasets'}
         infoMessageText={
@@ -84,7 +89,14 @@ export const Datasets: FC = () => {
         setOrderBy={setOrderBy}
         bodyPlaceholderText={tableBodyPlaceholder}
       />
-    </>
+      <FloatingAddButton
+        hoverText={'Add dataset'}
+        textWidth={150}
+        onClick={() => {
+          console.log('Add');
+        }}
+      />
+    </StyledDataset>
   );
 };
 
