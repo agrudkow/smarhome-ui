@@ -17,17 +17,6 @@ stages:
   before_script:
     - yarn
 
-lint_web_all:
-  <<: *lint_web_definition
-  only:
-    - develop
-    - master
-  script:
-    - yarn format:check --all
-    - yarn nx workspace-lint
-    - yarn nx affected:lint --all --parallel | tee lintresult
-    - '! cat lintresult | grep -q warning'
-
 lint_web:
   <<: *lint_web_definition
   except:
