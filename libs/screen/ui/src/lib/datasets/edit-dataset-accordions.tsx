@@ -65,7 +65,7 @@ export const EditDatasetAccordions: FC<EditDatasetAccordionsProps> = (
       >
         <EditDatasetFrom
           {...props}
-          onCancelChanges={closeAccordionFactory(Accordions.Edit)}
+          onCancle={closeAccordionFactory(Accordions.Edit)}
         />
       </Accordion>
     </StyledEditDatasetAccordions>

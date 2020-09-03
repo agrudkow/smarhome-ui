@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, useCallback, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 import {
   InfoHeader,
   UnderlinedContainer,
@@ -17,7 +17,6 @@ import {
   fetchDatasetDetails,
   fetchAlgorithmDetails,
 } from '@smarthome/screen/service';
-import { useQueryParam, StringParam } from 'use-query-params';
 import {
   Routes,
   AlgorithmRoutes,
@@ -84,8 +83,8 @@ const OptionButtonContainer = styled.div<{ margin: 'left' | 'right' }>`
 `;
 
 export const Execute: FC = () => {
-  const backDestination = useQueryParam('back', StringParam)[0];
   const history = useHistory();
+  const { pathname } = useLocation();
   const { algorithmId, datasetId } = useParams<{
     algorithmId: string;
     datasetId: string;
@@ -103,13 +102,13 @@ export const Execute: FC = () => {
   } = useContext(ThemeContext);
 
   const handleBackClick = useCallback(() => {
-    if (backDestination === 'dataset') {
+    if (RegExp(`^/${Routes.Datasets}`).test(pathname)) {
       history.push(
         `/${Routes.Datasets}/${encodeURIComponent(datasetId)}/${
           DatasetRoutes.SelectAlgorithm
         }`
       );
-    } else if (backDestination === 'algorithm') {
+    } else if (RegExp(`^/${Routes.Algorithms}`).test(pathname)) {
       history.push(
         `/${Routes.Algorithms}/${encodeURIComponent(algorithmId)}/${
           AlgorithmRoutes.SelectDataset
@@ -118,7 +117,7 @@ export const Execute: FC = () => {
     } else {
       history.push(`/${Routes.Dashboard}`);
     }
-  }, [algorithmId, backDestination, datasetId, history]);
+  }, [algorithmId, datasetId, history, pathname]);
 
   const handleExecute = useCallback(() => {
     console.log(`run :>> algorithm: ${algorithmId} - dataset: ${datasetId}`);

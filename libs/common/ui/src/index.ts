@@ -1,5 +1,7 @@
 import './lib/base-theme.d';
 
+export * from './lib/floating-add-button';
+
 export * from './lib/regular-space-between-view-style';
 export * from './lib/back-button';
 export * from './lib/accordion';

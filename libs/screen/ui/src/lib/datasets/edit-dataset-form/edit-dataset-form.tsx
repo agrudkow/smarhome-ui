@@ -8,8 +8,8 @@ export interface EditDatasetFormProps {
   name: string;
   summary: string;
   description: string;
-  onSaveChanges?: () => void;
-  onCancelChanges?: () => void;
+  onSave?: () => void;
+  onCancle?: () => void;
 }
 
 const StyledEditDatasetForm = styled.form`
@@ -84,8 +84,8 @@ const EditDatasetFromView: FC<EditDatasetFormProps> = ({
   description,
   name,
   summary,
-  onSaveChanges,
-  onCancelChanges,
+  onSave: onSaveChanges,
+  onCancle: onCancelChanges,
 }) => {
   return (
     <StyledEditDatasetForm noValidate autoComplete="off">

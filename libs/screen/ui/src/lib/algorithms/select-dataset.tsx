@@ -21,7 +21,7 @@ import {
 } from '@smarthome/screen/logic';
 import { fetchDatasetsList } from '@smarthome/screen/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
-import { Routes } from '@smarthome/common/service';
+import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
 
 export const SelectDataset: FC = () => {
   const history = useHistory();
@@ -52,9 +52,9 @@ export const SelectDataset: FC = () => {
     setTableData(
       datasetsDataParser(fetchDatasetsList(), 'select', (id: string) => () => {
         history.push(
-          `/${Routes.Execute}/${encodeURIComponent(
-            algorithmId
-          )}/${encodeURIComponent(id)}?back=algorithm`
+          `/${Routes.Algorithms}/${encodeURIComponent(algorithmId)}/${
+            AlgorithmRoutes.Execute
+          }/${encodeURIComponent(id)}`
         );
       })
     );

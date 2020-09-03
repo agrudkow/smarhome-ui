@@ -6,12 +6,15 @@ import React, {
   useCallback,
   ChangeEvent,
 } from 'react';
-import { ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import {
   InfoHeader,
   SearchBar,
   PaginatedTable,
   Cell,
+  FloatingAddButton,
+  OvalBoxContainer,
+  UnderlinedContainer,
 } from '@smarthome/common/ui';
 import {
   BaseDataset,
@@ -22,9 +25,17 @@ import { fetchDatasetsList } from '@smarthome/screen/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { useHistory } from 'react-router-dom';
 import { Routes } from '@smarthome/common/service';
+import { AddDataset } from './add-dataset';
+
+type CurrentView = 'list' | 'add-dataset';
+
+const StyledDataset = styled.div`
+  padding-bottom: 60px; //Accommodate floating buttom
+`;
 
 export const Datasets: FC = () => {
   const history = useHistory();
+  const [currentView, setCurrentView] = useState<CurrentView>('add-dataset');
   const [tableData, setTableData] = useState<BaseDataset[]>([]);
   const [searchValue, setSearchValue] = useState<string | undefined>();
   const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
@@ -56,35 +67,60 @@ export const Datasets: FC = () => {
     setTableBodyPlaceholder('No results, please try again using diffrent tags');
   }, [history, searchValue]);
 
+  const handleChangeViewFactory = useCallback(
+    (view: CurrentView) => () => {
+      setCurrentView(view);
+    },
+    []
+  );
+
   useEffect(() => {
     const cells = datasetsCellsParser(width, { desktop, tablet });
     setTableCells(cells);
   }, [width, tablet, desktop]);
 
   return (
-    <>
+    <StyledDataset>
       <InfoHeader
-        headerText={'List of owned datasets'}
+        headerText={
+          currentView === 'list' ? 'List of owned datasets' : 'Add new dataset'
+        }
         infoMessageText={
-          'This view allows you to search through owned dataset. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which datasets will be searched). Additionaly you can sort result by name.'
+          currentView === 'list'
+            ? 'This view allows you to search through owned dataset. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which datasets will be searched). Additionaly you can sort result by name.'
+            : "This view alllow you to add create new dataset. To do so you have to fill the form with name, summary and description. After clicking 'ADD' button dataset will be created and you will be moved to page where you can add new entities."
         }
       />
-      <SearchBar
-        inputPlaceHolder={
-          'Type comma seperated tags or leave it empty to search all datasets'
-        }
-        inputValue={searchValue || ''}
-        onSearch={handleSearch}
-        onInputValueChange={handleSearchInputChange}
-      />
-      <PaginatedTable<BaseDataset>
-        data={tableData}
-        cells={tableCells}
-        orderBy={orderBy}
-        setOrderBy={setOrderBy}
-        bodyPlaceholderText={tableBodyPlaceholder}
-      />
-    </>
+      <UnderlinedContainer />
+      {currentView === 'list' ? (
+        <>
+          <SearchBar
+            inputPlaceHolder={
+              'Type comma seperated tags or leave it empty to search all datasets'
+            }
+            inputValue={searchValue || ''}
+            onSearch={handleSearch}
+            onInputValueChange={handleSearchInputChange}
+          />
+          <PaginatedTable<BaseDataset>
+            data={tableData}
+            cells={tableCells}
+            orderBy={orderBy}
+            setOrderBy={setOrderBy}
+            bodyPlaceholderText={tableBodyPlaceholder}
+          />
+          <FloatingAddButton
+            hoverText={'Add dataset'}
+            textWidth={150}
+            onClick={handleChangeViewFactory('add-dataset')}
+          />
+        </>
+      ) : (
+        <OvalBoxContainer>
+          <AddDataset onCancle={handleChangeViewFactory('list')} />
+        </OvalBoxContainer>
+      )}
+    </StyledDataset>
   );
 };
 
