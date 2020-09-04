@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Analytics from './analytics';
+import Dashboard from './dashboard';
 
 describe(' Analitics', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Analytics />);
+    const { baseElement } = render(<Dashboard />);
     expect(baseElement).toBeTruthy();
   });
 });

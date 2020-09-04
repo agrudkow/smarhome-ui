@@ -19,6 +19,7 @@ import TableFooter from './table-footer';
 
 const StyledPaginatedTable = styled.div`
   & .MuiPaper-root {
+    margin: 0;
     padding: 5px 0;
     background-color: ${({
       theme: {
@@ -26,7 +27,7 @@ const StyledPaginatedTable = styled.div`
           rgb: { containerBackgorund },
         },
       },
-    }) => `rgba(${containerBackgorund}, 0.75)`};
+    }) => `rgba(${containerBackgorund}, 1)`};
   }
 
   & .MuiPaper-rounded {
@@ -61,6 +62,7 @@ interface PaginatedTableProps<
   orderBy: keyof Data;
   setOrderBy: Dispatch<SetStateAction<keyof Data>>;
   bodyPlaceholderText?: string;
+  title?: ReactNode;
 }
 
 export type PaginatedTableFunctionComponentType = <
@@ -75,6 +77,7 @@ export const PaginatedTable: PaginatedTableFunctionComponentType = ({
   orderBy,
   setOrderBy,
   bodyPlaceholderText = '',
+  title,
 }) => {
   type Data = typeof data[0];
 
@@ -102,6 +105,7 @@ export const PaginatedTable: PaginatedTableFunctionComponentType = ({
   return (
     <StyledPaginatedTable>
       <Paper className={classes.paper}>
+        {title}
         <Table className={classes.table} size={'medium'} aria-label="table">
           <TableHeader<keyof Data>
             order={order}

@@ -13,7 +13,7 @@ import {
   AlgorithmRoutes,
   DatasetRoutes,
 } from '@smarthome/common/service';
-import { Analytics } from './analytics';
+import { Dashboard } from './billing';
 import { Algorithms, DetailedAlgorithm, SelectDataset } from './algorithms';
 import { Datasets, DetailedDataset } from './datasets';
 import { QueryParamProvider } from 'use-query-params';
@@ -21,6 +21,11 @@ import SelectAlgorithm from './datasets/select-algorithm';
 import { Execute } from './execute';
 
 const SidebarLinks: SidebarLinkProps[] = [
+  {
+    text: 'Dashboard',
+    icon: <PollIcon iconColor={''} />,
+    route: `/${Routes.Dashboard}`,
+  },
   {
     text: 'Algorithms',
     icon: <BrainIcon iconColor={''} />,
@@ -30,11 +35,6 @@ const SidebarLinks: SidebarLinkProps[] = [
     text: 'Datasets',
     icon: <DataBaseIcon iconColor={''} />,
     route: `/${Routes.Datasets}`,
-  },
-  {
-    text: 'Analytics',
-    icon: <PollIcon iconColor={''} />,
-    route: `/${Routes.Analytics}`,
   },
   {
     text: 'User',
@@ -49,6 +49,7 @@ export const ScreenUi: React.FC = () => {
       <QueryParamProvider ReactRouterRoute={Route}>
         <Layout sidebarLinks={SidebarLinks}>
           <Switch>
+            <Route path={`/${Routes.Dashboard}`} component={Dashboard} exact />
             <Route
               path={`/${Routes.Algorithms}`}
               component={Algorithms}
@@ -85,7 +86,6 @@ export const ScreenUi: React.FC = () => {
               component={Execute}
               exact
             />
-            <Route path={`/${Routes.Analytics}`} component={Analytics} exact />
             <Route path={`/${Routes.User}`} exact />
           </Switch>
         </Layout>

@@ -6,3 +6,7 @@ export * from './lib/datasets-data-parser';
 export * from './lib/datasets-cells-parser';
 export * from './lib/dataset.interface';
 export * from './lib/use-add-entity';
+export * from './lib/billing.interface';
+export * from './lib/billing-cells-parser';
+export * from './lib/billing-data-parser';
+export * from './lib/total-billing-parser';
