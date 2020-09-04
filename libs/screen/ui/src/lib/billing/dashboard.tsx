@@ -121,7 +121,7 @@ export const Dashboard: React.FC = () => {
       </TotalBillingInfoOvalBoxContainer>
       <OvalBoxContainer height={400}>
         <PlotContainer>
-          <H5>Current month billing per each day</H5>
+          <H5>Current month billings (per each day)</H5>
           <br />
           <Plot />
         </PlotContainer>
