@@ -24,3 +24,4 @@ export * from './lib/headings';
 export * from './lib/assets';
 export * from './lib/hamburger-menu';
 export * from './lib/delete-dialog';
+export * from './lib/text-field';

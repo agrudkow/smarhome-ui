@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 
 import styled from 'styled-components';
-import { TextField } from '@material-ui/core';
-import { BaseButton } from '@smarthome/common/ui';
+import { BaseButton, TextField } from '@smarthome/common/ui';
 
 export interface EditDatasetFormProps {
   name: string;
@@ -23,32 +22,6 @@ const FormContent = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 5px;
-`;
-
-const StyledTextField = styled(TextField)`
-  & .MuiOutlinedInput-root {
-    border-radius: ${({
-      theme: {
-        layout: { borderRadius },
-      },
-    }) => borderRadius};
-  }
-
-  & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: ${({
-      theme: {
-        palette: { primary },
-      },
-    }) => primary};
-  }
-
-  & .MuiFormLabel-root.Mui-focused {
-    color: ${({
-      theme: {
-        palette: { primary },
-      },
-    }) => primary};
-  }
 `;
 
 const CustomBaseButton = styled(BaseButton)<{ margintop?: number }>`
@@ -90,7 +63,7 @@ const EditDatasetFromView: FC<EditDatasetFormProps> = ({
   return (
     <StyledEditDatasetForm noValidate autoComplete="off">
       <FormContent>
-        <StyledTextField
+        <TextField
           required
           id="input-name"
           label="Name"
@@ -99,7 +72,7 @@ const EditDatasetFromView: FC<EditDatasetFormProps> = ({
           variant="outlined"
         />
         <br />
-        <StyledTextField
+        <TextField
           id="input-summary"
           label="Summary"
           multiline
@@ -107,7 +80,7 @@ const EditDatasetFromView: FC<EditDatasetFormProps> = ({
           variant="outlined"
         />
         <br />
-        <StyledTextField
+        <TextField
           id="input-description"
           label="Description"
           multiline
