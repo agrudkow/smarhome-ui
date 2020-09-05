@@ -17,11 +17,18 @@ export const regularSpacing = css`
 
   ${({
     theme: {
+      breakpoints: { tabletDF },
+    },
+  }) => tabletDF} {
+    margin: 5px 0;
+  }
+
+  ${({
+    theme: {
       breakpoints: { mobileDF },
     },
   }) => mobileDF} {
     padding: 5px 5px;
-    margin: 5px 0;
   }
 `;
 
@@ -37,23 +44,28 @@ export const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   display: flex;
   height: ${({ height }) => (height ? `${height}px` : 'auto')};
   width: ${({ width }) => (width ? `${width}px` : 'auto')};
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  opacity: ${({ opacity }) => opacity};
+  background-color: ${({
+    backgroundColor,
+    theme: {
+      palette: { containerBackgorund },
+    },
+  }) => backgroundColor ?? containerBackgorund};
+  opacity: ${({ opacity }) => opacity ?? 1};
   border-radius: ${({
     theme: {
       layout: { borderRadius },
     },
   }) => borderRadius}px;
 
-  ${({ boxShadow }) => boxShadow && boxShadowCSS}
+  ${({ boxShadow }) => boxShadow !== false && boxShadowCSS}
 `;
 
 export const OvalBoxContainer: FC<OvalBoxContainerProps> = ({
   height,
   width,
-  backgroundColor = '#fff',
-  opacity = 1,
-  boxShadow = true,
+  backgroundColor,
+  opacity,
+  boxShadow,
   children,
 }) => {
   return (

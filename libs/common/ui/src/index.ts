@@ -1,7 +1,8 @@
 import './lib/base-theme.d';
 
+export * from './lib/rating-dialog';
+export * from './lib/arrow-button';
 export * from './lib/floating-add-button';
-
 export * from './lib/regular-space-between-view-style';
 export * from './lib/back-button';
 export * from './lib/accordion';

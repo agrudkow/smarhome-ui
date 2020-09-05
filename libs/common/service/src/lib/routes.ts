@@ -1,9 +1,9 @@
 export enum Routes {
   Algorithms = 'algorithms',
   Datasets = 'datasets',
-  Analytics = 'analytics',
   User = 'user',
-  Dashboard = 'dashboard',
+  Dashboard = '',
+  Execution = 'execution',
 }
 
 export enum AlgorithmRoutes {

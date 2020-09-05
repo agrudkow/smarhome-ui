@@ -9,12 +9,12 @@ import {
   UnderlinedContainer,
   BackButton,
   regularSpaceBetweenViewStyle,
+  RatingDialog,
 } from '@smarthome/common/ui';
 import { useHistory, useParams } from 'react-router';
 import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
 import { fetchAlgorithmDetails } from '@smarthome/screen/service';
 import { AlgorithmDetailsDTO } from '@smarthome/data';
-import RatingDialog from './rating-dialog';
 
 const DescriptionContainer = styled(H6)`
   padding: 0;
@@ -156,6 +156,10 @@ export const DetailedAlgorithm: FC = () => {
             onSend={handleSendRating}
             onClose={handleCloseRatingDialog}
             onRatingChange={handleRatingChange}
+            title={'Rate algorithm'}
+            description={
+              'Please select number of stars (1-5) which corresponds with how well given algorithm do its job.'
+            }
           />
           <BackButton onClick={handleBackClick} />
         </>

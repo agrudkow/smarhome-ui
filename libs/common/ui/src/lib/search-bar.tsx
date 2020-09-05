@@ -1,5 +1,5 @@
-import React, { FC, useContext, ChangeEvent } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React, { FC, ChangeEvent } from 'react';
+import styled from 'styled-components';
 import { StyledOvalBoxContainer } from './oval-box-container';
 import Input from './input';
 import BaseButton from './base-button';
@@ -34,14 +34,8 @@ export const SearchBar: FC<SearchBarProps> = ({
   onSearch,
   inputValue,
 }) => {
-  const {
-    palette: {
-      rgb: { containerBackgorund },
-    },
-  } = useContext(ThemeContext);
-
   return (
-    <StyledSearchBar backgroundColor={`rgba(${containerBackgorund}, 0.75)`}>
+    <StyledSearchBar>
       <Input
         placeholder={inputPlaceHolder}
         value={inputValue}

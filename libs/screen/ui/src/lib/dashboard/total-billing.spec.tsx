@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Analytics from './analytics';
+import TotalBilling from './total-billing';
 
-describe(' Analitics', () => {
+describe(' TotalBilling', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Analytics />);
+    const { baseElement } = render(<TotalBilling />);
     expect(baseElement).toBeTruthy();
   });
 });

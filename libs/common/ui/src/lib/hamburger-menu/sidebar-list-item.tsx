@@ -27,6 +27,11 @@ const StyledSidebarListItem = styled(
   transition: background-color 0.3s ease-in-out, border-left 0.3s ease-in-out;
   cursor: pointer;
   text-decoration: none;
+
+  &:hover {
+    background-color: ${({ theme }) =>
+      theme.palette.secondarySidebarContrastBackground};
+  }
 `;
 
 const Text = styled(
@@ -85,7 +90,9 @@ export const SidebarListItem: React.FC<SidebarListItemProps> = ({
 }) => {
   const { pathname } = useLocation();
 
-  const isCurrentView = RegExp(`^${linkRoute}`).test(pathname);
+  const isCurrentView =
+    pathname === linkRoute ||
+    (linkRoute !== '/' && RegExp(`^${linkRoute}`).test(pathname));
   return (
     <li>
       <StyledSidebarListItem to={linkRoute} clicked={isCurrentView}>

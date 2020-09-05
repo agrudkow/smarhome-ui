@@ -30,6 +30,14 @@ const StyledExecute = styled.div`
 const MainInformaitionContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  ${({
+    theme: {
+      breakpoints: { tabletDF },
+    },
+  }) => tabletDF} {
+    margin: 5px 0;
+  }
 `;
 
 const OvalBoxContainerWrapper = styled.div<{ margin: 'left' | 'right' }>`
@@ -38,9 +46,9 @@ const OvalBoxContainerWrapper = styled.div<{ margin: 'left' | 'right' }>`
 
   ${({
     theme: {
-      breakpoints: { mobileDF },
+      breakpoints: { tabletDF },
     },
-  }) => mobileDF} {
+  }) => tabletDF} {
     width: 100%;
     margin: 0;
   }

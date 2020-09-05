@@ -1,5 +1,5 @@
-export type TableDataParser<T, K> = (
+export type TableDataParser<T, K, M = (id: string) => () => void> = (
   data: K[],
   rowButtonText: string,
-  rowButtonHandlerFactory: (id: string) => () => void
+  rowButtonHandlerFactory: M
 ) => T[];
