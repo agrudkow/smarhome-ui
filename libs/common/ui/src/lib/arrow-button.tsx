@@ -17,6 +17,25 @@ const ArrowIcon = styled(ArrowForwardIosIcon)<ArrowIconProps>`
       palette: { primary },
     },
   }) => primary};
+
+  ${({
+    theme: {
+      breakpoints: { tabletDF },
+    },
+  }) => tabletDF} {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+const CustomIconButton = styled(IconButton)`
+  ${({
+    theme: {
+      breakpoints: { tabletDF },
+    },
+  }) => tabletDF} {
+    padding: 0;
+  }
 `;
 
 /**
@@ -30,9 +49,9 @@ export const ArrowButton: FC<IconButtonProps & ArrowIconProps> = ({
   ...props
 }) => {
   return (
-    <IconButton {...props}>
+    <CustomIconButton {...props}>
       <ArrowIcon rotate={rotate} />
-    </IconButton>
+    </CustomIconButton>
   );
 };
 
