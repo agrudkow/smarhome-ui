@@ -7,10 +7,12 @@ import {
   DialogContentText,
   DialogActions,
 } from '@material-ui/core';
-import { OutlinedButton } from '@smarthome/common/ui';
 import Rating from '@material-ui/lab/Rating';
+import OutlinedButton from './outlined-button';
 
 export interface RatingDialogProps {
+  title: string;
+  description: string;
   open: boolean;
   rating: number;
   onClose: () => void;
@@ -40,6 +42,8 @@ const ButtonsContainer = styled.div`
 
 export const RatingDialog: FC<RatingDialogProps> = ({
   open,
+  title,
+  description,
   rating,
   onClose,
   onRatingChange,
@@ -47,12 +51,9 @@ export const RatingDialog: FC<RatingDialogProps> = ({
 }) => {
   return (
     <Dialog open={open} onClose={onClose} aria-labelledby="rating-dialog">
-      <DialogTitle id="'rating-dialogg-title">Rate algorithm</DialogTitle>
+      <DialogTitle id="'rating-dialogg-title">{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          Please select number of stars (1-5) which corresponds with how well
-          given algorithm do its job.
-        </DialogContentText>
+        <DialogContentText>{description}</DialogContentText>
         <RatingContainer>
           <Rating
             name="rating-dialog"

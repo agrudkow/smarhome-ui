@@ -16,7 +16,7 @@ const StyledTotalBilling = styled.div`
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: space-between;
-  margin: -5px -5px;
+  margin: -5px;
   padding-top: 15px;
 
   ${({

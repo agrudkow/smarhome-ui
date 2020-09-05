@@ -27,6 +27,11 @@ const StyledSidebarListItem = styled(
   transition: background-color 0.3s ease-in-out, border-left 0.3s ease-in-out;
   cursor: pointer;
   text-decoration: none;
+
+  &:hover {
+    background-color: ${({ theme }) =>
+      theme.palette.secondarySidebarContrastBackground};
+  }
 `;
 
 const Text = styled(

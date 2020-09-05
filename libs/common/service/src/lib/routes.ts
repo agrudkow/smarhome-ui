@@ -3,7 +3,7 @@ export enum Routes {
   Datasets = 'datasets',
   User = 'user',
   Dashboard = '',
-  Executions = 'executions',
+  Execution = 'execution',
 }
 
 export enum AlgorithmRoutes {

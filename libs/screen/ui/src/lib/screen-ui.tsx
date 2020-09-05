@@ -18,7 +18,7 @@ import { Algorithms, DetailedAlgorithm, SelectDataset } from './algorithms';
 import { Datasets, DetailedDataset } from './datasets';
 import { QueryParamProvider } from 'use-query-params';
 import SelectAlgorithm from './datasets/select-algorithm';
-import { Execute } from './execute';
+import { Execute, ExecutionDetails } from './execution';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -84,6 +84,11 @@ export const ScreenUi: React.FC = () => {
             <Route
               path={`/${Routes.Datasets}/:datasetId/${DatasetRoutes.Execute}/:algorithmId`}
               component={Execute}
+              exact
+            />
+            <Route
+              path={`/${Routes.Execution}/:resultsetId`}
+              component={ExecutionDetails}
               exact
             />
             <Route path={`/${Routes.User}`} exact />

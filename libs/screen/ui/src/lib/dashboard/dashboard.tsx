@@ -82,7 +82,7 @@ export const Dashboard: React.FC = () => {
         'more',
         (resultsetId: string) => () => {
           history.push(
-            `${Routes.Executions}/${encodeURIComponent(resultsetId)}`
+            `${Routes.Execution}/${encodeURIComponent(resultsetId)}`
           );
         }
       )
