@@ -19,6 +19,7 @@ import { Datasets, DetailedDataset } from './datasets';
 import { QueryParamProvider } from 'use-query-params';
 import SelectAlgorithm from './datasets/select-algorithm';
 import { Execute, ExecutionDetails } from './execution';
+import { User } from './user';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -91,7 +92,7 @@ export const ScreenUi: React.FC = () => {
               component={ExecutionDetails}
               exact
             />
-            <Route path={`/${Routes.User}`} exact />
+            <Route path={`/${Routes.User}`} component={User} exact />
           </Switch>
         </Layout>
       </QueryParamProvider>
