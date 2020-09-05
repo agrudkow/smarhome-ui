@@ -7,13 +7,12 @@ import { ExecutionBillingDTO } from '@smarthome/data';
 export const executionsBillingDataParser: TableDataParser<
   ExecutionBilling,
   ExecutionBillingDTO,
-  (datasetId: string, algorithmId: string) => () => void
+  (resultsetId: string) => () => void
 > = (data, rowButtonText, rowButtonHandlerFactory) =>
   data.map(
     ({
-      datasetId,
+      resultsetId,
       datasetDisplayName,
-      algorithmId,
       algorithmDisplayName,
       billed,
       date,
@@ -26,7 +25,7 @@ export const executionsBillingDataParser: TableDataParser<
       date: <CellContainer>{date}</CellContainer>,
       button: (
         <BaseButton
-          onClick={rowButtonHandlerFactory(datasetId, algorithmId)}
+          onClick={rowButtonHandlerFactory(resultsetId)}
           style={{
             width: '70px',
             height: '25px',

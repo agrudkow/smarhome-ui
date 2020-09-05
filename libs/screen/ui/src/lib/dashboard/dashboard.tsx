@@ -1,16 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import {
-  OvalBoxContainer,
   InfoHeader,
   UnderlinedContainer,
   H5,
-  H4,
-  StyledOvalBoxContainer,
   PaginatedTable,
   Cell,
+  regularSpacing,
 } from '@smarthome/common/ui';
-import Plot from './plot';
 import {
   ExecutionBilling,
   executionBillingsCellsParser,
@@ -25,32 +22,8 @@ import {
 } from '@smarthome/screen/service';
 import { useHistory } from 'react-router-dom';
 import { Routes } from '@smarthome/common/service';
-
-const PlotContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  padding: 15px 0;
-`;
-
-const TotalBillingInfoOvalBoxContainer = styled(StyledOvalBoxContainer)`
-  white-space: nowrap;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  padding: 30px 0;
-`;
-
-const TotalBillingInfo = styled.div`
-  display: flex;
-`;
-
-const TotalBilledHeader = styled(H4)`
-  font-weight: 500;
-`;
+import TotalBilling from './total-billing';
+import BillingsPlot from './billings-plot';
 
 const RecentBillingsTabelTitle = styled.div`
   padding: 15px 0 0 0;
@@ -58,6 +31,13 @@ const RecentBillingsTabelTitle = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+`;
+
+const TableContainer = styled.div`
+  ${regularSpacing}
+
+  padding: 0;
+  padding-top: 5px;
 `;
 
 export const Dashboard: React.FC = () => {
@@ -71,6 +51,7 @@ export const Dashboard: React.FC = () => {
   );
   const [orderBy, setOrderBy] = useState<keyof ExecutionBilling>('date');
   const [tableBodyPlaceholder] = useState<string>('No data');
+  const [currentDate, setCurrentDate] = useState(new Date());
   const { width } = useWindowDimensions();
   const {
     breakpoints: {
@@ -78,27 +59,35 @@ export const Dashboard: React.FC = () => {
     },
   } = useContext(ThemeContext);
 
+  const handleChangeMonthFactory = (value: number) => () =>
+    setCurrentDate(
+      (previousValue) =>
+        new Date(
+          previousValue.getFullYear(),
+          previousValue.getMonth() + value,
+          previousValue.getDate()
+        )
+    );
+
   useEffect(() => {
     const cells = executionBillingsCellsParser(width, { desktop, tablet });
     setTableCells(cells);
   }, [width, tablet, desktop]);
 
   useEffect(() => {
-    setTotalBilling(totalBillingParser(fetchTotalBilling()));
+    setTotalBilling(totalBillingParser(fetchTotalBilling(currentDate)));
     setTableData(
       executionsBillingDataParser(
         fetchExecutionBillingList(),
         'more',
-        (datasetId: string, algorithmId: string) => () => {
+        (resultsetId: string) => () => {
           history.push(
-            `${Routes.Executions}/${encodeURIComponent(
-              datasetId
-            )}/${encodeURIComponent(algorithmId)}`
+            `${Routes.Executions}/${encodeURIComponent(resultsetId)}`
           );
         }
       )
     );
-  }, [history]);
+  }, [history, currentDate]);
 
   return (
     <>
@@ -109,36 +98,29 @@ export const Dashboard: React.FC = () => {
         }
       />
       <UnderlinedContainer />
-      <TotalBillingInfoOvalBoxContainer>
-        <TotalBillingInfo>
-          <TotalBilledHeader>Billed in total:&nbsp;</TotalBilledHeader>
-          <H4>{totalBilling?.billed ?? '-'} PLN</H4>
-        </TotalBillingInfo>
-        <TotalBillingInfo>
-          <TotalBilledHeader>Billed time in total:&nbsp;</TotalBilledHeader>
-          <H4>{totalBilling?.time ?? '-'}</H4>
-        </TotalBillingInfo>
-      </TotalBillingInfoOvalBoxContainer>
-      <OvalBoxContainer height={400}>
-        <PlotContainer>
-          <H5>Current month billings (per each day)</H5>
-          <br />
-          <Plot />
-        </PlotContainer>
-      </OvalBoxContainer>
-
-      <PaginatedTable<ExecutionBilling>
-        data={tableData}
-        cells={tableCells}
-        orderBy={orderBy}
-        setOrderBy={setOrderBy}
-        bodyPlaceholderText={tableBodyPlaceholder}
-        title={
-          <RecentBillingsTabelTitle>
-            <H5>Latest billed executions</H5>
-          </RecentBillingsTabelTitle>
-        }
+      <TotalBilling
+        billedAmount={totalBilling?.billed ?? '-'}
+        billedTime={totalBilling?.time ?? '-'}
+        month={currentDate.getMonth()}
+        year={currentDate.getFullYear()}
+        onNextMonthClick={handleChangeMonthFactory(1)}
+        onPreviousMonthClick={handleChangeMonthFactory(-1)}
       />
+      <BillingsPlot data={totalBilling?.dailyBillings ?? []} />
+      <TableContainer>
+        <PaginatedTable<ExecutionBilling>
+          data={tableData}
+          cells={tableCells}
+          orderBy={orderBy}
+          setOrderBy={setOrderBy}
+          bodyPlaceholderText={tableBodyPlaceholder}
+          title={
+            <RecentBillingsTabelTitle>
+              <H5>Latest billed executions</H5>
+            </RecentBillingsTabelTitle>
+          }
+        />
+      </TableContainer>
     </>
   );
 };

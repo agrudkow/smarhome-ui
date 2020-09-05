@@ -1,12 +1,17 @@
+export interface DailyBillingDTO {
+  day: number;
+  billed: number;
+}
+
 export interface TotalMonthlyBillingDTO {
   billed: number;
   milliseconds: number;
+  dailyBillings: DailyBillingDTO[];
 }
 
 export interface ExecutionBillingDTO {
-  algorithmId: string;
+  resultsetId: string;
   algorithmDisplayName: string;
-  datasetId: string;
   datasetDisplayName: string;
   date: string;
   billed: number;

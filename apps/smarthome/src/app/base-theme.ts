@@ -14,6 +14,7 @@ export const BaseTheme: DefaultTheme = {
     containerBackgorund: '#fff',
     error: '#ff0000',
     success: '#00c400',
+    plot: '#1BBDCE',
     rgb: {
       primary: '27, 189, 206',
       primaryBackground: '227, 226, 225',
@@ -26,6 +27,7 @@ export const BaseTheme: DefaultTheme = {
       containerBackgorund: '255, 255, 255',
       error: '255, 0, 0',
       success: '0, 224, 0',
+      plot: '27, 189, 206',
     },
   },
   breakpoints: {

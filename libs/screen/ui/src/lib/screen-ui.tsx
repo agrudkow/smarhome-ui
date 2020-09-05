@@ -13,7 +13,7 @@ import {
   AlgorithmRoutes,
   DatasetRoutes,
 } from '@smarthome/common/service';
-import { Dashboard } from './billing';
+import { Dashboard } from './dashboard';
 import { Algorithms, DetailedAlgorithm, SelectDataset } from './algorithms';
 import { Datasets, DetailedDataset } from './datasets';
 import { QueryParamProvider } from 'use-query-params';

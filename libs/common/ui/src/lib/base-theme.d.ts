@@ -14,6 +14,7 @@ declare module 'styled-components' {
       containerBackgorund: string;
       error: string;
       success: string;
+      plot: string;
       rgb: {
         primary: string;
         primaryBackground: string;
@@ -26,6 +27,7 @@ declare module 'styled-components' {
         containerBackgorund: string;
         error: string;
         success: string;
+        plot: string;
       };
     };
     breakpoints: {

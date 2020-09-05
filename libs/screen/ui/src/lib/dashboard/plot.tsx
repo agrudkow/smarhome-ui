@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import {
   BarChart,
   Bar,
@@ -10,11 +11,12 @@ import {
   TooltipProps,
   Label,
 } from 'recharts';
-import { plotData } from './data';
+import { DailyBilling } from '@smarthome/screen/logic';
 import { OvalBoxContainer } from '@smarthome/common/ui';
 
-/* eslint-disable-next-line */
-export interface PlotProps {}
+export interface PlotProps {
+  data: DailyBilling[];
+}
 
 const CustomTooltip: FC<TooltipProps> = ({ active, payload }) => {
   return active ? (
@@ -22,15 +24,19 @@ const CustomTooltip: FC<TooltipProps> = ({ active, payload }) => {
   ) : null;
 };
 
-export const Plot: FC = () => {
+export const Plot: FC<PlotProps> = ({ data }) => {
+  const {
+    palette: { plot },
+  } = useContext(ThemeContext);
+
   return (
     <ResponsiveContainer>
-      <BarChart data={plotData} margin={{ bottom: 20 }}>
+      <BarChart data={data} margin={{ bottom: 20 }}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date">
+        <XAxis dataKey="day">
           <Label value="Day of the month" offset={0} position="bottom" />
         </XAxis>
-        <YAxis dataKey="value">
+        <YAxis dataKey="billed">
           <Label
             value="Billed (PLN)"
             angle={-90}
@@ -39,7 +45,7 @@ export const Plot: FC = () => {
           />
         </YAxis>
         <Tooltip content={<CustomTooltip />} />
-        <Bar dataKey="value" stackId="a" fill="#8884d8" />
+        <Bar dataKey="billed" stackId="a" fill={plot} />
       </BarChart>
     </ResponsiveContainer>
   );

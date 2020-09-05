@@ -17,11 +17,18 @@ export const regularSpacing = css`
 
   ${({
     theme: {
+      breakpoints: { tabletDF },
+    },
+  }) => tabletDF} {
+    margin: 5px 0;
+  }
+
+  ${({
+    theme: {
       breakpoints: { mobileDF },
     },
   }) => mobileDF} {
     padding: 5px 5px;
-    margin: 5px 0;
   }
 `;
 
