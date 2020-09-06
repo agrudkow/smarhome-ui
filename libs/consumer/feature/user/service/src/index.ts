@@ -1,1 +1,1 @@
-export * from './lib/consumer-feature-user-service';
+export * from './lib/fetch-user-details';

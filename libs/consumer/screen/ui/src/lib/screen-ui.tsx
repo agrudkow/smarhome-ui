@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { QueryParamProvider } from 'use-query-params';
 import {
   Layout,
   BrainIcon,
@@ -13,13 +14,22 @@ import {
   AlgorithmRoutes,
   DatasetRoutes,
 } from '@smarthome/common/service';
-import { Dashboard } from './dashboard';
-import { Algorithms, DetailedAlgorithm, SelectDataset } from './algorithms';
-import { Datasets, DetailedDataset } from './datasets';
-import { QueryParamProvider } from 'use-query-params';
-import SelectAlgorithm from './datasets/select-algorithm';
-import { Execute, ExecutionDetails } from './execution';
-import { User } from './user';
+import { User } from '@smarthome/consumer/feature/user/ui';
+import {
+  Algorithms,
+  DetailedAlgorithm,
+  SelectDataset,
+} from '@smarthome/consumer/feature/algorithms/ui';
+import { Dashboard } from '@smarthome/consumer/feature/dashboard/ui';
+import {
+  Datasets,
+  DetailedDataset,
+  SelectAlgorithm,
+} from '@smarthome/consumer/feature/datasets/ui';
+import {
+  Execute,
+  ExecutionDetails,
+} from '@smarthome/consumer/feature/resultsets/ui';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {

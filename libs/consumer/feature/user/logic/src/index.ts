@@ -1,1 +1,1 @@
-export * from './lib/consumer-feature-user-logic';
+export * from './lib/user.interface';

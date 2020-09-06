@@ -1,1 +1,1 @@
-export * from './lib/consumer-feature-user-ui';
+export * from './lib/user';

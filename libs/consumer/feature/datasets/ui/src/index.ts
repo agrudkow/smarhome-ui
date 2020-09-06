@@ -1,1 +1,3 @@
-export * from './lib/consumer-feature-datasets-ui';
+export * from './lib/datasets';
+export * from './lib/detailed-dataset';
+export * from './lib/select-algorithm';

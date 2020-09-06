@@ -29,15 +29,6 @@
       "@smarthome/common/state": ["libs/common/state/src/index.ts"],
       "@smarthome/consumer/store": ["libs/consumer/store/src/index.ts"],
       "@smarthome/consumer/screen/ui": ["libs/consumer/screen/ui/src/index.ts"],
-      "@smarthome/consumer/screen/state": [
-        "libs/consumer/screen/state/src/index.ts"
-      ],
-      "@smarthome/consumer/screen/logic": [
-        "libs/consumer/screen/logic/src/index.ts"
-      ],
-      "@smarthome/consumer/screen/service": [
-        "libs/consumer/screen/service/src/index.ts"
-      ],
       "@smarthome/consumer/feature/user/ui": [
         "libs/consumer/feature/user/ui/src/index.ts"
       ],

@@ -35,15 +35,6 @@
     "consumer-screen-ui": {
       "tags": []
     },
-    "consumer-screen-state": {
-      "tags": []
-    },
-    "consumer-screen-logic": {
-      "tags": []
-    },
-    "consumer-screen-service": {
-      "tags": []
-    },
     "consumer-feature-user-ui": {
       "tags": []
     },
