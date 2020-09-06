@@ -20,18 +20,75 @@
       "@smarthome/common": ["libs/common/src/index.ts"],
       "@smarthome/data": ["libs/data/src/index.ts"],
       "@smarthome/screen": ["libs/screen/src/index.ts"],
-      "@smarthome/store": ["libs/store/src/index.ts"],
       "@smarthome/common-ui": ["libs/common-ui/src/index.ts"],
       "@smarthome/common/ui": ["libs/common/ui/src/index.ts"],
       "@smarthome/common/logic": ["libs/common/logic/src/index.ts"],
       "@smarthome/common/store": ["libs/common/store/src/index.ts"],
       "@smarthome/common/service": ["libs/common/service/src/index.ts"],
-      "@smarthome/screen/logic": ["libs/screen/logic/src/index.ts"],
-      "@smarthome/screen/ui": ["libs/screen/ui/src/index.ts"],
-      "@smarthome/screen/service": ["libs/screen/service/src/index.ts"],
       "@smarthome/screen/store": ["libs/screen/store/src/index.ts"],
-      "@smarthome/screen/state": ["libs/screen/state/src/index.ts"],
-      "@smarthome/common/state": ["libs/common/state/src/index.ts"]
+      "@smarthome/common/state": ["libs/common/state/src/index.ts"],
+      "@smarthome/consumer/store": ["libs/consumer/store/src/index.ts"],
+      "@smarthome/consumer/screen/ui": ["libs/consumer/screen/ui/src/index.ts"],
+      "@smarthome/consumer/feature/user/ui": [
+        "libs/consumer/feature/user/ui/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/user/logic": [
+        "libs/consumer/feature/user/logic/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/user/state": [
+        "libs/consumer/feature/user/state/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/user/service": [
+        "libs/consumer/feature/user/service/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/datasets/ui": [
+        "libs/consumer/feature/datasets/ui/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/datasets/logic": [
+        "libs/consumer/feature/datasets/logic/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/datasets/state": [
+        "libs/consumer/feature/datasets/state/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/datasets/service": [
+        "libs/consumer/feature/datasets/service/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/algorithms/ui": [
+        "libs/consumer/feature/algorithms/ui/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/algorithms/logic": [
+        "libs/consumer/feature/algorithms/logic/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/algorithms/state": [
+        "libs/consumer/feature/algorithms/state/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/algorithms/service": [
+        "libs/consumer/feature/algorithms/service/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/dashboard/ui": [
+        "libs/consumer/feature/dashboard/ui/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/dashboard/logic": [
+        "libs/consumer/feature/dashboard/logic/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/dashboard/state": [
+        "libs/consumer/feature/dashboard/state/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/dashboard/service": [
+        "libs/consumer/feature/dashboard/service/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/resultsets/ui": [
+        "libs/consumer/feature/resultsets/ui/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/resultsets/logic": [
+        "libs/consumer/feature/resultsets/logic/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/resultsets/state": [
+        "libs/consumer/feature/resultsets/state/src/index.ts"
+      ],
+      "@smarthome/consumer/feature/resultsets/service": [
+        "libs/consumer/feature/resultsets/service/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

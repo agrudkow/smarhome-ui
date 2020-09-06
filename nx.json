@@ -17,9 +17,6 @@
     "data": {
       "tags": []
     },
-    "store": {
-      "tags": []
-    },
     "common-ui": {
       "tags": []
     },
@@ -29,19 +26,73 @@
     "common-service": {
       "tags": []
     },
-    "screen-logic": {
-      "tags": []
-    },
-    "screen-ui": {
-      "tags": []
-    },
-    "screen-service": {
-      "tags": []
-    },
-    "screen-state": {
-      "tags": []
-    },
     "common-state": {
+      "tags": []
+    },
+    "consumer-store": {
+      "tags": []
+    },
+    "consumer-screen-ui": {
+      "tags": []
+    },
+    "consumer-feature-user-ui": {
+      "tags": []
+    },
+    "consumer-feature-user-logic": {
+      "tags": []
+    },
+    "consumer-feature-user-state": {
+      "tags": []
+    },
+    "consumer-feature-user-service": {
+      "tags": []
+    },
+    "consumer-feature-datasets-ui": {
+      "tags": []
+    },
+    "consumer-feature-datasets-logic": {
+      "tags": []
+    },
+    "consumer-feature-datasets-state": {
+      "tags": []
+    },
+    "consumer-feature-datasets-service": {
+      "tags": []
+    },
+    "consumer-feature-algorithms-ui": {
+      "tags": []
+    },
+    "consumer-feature-algorithms-logic": {
+      "tags": []
+    },
+    "consumer-feature-algorithms-state": {
+      "tags": []
+    },
+    "consumer-feature-algorithms-service": {
+      "tags": []
+    },
+    "consumer-feature-dashboard-ui": {
+      "tags": []
+    },
+    "consumer-feature-dashboard-logic": {
+      "tags": []
+    },
+    "consumer-feature-dashboard-state": {
+      "tags": []
+    },
+    "consumer-feature-dashboard-service": {
+      "tags": []
+    },
+    "consumer-feature-resultsets-ui": {
+      "tags": []
+    },
+    "consumer-feature-resultsets-logic": {
+      "tags": []
+    },
+    "consumer-feature-resultsets-state": {
+      "tags": []
+    },
+    "consumer-feature-resultsets-service": {
       "tags": []
     }
   }
