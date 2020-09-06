@@ -17,9 +17,6 @@
     "data": {
       "tags": []
     },
-    "store": {
-      "tags": []
-    },
     "common-ui": {
       "tags": []
     },
@@ -29,19 +26,22 @@
     "common-service": {
       "tags": []
     },
-    "screen-logic": {
-      "tags": []
-    },
-    "screen-ui": {
-      "tags": []
-    },
-    "screen-service": {
-      "tags": []
-    },
-    "screen-state": {
-      "tags": []
-    },
     "common-state": {
+      "tags": []
+    },
+    "consumer-store": {
+      "tags": []
+    },
+    "consumer-screen-ui": {
+      "tags": []
+    },
+    "consumer-screen-state": {
+      "tags": []
+    },
+    "consumer-screen-logic": {
+      "tags": []
+    },
+    "consumer-screen-service": {
       "tags": []
     }
   }

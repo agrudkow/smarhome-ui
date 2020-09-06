@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { ScreenUi } from '@smarthome/screen/ui';
+import { ScreenUi } from '@smarthome/consumer/screen/ui';
 import { BaseTheme } from './base-theme';
 import { StylesProvider } from '@material-ui/core/styles';
 

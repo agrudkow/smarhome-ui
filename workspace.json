@@ -136,33 +136,6 @@
         }
       }
     },
-    "store": {
-      "root": "libs/store",
-      "sourceRoot": "libs/store/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/store/.eslintrc",
-            "tsConfig": [
-              "libs/store/tsconfig.lib.json",
-              "libs/store/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/store/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/store/jest.config.js",
-            "tsConfig": "libs/store/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "common-ui": {
       "root": "libs/common/ui",
       "sourceRoot": "libs/common/ui/src",
@@ -244,114 +217,6 @@
         }
       }
     },
-    "screen-logic": {
-      "root": "libs/screen/logic",
-      "sourceRoot": "libs/screen/logic/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/screen/logic/.eslintrc",
-            "tsConfig": [
-              "libs/screen/logic/tsconfig.lib.json",
-              "libs/screen/logic/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/screen/logic/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/screen/logic/jest.config.js",
-            "tsConfig": "libs/screen/logic/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "screen-ui": {
-      "root": "libs/screen/ui",
-      "sourceRoot": "libs/screen/ui/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/screen/ui/.eslintrc",
-            "tsConfig": [
-              "libs/screen/ui/tsconfig.lib.json",
-              "libs/screen/ui/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/screen/ui/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/screen/ui/jest.config.js",
-            "tsConfig": "libs/screen/ui/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "screen-service": {
-      "root": "libs/screen/service",
-      "sourceRoot": "libs/screen/service/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/screen/service/.eslintrc",
-            "tsConfig": [
-              "libs/screen/service/tsconfig.lib.json",
-              "libs/screen/service/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/screen/service/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/screen/service/jest.config.js",
-            "tsConfig": "libs/screen/service/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "screen-state": {
-      "root": "libs/screen/state",
-      "sourceRoot": "libs/screen/state/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/screen/state/.eslintrc",
-            "tsConfig": [
-              "libs/screen/state/tsconfig.lib.json",
-              "libs/screen/state/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/screen/state/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/screen/state/jest.config.js",
-            "tsConfig": "libs/screen/state/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "common-state": {
       "root": "libs/common/state",
       "sourceRoot": "libs/common/state/src",
@@ -375,6 +240,144 @@
           "options": {
             "jestConfig": "libs/common/state/jest.config.js",
             "tsConfig": "libs/common/state/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "consumer-store": {
+      "root": "libs/consumer/store",
+      "sourceRoot": "libs/consumer/store/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/consumer/store/.eslintrc",
+            "tsConfig": [
+              "libs/consumer/store/tsconfig.lib.json",
+              "libs/consumer/store/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/consumer/store/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/consumer/store/jest.config.js",
+            "tsConfig": "libs/consumer/store/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "consumer-screen-ui": {
+      "root": "libs/consumer/screen/ui",
+      "sourceRoot": "libs/consumer/screen/ui/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/consumer/screen/ui/.eslintrc",
+            "tsConfig": [
+              "libs/consumer/screen/ui/tsconfig.lib.json",
+              "libs/consumer/screen/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/consumer/screen/ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/consumer/screen/ui/jest.config.js",
+            "tsConfig": "libs/consumer/screen/ui/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "consumer-screen-state": {
+      "root": "libs/consumer/screen/state",
+      "sourceRoot": "libs/consumer/screen/state/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/consumer/screen/state/.eslintrc",
+            "tsConfig": [
+              "libs/consumer/screen/state/tsconfig.lib.json",
+              "libs/consumer/screen/state/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/consumer/screen/state/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/consumer/screen/state/jest.config.js",
+            "tsConfig": "libs/consumer/screen/state/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "consumer-screen-logic": {
+      "root": "libs/consumer/screen/logic",
+      "sourceRoot": "libs/consumer/screen/logic/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/consumer/screen/logic/.eslintrc",
+            "tsConfig": [
+              "libs/consumer/screen/logic/tsconfig.lib.json",
+              "libs/consumer/screen/logic/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/consumer/screen/logic/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/consumer/screen/logic/jest.config.js",
+            "tsConfig": "libs/consumer/screen/logic/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "consumer-screen-service": {
+      "root": "libs/consumer/screen/service",
+      "sourceRoot": "libs/consumer/screen/service/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/consumer/screen/service/.eslintrc",
+            "tsConfig": [
+              "libs/consumer/screen/service/tsconfig.lib.json",
+              "libs/consumer/screen/service/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/consumer/screen/service/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/consumer/screen/service/jest.config.js",
+            "tsConfig": "libs/consumer/screen/service/tsconfig.spec.json"
           }
         }
       }

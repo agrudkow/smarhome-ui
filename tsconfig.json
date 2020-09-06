@@ -20,18 +20,24 @@
       "@smarthome/common": ["libs/common/src/index.ts"],
       "@smarthome/data": ["libs/data/src/index.ts"],
       "@smarthome/screen": ["libs/screen/src/index.ts"],
-      "@smarthome/store": ["libs/store/src/index.ts"],
       "@smarthome/common-ui": ["libs/common-ui/src/index.ts"],
       "@smarthome/common/ui": ["libs/common/ui/src/index.ts"],
       "@smarthome/common/logic": ["libs/common/logic/src/index.ts"],
       "@smarthome/common/store": ["libs/common/store/src/index.ts"],
       "@smarthome/common/service": ["libs/common/service/src/index.ts"],
-      "@smarthome/screen/logic": ["libs/screen/logic/src/index.ts"],
-      "@smarthome/screen/ui": ["libs/screen/ui/src/index.ts"],
-      "@smarthome/screen/service": ["libs/screen/service/src/index.ts"],
       "@smarthome/screen/store": ["libs/screen/store/src/index.ts"],
-      "@smarthome/screen/state": ["libs/screen/state/src/index.ts"],
-      "@smarthome/common/state": ["libs/common/state/src/index.ts"]
+      "@smarthome/common/state": ["libs/common/state/src/index.ts"],
+      "@smarthome/consumer/store": ["libs/consumer/store/src/index.ts"],
+      "@smarthome/consumer/screen/ui": ["libs/consumer/screen/ui/src/index.ts"],
+      "@smarthome/consumer/screen/state": [
+        "libs/consumer/screen/state/src/index.ts"
+      ],
+      "@smarthome/consumer/screen/logic": [
+        "libs/consumer/screen/logic/src/index.ts"
+      ],
+      "@smarthome/consumer/screen/service": [
+        "libs/consumer/screen/service/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
