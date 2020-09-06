@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseDataset } from './dataset.interface';
 import { CellContainer, BaseButton } from '@smarthome/common/ui';
 import { DatasetDTO } from '@smarthome/data';
-import { TableDataParser } from './data-parser.type';
+import { TableDataParser } from '@smarthome/common/logic';
 
 export const datasetsDataParser: TableDataParser<BaseDataset, DatasetDTO> = (
   data,

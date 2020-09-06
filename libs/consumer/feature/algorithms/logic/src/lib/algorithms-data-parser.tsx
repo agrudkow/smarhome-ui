@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseAlgorithm } from './algorithm.interface';
 import { CellContainer, BaseButton, CustomRating } from '@smarthome/common/ui';
 import { AlgorithmDTO } from '@smarthome/data';
-import { TableDataParser } from './data-parser.type';
+import { TableDataParser } from '@smarthome/common/logic';
 
 export const algorithmsDataParser: TableDataParser<
   BaseAlgorithm,

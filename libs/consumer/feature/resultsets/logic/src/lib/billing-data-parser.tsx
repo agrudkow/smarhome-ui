@@ -1,8 +1,8 @@
 import React from 'react';
 import { CellContainer, BaseButton } from '@smarthome/common/ui';
-import { TableDataParser } from './data-parser.type';
 import { ExecutionBilling } from './billing.interface';
 import { ExecutionBillingDTO } from '@smarthome/data';
+import { TableDataParser } from '@smarthome/common/logic';
 
 export const executionsBillingDataParser: TableDataParser<
   ExecutionBilling,
