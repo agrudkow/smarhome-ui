@@ -6,6 +6,7 @@ import React, {
   useCallback,
   ChangeEvent,
 } from 'react';
+import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
 import {
@@ -13,6 +14,8 @@ import {
   SearchBar,
   PaginatedTable,
   Cell,
+  regularSpaceBetweenViewStyle,
+  BackButton,
 } from '@smarthome/common/ui';
 import {
   BaseDataset,
@@ -22,6 +25,10 @@ import {
 import { fetchDatasetsList } from '@smarthome/consumer/feature/datasets/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
+
+const StyledSelectDataset = styled.div`
+  ${regularSpaceBetweenViewStyle}
+`;
 
 export const SelectDataset: FC = () => {
   const history = useHistory();
@@ -61,35 +68,42 @@ export const SelectDataset: FC = () => {
     setTableBodyPlaceholder('No results, please try again using diffrent tags');
   }, [algorithmId, history, searchValue]);
 
+  const handleBackClick = useCallback(() => {
+    history.goBack();
+  }, [history]);
+
   useEffect(() => {
     const cells = datasetsCellsParser(width, { desktop, tablet });
     setTableCells(cells);
   }, [width, tablet, desktop]);
 
   return (
-    <>
-      <InfoHeader
-        headerText={'Select dataset'}
-        infoMessageText={
-          'This view allows you to search through owned dataset. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which datasets will be searched). Additionaly you can sort result by name.'
-        }
-      />
-      <SearchBar
-        inputPlaceHolder={
-          'Type comma seperated tags or leave it empty to search all datasets'
-        }
-        inputValue={searchValue || ''}
-        onSearch={handleSearch}
-        onInputValueChange={handleSearchInputChange}
-      />
-      <PaginatedTable<BaseDataset>
-        data={tableData}
-        cells={tableCells}
-        orderBy={orderBy}
-        setOrderBy={setOrderBy}
-        bodyPlaceholderText={tableBodyPlaceholder}
-      />
-    </>
+    <StyledSelectDataset>
+      <div>
+        <InfoHeader
+          headerText={'Select dataset'}
+          infoMessageText={
+            'This view allows you to search through owned dataset. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which datasets will be searched). Additionaly you can sort result by name.'
+          }
+        />
+        <SearchBar
+          inputPlaceHolder={
+            'Type comma seperated tags or leave it empty to search all datasets'
+          }
+          inputValue={searchValue || ''}
+          onSearch={handleSearch}
+          onInputValueChange={handleSearchInputChange}
+        />
+        <PaginatedTable<BaseDataset>
+          data={tableData}
+          cells={tableCells}
+          orderBy={orderBy}
+          setOrderBy={setOrderBy}
+          bodyPlaceholderText={tableBodyPlaceholder}
+        />
+      </div>
+      <BackButton onClick={handleBackClick} />
+    </StyledSelectDataset>
   );
 };
 
