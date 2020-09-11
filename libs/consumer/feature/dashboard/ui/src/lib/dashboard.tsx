@@ -21,7 +21,7 @@ import {
   fetchTotalBilling,
 } from '@smarthome/consumer/feature/resultsets/service';
 import { useHistory } from 'react-router-dom';
-import { Routes } from '@smarthome/common/service';
+import { CustomerRoutes } from '@smarthome/common/service';
 import TotalBilling from './total-billing';
 import BillingsPlot from './billings-plot';
 
@@ -82,7 +82,7 @@ export const Dashboard: React.FC = () => {
         'more',
         (resultsetId: string) => () => {
           history.push(
-            `${Routes.Execution}/${encodeURIComponent(resultsetId)}`
+            `${CustomerRoutes.Execution}/${encodeURIComponent(resultsetId)}`
           );
         }
       )

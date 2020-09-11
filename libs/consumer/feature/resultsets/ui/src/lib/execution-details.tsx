@@ -14,7 +14,10 @@ import {
 } from '@smarthome/common/ui';
 import { ResultsetDTO } from '@smarthome/data';
 import { fetchResultsetDetails } from '@smarthome/consumer/feature/resultsets/service';
-import { Routes, DatasetRoutes } from '@smarthome/common/service';
+import {
+  CustomerRoutes,
+  CustomerDatasetRoutes,
+} from '@smarthome/common/service';
 
 const StyledExecutionDetails = styled.div`
   ${regularSpaceBetweenViewStyle}
@@ -66,8 +69,8 @@ export const ExecutionDetails: FC = () => {
     if (resultsetData) {
       const { datasetId, algorithmId } = resultsetData;
       history.push(
-        `/${Routes.Datasets}/${encodeURIComponent(datasetId)}/${
-          DatasetRoutes.Execute
+        `/${CustomerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
+          CustomerDatasetRoutes.Execute
         }/${encodeURIComponent(algorithmId)}`
       );
     }

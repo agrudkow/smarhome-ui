@@ -16,7 +16,10 @@ import {
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { ThemeContext } from 'styled-components';
 import { fetchAlgorithmsList } from '@smarthome/consumer/feature/algorithms/service';
-import { Routes, DatasetRoutes } from '@smarthome/common/service';
+import {
+  CustomerRoutes,
+  CustomerDatasetRoutes,
+} from '@smarthome/common/service';
 import {
   InfoHeader,
   SearchBar,
@@ -62,8 +65,8 @@ export const SelectAlgorithm: FC = () => {
         'select',
         (id: string) => () => {
           history.push(
-            `/${Routes.Datasets}/${encodeURIComponent(datasetId)}/${
-              DatasetRoutes.Execute
+            `/${CustomerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
+              CustomerDatasetRoutes.Execute
             }/${encodeURIComponent(id)}`
           );
         }

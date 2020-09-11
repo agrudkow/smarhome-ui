@@ -108,6 +108,48 @@
     "supplier-e2e": {
       "tags": [],
       "implicitDependencies": ["supplier"]
+    },
+    "supplier-feature-user-ui": {
+      "tags": []
+    },
+    "supplier-feature-user-logic": {
+      "tags": []
+    },
+    "supplier-feature-user-state": {
+      "tags": []
+    },
+    "supplier-feature-user-service": {
+      "tags": []
+    },
+    "supplier-feature-algorithms-ui": {
+      "tags": []
+    },
+    "supplier-feature-algorithms-logic": {
+      "tags": []
+    },
+    "supplier-feature-algorithms-state": {
+      "tags": []
+    },
+    "supplier-feature-algorithms-service": {
+      "tags": []
+    },
+    "supplier-feature-dashboard-ui": {
+      "tags": []
+    },
+    "supplier-feature-dashboard-logic": {
+      "tags": []
+    },
+    "supplier-feature-dashboard-state": {
+      "tags": []
+    },
+    "supplier-feature-dashboard-service": {
+      "tags": []
+    },
+    "supplier-screen-ui": {
+      "tags": []
+    },
+    "supplier-store": {
+      "tags": []
     }
   }
 }

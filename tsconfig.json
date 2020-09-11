@@ -89,7 +89,45 @@
       ],
       "@smarthome/consumer/feature/resultsets/service": [
         "libs/consumer/feature/resultsets/service/src/index.ts"
-      ]
+      ],
+      "@smarthome/supplier/feature/user/ui": [
+        "libs/supplier/feature/user/ui/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/user/logic": [
+        "libs/supplier/feature/user/logic/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/user/state": [
+        "libs/supplier/feature/user/state/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/user/service": [
+        "libs/supplier/feature/user/service/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/algorithms/ui": [
+        "libs/supplier/feature/algorithms/ui/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/algorithms/logic": [
+        "libs/supplier/feature/algorithms/logic/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/algorithms/state": [
+        "libs/supplier/feature/algorithms/state/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/algorithms/service": [
+        "libs/supplier/feature/algorithms/service/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/dashboard/ui": [
+        "libs/supplier/feature/dashboard/ui/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/dashboard/logic": [
+        "libs/supplier/feature/dashboard/logic/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/dashboard/state": [
+        "libs/supplier/feature/dashboard/state/src/index.ts"
+      ],
+      "@smarthome/supplier/feature/dashboard/service": [
+        "libs/supplier/feature/dashboard/service/src/index.ts"
+      ],
+      "@smarthome/supplier/screen/ui": ["libs/supplier/screen/ui/src/index.ts"],
+      "@smarthome/supplier/store": ["libs/supplier/store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "dist"]

@@ -10,9 +10,9 @@ import {
   SidebarLinkProps,
 } from '@smarthome/common/ui';
 import {
-  Routes,
-  AlgorithmRoutes,
-  DatasetRoutes,
+  CustomerRoutes,
+  CustomerAlgorithmRoutes,
+  CustomerDatasetRoutes,
 } from '@smarthome/common/service';
 import { User } from '@smarthome/consumer/feature/user/ui';
 import {
@@ -35,22 +35,22 @@ const SidebarLinks: SidebarLinkProps[] = [
   {
     text: 'Dashboard',
     icon: <PollIcon iconColor={''} />,
-    route: `/${Routes.Dashboard}`,
+    route: `/${CustomerRoutes.Dashboard}`,
   },
   {
     text: 'Algorithms',
     icon: <BrainIcon iconColor={''} />,
-    route: `/${Routes.Algorithms}`,
+    route: `/${CustomerRoutes.Algorithms}`,
   },
   {
     text: 'Datasets',
     icon: <DataBaseIcon iconColor={''} />,
-    route: `/${Routes.Datasets}`,
+    route: `/${CustomerRoutes.Datasets}`,
   },
   {
     text: 'User',
     icon: <UserIcon iconColor={''} />,
-    route: `/${Routes.User}`,
+    route: `/${CustomerRoutes.User}`,
   },
 ];
 
@@ -60,49 +60,57 @@ export const ScreenUi: React.FC = () => {
       <QueryParamProvider ReactRouterRoute={Route}>
         <Layout sidebarLinks={SidebarLinks}>
           <Switch>
-            <Route path={`/${Routes.Dashboard}`} component={Dashboard} exact />
             <Route
-              path={`/${Routes.Algorithms}`}
+              path={`/${CustomerRoutes.Dashboard}`}
+              component={Dashboard}
+              exact
+            />
+            <Route
+              path={`/${CustomerRoutes.Algorithms}`}
               component={Algorithms}
               exact
             />
             <Route
-              path={`/${Routes.Algorithms}/:id`}
+              path={`/${CustomerRoutes.Algorithms}/:id`}
               component={DetailedAlgorithm}
               exact
             />
             <Route
-              path={`/${Routes.Algorithms}/:id/${AlgorithmRoutes.SelectDataset}`}
+              path={`/${CustomerRoutes.Algorithms}/:id/${CustomerAlgorithmRoutes.SelectDataset}`}
               component={SelectDataset}
               exact
             />
             <Route
-              path={`/${Routes.Algorithms}/:algorithmId/${AlgorithmRoutes.Execute}/:datasetId`}
+              path={`/${CustomerRoutes.Algorithms}/:algorithmId/${CustomerAlgorithmRoutes.Execute}/:datasetId`}
               component={Execute}
               exact
             />
-            <Route path={`/${Routes.Datasets}`} component={Datasets} exact />
             <Route
-              path={`/${Routes.Datasets}/:id`}
+              path={`/${CustomerRoutes.Datasets}`}
+              component={Datasets}
+              exact
+            />
+            <Route
+              path={`/${CustomerRoutes.Datasets}/:id`}
               component={DetailedDataset}
               exact
             />
             <Route
-              path={`/${Routes.Datasets}/:id/${DatasetRoutes.SelectAlgorithm}`}
+              path={`/${CustomerRoutes.Datasets}/:id/${CustomerDatasetRoutes.SelectAlgorithm}`}
               component={SelectAlgorithm}
               exact
             />
             <Route
-              path={`/${Routes.Datasets}/:datasetId/${DatasetRoutes.Execute}/:algorithmId`}
+              path={`/${CustomerRoutes.Datasets}/:datasetId/${CustomerDatasetRoutes.Execute}/:algorithmId`}
               component={Execute}
               exact
             />
             <Route
-              path={`/${Routes.Execution}/:resultsetId`}
+              path={`/${CustomerRoutes.Execution}/:resultsetId`}
               component={ExecutionDetails}
               exact
             />
-            <Route path={`/${Routes.User}`} component={User} exact />
+            <Route path={`/${CustomerRoutes.User}`} component={User} exact />
           </Switch>
         </Layout>
       </QueryParamProvider>

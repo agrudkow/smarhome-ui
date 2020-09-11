@@ -2,7 +2,10 @@ import React, { FC, useState, useCallback, useEffect, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { useHistory, useParams } from 'react-router-dom';
 import { DatasetDetailsDTO } from '@smarthome/data';
-import { Routes, DatasetRoutes } from '@smarthome/common/service';
+import {
+  CustomerRoutes,
+  CustomerDatasetRoutes,
+} from '@smarthome/common/service';
 import { fetchDatasetDetails } from '@smarthome/consumer/feature/datasets/service';
 import {
   InfoHeader,
@@ -74,7 +77,7 @@ export const DetailedDataset: FC = () => {
   }, []);
 
   const handleBackClick = useCallback(() => {
-    history.push(`/${Routes.Datasets}`);
+    history.push(`/${CustomerRoutes.Datasets}`);
   }, [history]);
 
   const handleDeleteDataset = useCallback(() => {
@@ -84,8 +87,8 @@ export const DetailedDataset: FC = () => {
 
   const handleRunWithAlgorithmClick = useCallback(() => {
     history.push(
-      `/${Routes.Datasets}/${encodeURIComponent(datasetId)}/${
-        DatasetRoutes.SelectAlgorithm
+      `/${CustomerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
+        CustomerDatasetRoutes.SelectAlgorithm
       }`
     );
   }, [datasetId, history]);
