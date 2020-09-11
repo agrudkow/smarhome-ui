@@ -24,7 +24,7 @@ import {
 import { fetchDatasetsList } from '@smarthome/consumer/feature/datasets/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { useHistory } from 'react-router-dom';
-import { Routes } from '@smarthome/common/service';
+import { CustomerRoutes } from '@smarthome/common/service';
 import { AddDataset } from './add-dataset';
 
 type CurrentView = 'list' | 'add-dataset';
@@ -61,7 +61,7 @@ export const Datasets: FC = () => {
     console.log('searchValue :>> ', searchValue);
     setTableData(
       datasetsDataParser(fetchDatasetsList(), 'more', (id: string) => () => {
-        history.push(`${Routes.Datasets}/${encodeURIComponent(id)}`);
+        history.push(`${CustomerRoutes.Datasets}/${encodeURIComponent(id)}`);
       })
     );
     setTableBodyPlaceholder('No results, please try again using diffrent tags');

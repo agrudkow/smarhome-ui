@@ -22,7 +22,7 @@ import {
 } from '@smarthome/consumer/feature/algorithms/logic';
 import { fetchAlgorithmsList } from '@smarthome/consumer/feature/algorithms/service';
 import { useHistory } from 'react-router';
-import { Routes } from '@smarthome/common/service';
+import { CustomerRoutes } from '@smarthome/common/service';
 
 export const Algorithms: FC = () => {
   const history = useHistory();
@@ -51,7 +51,7 @@ export const Algorithms: FC = () => {
     console.log('searchValue :>> ', searchValue);
     setTableData(
       algorithmsDataParser(fetchAlgorithmsList(), 'more', (id: string) => () =>
-        history.push(`${Routes.Algorithms}/${encodeURIComponent(id)}`)
+        history.push(`${CustomerRoutes.Algorithms}/${encodeURIComponent(id)}`)
       )
     );
     setTableBodyPlaceholder('No results, please try again using diffrent tags');

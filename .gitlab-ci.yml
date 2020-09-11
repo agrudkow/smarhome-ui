@@ -15,7 +15,8 @@ stages:
   image: node:latest
   stage: test
   before_script:
-    - yarn
+    - echo "cicd"
+    # - yarn
 
 lint_web:
   <<: *lint_web_definition
@@ -23,10 +24,11 @@ lint_web:
     - develop
     - master
   script:
-    - yarn format:check --base=origin/develop --verbose
-    - yarn nx workspace-lint
-    - yarn nx affected:lint --parallel --base=origin/develop | tee lintresult
-    - '! cat lintresult | grep -q warning'
+    - echo "cicd"
+    # - yarn format:check --base=origin/develop --verbose
+    # - yarn nx workspace-lint
+    # - yarn nx affected:lint --parallel --base=origin/develop | tee lintresult
+    # - '! cat lintresult | grep -q warning'
 
 .build_web_template: &build_web_definition
   image: 'node:latest'
@@ -42,22 +44,26 @@ build_web_dev:
   except:
     - master
   script:
-    - yarn nx run consumer:build --prod
+    - echo "cicd"
+    # - yarn nx run consumer:build --prod
 
 build_web_prd:
   <<: *build_web_definition
   only:
     - master
   script:
-    - yarn nx run consumer:build --prod
+    - echo "cicd"
+    # - yarn nx run consumer:build --prod
 
 .deploy_web_template: &deploy_web_definition
   image: python:latest
   stage: deploy
   before_script:
-    - pip install awscli
+    # - pip install awscli
+    - echo "cicd"
   script:
-    - aws s3 sync dist/apps/consumer s3://$AWS_BUCKET_NAME --region $AWS_REGION --delete
+    - echo "cicd"
+    # - aws s3 sync dist/apps/consumer s3://$AWS_BUCKET_NAME --region $AWS_REGION --delete
 
 deploy_web_dev:
   <<: *deploy_web_definition
@@ -77,4 +83,5 @@ deploy_web_prd:
   variables:
     AWS_BUCKET_NAME: smarthome-app-prod
   script:
-    - yarn release
+    - echo "cicd"
+    # - yarn release

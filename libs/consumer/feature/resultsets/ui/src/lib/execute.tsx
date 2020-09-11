@@ -16,9 +16,9 @@ import { AlgorithmDetailsDTO, DatasetDetailsDTO } from '@smarthome/data';
 import { fetchAlgorithmDetails } from '@smarthome/consumer/feature/algorithms/service';
 import { fetchDatasetDetails } from '@smarthome/consumer/feature/datasets/service';
 import {
-  Routes,
-  AlgorithmRoutes,
-  DatasetRoutes,
+  CustomerRoutes,
+  CustomerAlgorithmRoutes,
+  CustomerDatasetRoutes,
 } from '@smarthome/common/service';
 
 const StyledExecute = styled.div`
@@ -108,20 +108,20 @@ export const Execute: FC = () => {
   } = useContext(ThemeContext);
 
   const handleBackClick = useCallback(() => {
-    if (RegExp(`^/${Routes.Datasets}`).test(pathname)) {
+    if (RegExp(`^/${CustomerRoutes.Datasets}`).test(pathname)) {
       history.push(
-        `/${Routes.Datasets}/${encodeURIComponent(datasetId)}/${
-          DatasetRoutes.SelectAlgorithm
+        `/${CustomerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
+          CustomerDatasetRoutes.SelectAlgorithm
         }`
       );
-    } else if (RegExp(`^/${Routes.Algorithms}`).test(pathname)) {
+    } else if (RegExp(`^/${CustomerRoutes.Algorithms}`).test(pathname)) {
       history.push(
-        `/${Routes.Algorithms}/${encodeURIComponent(algorithmId)}/${
-          AlgorithmRoutes.SelectDataset
+        `/${CustomerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
+          CustomerAlgorithmRoutes.SelectDataset
         }`
       );
     } else {
-      history.push(`/${Routes.Dashboard}`);
+      history.push(`/${CustomerRoutes.Dashboard}`);
     }
   }, [algorithmId, datasetId, history, pathname]);
 

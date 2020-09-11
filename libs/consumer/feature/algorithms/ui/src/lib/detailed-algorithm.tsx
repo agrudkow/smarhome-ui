@@ -12,7 +12,10 @@ import {
   RatingDialog,
 } from '@smarthome/common/ui';
 import { useHistory, useParams } from 'react-router';
-import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
+import {
+  CustomerRoutes,
+  CustomerAlgorithmRoutes,
+} from '@smarthome/common/service';
 import { fetchAlgorithmDetails } from '@smarthome/consumer/feature/algorithms/service';
 import { AlgorithmDetailsDTO } from '@smarthome/data';
 
@@ -68,13 +71,13 @@ export const DetailedAlgorithm: FC = () => {
   const [rating, setRating] = useState<number>(0);
 
   const handleBackClick = useCallback(() => {
-    history.push(`/${Routes.Algorithms}`);
+    history.push(`/${CustomerRoutes.Algorithms}`);
   }, [history]);
 
   const handleRunOnDatasetClick = useCallback(() => {
     history.push(
-      `/${Routes.Algorithms}/${encodeURIComponent(algorithmId)}/${
-        AlgorithmRoutes.SelectDataset
+      `/${CustomerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
+        CustomerAlgorithmRoutes.SelectDataset
       }`
     );
   }, [algorithmId, history]);

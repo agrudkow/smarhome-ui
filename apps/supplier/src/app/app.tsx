@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { ScreenUi } from '@smarthome/consumer/screen/ui';
+import { SupplierScreenUi } from '@smarthome/supplier/screen/ui';
 import { BaseTheme } from './base-theme';
 import { StylesProvider } from '@material-ui/core/styles';
 
@@ -57,7 +57,7 @@ export const App = () => {
       <ThemeProvider theme={BaseTheme}>
         <GlobalStyle />
         <StyledApp>
-          <ScreenUi />
+          <SupplierScreenUi />
         </StyledApp>
       </ThemeProvider>
     </StylesProvider>

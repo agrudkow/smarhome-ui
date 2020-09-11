@@ -24,7 +24,10 @@ import {
 } from '@smarthome/consumer/feature/datasets/logic';
 import { fetchDatasetsList } from '@smarthome/consumer/feature/datasets/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
-import { Routes, AlgorithmRoutes } from '@smarthome/common/service';
+import {
+  CustomerRoutes,
+  CustomerAlgorithmRoutes,
+} from '@smarthome/common/service';
 
 const StyledSelectDataset = styled.div`
   ${regularSpaceBetweenViewStyle}
@@ -59,8 +62,8 @@ export const SelectDataset: FC = () => {
     setTableData(
       datasetsDataParser(fetchDatasetsList(), 'select', (id: string) => () => {
         history.push(
-          `/${Routes.Algorithms}/${encodeURIComponent(algorithmId)}/${
-            AlgorithmRoutes.Execute
+          `/${CustomerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
+            CustomerAlgorithmRoutes.Execute
           }/${encodeURIComponent(id)}`
         );
       })
