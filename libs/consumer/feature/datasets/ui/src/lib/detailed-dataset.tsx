@@ -1,5 +1,4 @@
 import React, { FC, useState, useCallback, useEffect, useContext } from 'react';
-
 import styled, { ThemeContext } from 'styled-components';
 import { useHistory, useParams } from 'react-router-dom';
 import { DatasetDetailsDTO } from '@smarthome/data';

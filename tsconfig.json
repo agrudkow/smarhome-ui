@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
+    "allowJs": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -91,5 +92,5 @@
       ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp", "dist"]
 }

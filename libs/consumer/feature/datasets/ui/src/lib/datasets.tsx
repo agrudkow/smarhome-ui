@@ -35,7 +35,7 @@ const StyledDataset = styled.div`
 
 export const Datasets: FC = () => {
   const history = useHistory();
-  const [currentView, setCurrentView] = useState<CurrentView>('add-dataset');
+  const [currentView, setCurrentView] = useState<CurrentView>('list');
   const [tableData, setTableData] = useState<BaseDataset[]>([]);
   const [searchValue, setSearchValue] = useState<string | undefined>();
   const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
