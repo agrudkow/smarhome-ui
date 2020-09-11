@@ -94,6 +94,20 @@
     },
     "consumer-feature-resultsets-service": {
       "tags": []
+    },
+    "consumer": {
+      "tags": []
+    },
+    "consumer-e2e": {
+      "tags": [],
+      "implicitDependencies": ["consumer"]
+    },
+    "supplier": {
+      "tags": []
+    },
+    "supplier-e2e": {
+      "tags": [],
+      "implicitDependencies": ["supplier"]
     }
   }
 }

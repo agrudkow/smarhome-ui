@@ -42,14 +42,14 @@ build_web_dev:
   except:
     - master
   script:
-    - yarn nx run smarthome:build --prod
+    - yarn nx run consumer:build --prod
 
 build_web_prd:
   <<: *build_web_definition
   only:
     - master
   script:
-    - yarn nx run smarthome:build --prod
+    - yarn nx run consumer:build --prod
 
 .deploy_web_template: &deploy_web_definition
   image: python:latest
@@ -57,7 +57,7 @@ build_web_prd:
   before_script:
     - pip install awscli
   script:
-    - aws s3 sync dist/apps/smarthome s3://$AWS_BUCKET_NAME --region $AWS_REGION --delete
+    - aws s3 sync dist/apps/consumer s3://$AWS_BUCKET_NAME --region $AWS_REGION --delete
 
 deploy_web_dev:
   <<: *deploy_web_definition
