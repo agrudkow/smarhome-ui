@@ -7,17 +7,17 @@ import {
   CustomerDatasetRoutes,
 } from '@smarthome/common/service';
 import { fetchDatasetDetails } from '@smarthome/consumer/feature/datasets/service';
+import EditDatasetAccordions from './edit-dataset-accordions';
 import {
+  regularSpaceBetweenViewStyle,
   InfoHeader,
-  H6,
+  UnderlinedContainer,
   OvalBoxContainer,
   OutlinedButton,
-  UnderlinedContainer,
-  BackButton,
-  regularSpaceBetweenViewStyle,
   DeleteDialog,
+  BackButton,
+  H6,
 } from '@smarthome/common/ui';
-import EditDatasetAccordions from './edit-dataset-accordions';
 
 const StyledDetailedDataset = styled.div`
   ${regularSpaceBetweenViewStyle}

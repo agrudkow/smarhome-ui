@@ -1,1 +1,2 @@
-export * from './lib/supplier-feature-algorithms-ui';
+export * from './lib/detailed-algorithm';
+export * from './lib/algorithms';

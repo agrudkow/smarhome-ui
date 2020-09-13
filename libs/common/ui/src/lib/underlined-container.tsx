@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-const StyledUnderlinedContainer = styled.div`
+interface UnderlinedContainerProps {
+  color?: string;
+}
+
+const StyledUnderlinedContainer = styled.div<UnderlinedContainerProps>`
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid
@@ -9,7 +13,8 @@ const StyledUnderlinedContainer = styled.div`
       theme: {
         palette: { primary },
       },
-    }) => primary};
+      color,
+    }) => color || primary};
 
   ${({
     theme: {
@@ -22,8 +27,13 @@ const StyledUnderlinedContainer = styled.div`
   }
 `;
 
-export const UnderlinedContainer: FC = ({ children }) => (
-  <StyledUnderlinedContainer>{children}</StyledUnderlinedContainer>
+export const UnderlinedContainer: FC<UnderlinedContainerProps> = ({
+  children,
+  color,
+}) => (
+  <StyledUnderlinedContainer color={color}>
+    {children}
+  </StyledUnderlinedContainer>
 );
 
 export default UnderlinedContainer;

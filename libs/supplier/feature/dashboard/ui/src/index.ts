@@ -1,1 +1,1 @@
-export * from './lib/supplier-feature-dashboard-ui';
+export * from './lib/dashboard';

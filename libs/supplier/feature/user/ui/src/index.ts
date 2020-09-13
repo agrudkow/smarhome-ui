@@ -1,1 +1,1 @@
-export * from './lib/supplier-feature-user-ui';
+export * from './lib/user';

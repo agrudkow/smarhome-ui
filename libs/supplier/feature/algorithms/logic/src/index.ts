@@ -1,1 +1,1 @@
-export * from './lib/supplier-feature-algorithms-logic';
+export * from './lib/algorithm-statistics.interface';

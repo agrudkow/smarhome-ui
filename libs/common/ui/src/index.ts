@@ -1,5 +1,7 @@
 import './lib/base-theme.d';
 
+export * from './lib/month-switch';
+
 export * from './lib/rating-dialog';
 export * from './lib/arrow-button';
 export * from './lib/floating-add-button';
@@ -25,3 +27,4 @@ export * from './lib/assets';
 export * from './lib/hamburger-menu';
 export * from './lib/delete-dialog';
 export * from './lib/text-field';
+export * from './lib/underlined-subtitle';

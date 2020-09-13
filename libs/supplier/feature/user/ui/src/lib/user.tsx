@@ -57,7 +57,7 @@ export const User: FC = () => {
               onSaveChanges={handleSaveChanges}
             />
           </OvalBoxContainer>
-          {edit && (
+          {!edit && (
             <OutlinedButton
               onClick={handleLogout}
               customColor={error}
