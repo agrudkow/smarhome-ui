@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { VariantType, useSnackbar } from 'notistack';
 import {
   InfoHeader,
   OvalBoxContainer,
@@ -44,6 +45,7 @@ const RatingContainer = styled.div`
 `;
 
 export const DetailedAlgorithm: FC = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
   const { id: algorithmId } = useParams<{ id: string }>();
   const [algorithmData, setAlgorithmData] = useState<
@@ -58,8 +60,9 @@ export const DetailedAlgorithm: FC = () => {
 
   const handleDeleteAlgorithm = useCallback(() => {
     console.log(`Delete dataset ${algorithmId}`);
+    enqueueSnackbar(`Delete dataset ${algorithmId}`, { variant: 'success' });
     setOpenDeleteDialog(false);
-  }, [algorithmId]);
+  }, [algorithmId, enqueueSnackbar]);
 
   const handleDeleteDialogClose = useCallback(() => {
     setOpenDeleteDialog(false);

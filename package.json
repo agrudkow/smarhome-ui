@@ -34,6 +34,7 @@
     "document-register-element": "1.13.1",
     "formik": "^2.1.5",
     "material-table": "^1.68.0",
+    "notistack": "^1.0.0",
     "query-string": "^6.13.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
