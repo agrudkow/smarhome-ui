@@ -25,8 +25,9 @@ import { fetchDatasetsList } from '@smarthome/consumer/feature/datasets/service'
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { useHistory } from 'react-router-dom';
 import { SupplierRoutes } from '@smarthome/common/service';
+import AddAlgorithm from './add-algorithm';
 
-type CurrentView = 'list' | 'add-dataset';
+type CurrentView = 'list' | 'add-algorithm';
 
 const StyledDataset = styled.div`
   padding-bottom: 60px; //Accommodate floating buttom
@@ -111,14 +112,14 @@ export const Algorithms: FC = () => {
             bodyPlaceholderText={tableBodyPlaceholder}
           />
           <FloatingAddButton
-            hoverText={'Add dataset'}
+            hoverText={'Add algorithm'}
             textWidth={150}
-            onClick={handleChangeViewFactory('add-dataset')}
+            onClick={handleChangeViewFactory('add-algorithm')}
           />
         </>
       ) : (
         <OvalBoxContainer>
-          {/* <AddDataset onCancle={handleChangeViewFactory('list')} /> */}
+          <AddAlgorithm onCancle={handleChangeViewFactory('list')} />
         </OvalBoxContainer>
       )}
     </StyledDataset>
