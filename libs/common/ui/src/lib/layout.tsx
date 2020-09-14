@@ -10,6 +10,7 @@ import { Sidebar, SidebarLinkProps } from './hamburger-menu';
 import Header from './header';
 import MainContainer from './main-container';
 import { useWindowDimensions } from '@smarthome/common/logic';
+import { SnackbarProvider } from 'notistack';
 
 interface LayoutProps {
   sidebarLinks: SidebarLinkProps[];
@@ -61,7 +62,14 @@ export const Layout: React.FC<LayoutProps> = ({
         onShowSidebarClick={handleShowSidebarClick}
         items={sidebarLinks}
       >
-        <MainContainer>{children}</MainContainer>
+        <SnackbarProvider
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+        >
+          <MainContainer>{children}</MainContainer>
+        </SnackbarProvider>
       </Sidebar>
     </>
   );
