@@ -13,9 +13,14 @@ import { useWindowDimensions } from '@smarthome/common/logic';
 
 interface LayoutProps {
   sidebarLinks: SidebarLinkProps[];
+  loading: boolean;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, sidebarLinks }) => {
+export const Layout: React.FC<LayoutProps> = ({
+  children,
+  sidebarLinks,
+  loading,
+}) => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   const { pathname } = useLocation();
   const { width } = useWindowDimensions();
@@ -49,6 +54,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, sidebarLinks }) => {
         viewName={
           sidebarLinks.find((item) => `/${item.route}` === pathname)?.text ?? ''
         }
+        loading={loading}
       />
       <Sidebar
         show={showSidebar}
