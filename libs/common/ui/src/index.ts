@@ -1,7 +1,7 @@
 import './lib/base-theme.d';
 
+export * from './lib/sign-in';
 export * from './lib/month-switch';
-
 export * from './lib/rating-dialog';
 export * from './lib/arrow-button';
 export * from './lib/floating-add-button';

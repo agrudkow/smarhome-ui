@@ -44,6 +44,8 @@ export const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   display: flex;
   height: ${({ height }) => (height ? `${height}px` : 'auto')};
   width: ${({ width }) => (width ? `${width}px` : 'auto')};
+  max-height: ${({ height }) => (height ? `${height}px` : 'auto')};
+  max-width: ${({ width }) => (width ? `${width}px` : 'auto')};
   background-color: ${({
     backgroundColor,
     theme: {
