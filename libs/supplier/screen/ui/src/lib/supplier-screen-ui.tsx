@@ -9,6 +9,12 @@ import {
   SidebarLinkProps,
 } from '@smarthome/common/ui';
 import { SupplierRoutes } from '@smarthome/common/service';
+import { User } from '@smarthome/supplier/feature/user/ui';
+import {
+  Algorithms,
+  DetailedAlgorithm,
+} from '@smarthome/supplier/feature/algorithms/ui';
+import { Dashboard } from '@smarthome/supplier/feature/dashboard/ui';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -34,10 +40,22 @@ export const SupplierScreenUi: FC = () => {
       <QueryParamProvider ReactRouterRoute={Route}>
         <Layout sidebarLinks={SidebarLinks}>
           <Switch>
-            <Route path={`/${SupplierRoutes.Dashboard}`} exact />
-            <Route path={`/${SupplierRoutes.Algorithms}`} exact />
-            <Route path={`/${SupplierRoutes.Algorithms}/:id`} exact />
-            <Route path={`/${SupplierRoutes.User}`} exact />
+            <Route
+              path={`/${SupplierRoutes.Dashboard}`}
+              exact
+              component={Dashboard}
+            />
+            <Route
+              path={`/${SupplierRoutes.Algorithms}`}
+              exact
+              component={Algorithms}
+            />
+            <Route
+              path={`/${SupplierRoutes.Algorithms}/:id`}
+              exact
+              component={DetailedAlgorithm}
+            />
+            <Route path={`/${SupplierRoutes.User}`} exact component={User} />
           </Switch>
         </Layout>
       </QueryParamProvider>

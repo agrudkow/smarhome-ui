@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 import { TextField as MUITextField } from '@material-ui/core';
 
-export const TextField = styled(MUITextField)`
+export const TextField = styled(MUITextField)<{
+  outlineColorWhenDissabled?: string;
+}>`
   & .MuiOutlinedInput-root {
     border-radius: ${({
       theme: {
         layout: { borderRadius },
       },
-    }) => borderRadius};
+    }) => borderRadius}px;
+  }
+
+  & .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline {
+    border-color: ${({ outlineColorWhenDissabled }) =>
+      outlineColorWhenDissabled || 'inherit'};
   }
 
   & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {

@@ -40,8 +40,8 @@ export interface Cell<Keys extends string | symbol | number> {
 
 export interface TableHeaderProps<Keys extends string | symbol | number> {
   onRequestSort: (property: Keys) => void;
-  order: Order;
-  orderBy: Keys;
+  order?: Order;
+  orderBy?: Keys;
   cells: Cell<Keys>[];
 }
 
@@ -82,7 +82,7 @@ export const TableHeader: TableHeaderFunctionComponentType = ({
                 direction={orderBy === cell.id ? order : Order.asc}
                 onClick={createSortHandler(cell.id)}
               >
-                {cell.label}
+                <b>{cell.label}</b>
                 {orderBy === cell.id ? (
                   <span className={classes.visuallyHidden}>
                     {order === Order.desc
@@ -92,7 +92,7 @@ export const TableHeader: TableHeaderFunctionComponentType = ({
                 ) : null}
               </TableSortLabel>
             ) : (
-              cell.label
+              <b>{cell.label}</b>
             )}
           </TableCell>
         ))}

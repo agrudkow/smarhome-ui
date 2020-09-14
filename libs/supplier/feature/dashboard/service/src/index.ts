@@ -1,1 +1,2 @@
-export * from './lib/supplier-feature-dashboard-service';
+export * from './lib/fetch-top-rating-algorithms';
+export * from './lib/fetch-top-executions-algorithms';

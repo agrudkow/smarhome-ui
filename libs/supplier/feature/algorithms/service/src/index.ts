@@ -1,1 +1,1 @@
-export * from './lib/supplier-feature-algorithms-service';
+export * from './lib/fetch-algorithm-statistics';

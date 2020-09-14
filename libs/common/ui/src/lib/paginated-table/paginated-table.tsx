@@ -59,10 +59,12 @@ interface PaginatedTableProps<
 > {
   cells: Cell<keyof Data>[];
   data: Data[];
-  orderBy: keyof Data;
-  setOrderBy: Dispatch<SetStateAction<keyof Data>>;
+  orderBy?: keyof Data;
+  setOrderBy?: Dispatch<SetStateAction<keyof Data>>;
   bodyPlaceholderText?: string;
   title?: ReactNode;
+  footer?: boolean;
+  rowsPerPage?: number;
 }
 
 export type PaginatedTableFunctionComponentType = <
@@ -78,19 +80,23 @@ export const PaginatedTable: PaginatedTableFunctionComponentType = ({
   setOrderBy,
   bodyPlaceholderText = '',
   title,
+  footer = true,
+  rowsPerPage: rowsPerPageProp,
 }) => {
   type Data = typeof data[0];
 
   const classes = useStyles();
   const [order, setOrder] = useState<Order>(Order.asc);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageProp || 10);
 
   const handleRequestSort = (property: keyof Data) => {
-    const isAsc = orderBy === property && order === Order.asc;
-    setOrder(isAsc ? Order.desc : Order.asc);
-    setOrderBy(property);
-    console.log('Sort table!!!! -> TODO');
+    if (orderBy && setOrderBy) {
+      const isAsc = orderBy === property && order === Order.asc;
+      setOrder(isAsc ? Order.desc : Order.asc);
+      setOrderBy(property);
+      console.log('Sort table!!!! -> TODO');
+    }
   };
 
   const handleChangePage = (_: unknown, newPage: number) => {
@@ -122,14 +128,16 @@ export const PaginatedTable: PaginatedTableFunctionComponentType = ({
             bodyPlaceholderText={bodyPlaceholderText}
           />
         </Table>
-        <TableFooter
-          page={page}
-          rowsPerPage={rowsPerPage}
-          rowsPerPageOptions={rowsPerPageOptions}
-          totalNumberOfRows={data.length}
-          handleChangePage={handleChangePage}
-          handleChangeRowsPerPage={handleChangeRowsPerPage}
-        />
+        {footer && (
+          <TableFooter
+            page={page}
+            rowsPerPage={rowsPerPage}
+            rowsPerPageOptions={rowsPerPageOptions}
+            totalNumberOfRows={data.length}
+            handleChangePage={handleChangePage}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+        )}
       </Paper>
     </StyledPaginatedTable>
   );
