@@ -1,11 +1,8 @@
-import React, { ReactNode, FC } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import { StyledOvalBoxContainer, H4, ArrowButton } from '@smarthome/common/ui';
-import { getMonthName } from '@smarthome/common/logic';
+import { StyledOvalBoxContainer, H4, MonthSwitch } from '@smarthome/common/ui';
 
 export interface TotalBillingProps {
-  billedAmount: ReactNode;
-  billedTime: ReactNode;
   month: number;
   year: number;
   onNextMonthClick: () => void;
@@ -51,14 +48,7 @@ const TotalBilledHeader = styled(H4)`
   font-weight: 500;
 `;
 
-const MonthName = styled(H4)`
-  text-align: center;
-  width: 50%;
-`;
-
 export const TotalBilling: FC<TotalBillingProps> = ({
-  billedAmount,
-  billedTime,
   month,
   year,
   onNextMonthClick,
@@ -67,19 +57,20 @@ export const TotalBilling: FC<TotalBillingProps> = ({
   return (
     <StyledTotalBilling>
       <TotalBillingInfo>
-        <TotalBilledHeader>Billed in total:&nbsp;</TotalBilledHeader>
-        <H4>{billedAmount} PLN</H4>
+        <TotalBilledHeader>Total incomes:&nbsp;</TotalBilledHeader>
+        <H4>5234.34 PLN</H4>
       </TotalBillingInfo>
       <TotalBillingInfo>
-        <TotalBilledHeader>Billed time:&nbsp;</TotalBilledHeader>
-        <H4>{billedTime} PLN</H4>
+        <TotalBilledHeader>Total number of executions:&nbsp;</TotalBilledHeader>
+        <H4>4241</H4>
       </TotalBillingInfo>
       <TotalBillingInfo>
-        <ArrowButton rotate="180deg" onClick={onPreviousMonthClick} />
-        <MonthName>
-          {getMonthName(month)}&nbsp;{year}
-        </MonthName>
-        <ArrowButton onClick={onNextMonthClick} />
+        <MonthSwitch
+          month={month}
+          year={year}
+          onNextMonthClick={onNextMonthClick}
+          onPreviousMonthClick={onPreviousMonthClick}
+        />
       </TotalBillingInfo>
     </StyledTotalBilling>
   );

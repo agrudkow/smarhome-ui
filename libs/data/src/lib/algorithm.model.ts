@@ -5,6 +5,13 @@ export interface AlgorithmDTO {
   displayName: string;
 }
 
+export interface AlgorithmTopExecDTO {
+  algorithmId: string;
+  algorithmSummary: string;
+  algorithmExecutions: number;
+  displayName: string;
+}
+
 export interface AlgorithmDetailsDTO extends AlgorithmDTO {
   author: string;
   algorithmDescription: string;

@@ -15,25 +15,15 @@ const PlotContainer = styled.div`
 
 export const BillingsPlot: FC<{
   incomes: DailyBilling[];
-  costs: DailyBilling[];
-}> = ({ incomes, costs }) => {
+}> = ({ incomes }) => {
   return (
-    <>
-      <OvalBoxContainer height={400}>
-        <PlotContainer>
-          <H5>Daily income</H5>
-          <br />
-          <Plot data={incomes} />
-        </PlotContainer>
-      </OvalBoxContainer>
-      <OvalBoxContainer height={400}>
-        <PlotContainer>
-          <H5>Daily cost</H5>
-          <br />
-          <Plot data={costs} />
-        </PlotContainer>
-      </OvalBoxContainer>
-    </>
+    <OvalBoxContainer height={400}>
+      <PlotContainer>
+        <H5>Daily incomes</H5>
+        <br />
+        <Plot data={incomes} />
+      </PlotContainer>
+    </OvalBoxContainer>
   );
 };
 

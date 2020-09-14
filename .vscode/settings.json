@@ -10,5 +10,6 @@
       "language": "typescriptreact",
       "autoFix": true
     }
-  ]
+  ],
+  "typescript.tsdk": "/home/artur_linux/projects/weiti/smart-home/node_modules/typescript/lib"
 }
