@@ -40,7 +40,7 @@ export const SupplierScreenUi: FC = () => {
       <QueryParamProvider ReactRouterRoute={Route}>
         <Switch>
           <Route path={`/${SupplierRoutes.SignIn}`} exact component={SignIn} />
-          <Layout sidebarLinks={SidebarLinks}>
+          <Layout sidebarLinks={SidebarLinks} loading={false}>
             <Route
               path={`/${SupplierRoutes.Dashboard}`}
               exact

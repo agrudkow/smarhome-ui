@@ -60,7 +60,7 @@ export const ScreenUi: React.FC = () => {
       <QueryParamProvider ReactRouterRoute={Route}>
         <Switch>
           <Route path={`/${CustomerRoutes.SignIn}`} component={SignIn} exact />
-          <Layout sidebarLinks={SidebarLinks}>
+          <Layout sidebarLinks={SidebarLinks} loading={false}>
             <Route
               path={`/${CustomerRoutes.Dashboard}`}
               component={Dashboard}

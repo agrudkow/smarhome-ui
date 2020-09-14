@@ -22,6 +22,7 @@ html, body {
 }
 
 ::-webkit-scrollbar {
+    z-index: 1;
     width: 10px;
     background-color: ${() => BaseTheme.palette.secondaryBackground};
 }

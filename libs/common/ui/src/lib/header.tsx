@@ -3,6 +3,7 @@ import styled, { ThemeContext } from 'styled-components';
 import { regularTypography } from './p';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { HamburgerButtonIcon } from './assets';
+import { LinearProgress } from '@material-ui/core';
 
 interface AppNameProps {
   showViewName: boolean;
@@ -13,18 +14,28 @@ type ViewNameProps = AppNameProps;
 interface HeaderProps extends ViewNameProps {
   viewName: string;
   onButtonClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  loading: boolean;
 }
 
 const StyledHeader = styled.div`
   position: -webkit-sticky;
   position: sticky;
   z-index: 9999;
-  background-color: ${({ theme }) => theme.palette.secondaryBackground};
   width: 100%;
   height: ${({ theme }) => theme.layout.headerHeight}px;
   top: 0;
   left: 0;
-  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const MainHeader = styled.div`
+  background-color: ${({ theme }) => theme.palette.secondaryBackground};
+  width: 100%;
+  height: ${({ theme }) => theme.layout.headerHeight - 4}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,10 +84,25 @@ const HamburgerButton = styled.div<{ show: boolean }>`
   cursor: pointer;
 `;
 
+const LinearProgressWrapper = styled.div`
+  width: 100%;
+  background-color: ${({ theme }) => theme.palette.secondaryBackground};
+  height: 4px;
+
+  & .MuiLinearProgress-colorPrimary {
+    background-color: ${({ theme }) => theme.palette.primary};
+  }
+
+  & .MuiLinearProgress-barColorPrimary {
+    background-color: ${({ theme }) => theme.palette.secondaryBackground};
+  }
+`;
+
 export const Header: React.FC<HeaderProps> = ({
   showViewName,
   viewName,
   onButtonClick,
+  loading,
 }) => {
   const { width } = useWindowDimensions();
   const {
@@ -89,15 +115,20 @@ export const Header: React.FC<HeaderProps> = ({
   const tabletView = width >= tablet;
   return (
     <StyledHeader>
-      <AppName showViewName={showViewName}>Smarthome</AppName>
-      {!tabletView && (
-        <HamburgerButton show={showViewName} onClick={onButtonClick}>
-          <HamburgerButtonIcon iconColor={primarySidebarBackground} />
-        </HamburgerButton>
-      )}
-      {tabletView && (
-        <ViewName showViewName={showViewName}>{viewName}</ViewName>
-      )}
+      <MainHeader>
+        <AppName showViewName={showViewName}>Smarthome</AppName>
+        {!tabletView && (
+          <HamburgerButton show={showViewName} onClick={onButtonClick}>
+            <HamburgerButtonIcon iconColor={primarySidebarBackground} />
+          </HamburgerButton>
+        )}
+        {tabletView && (
+          <ViewName showViewName={showViewName}>{viewName}</ViewName>
+        )}
+      </MainHeader>
+      <LinearProgressWrapper>
+        {loading && <LinearProgress />}
+      </LinearProgressWrapper>
     </StyledHeader>
   );
 };
