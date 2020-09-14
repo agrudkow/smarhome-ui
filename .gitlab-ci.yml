@@ -33,11 +33,12 @@ lint_web:
 .build_web_template: &build_web_definition
   image: 'node:latest'
   stage: build
-  artifacts:
-    paths:
-      - dist/
+  # artifacts:
+  #   paths:
+  #     - dist/
   before_script:
-    - yarn
+    - echo "cicd"
+    # - yarn
 
 build_web_dev:
   <<: *build_web_definition
