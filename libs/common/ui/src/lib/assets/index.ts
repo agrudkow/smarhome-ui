@@ -13,3 +13,4 @@ export * from './cogs-icon';
 export * from './brain-icon';
 export * from './hamburger-button-icon';
 export * from './dashboard-icon';
+export * from './sign-in-with-google';

@@ -1,114 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "smarthome": {
-      "root": "apps/smarthome",
-      "sourceRoot": "apps/smarthome/src",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/web:build",
-          "options": {
-            "outputPath": "dist/apps/smarthome",
-            "index": "apps/smarthome/src/index.html",
-            "main": "apps/smarthome/src/main.tsx",
-            "polyfills": "apps/smarthome/src/polyfills.ts",
-            "tsConfig": "apps/smarthome/tsconfig.app.json",
-            "assets": [
-              "apps/smarthome/src/favicon.ico",
-              "apps/smarthome/src/assets"
-            ],
-            "styles": [],
-            "scripts": [],
-            "webpackConfig": "./webpack"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/smarthome/src/environments/environment.ts",
-                  "with": "apps/smarthome/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "smarthome:build"
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "smarthome:build:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "apps/smarthome/.eslintrc",
-            "tsConfig": [
-              "apps/smarthome/tsconfig.app.json",
-              "apps/smarthome/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/smarthome/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/smarthome/jest.config.js",
-            "tsConfig": "apps/smarthome/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "smarthome-e2e": {
-      "root": "apps/smarthome-e2e",
-      "sourceRoot": "apps/smarthome-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/smarthome-e2e/cypress.json",
-            "tsConfig": "apps/smarthome-e2e/tsconfig.e2e.json",
-            "devServerTarget": "smarthome:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "smarthome:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "apps/smarthome-e2e/.eslintrc",
-            "tsConfig": ["apps/smarthome-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/smarthome-e2e/**"]
-          }
-        }
-      }
-    },
     "data": {
       "root": "libs/data",
       "sourceRoot": "libs/data/src",
@@ -938,7 +830,7 @@
             ],
             "styles": [],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "./webpack"
           },
           "configurations": {
             "production": {
@@ -1047,7 +939,7 @@
             ],
             "styles": [],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "./webpack"
           },
           "configurations": {
             "production": {
@@ -1619,5 +1511,5 @@
       }
     }
   },
-  "defaultProject": "smarthome"
+  "defaultProject": "consumer"
 }

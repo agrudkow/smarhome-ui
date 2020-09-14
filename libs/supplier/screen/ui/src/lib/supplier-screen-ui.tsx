@@ -9,7 +9,7 @@ import {
   SidebarLinkProps,
 } from '@smarthome/common/ui';
 import { SupplierRoutes } from '@smarthome/common/service';
-import { User } from '@smarthome/supplier/feature/user/ui';
+import { User, SignIn } from '@smarthome/supplier/feature/user/ui';
 import {
   Algorithms,
   DetailedAlgorithm,
@@ -38,8 +38,9 @@ export const SupplierScreenUi: FC = () => {
   return (
     <Router>
       <QueryParamProvider ReactRouterRoute={Route}>
-        <Layout sidebarLinks={SidebarLinks}>
-          <Switch>
+        <Switch>
+          <Route path={`/${SupplierRoutes.SignIn}`} exact component={SignIn} />
+          <Layout sidebarLinks={SidebarLinks}>
             <Route
               path={`/${SupplierRoutes.Dashboard}`}
               exact
@@ -56,8 +57,8 @@ export const SupplierScreenUi: FC = () => {
               component={DetailedAlgorithm}
             />
             <Route path={`/${SupplierRoutes.User}`} exact component={User} />
-          </Switch>
-        </Layout>
+          </Layout>
+        </Switch>
       </QueryParamProvider>
     </Router>
   );

@@ -14,7 +14,7 @@ import {
   CustomerAlgorithmRoutes,
   CustomerDatasetRoutes,
 } from '@smarthome/common/service';
-import { User } from '@smarthome/consumer/feature/user/ui';
+import { User, SignIn } from '@smarthome/consumer/feature/user/ui';
 import {
   Algorithms,
   DetailedAlgorithm,
@@ -58,8 +58,9 @@ export const ScreenUi: React.FC = () => {
   return (
     <Router>
       <QueryParamProvider ReactRouterRoute={Route}>
-        <Layout sidebarLinks={SidebarLinks}>
-          <Switch>
+        <Switch>
+          <Route path={`/${CustomerRoutes.SignIn}`} component={SignIn} exact />
+          <Layout sidebarLinks={SidebarLinks}>
             <Route
               path={`/${CustomerRoutes.Dashboard}`}
               component={Dashboard}
@@ -111,8 +112,8 @@ export const ScreenUi: React.FC = () => {
               exact
             />
             <Route path={`/${CustomerRoutes.User}`} component={User} exact />
-          </Switch>
-        </Layout>
+          </Layout>
+        </Switch>
       </QueryParamProvider>
     </Router>
   );

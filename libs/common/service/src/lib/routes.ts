@@ -4,6 +4,8 @@ export enum CustomerRoutes {
   User = 'user',
   Dashboard = '',
   Execution = 'execution',
+  SignIn = 'sign-in',
+  SignUp = 'sign-up',
 }
 
 export enum CustomerAlgorithmRoutes {
@@ -20,6 +22,8 @@ export enum SupplierRoutes {
   Algorithms = 'algorithms',
   User = 'user',
   Dashboard = '',
+  SignIn = 'sign-in',
+  SignUp = 'sign-up',
 }
 
 export enum SupplierAlgorithmRoutes {

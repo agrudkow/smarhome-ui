@@ -8,12 +8,6 @@
     "nx.json": "*"
   },
   "projects": {
-    "smarthome": {
-      "tags": []
-    },
-    "smarthome-e2e": {
-      "tags": []
-    },
     "data": {
       "tags": []
     },
