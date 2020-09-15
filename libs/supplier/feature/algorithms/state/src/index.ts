@@ -1,1 +1,3 @@
-export * from './lib/supplier-feature-algorithms-state';
+import * as AlgorithmsListSlice from './lib/algorithms.slice';
+
+export { AlgorithmsListSlice };

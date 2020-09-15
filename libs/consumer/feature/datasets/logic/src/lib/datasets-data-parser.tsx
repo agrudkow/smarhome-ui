@@ -4,11 +4,10 @@ import { CellContainer, BaseButton } from '@smarthome/common/ui';
 import { DatasetDTO } from '@smarthome/data';
 import { TableDataParser } from '@smarthome/common/logic';
 
-export const datasetsDataParser: TableDataParser<BaseDataset, DatasetDTO> = (
-  data,
-  rowButtonText,
-  rowButtonHandlerFactory
-) =>
+export const datasetsDataParser: TableDataParser<
+  BaseDataset,
+  Array<DatasetDTO>
+> = (data, rowButtonText, rowButtonHandlerFactory) =>
   data.map(({ datasetId, displayName, datasetSummary }) => ({
     name: <CellContainer>{displayName}</CellContainer>,
     briefDescription: <CellContainer>{datasetSummary}</CellContainer>,

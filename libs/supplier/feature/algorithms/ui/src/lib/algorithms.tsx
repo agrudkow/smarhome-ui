@@ -1,83 +1,34 @@
-import React, {
-  FC,
-  useState,
-  useContext,
-  useEffect,
-  useCallback,
-  ChangeEvent,
-} from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React, { FC } from 'react';
+import styled from 'styled-components';
 import {
   InfoHeader,
   SearchBar,
   PaginatedTable,
-  Cell,
   FloatingAddButton,
   OvalBoxContainer,
   UnderlinedContainer,
 } from '@smarthome/common/ui';
-import {
-  BaseDataset,
-  datasetsDataParser,
-  datasetsCellsParser,
-} from '@smarthome/consumer/feature/datasets/logic';
-import { fetchDatasetsList } from '@smarthome/consumer/feature/datasets/service';
-import { useWindowDimensions } from '@smarthome/common/logic';
-import { useHistory } from 'react-router-dom';
-import { SupplierRoutes } from '@smarthome/common/service';
+import { Algorithm } from '@smarthome/supplier/feature/algorithms/logic';
 import AddAlgorithm from './add-algorithm';
-
-type CurrentView = 'list' | 'add-algorithm';
+import { useAlgorithmsList } from '@smarthome/supplier/feature/algorithms/logic';
 
 const StyledDataset = styled.div`
   padding-bottom: 60px; //Accommodate floating buttom
 `;
 
 export const Algorithms: FC = () => {
-  const history = useHistory();
-  const [currentView, setCurrentView] = useState<CurrentView>('list');
-  const [tableData, setTableData] = useState<BaseDataset[]>([]);
-  const [searchValue, setSearchValue] = useState<string | undefined>();
-  const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
-  const [orderBy, setOrderBy] = useState<keyof BaseDataset>('name');
-  const [tableBodyPlaceholder, setTableBodyPlaceholder] = useState<string>(
-    'Click search button to fetch algorithms'
-  );
-  const { width } = useWindowDimensions();
   const {
-    breakpoints: {
-      inPixels: { tablet, desktop },
-    },
-  } = useContext(ThemeContext);
-
-  const handleSearchInputChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      setSearchValue(event.target.value);
-    },
-    []
-  );
-
-  const handleSearch = useCallback(() => {
-    console.log('searchValue :>> ', searchValue);
-    setTableData(
-      datasetsDataParser(fetchDatasetsList(), 'more', (id: string) => () => {
-        history.push(`${SupplierRoutes.Algorithms}/${encodeURIComponent(id)}`);
-      })
-    );
-    setTableBodyPlaceholder('No results, please try again using diffrent tags');
-  }, [history, searchValue]);
-
-  const handleChangeViewFactory = useCallback(
-    (view: CurrentView) => () => {
-      setCurrentView(view);
-    },
-    []
-  );
-
-  useEffect(() => {
-    const cells = datasetsCellsParser(width, { desktop, tablet });
-    setTableCells(cells);
-  }, [width, tablet, desktop]);
+    currentView,
+    tableData,
+    searchValue,
+    tableCells,
+    orderBy,
+    setOrderBy,
+    tableBodyPlaceholder,
+    handleSearchInputChange,
+    handleSearch,
+    handleChangeViewFactory,
+  } = useAlgorithmsList();
 
   return (
     <StyledDataset>
@@ -104,7 +55,7 @@ export const Algorithms: FC = () => {
             onSearch={handleSearch}
             onInputValueChange={handleSearchInputChange}
           />
-          <PaginatedTable<BaseDataset>
+          <PaginatedTable<Algorithm>
             data={tableData}
             cells={tableCells}
             orderBy={orderBy}

@@ -8,13 +8,14 @@ import { all, fork } from '@redux-saga/core/effects';
 import { connectRouter } from 'connected-react-router';
 import { routerMiddleware } from 'connected-react-router';
 import { DeepReadonly } from 'utility-types';
-import { history, ErrorSlice } from '@smarthome/common/state';
+import { history, ErrorSlice, LoadingSlice } from '@smarthome/common/state';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
   [ErrorSlice.name]: ErrorSlice.reducer,
+  [LoadingSlice.name]: LoadingSlice.reducer,
 });
 
 export const cunsumerStore = configureStore({

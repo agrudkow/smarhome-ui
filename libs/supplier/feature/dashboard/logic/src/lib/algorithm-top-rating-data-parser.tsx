@@ -6,7 +6,7 @@ import { TableDataParser } from '@smarthome/common/logic';
 
 export const algorithmTopRatingDataParser: TableDataParser<
   BaseAlgorithm,
-  AlgorithmDTO
+  Array<AlgorithmDTO>
 > = (data, rowButtonText, rowButtonHandlerFactory) => {
   return data.map(
     ({ algorithmId, algorithmSummary, displayName, algorithmRating }) => {

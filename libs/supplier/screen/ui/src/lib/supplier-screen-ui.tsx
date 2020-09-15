@@ -16,6 +16,8 @@ import {
 } from '@smarthome/supplier/feature/algorithms/ui';
 import { Dashboard } from '@smarthome/supplier/feature/dashboard/ui';
 import { history } from '@smarthome/common/state';
+import { useLoading } from '@smarthome/common/logic';
+import { RootState } from '@smarthome/supplier/store';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -36,11 +38,12 @@ const SidebarLinks: SidebarLinkProps[] = [
 ];
 
 export const SupplierScreenUi: FC = () => {
+  const { loading } = useLoading<RootState>();
   return (
     <ConnectedRouter history={history}>
       <Switch>
         <Route path={`/${SupplierRoutes.SignIn}`} exact component={SignIn} />
-        <Layout sidebarLinks={SidebarLinks} loading={false}>
+        <Layout sidebarLinks={SidebarLinks} loading={loading}>
           <Route
             path={`/${SupplierRoutes.Dashboard}`}
             exact

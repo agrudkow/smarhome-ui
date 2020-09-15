@@ -1,4 +1,5 @@
 import * as ErrorSlice from './lib/error-redux.slice';
-export { ErrorSlice };
+import * as LoadingSlice from './lib/loading.slice';
+export { ErrorSlice, LoadingSlice };
 
 export * from './lib/history';

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ErrorState {
-  errors?: Array<string> | null;
+  errors: Array<string>;
 }
 
 const initialState: ErrorState = {
-  errors: null,
+  errors: [],
 };
 
 export const name = 'errors' as const;
@@ -14,14 +14,14 @@ const errors = createSlice({
   name,
   initialState,
   reducers: {
-    setErrors(state, action: PayloadAction<string[]>) {
-      state.errors = action.payload;
+    pushError(state, action: PayloadAction<string>) {
+      state.errors.push(action.payload);
     },
-    hideErrors(state) {
-      state.errors = null;
+    popError(state) {
+      state.errors.pop();
     },
   },
 });
 
-export const { setErrors, hideErrors } = errors.actions;
+export const { pushError, popError } = errors.actions;
 export const { reducer } = errors;
