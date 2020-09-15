@@ -16,10 +16,12 @@ import { algorithmsDataParser } from './algorithms-data-parser';
 import { Algorithm } from './algorithm.interface';
 import { AlgorithmsListSlice } from '@smarthome/supplier/feature/algorithms/state';
 import { RootState } from '@smarthome/supplier/store';
+import { useSnackbar } from 'notistack';
 
 export type CurrentView = 'list' | 'add-algorithm';
 
 export function useAlgorithmsList() {
+  const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const history = useHistory();
   const [currentView, setCurrentView] = useState<CurrentView>('list');
@@ -36,7 +38,7 @@ export function useAlgorithmsList() {
       inPixels: { tablet, desktop },
     },
   } = useContext(ThemeContext);
-  const { loading, algorithms } = useSelector(
+  const { loading, algorithms, error } = useSelector(
     (state: RootState) => state.algorithmsList
   );
 
@@ -78,6 +80,12 @@ export function useAlgorithmsList() {
       setTableBodyPlaceholder('Click search button to fetch algorithms');
     }
   }, [loading]);
+
+  useEffect(() => {
+    if (error) {
+      enqueueSnackbar(error, { variant: 'error' });
+    }
+  }, [enqueueSnackbar, error]);
 
   return {
     currentView,

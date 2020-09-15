@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { LoadingSlice } from '@smarthome/common/state';
 import { DeepReadonly } from 'utility-types';
-import { EnhancedStore, CombinedState } from '@reduxjs/toolkit';
 
 export function useLoading<
   K extends { readonly loadings: DeepReadonly<LoadingSlice.LoadingState> }
