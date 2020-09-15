@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { Provider as ReduxProvider } from 'react-redux';
+import { StylesProvider } from '@material-ui/core/styles';
 import { SupplierScreenUi } from '@smarthome/supplier/screen/ui';
 import { BaseTheme } from './base-theme';
-import { StylesProvider } from '@material-ui/core/styles';
+import { supplierStore } from '@smarthome/supplier/store';
 
 const GlobalStyle = createGlobalStyle`
 html, body {
@@ -58,7 +60,9 @@ export const App = () => {
       <ThemeProvider theme={BaseTheme}>
         <GlobalStyle />
         <StyledApp>
-          <SupplierScreenUi />
+          <ReduxProvider store={supplierStore}>
+            <SupplierScreenUi />
+          </ReduxProvider>
         </StyledApp>
       </ThemeProvider>
     </StylesProvider>

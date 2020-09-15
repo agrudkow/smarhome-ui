@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { QueryParamProvider } from 'use-query-params';
+import { Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import {
   Layout,
   BrainIcon,
@@ -15,6 +15,7 @@ import {
   DetailedAlgorithm,
 } from '@smarthome/supplier/feature/algorithms/ui';
 import { Dashboard } from '@smarthome/supplier/feature/dashboard/ui';
+import { history } from '@smarthome/common/state';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -36,31 +37,29 @@ const SidebarLinks: SidebarLinkProps[] = [
 
 export const SupplierScreenUi: FC = () => {
   return (
-    <Router>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <Switch>
-          <Route path={`/${SupplierRoutes.SignIn}`} exact component={SignIn} />
-          <Layout sidebarLinks={SidebarLinks} loading={false}>
-            <Route
-              path={`/${SupplierRoutes.Dashboard}`}
-              exact
-              component={Dashboard}
-            />
-            <Route
-              path={`/${SupplierRoutes.Algorithms}`}
-              exact
-              component={Algorithms}
-            />
-            <Route
-              path={`/${SupplierRoutes.Algorithms}/:id`}
-              exact
-              component={DetailedAlgorithm}
-            />
-            <Route path={`/${SupplierRoutes.User}`} exact component={User} />
-          </Layout>
-        </Switch>
-      </QueryParamProvider>
-    </Router>
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route path={`/${SupplierRoutes.SignIn}`} exact component={SignIn} />
+        <Layout sidebarLinks={SidebarLinks} loading={false}>
+          <Route
+            path={`/${SupplierRoutes.Dashboard}`}
+            exact
+            component={Dashboard}
+          />
+          <Route
+            path={`/${SupplierRoutes.Algorithms}`}
+            exact
+            component={Algorithms}
+          />
+          <Route
+            path={`/${SupplierRoutes.Algorithms}/:id`}
+            exact
+            component={DetailedAlgorithm}
+          />
+          <Route path={`/${SupplierRoutes.User}`} exact component={User} />
+        </Layout>
+      </Switch>
+    </ConnectedRouter>
   );
 };
 

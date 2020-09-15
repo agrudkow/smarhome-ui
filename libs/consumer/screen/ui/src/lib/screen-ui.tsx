@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { QueryParamProvider } from 'use-query-params';
+import { Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import {
   Layout,
   BrainIcon,
@@ -30,6 +30,7 @@ import {
   Execute,
   ExecutionDetails,
 } from '@smarthome/consumer/feature/resultsets/ui';
+import { history } from '@smarthome/common/state';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -56,66 +57,64 @@ const SidebarLinks: SidebarLinkProps[] = [
 
 export const ScreenUi: React.FC = () => {
   return (
-    <Router>
-      <QueryParamProvider ReactRouterRoute={Route}>
-        <Switch>
-          <Route path={`/${CustomerRoutes.SignIn}`} component={SignIn} exact />
-          <Layout sidebarLinks={SidebarLinks} loading={false}>
-            <Route
-              path={`/${CustomerRoutes.Dashboard}`}
-              component={Dashboard}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Algorithms}`}
-              component={Algorithms}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Algorithms}/:id`}
-              component={DetailedAlgorithm}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Algorithms}/:id/${CustomerAlgorithmRoutes.SelectDataset}`}
-              component={SelectDataset}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Algorithms}/:algorithmId/${CustomerAlgorithmRoutes.Execute}/:datasetId`}
-              component={Execute}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Datasets}`}
-              component={Datasets}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Datasets}/:id`}
-              component={DetailedDataset}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Datasets}/:id/${CustomerDatasetRoutes.SelectAlgorithm}`}
-              component={SelectAlgorithm}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Datasets}/:datasetId/${CustomerDatasetRoutes.Execute}/:algorithmId`}
-              component={Execute}
-              exact
-            />
-            <Route
-              path={`/${CustomerRoutes.Execution}/:resultsetId`}
-              component={ExecutionDetails}
-              exact
-            />
-            <Route path={`/${CustomerRoutes.User}`} component={User} exact />
-          </Layout>
-        </Switch>
-      </QueryParamProvider>
-    </Router>
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route path={`/${CustomerRoutes.SignIn}`} component={SignIn} exact />
+        <Layout sidebarLinks={SidebarLinks} loading={false}>
+          <Route
+            path={`/${CustomerRoutes.Dashboard}`}
+            component={Dashboard}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Algorithms}`}
+            component={Algorithms}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Algorithms}/:id`}
+            component={DetailedAlgorithm}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Algorithms}/:id/${CustomerAlgorithmRoutes.SelectDataset}`}
+            component={SelectDataset}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Algorithms}/:algorithmId/${CustomerAlgorithmRoutes.Execute}/:datasetId`}
+            component={Execute}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Datasets}`}
+            component={Datasets}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Datasets}/:id`}
+            component={DetailedDataset}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Datasets}/:id/${CustomerDatasetRoutes.SelectAlgorithm}`}
+            component={SelectAlgorithm}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Datasets}/:datasetId/${CustomerDatasetRoutes.Execute}/:algorithmId`}
+            component={Execute}
+            exact
+          />
+          <Route
+            path={`/${CustomerRoutes.Execution}/:resultsetId`}
+            component={ExecutionDetails}
+            exact
+          />
+          <Route path={`/${CustomerRoutes.User}`} component={User} exact />
+        </Layout>
+      </Switch>
+    </ConnectedRouter>
   );
 };
 

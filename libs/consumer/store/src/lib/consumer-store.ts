@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   [ErrorSlice.name]: ErrorSlice.reducer,
 });
 
-export const supplierStore = configureStore({
+export const cunsumerStore = configureStore({
   reducer: rootReducer,
   middleware: [
     ...getDefaultMiddleware({
@@ -29,7 +29,7 @@ export const supplierStore = configureStore({
 });
 
 export type RootState = DeepReadonly<ReturnType<typeof rootReducer>>;
-export type RootStore = typeof supplierStore;
+export type RootStore = typeof cunsumerStore;
 
 export function* rootSaga() {
   yield all([]);
