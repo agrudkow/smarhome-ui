@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { VariantType, useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import {
   InfoHeader,
   OvalBoxContainer,

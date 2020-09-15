@@ -9,7 +9,6 @@ import { connectRouter } from 'connected-react-router';
 import { routerMiddleware } from 'connected-react-router';
 import { DeepReadonly } from 'utility-types';
 import { history, ErrorSlice, LoadingSlice } from '@smarthome/common/state';
-import { AlgorithmsListSlice } from '@smarthome/supplier/feature/algorithms/state';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,10 +16,9 @@ const rootReducer = combineReducers({
   router: connectRouter(history),
   [ErrorSlice.name]: ErrorSlice.reducer,
   [LoadingSlice.name]: LoadingSlice.reducer,
-  [AlgorithmsListSlice.name]: AlgorithmsListSlice.reducer,
 });
 
-export const supplierStore = configureStore({
+export const cunsumerStore = configureStore({
   reducer: rootReducer,
   middleware: [
     ...getDefaultMiddleware({
@@ -32,10 +30,10 @@ export const supplierStore = configureStore({
 });
 
 export type RootState = DeepReadonly<ReturnType<typeof rootReducer>>;
-export type RootStore = typeof supplierStore;
+export type RootStore = typeof cunsumerStore;
 
 export function* rootSaga() {
-  yield all([fork(AlgorithmsListSlice.saga)]);
+  yield all([]);
 }
 
 sagaMiddleware.run(rootSaga);

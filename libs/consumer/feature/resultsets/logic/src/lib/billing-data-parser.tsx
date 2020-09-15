@@ -6,7 +6,7 @@ import { TableDataParser } from '@smarthome/common/logic';
 
 export const executionsBillingDataParser: TableDataParser<
   ExecutionBilling,
-  ExecutionBillingDTO,
+  Array<ExecutionBillingDTO>,
   (resultsetId: string) => () => void
 > = (data, rowButtonText, rowButtonHandlerFactory) =>
   data.map(
