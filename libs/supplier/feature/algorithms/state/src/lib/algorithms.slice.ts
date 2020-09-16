@@ -54,15 +54,13 @@ export const {
 } = algorithms.actions;
 export const { reducer } = algorithms;
 
-function* handlePostAlgorithmsStart(action: PayloadAction<string>) {
+function* handleFetchAlgorithmsStart(action: PayloadAction<string>) {
   try {
     yield put(LoadingSlice.pushLoading());
     const response: SagaReturnType<typeof fetchAlgorithmsList> = yield call(
       fetchAlgorithmsList,
       action.payload
     );
-    if (!response)
-      throw new Error('Timeout error. Cannot connect to the server.');
     yield put(fetchAlgorithmsSuccess(response));
   } catch (error) {
     yield put(ErrorSlice.pushError(error.message));
@@ -73,7 +71,7 @@ function* handlePostAlgorithmsStart(action: PayloadAction<string>) {
 }
 
 function* watchPostAlgorithmsStart() {
-  yield takeEvery(fetchAlgorithmsStart.type, handlePostAlgorithmsStart);
+  yield takeEvery(fetchAlgorithmsStart.type, handleFetchAlgorithmsStart);
 }
 
 export function* saga() {
