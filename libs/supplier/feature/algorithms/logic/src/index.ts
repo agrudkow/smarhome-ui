@@ -5,3 +5,7 @@ export * from './lib/algorithms-data-parser';
 export * from './lib/use-algorithms-list';
 export * from './lib/use-algorithm-details';
 export * from './lib/use-test-syntax';
+export * from './lib/use-upload-source-code';
+export * from './lib/use-delete-algorithm';
+export * from './lib/use-update-algorithm';
+export * from './lib/use-add-algorithm';

@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { useAccordion, useUploadFile } from '@smarthome/common/logic';
+import { useAccordion } from '@smarthome/common/logic';
 import { Accordion, H6 } from '@smarthome/common/ui';
 import TestSyntax from './test-syntax';
 import UploadNewFile from './upload-new-file';
 import AlgorithmStatistics from './algorithm-statistics';
+import { useUploadSourceCode } from '../../../logic/src/lib/use-upload-source-code';
 
 export interface AccordionsProps {
   algorithmId: string;
@@ -34,18 +35,13 @@ export const Accordions: FC<AccordionsProps> = ({ algorithmId }) => {
     handleDeleteFile,
     handleSendFile,
     handleUploadFile,
-  } = useUploadFile({
-    onFileSend: (file: File) =>
-      new Promise((resolve) => {
-        console.log(file.name);
-        resolve();
-      }),
-  });
+  } = useUploadSourceCode(algorithmId);
   const { expandedAccordion, toggleAccordionFactory } = useAccordion<
     AccordionTypes
   >({
     preToggleFunction: handleDeleteFile,
   });
+
   return (
     <StyledAccordions>
       <Accordion

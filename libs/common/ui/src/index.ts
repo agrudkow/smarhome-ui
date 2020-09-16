@@ -1,6 +1,6 @@
 import './lib/base-theme.d';
 
-export * from './lib/snackbar-error-subscriber';
+export * from './lib/snackbar-subscriber';
 
 export * from './lib/sign-in';
 export * from './lib/month-switch';

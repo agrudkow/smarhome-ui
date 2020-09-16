@@ -6,7 +6,7 @@ import {
   takeLeading,
   SagaReturnType,
 } from '@redux-saga/core/effects';
-import { ErrorSlice, LoadingSlice } from '@smarthome/common/state';
+import { SnackbarSlice, LoadingSlice } from '@smarthome/common/state';
 import { UserDTO } from '@smarthome/data';
 import { fetchUserDetails } from '@smarthome/supplier/feature/user/service';
 
@@ -59,7 +59,9 @@ function* handleFetchUserStart() {
     );
     yield put(fetchUserSuccess(response));
   } catch (error) {
-    yield put(ErrorSlice.pushError(error.message));
+    yield put(
+      SnackbarSlice.pushMessage({ message: error.message, variant: 'error' })
+    );
     yield put(fetchUserFailure(error.message));
   } finally {
     yield put(LoadingSlice.popLoading());

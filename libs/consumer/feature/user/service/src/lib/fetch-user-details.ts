@@ -14,6 +14,6 @@ export const fetchUserDetails = async (): Promise<UserDTO> =>
               userStatus: 0,
             })
           : reject(new Error('Server error')),
-      2000
+      500
     )
   );

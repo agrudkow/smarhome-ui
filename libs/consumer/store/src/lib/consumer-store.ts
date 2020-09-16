@@ -4,17 +4,17 @@ import {
   combineReducers,
 } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import { all, fork } from '@redux-saga/core/effects';
+import { all } from '@redux-saga/core/effects';
 import { connectRouter } from 'connected-react-router';
 import { routerMiddleware } from 'connected-react-router';
 import { DeepReadonly } from 'utility-types';
-import { history, ErrorSlice, LoadingSlice } from '@smarthome/common/state';
+import { history, SnackbarSlice, LoadingSlice } from '@smarthome/common/state';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
-  [ErrorSlice.name]: ErrorSlice.reducer,
+  [SnackbarSlice.name]: SnackbarSlice.reducer,
   [LoadingSlice.name]: LoadingSlice.reducer,
 });
 

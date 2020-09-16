@@ -6,7 +6,9 @@ import { RootState } from '@smarthome/supplier/store';
 export function useTestSyntax(algorithmId?: string) {
   const dispatch = useDispatch();
 
-  const { status } = useSelector((state: RootState) => state.algorithmDetails);
+  const { syntaxTestStatus } = useSelector(
+    (state: RootState) => state.algorithmDetails
+  );
 
   const handleTestSyntax = useCallback(() => {
     if (algorithmId) {
@@ -14,5 +16,5 @@ export function useTestSyntax(algorithmId?: string) {
     }
   }, [algorithmId, dispatch]);
 
-  return { handleTestSyntax, status } as const;
+  return { handleTestSyntax, status: syntaxTestStatus } as const;
 }

@@ -6,7 +6,7 @@ import {
   takeLeading,
   SagaReturnType,
 } from '@redux-saga/core/effects';
-import { ErrorSlice, LoadingSlice } from '@smarthome/common/state';
+import { SnackbarSlice, LoadingSlice } from '@smarthome/common/state';
 import { AlgorithmDTO } from '@smarthome/data';
 import { fetchAlgorithmsList } from '@smarthome/supplier/feature/algorithms/service';
 
@@ -68,7 +68,9 @@ function* handleFetchAlgorithmsStart(action: PayloadAction<string>) {
     );
     yield put(fetchAlgorithmsSuccess(response));
   } catch (error) {
-    yield put(ErrorSlice.pushError(error.message));
+    yield put(
+      SnackbarSlice.pushMessage({ message: error.message, variant: 'error' })
+    );
     yield put(fetchAlgorithmsFailure(error.message));
   } finally {
     yield put(LoadingSlice.popLoading());

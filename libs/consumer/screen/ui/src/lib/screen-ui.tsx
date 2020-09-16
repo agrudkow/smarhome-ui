@@ -31,7 +31,6 @@ import {
   ExecutionDetails,
 } from '@smarthome/consumer/feature/resultsets/ui';
 import { history } from '@smarthome/common/state';
-import { useErrorSncakbar } from '@smarthome/common/logic';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -55,11 +54,6 @@ const SidebarLinks: SidebarLinkProps[] = [
     route: `/${CustomerRoutes.User}`,
   },
 ];
-
-const SnackbarErrorSubscriber: FC = ({ children }) => {
-  useErrorSncakbar();
-  return <>{children}</>;
-};
 
 export const ScreenUi: FC = () => {
   return (

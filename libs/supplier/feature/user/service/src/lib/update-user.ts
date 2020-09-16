@@ -6,6 +6,6 @@ export const updateUser = async (data: UserDTO): Promise<void> =>
     setTimeout(
       () =>
         Math.random() * 100 > 5 ? resolve() : reject(new Error('Server error')),
-      2000
+      500
     )
   );

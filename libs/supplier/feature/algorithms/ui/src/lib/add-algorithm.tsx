@@ -1,8 +1,7 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
-import { CustomerRoutes } from '@smarthome/common/service';
 import EditAlgorithmFrom from './edit-alorithm';
+import { useAddAlgorithm } from '@smarthome/supplier/feature/algorithms/logic';
 
 export interface AddAlgorithmProps {
   onCancle: () => void;
@@ -14,11 +13,8 @@ const StyledAddAlgorithm = styled.div`
 `;
 
 export const AddAlgorithm: FC<AddAlgorithmProps> = ({ onCancle }) => {
-  const history = useHistory();
+  const { handleAddAlgorithm } = useAddAlgorithm();
 
-  const handleAddAlgorithm = useCallback(() => {
-    history.push(`${CustomerRoutes.Algorithms}/${encodeURIComponent(2)}`);
-  }, [history]);
   return (
     <StyledAddAlgorithm>
       <EditAlgorithmFrom

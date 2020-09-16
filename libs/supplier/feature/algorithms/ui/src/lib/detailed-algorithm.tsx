@@ -12,7 +12,11 @@ import {
   H5,
   UnderlinedSubtitle,
 } from '@smarthome/common/ui';
-import { useAlgorithmDetails } from '@smarthome/supplier/feature/algorithms/logic';
+import {
+  useAlgorithmDetails,
+  useDeleteAlgorithm,
+  useUpdateAlgorithm,
+} from '@smarthome/supplier/feature/algorithms/logic';
 import AcctionButtons from './acction-buttons';
 import Accordions from './accordions';
 import EditAlgorithmFrom from './edit-alorithm';
@@ -43,16 +47,21 @@ const RatingContainer = styled.div`
 export const DetailedAlgorithm: FC = () => {
   const {
     algorithmDetails,
-    editView,
-    openDeleteDialog,
     algorithmId,
-    handleToggleEditView,
     handleBackClick,
-    handleDeleteAlgorithm,
+  } = useAlgorithmDetails();
+  const {
     handleDeleteDialogClose,
     handleDeleteDialogOpen,
+    handleDeleteAlgorithm,
+    openDeleteDialog,
+  } = useDeleteAlgorithm();
+  const {
     handleEditSave,
-  } = useAlgorithmDetails();
+    handleToggleEditView,
+    editView,
+  } = useUpdateAlgorithm();
+
   return (
     <StyledDetailedAlgorithm>
       {algorithmDetails && (

@@ -23,6 +23,6 @@ export const fetchAlgorithmDetails: (
               linkURL: 'test-link.test',
             })
           : reject(new Error('Server error')),
-      2000
+      500
     )
   );

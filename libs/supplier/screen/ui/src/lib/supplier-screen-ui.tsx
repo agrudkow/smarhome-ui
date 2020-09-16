@@ -7,7 +7,7 @@ import {
   PollIcon,
   UserIcon,
   SidebarLinkProps,
-  SnackbarErrorSubscriber,
+  SnackbarSubscriber,
 } from '@smarthome/common/ui';
 import { SupplierRoutes } from '@smarthome/common/service';
 import { User, SignIn } from '@smarthome/supplier/feature/user/ui';
@@ -52,7 +52,7 @@ export const SupplierScreenUi: FC = () => {
               horizontal: 'right',
             }}
           >
-            <SnackbarErrorSubscriber>
+            <SnackbarSubscriber>
               <Route
                 path={`/${SupplierRoutes.Dashboard}`}
                 exact
@@ -69,7 +69,7 @@ export const SupplierScreenUi: FC = () => {
                 component={DetailedAlgorithm}
               />
               <Route path={`/${SupplierRoutes.User}`} exact component={User} />
-            </SnackbarErrorSubscriber>
+            </SnackbarSubscriber>
           </SnackbarProvider>
         </Layout>
       </Switch>
