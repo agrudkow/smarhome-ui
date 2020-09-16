@@ -1,5 +1,7 @@
 import './lib/base-theme.d';
 
+export * from './lib/snackbar-error-subscriber';
+
 export * from './lib/sign-in';
 export * from './lib/month-switch';
 export * from './lib/rating-dialog';

@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { BaseButton, P } from '@smarthome/common/ui';
+import { useTestSyntax } from '@smarthome/supplier/feature/algorithms/logic';
 
 export interface TestSyntaxProps {
-  onTestSyntex: () => void;
+  algorithmId: string;
 }
 
 const StyledTestSyntax = styled.div`
@@ -31,16 +32,18 @@ const StyledButtonContainer = styled.div`
   }
 `;
 
-export const TestSyntax: FC<TestSyntaxProps> = ({ onTestSyntex }) => {
+export const TestSyntax: FC<TestSyntaxProps> = ({ algorithmId }) => {
+  const { handleTestSyntax, status } = useTestSyntax(algorithmId);
+
   return (
     <StyledTestSyntax>
       <StatusContainer>
         <P>
-          Status:&nbsp;<b>Ok</b>
+          Status:&nbsp;<b>{status}</b>
         </P>
       </StatusContainer>
       <StyledButtonContainer>
-        <BaseButton onClick={onTestSyntex}>Test</BaseButton>
+        <BaseButton onClick={handleTestSyntax}>Test</BaseButton>
       </StyledButtonContainer>
     </StyledTestSyntax>
   );

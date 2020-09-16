@@ -9,7 +9,10 @@ import { connectRouter } from 'connected-react-router';
 import { routerMiddleware } from 'connected-react-router';
 import { DeepReadonly } from 'utility-types';
 import { history, ErrorSlice, LoadingSlice } from '@smarthome/common/state';
-import { AlgorithmsListSlice } from '@smarthome/supplier/feature/algorithms/state';
+import {
+  AlgorithmsListSlice,
+  AlgorithmDetailsSlice,
+} from '@smarthome/supplier/feature/algorithms/state';
 import {
   UserSlice,
   UpdateUserSlice,
@@ -24,6 +27,7 @@ const rootReducer = combineReducers({
   [AlgorithmsListSlice.name]: AlgorithmsListSlice.reducer,
   [UserSlice.name]: UserSlice.reducer,
   [UpdateUserSlice.name]: UpdateUserSlice.reducer,
+  [AlgorithmDetailsSlice.name]: AlgorithmDetailsSlice.reducer,
 });
 
 export const supplierStore = configureStore({
@@ -45,6 +49,7 @@ export function* rootSaga() {
     fork(AlgorithmsListSlice.saga),
     fork(UserSlice.saga),
     fork(UpdateUserSlice.saga),
+    fork(AlgorithmDetailsSlice.saga),
   ]);
 }
 

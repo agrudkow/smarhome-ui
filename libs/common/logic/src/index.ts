@@ -6,3 +6,4 @@ export * from './lib/data-parser.type';
 export * from './lib/use-upload-file';
 export * from './lib/use-month-switch';
 export * from './lib/use-loading';
+export * from './lib/use-error-snackbar';

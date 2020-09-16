@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { call, put } from '@redux-saga/core/effects';
-import { all, fork, takeEvery, SagaReturnType } from '@redux-saga/core/effects';
+import {
+  all,
+  fork,
+  takeLeading,
+  SagaReturnType,
+} from '@redux-saga/core/effects';
 import { ErrorSlice, LoadingSlice } from '@smarthome/common/state';
 import { AlgorithmDTO } from '@smarthome/data';
 import { fetchAlgorithmsList } from '@smarthome/supplier/feature/algorithms/service';
@@ -70,10 +75,10 @@ function* handleFetchAlgorithmsStart(action: PayloadAction<string>) {
   }
 }
 
-function* watchPostAlgorithmsStart() {
-  yield takeEvery(fetchAlgorithmsStart.type, handleFetchAlgorithmsStart);
+function* watchFetchAlgorithmsStart() {
+  yield takeLeading(fetchAlgorithmsStart.type, handleFetchAlgorithmsStart);
 }
 
 export function* saga() {
-  yield all([fork(watchPostAlgorithmsStart)]);
+  yield all([fork(watchFetchAlgorithmsStart)]);
 }

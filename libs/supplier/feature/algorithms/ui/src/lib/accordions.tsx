@@ -7,7 +7,6 @@ import UploadNewFile from './upload-new-file';
 import AlgorithmStatistics from './algorithm-statistics';
 
 export interface AccordionsProps {
-  handleTestSyntex: () => void;
   algorithmId: string;
 }
 
@@ -29,10 +28,7 @@ const StyledAccordions = styled.div`
   }
 `;
 
-export const Accordions: FC<AccordionsProps> = ({
-  handleTestSyntex,
-  algorithmId,
-}) => {
+export const Accordions: FC<AccordionsProps> = ({ algorithmId }) => {
   const {
     fileName,
     handleDeleteFile,
@@ -64,7 +60,7 @@ export const Accordions: FC<AccordionsProps> = ({
         onChange={toggleAccordionFactory(AccordionTypes.TestSyntax)}
         expanded={expandedAccordion === AccordionTypes.TestSyntax}
       >
-        <TestSyntax onTestSyntex={handleTestSyntex} />
+        <TestSyntax algorithmId={algorithmId} />
       </Accordion>
       <Accordion
         summary={<H6>Upload new source code</H6>}

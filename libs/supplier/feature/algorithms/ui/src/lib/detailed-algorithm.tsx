@@ -1,6 +1,5 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import { useSnackbar } from 'notistack';
 import {
   InfoHeader,
   OvalBoxContainer,
@@ -13,10 +12,7 @@ import {
   H5,
   UnderlinedSubtitle,
 } from '@smarthome/common/ui';
-import { useHistory, useParams } from 'react-router';
-import { CustomerRoutes } from '@smarthome/common/service';
-import { fetchAlgorithmDetails } from '@smarthome/consumer/feature/algorithms/service';
-import { AlgorithmDetailsDTO } from '@smarthome/data';
+import { useAlgorithmDetails } from '@smarthome/supplier/feature/algorithms/logic';
 import AcctionButtons from './acction-buttons';
 import Accordions from './accordions';
 import EditAlgorithmFrom from './edit-alorithm';
@@ -45,53 +41,25 @@ const RatingContainer = styled.div`
 `;
 
 export const DetailedAlgorithm: FC = () => {
-  const { enqueueSnackbar } = useSnackbar();
-  const history = useHistory();
-  const { id: algorithmId } = useParams<{ id: string }>();
-  const [algorithmData, setAlgorithmData] = useState<
-    AlgorithmDetailsDTO | undefined
-  >(undefined);
-  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-  const [editView, setEditView] = useState(false);
-
-  const handleBackClick = useCallback(() => {
-    history.push(`/${CustomerRoutes.Algorithms}`);
-  }, [history]);
-
-  const handleDeleteAlgorithm = useCallback(() => {
-    console.log(`Delete dataset ${algorithmId}`);
-    enqueueSnackbar(`Delete dataset ${algorithmId}`, { variant: 'success' });
-    setOpenDeleteDialog(false);
-  }, [algorithmId, enqueueSnackbar]);
-
-  const handleDeleteDialogClose = useCallback(() => {
-    setOpenDeleteDialog(false);
-  }, []);
-
-  const handleDeleteDialogOpen = useCallback(() => {
-    setOpenDeleteDialog(true);
-  }, []);
-
-  const handleEditSave = useCallback(() => {
-    setEditView(false);
-  }, []);
-
-  const handleToggleEditView = useCallback(() => {
-    setEditView((prevState) => !prevState);
-  }, []);
-
-  useEffect(() => {
-    if (algorithmId !== undefined) {
-      setAlgorithmData(fetchAlgorithmDetails(algorithmId));
-    }
-  }, [algorithmId]);
+  const {
+    algorithmDetails,
+    editView,
+    openDeleteDialog,
+    algorithmId,
+    handleToggleEditView,
+    handleBackClick,
+    handleDeleteAlgorithm,
+    handleDeleteDialogClose,
+    handleDeleteDialogOpen,
+    handleEditSave,
+  } = useAlgorithmDetails();
   return (
     <StyledDetailedAlgorithm>
-      {algorithmData && (
+      {algorithmDetails && (
         <>
           <div>
             <InfoHeader
-              headerText={algorithmData.displayName}
+              headerText={algorithmDetails.displayName}
               infoMessageText={
                 'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating. '
               }
@@ -103,7 +71,7 @@ export const DetailedAlgorithm: FC = () => {
                   <>
                     <H6>Rating:&nbsp;&nbsp;</H6>
                     <CustomRating
-                      value={algorithmData.algorithmRating}
+                      value={algorithmDetails.algorithmRating}
                       readOnly={true}
                     />
                   </>
@@ -113,9 +81,9 @@ export const DetailedAlgorithm: FC = () => {
             {editView ? (
               <OvalBoxContainer>
                 <EditAlgorithmFrom
-                  name={algorithmData.displayName}
-                  summary={algorithmData.algorithmSummary}
-                  description={algorithmData.algorithmDescription}
+                  name={algorithmDetails.displayName}
+                  summary={algorithmDetails.algorithmSummary}
+                  description={algorithmDetails.algorithmDescription}
                   onSave={handleEditSave}
                   onCancle={handleToggleEditView}
                 />
@@ -137,13 +105,10 @@ export const DetailedAlgorithm: FC = () => {
                 </UnderlinedSubtitle>
                 <OvalBoxContainer>
                   <DescriptionContainer>
-                    {algorithmData.algorithmDescription}
+                    {algorithmDetails.algorithmDescription}
                   </DescriptionContainer>
                 </OvalBoxContainer>
-                <Accordions
-                  handleTestSyntex={() => console.log('Test syntax')}
-                  algorithmId={algorithmId}
-                />
+                <Accordions algorithmId={algorithmId} />
                 <AcctionButtons
                   handleDeleteDialogOpen={handleDeleteDialogOpen}
                   handleOpenEditView={handleToggleEditView}

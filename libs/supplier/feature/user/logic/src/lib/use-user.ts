@@ -18,7 +18,7 @@ export function useUser() {
     palette: { error: errorColor },
   } = useContext(ThemeContext);
 
-  const { user, error } = useSelector((state: RootState) => state.user);
+  const { user } = useSelector((state: RootState) => state.user);
   const { finished, error: updateUserError } = useSelector(
     (state: RootState) => state.updateUser
   );
@@ -42,12 +42,6 @@ export function useUser() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (error) {
-      enqueueSnackbar(error, { variant: 'error' });
-    }
-  }, [enqueueSnackbar, error]);
-
-  useEffect(() => {
     if (finished && !updateUserError) {
       setEdit(false);
       enqueueSnackbar('User updated.', { variant: 'success' });
@@ -61,12 +55,6 @@ export function useUser() {
       setUserData(user);
     }
   }, [user]);
-
-  useEffect(() => {
-    if (updateUserError) {
-      enqueueSnackbar(updateUserError, { variant: 'error' });
-    }
-  }, [enqueueSnackbar, updateUserError]);
 
   return {
     handleToggleEditView,

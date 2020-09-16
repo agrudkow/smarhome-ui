@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { call, put } from '@redux-saga/core/effects';
-import { all, fork, takeEvery } from '@redux-saga/core/effects';
+import { all, fork, takeLeading } from '@redux-saga/core/effects';
 import { ErrorSlice, LoadingSlice } from '@smarthome/common/state';
 import { updateUser } from '@smarthome/supplier/feature/user/service';
 import { UserDTO } from '@smarthome/data';
@@ -65,10 +65,10 @@ function* handleupdateUserStart(action: PayloadAction<UserDTO>) {
   }
 }
 
-function* watchPostUserStart() {
-  yield takeEvery(updateUserStart.type, handleupdateUserStart);
+function* watchUpdateUserStart() {
+  yield takeLeading(updateUserStart.type, handleupdateUserStart);
 }
 
 export function* saga() {
-  yield all([fork(watchPostUserStart)]);
+  yield all([fork(watchUpdateUserStart)]);
 }

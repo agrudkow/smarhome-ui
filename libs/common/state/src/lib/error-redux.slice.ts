@@ -18,7 +18,7 @@ const errors = createSlice({
       state.errors.push(action.payload);
     },
     popError(state) {
-      state.errors.pop();
+      state.errors.shift();
     },
   },
 });
