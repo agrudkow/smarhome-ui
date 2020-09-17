@@ -17,6 +17,10 @@ import {
   UserSlice,
   UpdateUserSlice,
 } from '@smarthome/supplier/feature/user/state';
+import {
+  BillingSlice,
+  TopAlgorithmsSlice,
+} from '@smarthome/supplier/feature/dashboard/state';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -28,6 +32,8 @@ const rootReducer = combineReducers({
   [UserSlice.name]: UserSlice.reducer,
   [UpdateUserSlice.name]: UpdateUserSlice.reducer,
   [AlgorithmDetailsSlice.name]: AlgorithmDetailsSlice.reducer,
+  [BillingSlice.name]: BillingSlice.reducer,
+  [TopAlgorithmsSlice.name]: TopAlgorithmsSlice.reducer,
 });
 
 export const supplierStore = configureStore({
@@ -55,6 +61,8 @@ export function* rootSaga() {
     fork(UserSlice.saga),
     fork(UpdateUserSlice.saga),
     fork(AlgorithmDetailsSlice.saga),
+    fork(BillingSlice.saga),
+    fork(TopAlgorithmsSlice.saga),
   ]);
 }
 

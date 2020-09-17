@@ -16,6 +16,7 @@ import {
   algorithmTopRatingDataParser,
   algorithmTopRatingCellsParser,
   algorithmTopExecutionsDataParser,
+  useBillings,
 } from '@smarthome/supplier/feature/dashboard/logic';
 import {
   fetchTopExecutionsAlgorithms,
@@ -25,11 +26,6 @@ import TotalBilling from './total-billing';
 import BillingsPlot from './billings-plot';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import { useHistory } from 'react-router-dom';
-import {
-  totalBillingParser,
-  TotalMonthlyBilling,
-} from '@smarthome/consumer/feature/resultsets/logic';
-import { fetchTotalBilling } from '@smarthome/consumer/feature/resultsets/service';
 
 const TableContainer = styled.div`
   ${regularSpacing}
@@ -47,14 +43,8 @@ const RecentBillingsTabelTitle = styled.div`
 `;
 
 export const Dashboard: React.FC = () => {
+  const { billing, currentDate, handleChangeMonthFactory } = useBillings();
   const history = useHistory();
-  const [totalIncomes, setTotalIncomes] = useState<
-    TotalMonthlyBilling | undefined
-  >();
-  // const [totalCosts, setTotalCosts] = useState<
-  //   TotalMonthlyBilling | undefined
-  // >();
-  const [currentDate, setCurrentDate] = useState(new Date());
   const [tableTopRatingData, setTopRatingData] = useState<BaseAlgorithm[]>([]);
   const [tableTopRatingCells, setTopRatingCells] = useState<
     Cell<keyof BaseAlgorithm>[]
@@ -72,16 +62,6 @@ export const Dashboard: React.FC = () => {
       inPixels: { tablet, desktop },
     },
   } = useContext(ThemeContext);
-
-  const handleChangeMonthFactory = (value: number) => () =>
-    setCurrentDate(
-      (previousValue) =>
-        new Date(
-          previousValue.getFullYear(),
-          previousValue.getMonth() + value,
-          previousValue.getDate()
-        )
-    );
 
   useEffect(() => {
     setTopExecutionsData(
@@ -117,10 +97,6 @@ export const Dashboard: React.FC = () => {
     );
   }, [width, tablet, desktop]);
 
-  useEffect(() => {
-    setTotalIncomes(totalBillingParser(fetchTotalBilling(currentDate)));
-  }, [currentDate]);
-
   return (
     <>
       <InfoHeader
@@ -131,12 +107,14 @@ export const Dashboard: React.FC = () => {
       />
       <UnderlinedContainer />
       <TotalBilling
+        income={billing?.billed ?? '-'}
+        numberOfExecutions={billing?.numberOfExecutions ?? '-'}
         month={currentDate.getMonth()}
         year={currentDate.getFullYear()}
         onNextMonthClick={handleChangeMonthFactory(1)}
         onPreviousMonthClick={handleChangeMonthFactory(-1)}
       />
-      <BillingsPlot incomes={totalIncomes?.dailyBillings ?? []} />
+      <BillingsPlot incomes={billing?.dailyBillings ?? []} />
       <TableContainer>
         <PaginatedTable<BaseAlgorithm>
           data={tableTopRatingData}

@@ -32,7 +32,7 @@ export const User: FC = () => {
   }, []);
 
   useEffect(() => {
-    setUserData(fetchUserDetails());
+    (async () => setUserData(await fetchUserDetails()))();
   }, []);
 
   return (

@@ -5,6 +5,7 @@ import {
   all,
   fork,
   takeLeading,
+  takeLatest,
   takeEvery,
   SagaReturnType,
 } from '@redux-saga/core/effects';
@@ -143,7 +144,7 @@ const algorithmDetails = createSlice({
       action: PayloadAction<{
         algorithmId: string;
         startDate: number;
-        endData: number;
+        endDate: number;
       }>
     ) {
       state.loading = true;
@@ -410,7 +411,7 @@ function* watchUpdateAlgorithmSuccess() {
 }
 
 function* watchFetchAlgorithmStatisticsStart() {
-  yield takeLeading(
+  yield takeLatest(
     fetchAlgorithmStatisticsStart.type,
     handleFetchAlgorithmStatisticsStart
   );

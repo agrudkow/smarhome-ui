@@ -3,7 +3,7 @@ export interface DailyBillingDTO {
   billed: number;
 }
 
-export interface TotalMonthlyBillingDTO {
+export interface ConsumerTotalMonthlyBillingDTO {
   billed: number;
   milliseconds: number;
   dailyBillings: DailyBillingDTO[];

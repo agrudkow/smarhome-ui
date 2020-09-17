@@ -1,33 +1,35 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@smarthome/supplier/store';
-import { useEffect } from 'react';
-import { AlgorithmDetailsSlice } from '@smarthome/supplier/feature/algorithms/state';
+import { BillingSlice } from '@smarthome/supplier/feature/dashboard/state';
 import { useMonthSwitch } from '@smarthome/common/logic';
 
-export function useAlgortihmStatistics(algorithmId: string) {
+export function useBillings() {
   const dispatch = useDispatch();
   const { currentDate, handleChangeMonthFactory } = useMonthSwitch();
-  const { statistics } = useSelector(
-    (state: RootState) => state.algorithmDetails
-  );
+
+  const { billing } = useSelector((state: RootState) => state.billing);
 
   useEffect(() => {
     dispatch(
-      AlgorithmDetailsSlice.fetchAlgorithmStatisticsStart({
-        algorithmId,
+      BillingSlice.fetchBillingStart({
         startDate: new Date(
           currentDate.getFullYear(),
           currentDate.getMonth(),
           1
         ).getTime(),
         endDate: new Date(
-          currentDate.getFullYear() + currentDate.getMonth() !== 11 ? 0 : 1,
+          currentDate.getFullYear() + (currentDate.getMonth() !== 11 ? 0 : 1),
           currentDate.getMonth() + 1,
           0
         ).getTime(),
       })
     );
-  }, [algorithmId, currentDate, dispatch]);
+  }, [currentDate, dispatch]);
 
-  return { statistics, currentDate, handleChangeMonthFactory } as const;
+  return {
+    billing,
+    currentDate,
+    handleChangeMonthFactory,
+  };
 }

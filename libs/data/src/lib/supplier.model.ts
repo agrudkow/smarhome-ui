@@ -4,13 +4,12 @@ export type AlgorithmStatisticsDTO = {
 };
 
 export type DailySupplierBillingDTO = {
-  day: string;
+  day: number;
   billed: number;
 };
 
-export type MonthlySupplierBillingsDTO = {
-  income: number;
-  expense: number;
-  dailyIncomes: DailySupplierBillingDTO[];
-  dailyExpenses: DailySupplierBillingDTO[];
-};
+export interface SupplierTotalMonthlyBillingDTO {
+  billed: number;
+  numberOfExecutions: number;
+  dailyBillings: DailySupplierBillingDTO[];
+}

@@ -1,8 +1,8 @@
-import { TotalMonthlyBillingDTO } from '@smarthome/data';
+import { ConsumerTotalMonthlyBillingDTO } from '@smarthome/data';
 import { TotalMonthlyBilling } from './billing.interface';
 
 export const totalBillingParser: (
-  data: TotalMonthlyBillingDTO
+  data: ConsumerTotalMonthlyBillingDTO
 ) => TotalMonthlyBilling = ({ billed, milliseconds, dailyBillings }) => {
   const seconds = Math.trunc((milliseconds / 1000) % 60);
   const minutes = Math.trunc((milliseconds / (1000 * 60)) % 60);
