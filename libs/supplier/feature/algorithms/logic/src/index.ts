@@ -9,3 +9,4 @@ export * from './lib/use-upload-source-code';
 export * from './lib/use-delete-algorithm';
 export * from './lib/use-update-algorithm';
 export * from './lib/use-add-algorithm';
+export * from './lib/use-algorithm-statistics';

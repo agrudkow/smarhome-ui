@@ -16,3 +16,8 @@ export interface ExecutionBillingDTO {
   date: string;
   billed: number;
 }
+
+export interface PeriodDTO {
+  begine: number;
+  end: number;
+}

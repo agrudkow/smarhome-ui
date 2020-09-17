@@ -10,7 +10,7 @@ import {
 } from '@redux-saga/core/effects';
 import { SnackbarSlice, LoadingSlice } from '@smarthome/common/state';
 import { SupplierRoutes } from '@smarthome/common/service';
-import { AlgorithmDetailsDTO } from '@smarthome/data';
+import { AlgorithmDetailsDTO, AlgorithmStatisticsDTO } from '@smarthome/data';
 import {
   fetchAlgorithmDetails,
   testSyntax,
@@ -19,6 +19,7 @@ import {
   deleteAlgorithm,
   UploadSourceCodeProps,
   updateAlgorithmDetails,
+  fetchAlgorithmStatistics,
 } from '@smarthome/supplier/feature/algorithms/service';
 
 interface AlgorithmDetailsState {
@@ -26,6 +27,7 @@ interface AlgorithmDetailsState {
   error: string | null;
   algorithmDetails: AlgorithmDetailsDTO | null;
   syntaxTestStatus: string | null;
+  statistics: Array<AlgorithmStatisticsDTO> | null;
 }
 
 const initialState: AlgorithmDetailsState = {
@@ -33,6 +35,7 @@ const initialState: AlgorithmDetailsState = {
   error: null,
   algorithmDetails: null,
   syntaxTestStatus: null,
+  statistics: null,
 };
 
 export const name = 'algorithmDetails' as const;
@@ -90,9 +93,9 @@ const algorithmDetails = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     addAlgorithmStart(
       state,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       action: PayloadAction<Omit<AlgorithmDetailsDTO, 'algorithmId'>>
     ) {
       state.loading = true;
@@ -134,6 +137,30 @@ const algorithmDetails = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    fetchAlgorithmStatisticsStart(
+      state,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      action: PayloadAction<{
+        algorithmId: string;
+        startDate: number;
+        endData: number;
+      }>
+    ) {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchAlgorithmStatisticsSuccess(
+      state,
+      action: PayloadAction<AlgorithmStatisticsDTO[]>
+    ) {
+      state.loading = false;
+      state.error = null;
+      state.statistics = action.payload;
+    },
+    fetchAlgorithmStatisticsFailure(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -156,6 +183,9 @@ export const {
   updateAlgorithmFailure,
   updateAlgorithmStart,
   updateAlgorithmSuccess,
+  fetchAlgorithmStatisticsFailure,
+  fetchAlgorithmStatisticsStart,
+  fetchAlgorithmStatisticsSuccess,
 } = algorithmDetails.actions;
 export const { reducer } = algorithmDetails;
 // -------------------------handlers-------------------------------
@@ -275,7 +305,6 @@ function* handleDeleteAlgorithmSuccess() {
     })
   );
 }
-
 function* handleUpdateAlgorithmStart(
   action: PayloadAction<AlgorithmDetailsDTO>
 ) {
@@ -301,6 +330,30 @@ function* handleUpdateAlgorithmSuccess(action: PayloadAction<string>) {
     })
   );
   yield put(fetchAlgorithmDetailsStart(action.payload));
+}
+
+function* handleFetchAlgorithmStatisticsStart(
+  action: PayloadAction<{
+    algorithmId: string;
+    startDate: number;
+    endDate: number;
+  }>
+) {
+  try {
+    yield put(LoadingSlice.pushLoading());
+    const response: SagaReturnType<typeof fetchAlgorithmStatistics> = yield call(
+      fetchAlgorithmStatistics,
+      action.payload
+    );
+    yield put(fetchAlgorithmStatisticsSuccess(response));
+  } catch (error) {
+    yield put(
+      SnackbarSlice.pushMessage({ message: error.message, variant: 'error' })
+    );
+    yield put(fetchAlgorithmStatisticsFailure(error.message));
+  } finally {
+    yield put(LoadingSlice.popLoading());
+  }
 }
 // ------------------watchers--------------------------------------------
 function* watchFetchAlgorithmDetailsStart() {
@@ -346,6 +399,13 @@ function* watchUpdateAlgorithmSuccess() {
   yield takeEvery(updateAlgorithmSuccess.type, handleUpdateAlgorithmSuccess);
 }
 
+function* watchFetchAlgorithmStatisticsStart() {
+  yield takeLeading(
+    fetchAlgorithmStatisticsStart.type,
+    handleFetchAlgorithmStatisticsStart
+  );
+}
+
 export function* saga() {
   yield all([
     fork(watchFetchAlgorithmDetailsStart),
@@ -358,5 +418,6 @@ export function* saga() {
     fork(watchDeleteAlgorithmSuccess),
     fork(watchUpdateAlgorithmStart),
     fork(watchUpdateAlgorithmSuccess),
+    fork(watchFetchAlgorithmStatisticsStart),
   ]);
 }

@@ -7,9 +7,15 @@ const MockData: AlgorithmStatisticsDTO[] = [...new Array(30)].map(
   })
 );
 
-export const fetchAlgorithmStatistics = (
+export const fetchAlgorithmStatistics = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  algorithmId: string,
+  algorithmId,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  date: Date
-): AlgorithmStatisticsDTO[] => MockData;
+  startDate,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  endDate,
+}: {
+  algorithmId: string;
+  startDate: number;
+  endDate: number;
+}): AlgorithmStatisticsDTO[] => MockData;

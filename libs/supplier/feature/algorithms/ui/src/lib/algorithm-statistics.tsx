@@ -1,10 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { H5, MonthSwitch } from '@smarthome/common/ui';
-import { AlgorithmStatistics as AlgorithmStatisticsType } from '@smarthome/supplier/feature/algorithms/logic';
-import { fetchAlgorithmStatistics } from '@smarthome/supplier/feature/algorithms/service';
+import { useAlgortihmStatistics } from '@smarthome/supplier/feature/algorithms/logic';
 import Plot from './plot';
-import { useMonthSwitch } from '@smarthome/common/logic';
 
 export interface AlgorithmStatisticsProps {
   algorithmId: string;
@@ -31,14 +29,12 @@ const MonthSwitchContainer = styled.div`
 export const AlgorithmStatistics: FC<AlgorithmStatisticsProps> = ({
   algorithmId,
 }) => {
-  const [staisticData, setStaisticData] = useState<AlgorithmStatisticsType[]>(
-    []
-  );
-  const { currentDate, handleChangeMonthFactory } = useMonthSwitch();
+  const {
+    statistics,
+    handleChangeMonthFactory,
+    currentDate,
+  } = useAlgortihmStatistics(algorithmId);
 
-  useEffect(() => {
-    setStaisticData(fetchAlgorithmStatistics(algorithmId, currentDate));
-  }, [algorithmId, currentDate]);
   return (
     <StyledAlgorithmStatistics>
       <MonthSwitchContainer>
@@ -51,9 +47,7 @@ export const AlgorithmStatistics: FC<AlgorithmStatisticsProps> = ({
       </MonthSwitchContainer>
       <H5>Daily number of executions</H5>
       <br />
-      <PlotContainer>
-        <Plot data={staisticData} />
-      </PlotContainer>
+      <PlotContainer>{statistics && <Plot data={statistics} />}</PlotContainer>
     </StyledAlgorithmStatistics>
   );
 };
