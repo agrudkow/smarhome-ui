@@ -206,6 +206,9 @@ function* handleFetchAlgorithmDetailsStart(action: PayloadAction<string>) {
     yield put(LoadingSlice.popLoading());
   }
 }
+function* handleFetchAlgorithmDetailsFailure() {
+  yield put(push(`/${SupplierRoutes.Algorithms}`));
+}
 
 function* handleTestSyntaxStart(action: PayloadAction<string>) {
   try {
@@ -363,6 +366,13 @@ function* watchFetchAlgorithmDetailsStart() {
   );
 }
 
+function* watchFetchAlgorithmDetailsFailure() {
+  yield takeEvery(
+    fetchAlgorithmDetailsFailure.type,
+    handleFetchAlgorithmDetailsFailure
+  );
+}
+
 function* watchTestSyntaxStart() {
   yield takeLeading(testSyntaxStart.type, handleTestSyntaxStart);
 }
@@ -409,6 +419,7 @@ function* watchFetchAlgorithmStatisticsStart() {
 export function* saga() {
   yield all([
     fork(watchFetchAlgorithmDetailsStart),
+    fork(watchFetchAlgorithmDetailsFailure),
     fork(watchTestSyntaxStart),
     fork(watchUploadSourceCodeStart),
     fork(watchUploadSourceCodeSuccess),

@@ -24,7 +24,7 @@ export function useAlgorithmsList() {
   const history = useHistory();
   const [currentView, setCurrentView] = useState<CurrentView>('list');
   const [tableData, setTableData] = useState<Algorithm[]>([]);
-  const [searchValue, setSearchValue] = useState<string>('');
+  const [searchValue, setSearchValue] = useState<string | undefined>();
   const [tableCells, setTableCells] = useState<Cell<keyof Algorithm>[]>([]);
   const [orderBy, setOrderBy] = useState<keyof Algorithm>('name');
   const [tableBodyPlaceholder, setTableBodyPlaceholder] = useState<string>(
@@ -36,7 +36,7 @@ export function useAlgorithmsList() {
       inPixels: { tablet, desktop },
     },
   } = useContext(ThemeContext);
-  const { loading, algorithms } = useSelector(
+  const { loading, algorithms, searchPhrase } = useSelector(
     (state: RootState) => state.algorithmsList
   );
 
@@ -48,7 +48,7 @@ export function useAlgorithmsList() {
   );
 
   const handleSearch = useCallback(async () => {
-    dispatch(AlgorithmsListSlice.fetchAlgorithmsStart(searchValue));
+    dispatch(AlgorithmsListSlice.fetchAlgorithmsStart(searchValue ?? ''));
   }, [dispatch, searchValue]);
 
   const handleChangeViewFactory = useCallback(
@@ -83,6 +83,7 @@ export function useAlgorithmsList() {
     currentView,
     tableData,
     searchValue,
+    searchPhrase,
     tableCells,
     orderBy,
     setOrderBy,
