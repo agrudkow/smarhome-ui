@@ -1,31 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import {
   InfoHeader,
   UnderlinedContainer,
   regularSpacing,
   PaginatedTable,
   H5,
-  Cell,
 } from '@smarthome/common/ui';
-import { SupplierRoutes } from '@smarthome/common/service';
 import {
   BaseAlgorithm,
   AlgorithmTopExec,
-  algorithmTopExecutionsCellsParser,
-  algorithmTopRatingDataParser,
-  algorithmTopRatingCellsParser,
-  algorithmTopExecutionsDataParser,
   useBillings,
+  useTopAlgorithms,
 } from '@smarthome/supplier/feature/dashboard/logic';
-import {
-  fetchTopExecutionsAlgorithms,
-  fetchTopRatingAlgorithms,
-} from '@smarthome/supplier/feature/dashboard/service';
 import TotalBilling from './total-billing';
 import BillingsPlot from './billings-plot';
-import { useWindowDimensions } from '@smarthome/common/logic';
-import { useHistory } from 'react-router-dom';
 
 const TableContainer = styled.div`
   ${regularSpacing}
@@ -44,58 +33,13 @@ const RecentBillingsTabelTitle = styled.div`
 
 export const Dashboard: React.FC = () => {
   const { billing, currentDate, handleChangeMonthFactory } = useBillings();
-  const history = useHistory();
-  const [tableTopRatingData, setTopRatingData] = useState<BaseAlgorithm[]>([]);
-  const [tableTopRatingCells, setTopRatingCells] = useState<
-    Cell<keyof BaseAlgorithm>[]
-  >([]);
-  const [tableTopExecutionsData, setTopExecutionsData] = useState<
-    AlgorithmTopExec[]
-  >([]);
-  const [tableTopExecutionsCells, setTopExecutionsCells] = useState<
-    Cell<keyof AlgorithmTopExec>[]
-  >([]);
-  const [tableBodyPlaceholder] = useState<string>('No data');
-  const { width } = useWindowDimensions();
   const {
-    breakpoints: {
-      inPixels: { tablet, desktop },
-    },
-  } = useContext(ThemeContext);
-
-  useEffect(() => {
-    setTopExecutionsData(
-      algorithmTopExecutionsDataParser(
-        fetchTopExecutionsAlgorithms(),
-        'more',
-        (id: string) => () => {
-          history.push(
-            `${SupplierRoutes.Algorithms}/${encodeURIComponent(id)}`
-          );
-        }
-      )
-    );
-    setTopRatingData(
-      algorithmTopRatingDataParser(
-        fetchTopRatingAlgorithms(),
-        'more',
-        (id: string) => () => {
-          history.push(
-            `${SupplierRoutes.Algorithms}/${encodeURIComponent(id)}`
-          );
-        }
-      )
-    );
-  }, [history]);
-
-  useEffect(() => {
-    setTopExecutionsCells(
-      algorithmTopExecutionsCellsParser(width, { desktop, tablet })
-    );
-    setTopRatingCells(
-      algorithmTopRatingCellsParser(width, { desktop, tablet })
-    );
-  }, [width, tablet, desktop]);
+    tableTopRatingData,
+    tableTopRatingCells,
+    tableTopExecutionsCells,
+    tableTopExecutionsData,
+    tableBodyPlaceholder,
+  } = useTopAlgorithms();
 
   return (
     <>

@@ -7,27 +7,19 @@ import {
   SagaReturnType,
 } from '@redux-saga/core/effects';
 import { SnackbarSlice, LoadingSlice } from '@smarthome/common/state';
-import {
-  SupplierTotalMonthlyBillingDTO,
-  AlgorithmTopExecDTO,
-  AlgorithmDTO,
-} from '@smarthome/data';
+import { SupplierTotalMonthlyBillingDTO } from '@smarthome/data';
 import { fetchTotalBilling } from '@smarthome/supplier/feature/dashboard/service';
 
 interface BillingState {
   loading: boolean;
   error: string | null;
   billing: SupplierTotalMonthlyBillingDTO | null;
-  topExecutionAlgorithms: AlgorithmTopExecDTO[];
-  topRatingAlgorithms: AlgorithmDTO[];
 }
 
 const initialState: BillingState = {
   loading: false,
   error: null,
   billing: null,
-  topExecutionAlgorithms: [],
-  topRatingAlgorithms: [],
 };
 
 export const name = 'billing' as const;
