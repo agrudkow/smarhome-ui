@@ -1,6 +1,8 @@
 import { AlgorithmDTO } from '@smarthome/data';
 
-export const fetchAlgorithmsList: () => Promise<AlgorithmDTO[]> = () =>
+export const fetchAlgorithmsList: (
+  searchPhrase: string
+) => Promise<AlgorithmDTO[]> = () =>
   new Promise((resolve, reject) =>
     setTimeout(
       () =>

@@ -19,13 +19,13 @@ import { User, SignIn } from '@smarthome/consumer/feature/user/ui';
 import {
   Algorithms,
   DetailedAlgorithm,
-  SelectDataset,
+  SelectAlgorithm,
 } from '@smarthome/consumer/feature/algorithms/ui';
 import { Dashboard } from '@smarthome/consumer/feature/dashboard/ui';
 import {
   Datasets,
   DetailedDataset,
-  SelectAlgorithm,
+  SelectDataset,
 } from '@smarthome/consumer/feature/datasets/ui';
 import {
   Execute,

@@ -8,3 +8,4 @@ export * from './lib/use-dataset-details';
 export * from './lib/use-delete-dataset';
 export * from './lib/use-update-dataset';
 export * from './lib/use-add-dataset';
+export * from './lib/use-select-dataset';

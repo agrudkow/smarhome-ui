@@ -21,7 +21,7 @@ export function useDatasetDetails() {
     history.push(`/${ConsumerRoutes.Datasets}`);
   }, [history]);
 
-  const handleRunWithAlgorithmClick = useCallback(() => {
+  const handleRunOnAlgorithmClick = useCallback(() => {
     history.push(
       `/${ConsumerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
         ConsumerDatasetRoutes.SelectAlgorithm
@@ -37,7 +37,7 @@ export function useDatasetDetails() {
 
   return {
     handleBackClick,
-    handleRunWithAlgorithmClick,
+    handleRunOnAlgorithmClick,
     datasetDetails,
   };
 }

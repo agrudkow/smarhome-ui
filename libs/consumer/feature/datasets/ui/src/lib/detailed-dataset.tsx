@@ -42,7 +42,7 @@ export const DetailedDataset: FC = () => {
   const {
     datasetDetails,
     handleBackClick,
-    handleRunWithAlgorithmClick,
+    handleRunOnAlgorithmClick,
   } = useDatasetDetails();
   const {
     handleDeleteDataset,
@@ -96,7 +96,7 @@ export const DetailedDataset: FC = () => {
                 <AcctionButtons
                   handleDeleteDialogOpen={handleDeleteDialogOpen}
                   handleOpenEditView={handleToggleEditView}
-                  handleRunWithAlgorithmClick={handleRunWithAlgorithmClick}
+                  handleRunOnAlgorithmClick={handleRunOnAlgorithmClick}
                 />
               </>
             )}

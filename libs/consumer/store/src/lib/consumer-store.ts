@@ -14,6 +14,10 @@ import {
   DatasetDetailsSlice,
 } from '@smarthome/consumer/feature/datasets/state';
 import {
+  AlgorithmsListSlice,
+  AlgorithmDetailsSlice,
+} from '@smarthome/consumer/feature/algorithms/state';
+import {
   UpdateUserSlice,
   UserSlice,
 } from '@smarthome/consumer/feature/user/state';
@@ -26,6 +30,8 @@ const rootReducer = combineReducers({
   [LoadingSlice.name]: LoadingSlice.reducer,
   [DatasetsListSlice.name]: DatasetsListSlice.reducer,
   [DatasetDetailsSlice.name]: DatasetDetailsSlice.reducer,
+  [AlgorithmsListSlice.name]: AlgorithmsListSlice.reducer,
+  [AlgorithmDetailsSlice.name]: AlgorithmDetailsSlice.reducer,
   [UserSlice.name]: UserSlice.reducer,
   [UpdateUserSlice.name]: UpdateUserSlice.reducer,
 });
@@ -51,6 +57,8 @@ export function* rootSaga() {
   yield all([
     fork(DatasetsListSlice.saga),
     fork(DatasetDetailsSlice.saga),
+    fork(AlgorithmsListSlice.saga),
+    fork(AlgorithmDetailsSlice.saga),
     fork(UserSlice.saga),
     fork(UpdateUserSlice.saga),
   ]);
