@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { TextField, BaseButton } from '@smarthome/common/ui';
-import { UserDTO } from '@smarthome/data';
 
 export interface UserInfoFormProps {
   firstName: string;

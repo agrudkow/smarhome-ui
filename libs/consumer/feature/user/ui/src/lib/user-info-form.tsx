@@ -79,7 +79,7 @@ export const UserInfoForm: FC<UserInfoFormProps> = ({
         <CustomTextField
           id="input-email"
           label="Email"
-          defaultValue={email}
+          value={email}
           variant="outlined"
           helperText={edit ? 'Email is not editable' : ''}
           disabled
@@ -89,7 +89,7 @@ export const UserInfoForm: FC<UserInfoFormProps> = ({
           required={edit}
           id="input-first-name"
           label="First name"
-          defaultValue={firstName}
+          value={firstName}
           variant="outlined"
           disabled={!edit}
         />
@@ -98,7 +98,7 @@ export const UserInfoForm: FC<UserInfoFormProps> = ({
           required={edit}
           id="input-last-name"
           label="Last name"
-          defaultValue={lastName}
+          value={lastName}
           variant="outlined"
           disabled={!edit}
         />
@@ -107,7 +107,7 @@ export const UserInfoForm: FC<UserInfoFormProps> = ({
           required={edit}
           id="input-phone"
           label="Phone"
-          defaultValue={phone}
+          value={phone}
           variant="outlined"
           disabled={!edit}
         />

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback, useContext } from 'react';
+import React, { FC } from 'react';
 import {
   InfoHeader,
   UnderlinedContainer,
@@ -6,38 +6,21 @@ import {
   OutlinedButton,
 } from '@smarthome/common/ui';
 import UserInfoForm from './user-info-form';
-import { User as IUser } from '@smarthome/consumer/feature/user/logic';
-import { fetchUserDetails } from '@smarthome/consumer/feature/user/service';
-import { ThemeContext } from 'styled-components';
+import { useUser } from '@smarthome/consumer/feature/user/logic';
 
 export const User: FC = () => {
-  const [edit, setEdit] = useState<boolean>(false);
-  const [userData, setUserData] = useState<IUser | undefined>(undefined);
-
   const {
-    palette: { error },
-  } = useContext(ThemeContext);
-
-  const handleToggleEditView = useCallback(() => {
-    setEdit((prevState) => !prevState);
-  }, []);
-
-  const handleSaveChanges = useCallback(() => {
-    console.log('send data');
-    setEdit((prevState) => !prevState);
-  }, []);
-
-  const handleLogout = useCallback(() => {
-    console.log('logout');
-  }, []);
-
-  useEffect(() => {
-    (async () => setUserData(await fetchUserDetails()))();
-  }, []);
+    edit,
+    userDetails,
+    handleLogout,
+    handleSaveChanges,
+    handleToggleEditView,
+    errorColor,
+  } = useUser();
 
   return (
     <>
-      {userData && (
+      {userDetails && (
         <>
           <InfoHeader
             headerText={'User'}
@@ -48,10 +31,10 @@ export const User: FC = () => {
           <UnderlinedContainer />
           <OvalBoxContainer>
             <UserInfoForm
-              firstName={userData.firstName}
-              lastName={userData.lastName}
-              email={userData.email}
-              phone={userData.phone}
+              firstName={userDetails.firstName}
+              lastName={userDetails.lastName}
+              email={userDetails.email}
+              phone={userDetails.phone}
               edit={edit}
               onEditToggle={handleToggleEditView}
               onSaveChanges={handleSaveChanges}
@@ -60,8 +43,8 @@ export const User: FC = () => {
           {!edit && (
             <OutlinedButton
               onClick={handleLogout}
-              customColor={error}
-              customBorderColor={error}
+              customColor={errorColor}
+              customBorderColor={errorColor}
             >
               Logout
             </OutlinedButton>

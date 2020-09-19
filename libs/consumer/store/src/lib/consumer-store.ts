@@ -13,6 +13,10 @@ import {
   DatasetsListSlice,
   DatasetDetailsSlice,
 } from '@smarthome/consumer/feature/datasets/state';
+import {
+  UpdateUserSlice,
+  UserSlice,
+} from '@smarthome/consumer/feature/user/state';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,6 +26,8 @@ const rootReducer = combineReducers({
   [LoadingSlice.name]: LoadingSlice.reducer,
   [DatasetsListSlice.name]: DatasetsListSlice.reducer,
   [DatasetDetailsSlice.name]: DatasetDetailsSlice.reducer,
+  [UserSlice.name]: UserSlice.reducer,
+  [UpdateUserSlice.name]: UpdateUserSlice.reducer,
 });
 
 export const cunsumerStore = configureStore({
@@ -42,7 +48,12 @@ export type RootState = DeepReadonly<ReturnType<typeof rootReducer>>;
 export type RootStore = typeof cunsumerStore;
 
 export function* rootSaga() {
-  yield all([fork(DatasetsListSlice.saga), fork(DatasetDetailsSlice.saga)]);
+  yield all([
+    fork(DatasetsListSlice.saga),
+    fork(DatasetDetailsSlice.saga),
+    fork(UserSlice.saga),
+    fork(UpdateUserSlice.saga),
+  ]);
 }
 
 sagaMiddleware.run(rootSaga);
