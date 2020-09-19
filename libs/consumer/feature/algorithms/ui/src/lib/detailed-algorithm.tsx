@@ -13,8 +13,8 @@ import {
 } from '@smarthome/common/ui';
 import { useHistory, useParams } from 'react-router';
 import {
-  CustomerRoutes,
-  CustomerAlgorithmRoutes,
+  ConsumerRoutes,
+  ConsumerAlgorithmRoutes,
 } from '@smarthome/common/service';
 import { fetchAlgorithmDetails } from '@smarthome/consumer/feature/algorithms/service';
 import { AlgorithmDetailsDTO } from '@smarthome/data';
@@ -71,13 +71,13 @@ export const DetailedAlgorithm: FC = () => {
   const [rating, setRating] = useState<number>(0);
 
   const handleBackClick = useCallback(() => {
-    history.push(`/${CustomerRoutes.Algorithms}`);
+    history.push(`/${ConsumerRoutes.Algorithms}`);
   }, [history]);
 
   const handleRunOnDatasetClick = useCallback(() => {
     history.push(
-      `/${CustomerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
-        CustomerAlgorithmRoutes.SelectDataset
+      `/${ConsumerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
+        ConsumerAlgorithmRoutes.SelectDataset
       }`
     );
   }, [algorithmId, history]);
@@ -103,9 +103,11 @@ export const DetailedAlgorithm: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (algorithmId !== undefined) {
-      setAlgorithmData(fetchAlgorithmDetails(algorithmId));
-    }
+    (async () => {
+      if (algorithmId !== undefined) {
+        setAlgorithmData(await fetchAlgorithmDetails(algorithmId));
+      }
+    })();
   }, [algorithmId]);
 
   return (

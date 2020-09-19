@@ -16,6 +16,7 @@ const StyledEditDatasetForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin: 15px 0;
 `;
 
 const FormContent = styled.div`

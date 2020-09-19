@@ -3,10 +3,11 @@ import { BaseDataset } from './dataset.interface';
 import { CellContainer, BaseButton } from '@smarthome/common/ui';
 import { DatasetDTO } from '@smarthome/data';
 import { TableDataParser } from '@smarthome/common/logic';
+import { DeepReadonly } from 'utility-types';
 
 export const datasetsDataParser: TableDataParser<
   BaseDataset,
-  Array<DatasetDTO>
+  DeepReadonly<Array<DatasetDTO>>
 > = (data, rowButtonText, rowButtonHandlerFactory) =>
   data.map(({ datasetId, displayName, datasetSummary }) => ({
     name: <CellContainer>{displayName}</CellContainer>,

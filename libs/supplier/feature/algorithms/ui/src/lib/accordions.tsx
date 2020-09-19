@@ -5,7 +5,7 @@ import { Accordion, H6 } from '@smarthome/common/ui';
 import TestSyntax from './test-syntax';
 import UploadNewFile from './upload-new-file';
 import AlgorithmStatistics from './algorithm-statistics';
-import { useUploadSourceCode } from '../../../logic/src/lib/use-upload-source-code';
+import { useUploadSourceCode } from '@smarthome/supplier/feature/algorithms/logic';
 
 export interface AccordionsProps {
   algorithmId: string;

@@ -16,9 +16,9 @@ import { AlgorithmDetailsDTO, DatasetDetailsDTO } from '@smarthome/data';
 import { fetchAlgorithmDetails } from '@smarthome/consumer/feature/algorithms/service';
 import { fetchDatasetDetails } from '@smarthome/consumer/feature/datasets/service';
 import {
-  CustomerRoutes,
-  CustomerAlgorithmRoutes,
-  CustomerDatasetRoutes,
+  ConsumerRoutes,
+  ConsumerAlgorithmRoutes,
+  ConsumerDatasetRoutes,
 } from '@smarthome/common/service';
 
 const StyledExecute = styled.div`
@@ -108,20 +108,20 @@ export const Execute: FC = () => {
   } = useContext(ThemeContext);
 
   const handleBackClick = useCallback(() => {
-    if (RegExp(`^/${CustomerRoutes.Datasets}`).test(pathname)) {
+    if (RegExp(`^/${ConsumerRoutes.Datasets}`).test(pathname)) {
       history.push(
-        `/${CustomerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
-          CustomerDatasetRoutes.SelectAlgorithm
+        `/${ConsumerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
+          ConsumerDatasetRoutes.SelectAlgorithm
         }`
       );
-    } else if (RegExp(`^/${CustomerRoutes.Algorithms}`).test(pathname)) {
+    } else if (RegExp(`^/${ConsumerRoutes.Algorithms}`).test(pathname)) {
       history.push(
-        `/${CustomerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
-          CustomerAlgorithmRoutes.SelectDataset
+        `/${ConsumerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
+          ConsumerAlgorithmRoutes.SelectDataset
         }`
       );
     } else {
-      history.push(`/${CustomerRoutes.Dashboard}`);
+      history.push(`/${ConsumerRoutes.Dashboard}`);
     }
   }, [algorithmId, datasetId, history, pathname]);
 
@@ -143,12 +143,14 @@ export const Execute: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (datasetId !== undefined) {
-      setDatasetData(fetchDatasetDetails(datasetId));
-    }
-    if (algorithmId !== undefined) {
-      setAlgorithmData(fetchAlgorithmDetails(algorithmId));
-    }
+    (async () => {
+      if (datasetId !== undefined) {
+        setDatasetData(await fetchDatasetDetails(datasetId));
+      }
+      if (algorithmId !== undefined) {
+        setAlgorithmData(await fetchAlgorithmDetails(algorithmId));
+      }
+    })();
   }, [datasetId, algorithmId]);
   return (
     <StyledExecute>

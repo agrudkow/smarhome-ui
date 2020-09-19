@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { CustomerRoutes } from '@smarthome/common/service';
+import { SupplierRoutes } from '@smarthome/common/service';
 import { RootState } from '@smarthome/supplier/store';
 import { AlgorithmDetailsSlice } from '@smarthome/supplier/feature/algorithms/state';
 
@@ -15,7 +15,7 @@ export function useAlgorithmDetails() {
   );
 
   const handleBackClick = useCallback(() => {
-    history.push(`/${CustomerRoutes.Algorithms}`);
+    history.push(`/${SupplierRoutes.Algorithms}`);
   }, [history]);
 
   useEffect(() => {

@@ -41,6 +41,7 @@ const SidebarLinks: SidebarLinkProps[] = [
 
 export const SupplierScreenUi: FC = () => {
   const { loading } = useLoading<RootState>();
+
   return (
     <ConnectedRouter history={history}>
       <Switch>

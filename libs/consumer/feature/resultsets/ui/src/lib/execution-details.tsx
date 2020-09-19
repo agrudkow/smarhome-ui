@@ -15,8 +15,8 @@ import {
 import { ResultsetDTO } from '@smarthome/data';
 import { fetchResultsetDetails } from '@smarthome/consumer/feature/resultsets/service';
 import {
-  CustomerRoutes,
-  CustomerDatasetRoutes,
+  ConsumerRoutes,
+  ConsumerDatasetRoutes,
 } from '@smarthome/common/service';
 
 const StyledExecutionDetails = styled.div`
@@ -69,8 +69,8 @@ export const ExecutionDetails: FC = () => {
     if (resultsetData) {
       const { datasetId, algorithmId } = resultsetData;
       history.push(
-        `/${CustomerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
-          CustomerDatasetRoutes.Execute
+        `/${ConsumerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
+          ConsumerDatasetRoutes.Execute
         }/${encodeURIComponent(algorithmId)}`
       );
     }
@@ -105,7 +105,9 @@ export const ExecutionDetails: FC = () => {
   }, []);
 
   useEffect(() => {
-    setResultsetData(fetchResultsetDetails(resultsetId));
+    (async () => {
+      setResultsetData(await fetchResultsetDetails(resultsetId));
+    })();
   }, [resultsetId]);
   return (
     <StyledExecutionDetails>

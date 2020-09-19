@@ -21,9 +21,10 @@ import {
   fetchTotalBilling,
 } from '@smarthome/consumer/feature/resultsets/service';
 import { useHistory } from 'react-router-dom';
-import { CustomerRoutes } from '@smarthome/common/service';
+import { ConsumerRoutes } from '@smarthome/common/service';
 import TotalBilling from './total-billing';
 import BillingsPlot from './billings-plot';
+import { ClickAwayListener } from '@material-ui/core';
 
 const RecentBillingsTabelTitle = styled.div`
   padding: 15px 0 0 0;
@@ -75,18 +76,20 @@ export const Dashboard: React.FC = () => {
   }, [width, tablet, desktop]);
 
   useEffect(() => {
-    setTotalBilling(totalBillingParser(fetchTotalBilling(currentDate)));
-    setTableData(
-      executionsBillingDataParser(
-        fetchExecutionBillingList(),
-        'more',
-        (resultsetId: string) => () => {
-          history.push(
-            `${CustomerRoutes.Execution}/${encodeURIComponent(resultsetId)}`
-          );
-        }
-      )
-    );
+    (async () => {
+      setTotalBilling(totalBillingParser(await fetchTotalBilling(currentDate)));
+      setTableData(
+        executionsBillingDataParser(
+          await fetchExecutionBillingList(),
+          'more',
+          (resultsetId: string) => () => {
+            history.push(
+              `${ConsumerRoutes.Execution}/${encodeURIComponent(resultsetId)}`
+            );
+          }
+        )
+      );
+    })();
   }, [history, currentDate]);
 
   return (

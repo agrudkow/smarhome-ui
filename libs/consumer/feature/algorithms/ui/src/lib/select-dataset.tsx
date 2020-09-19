@@ -25,8 +25,8 @@ import {
 import { fetchDatasetsList } from '@smarthome/consumer/feature/datasets/service';
 import { useWindowDimensions } from '@smarthome/common/logic';
 import {
-  CustomerRoutes,
-  CustomerAlgorithmRoutes,
+  ConsumerRoutes,
+  ConsumerAlgorithmRoutes,
 } from '@smarthome/common/service';
 
 const StyledSelectDataset = styled.div`
@@ -57,16 +57,20 @@ export const SelectDataset: FC = () => {
     []
   );
 
-  const handleSearch = useCallback(() => {
+  const handleSearch = useCallback(async () => {
     console.log('searchValue :>> ', searchValue);
     setTableData(
-      datasetsDataParser(fetchDatasetsList(), 'select', (id: string) => () => {
-        history.push(
-          `/${CustomerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
-            CustomerAlgorithmRoutes.Execute
-          }/${encodeURIComponent(id)}`
-        );
-      })
+      datasetsDataParser(
+        await fetchDatasetsList(''),
+        'select',
+        (id: string) => () => {
+          history.push(
+            `/${ConsumerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
+              ConsumerAlgorithmRoutes.Execute
+            }/${encodeURIComponent(id)}`
+          );
+        }
+      )
     );
     setTableBodyPlaceholder('No results, please try again using diffrent tags');
   }, [algorithmId, history, searchValue]);

@@ -17,8 +17,8 @@ import { useWindowDimensions } from '@smarthome/common/logic';
 import { ThemeContext } from 'styled-components';
 import { fetchAlgorithmsList } from '@smarthome/consumer/feature/algorithms/service';
 import {
-  CustomerRoutes,
-  CustomerDatasetRoutes,
+  ConsumerRoutes,
+  ConsumerDatasetRoutes,
 } from '@smarthome/common/service';
 import {
   InfoHeader,
@@ -57,16 +57,16 @@ export const SelectAlgorithm: FC = () => {
     []
   );
 
-  const handleSearch = useCallback(() => {
+  const handleSearch = useCallback(async () => {
     console.log('searchValue :>> ', searchValue);
     setTableData(
       algorithmsDataParser(
-        fetchAlgorithmsList(),
+        await fetchAlgorithmsList(),
         'select',
         (id: string) => () => {
           history.push(
-            `/${CustomerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
-              CustomerDatasetRoutes.Execute
+            `/${ConsumerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
+              ConsumerDatasetRoutes.Execute
             }/${encodeURIComponent(id)}`
           );
         }

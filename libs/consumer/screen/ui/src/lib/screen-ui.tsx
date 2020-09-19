@@ -8,11 +8,12 @@ import {
   PollIcon,
   UserIcon,
   SidebarLinkProps,
+  SnackbarSubscriber,
 } from '@smarthome/common/ui';
 import {
-  CustomerRoutes,
-  CustomerAlgorithmRoutes,
-  CustomerDatasetRoutes,
+  ConsumerRoutes,
+  ConsumerAlgorithmRoutes,
+  ConsumerDatasetRoutes,
 } from '@smarthome/common/service';
 import { User, SignIn } from '@smarthome/consumer/feature/user/ui';
 import {
@@ -31,87 +32,101 @@ import {
   ExecutionDetails,
 } from '@smarthome/consumer/feature/resultsets/ui';
 import { history } from '@smarthome/common/state';
+import { SnackbarProvider } from 'notistack';
+import { useLoading } from '@smarthome/common/logic';
+import { RootState } from '@smarthome/consumer/store';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
     text: 'Dashboard',
     icon: <PollIcon iconColor={''} />,
-    route: `/${CustomerRoutes.Dashboard}`,
+    route: `/${ConsumerRoutes.Dashboard}`,
   },
   {
     text: 'Algorithms',
     icon: <BrainIcon iconColor={''} />,
-    route: `/${CustomerRoutes.Algorithms}`,
+    route: `/${ConsumerRoutes.Algorithms}`,
   },
   {
     text: 'Datasets',
     icon: <DataBaseIcon iconColor={''} />,
-    route: `/${CustomerRoutes.Datasets}`,
+    route: `/${ConsumerRoutes.Datasets}`,
   },
   {
     text: 'User',
     icon: <UserIcon iconColor={''} />,
-    route: `/${CustomerRoutes.User}`,
+    route: `/${ConsumerRoutes.User}`,
   },
 ];
 
 export const ScreenUi: FC = () => {
+  const { loading } = useLoading<RootState>();
+
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path={`/${CustomerRoutes.SignIn}`} component={SignIn} exact />
-        <Layout sidebarLinks={SidebarLinks} loading={false}>
-          <Route
-            path={`/${CustomerRoutes.Dashboard}`}
-            component={Dashboard}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Algorithms}`}
-            component={Algorithms}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Algorithms}/:id`}
-            component={DetailedAlgorithm}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Algorithms}/:id/${CustomerAlgorithmRoutes.SelectDataset}`}
-            component={SelectDataset}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Algorithms}/:algorithmId/${CustomerAlgorithmRoutes.Execute}/:datasetId`}
-            component={Execute}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Datasets}`}
-            component={Datasets}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Datasets}/:id`}
-            component={DetailedDataset}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Datasets}/:id/${CustomerDatasetRoutes.SelectAlgorithm}`}
-            component={SelectAlgorithm}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Datasets}/:datasetId/${CustomerDatasetRoutes.Execute}/:algorithmId`}
-            component={Execute}
-            exact
-          />
-          <Route
-            path={`/${CustomerRoutes.Execution}/:resultsetId`}
-            component={ExecutionDetails}
-            exact
-          />
-          <Route path={`/${CustomerRoutes.User}`} component={User} exact />
+        <Route path={`/${ConsumerRoutes.SignIn}`} component={SignIn} exact />
+        <Layout sidebarLinks={SidebarLinks} loading={loading}>
+          <SnackbarProvider
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+          >
+            <SnackbarSubscriber>
+              <Route
+                path={`/${ConsumerRoutes.Dashboard}`}
+                component={Dashboard}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Algorithms}`}
+                component={Algorithms}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Algorithms}/:id`}
+                component={DetailedAlgorithm}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Algorithms}/:id/${ConsumerAlgorithmRoutes.SelectDataset}`}
+                component={SelectDataset}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Algorithms}/:algorithmId/${ConsumerAlgorithmRoutes.Execute}/:datasetId`}
+                component={Execute}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Datasets}`}
+                component={Datasets}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Datasets}/:id`}
+                component={DetailedDataset}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Datasets}/:id/${ConsumerDatasetRoutes.SelectAlgorithm}`}
+                component={SelectAlgorithm}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Datasets}/:datasetId/${ConsumerDatasetRoutes.Execute}/:algorithmId`}
+                component={Execute}
+                exact
+              />
+              <Route
+                path={`/${ConsumerRoutes.Execution}/:resultsetId`}
+                component={ExecutionDetails}
+                exact
+              />
+              <Route path={`/${ConsumerRoutes.User}`} component={User} exact />
+            </SnackbarSubscriber>
+          </SnackbarProvider>
         </Layout>
       </Switch>
     </ConnectedRouter>

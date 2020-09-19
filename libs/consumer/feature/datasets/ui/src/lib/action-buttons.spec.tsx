@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import EditDatasetAccordions from './edit-dataset-accordions';
+import ActionButtons from './action-buttons';
 
-describe(' EditDatasetAccordions', () => {
+describe(' ActionButtons', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<EditDatasetAccordions />);
+    const { baseElement } = render(<ActionButtons />);
     expect(baseElement).toBeTruthy();
   });
 });

@@ -1,4 +1,4 @@
-export enum CustomerRoutes {
+export enum ConsumerRoutes {
   Algorithms = 'algorithms',
   Datasets = 'datasets',
   User = 'user',
@@ -8,12 +8,12 @@ export enum CustomerRoutes {
   SignUp = 'sign-up',
 }
 
-export enum CustomerAlgorithmRoutes {
+export enum ConsumerAlgorithmRoutes {
   Execute = 'execute',
   SelectDataset = 'select-dataset',
 }
 
-export enum CustomerDatasetRoutes {
+export enum ConsumerDatasetRoutes {
   Execute = 'execute',
   SelectAlgorithm = 'select-algorithm',
 }

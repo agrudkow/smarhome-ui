@@ -104,9 +104,7 @@ export const DetailedAlgorithm: FC = () => {
                 </UnderlinedSubtitle>
                 <OvalBoxContainer>
                   <DescriptionContainer>
-                    words (provided text will be treated as separate tags by
-                    which algorithms will be searched). Additionaly you can sort
-                    result by name and rating.
+                    {algorithmDetails.algorithmSummary}
                   </DescriptionContainer>
                 </OvalBoxContainer>
                 <UnderlinedSubtitle>

@@ -5,6 +5,7 @@ import { OutlinedButton } from '@smarthome/common/ui';
 export interface AcctionButtonsProps {
   handleDeleteDialogOpen: () => void;
   handleOpenEditView: () => void;
+  handleRunWithAlgorithmClick: () => void;
 }
 
 const OptionButtons = styled.div`
@@ -51,6 +52,7 @@ const DeleteButtonContainer = styled.div`
 export const AcctionButtons: FC<AcctionButtonsProps> = ({
   handleDeleteDialogOpen,
   handleOpenEditView,
+  handleRunWithAlgorithmClick,
 }) => {
   const {
     palette: { error },
@@ -60,16 +62,12 @@ export const AcctionButtons: FC<AcctionButtonsProps> = ({
     <OptionButtons>
       <OptionButtonContainer>
         <OutlinedButton onClick={handleOpenEditView}>
-          Edit algorithm information
+          Edit dataset information
         </OutlinedButton>
       </OptionButtonContainer>
       <OptionButtonContainer>
-        <OutlinedButton
-          onClick={() => {
-            return;
-          }}
-        >
-          Download current source code
+        <OutlinedButton onClick={handleRunWithAlgorithmClick}>
+          Run with algorithm
         </OutlinedButton>
       </OptionButtonContainer>
       <DeleteButtonContainer>
