@@ -9,6 +9,7 @@ import {
   UserIcon,
   SidebarLinkProps,
   SnackbarSubscriber,
+  NotFoundPage,
 } from '@smarthome/common/ui';
 import {
   ConsumerRoutes,
@@ -126,6 +127,7 @@ export const ScreenUi: FC = () => {
                 exact
               />
               <Route path={`/${ConsumerRoutes.User}`} component={User} exact />
+              <Route component={NotFoundPage} />
             </SnackbarSubscriber>
           </SnackbarProvider>
         </Layout>
