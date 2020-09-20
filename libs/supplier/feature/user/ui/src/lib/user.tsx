@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useGoogleLogout } from 'react-google-login';
 import {
   InfoHeader,
   UnderlinedContainer,
@@ -6,17 +7,24 @@ import {
   OutlinedButton,
 } from '@smarthome/common/ui';
 import UserInfoForm from './user-info-form';
-import { useUser } from '@smarthome/supplier/feature/user/logic';
+import { useUser, useLogout } from '@smarthome/supplier/feature/user/logic';
 
 export const User: FC = () => {
+  const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+
   const {
     edit,
     userDetails,
-    handleLogout,
     handleSaveChanges,
     handleToggleEditView,
     errorColor,
   } = useUser();
+  const { handleLogout, handleLogoutFailure } = useLogout();
+  const { signOut } = useGoogleLogout({
+    clientId: GOOGLE_CLIENT_ID ?? '',
+    onLogoutSuccess: handleLogout,
+    onFailure: handleLogoutFailure,
+  });
 
   return (
     <>
@@ -34,7 +42,7 @@ export const User: FC = () => {
               firstName={userDetails.firstName}
               lastName={userDetails.lastName}
               email={userDetails.email}
-              phone={userDetails.phone}
+              phone={userDetails.phone ?? '-'}
               edit={edit}
               onEditToggle={handleToggleEditView}
               onSaveChanges={handleSaveChanges}
@@ -42,7 +50,7 @@ export const User: FC = () => {
           </OvalBoxContainer>
           {!edit && (
             <OutlinedButton
-              onClick={handleLogout}
+              onClick={signOut}
               customColor={errorColor}
               customBorderColor={errorColor}
             >

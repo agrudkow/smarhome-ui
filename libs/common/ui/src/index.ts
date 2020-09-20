@@ -1,8 +1,8 @@
 import './lib/base-theme.d';
 
-export * from './lib/snackbar-subscriber';
-
+export * from './lib/sign-up';
 export * from './lib/sign-in';
+export * from './lib/snackbar-subscriber';
 export * from './lib/month-switch';
 export * from './lib/rating-dialog';
 export * from './lib/arrow-button';
