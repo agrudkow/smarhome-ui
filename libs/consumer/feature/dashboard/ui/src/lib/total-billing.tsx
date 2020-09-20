@@ -72,7 +72,7 @@ export const TotalBilling: FC<TotalBillingProps> = ({
       </TotalBillingInfo>
       <TotalBillingInfo>
         <TotalBilledHeader>Billed time:&nbsp;</TotalBilledHeader>
-        <H4>{billedTime} PLN</H4>
+        <H4>{billedTime} MS</H4>
       </TotalBillingInfo>
       <TotalBillingInfo>
         <ArrowButton rotate="180deg" onClick={onPreviousMonthClick} />

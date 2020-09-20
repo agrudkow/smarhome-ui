@@ -1,1 +1,3 @@
-export * from './lib/consumer-feature-dashboard-state';
+import * as BillingSlice from './lib/billing.slice';
+
+export { BillingSlice };

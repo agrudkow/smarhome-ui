@@ -1,9 +1,13 @@
-import { SupplierTotalMonthlyBillingDTO } from '@smarthome/data';
+import { ConsumerTotalMonthlyBillingDTO } from '@smarthome/data';
 
-export const fetchTotalBilling: (data: {
+export interface FetchTotalBillingProps {
   startDate: number;
   endDate: number;
-}) => Promise<SupplierTotalMonthlyBillingDTO> = ({ startDate, endDate }) =>
+}
+
+export const fetchTotalBilling: (
+  data: FetchTotalBillingProps
+) => Promise<ConsumerTotalMonthlyBillingDTO> = ({ startDate, endDate }) =>
   new Promise((resolve, reject) => {
     const currentDay = new Date().getDate();
     const currentDate = new Date().getTime();
@@ -34,7 +38,7 @@ export const fetchTotalBilling: (data: {
                   day: 0,
                 })).billed.toFixed(2)
               ),
-              numberOfExecutions: Math.floor(Math.random() * 5000),
+              milliseconds: Math.floor(Math.random() * 5000000),
               dailyBillings: MockData,
             })
           : reject(new Error('Server error')),
