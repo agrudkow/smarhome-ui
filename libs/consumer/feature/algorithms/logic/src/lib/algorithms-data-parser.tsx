@@ -3,10 +3,11 @@ import { BaseAlgorithm } from './algorithm.interface';
 import { CellContainer, BaseButton, CustomRating } from '@smarthome/common/ui';
 import { AlgorithmDTO } from '@smarthome/data';
 import { TableDataParser } from '@smarthome/common/logic';
+import { DeepReadonly } from 'utility-types';
 
 export const algorithmsDataParser: TableDataParser<
   BaseAlgorithm,
-  Array<AlgorithmDTO>
+  DeepReadonly<Array<AlgorithmDTO>>
 > = (data, rowButtonText, rowButtonHandlerFactory) => {
   return data.map(
     ({ algorithmId, algorithmSummary, displayName, algorithmRating }) => {

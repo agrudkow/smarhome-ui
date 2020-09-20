@@ -1,1 +1,2 @@
-export * from './lib/supplier-feature-user-service';
+export * from './lib/fetch-user-details';
+export * from './lib/update-user';

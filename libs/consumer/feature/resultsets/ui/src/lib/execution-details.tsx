@@ -1,6 +1,5 @@
-import React, { FC, useContext, useState, useEffect, useCallback } from 'react';
+import React, { FC, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { useParams, useHistory } from 'react-router-dom';
 import {
   regularSpaceBetweenViewStyle,
   InfoHeader,
@@ -12,12 +11,7 @@ import {
   OutlinedButton,
   RatingDialog,
 } from '@smarthome/common/ui';
-import { ResultsetDTO } from '@smarthome/data';
-import { fetchResultsetDetails } from '@smarthome/consumer/feature/resultsets/service';
-import {
-  CustomerRoutes,
-  CustomerDatasetRoutes,
-} from '@smarthome/common/service';
+import { useResultsetDetails } from '@smarthome/consumer/feature/resultsets/logic';
 
 const StyledExecutionDetails = styled.div`
   ${regularSpaceBetweenViewStyle}
@@ -51,65 +45,26 @@ const OutlinedButtonContainer = styled.div`
 `;
 
 export const ExecutionDetails: FC = () => {
-  const history = useHistory();
-  const { resultsetId } = useParams<{
-    resultsetId: string;
-  }>();
-  const [resultsetData, setResultsetData] = useState<ResultsetDTO | undefined>(
-    undefined
-  );
-  const [openRatingDialog, setOpenRatingDialog] = useState<boolean>(false);
-  const [rating, setRating] = useState<number>(0);
-
+  const {
+    handleBackClick,
+    handleRerun,
+    handleDeleteResultset,
+    handleDownloadResultSet,
+    handleOpenRatingDialog,
+    handleCloseRatingDialog,
+    handleRatingChange,
+    handleSendRating,
+    resultsetDetails,
+    openRatingDialog,
+    rating,
+  } = useResultsetDetails();
   const {
     palette: { success, error },
   } = useContext(ThemeContext);
 
-  const handleRerun = useCallback(() => {
-    if (resultsetData) {
-      const { datasetId, algorithmId } = resultsetData;
-      history.push(
-        `/${CustomerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
-          CustomerDatasetRoutes.Execute
-        }/${encodeURIComponent(algorithmId)}`
-      );
-    }
-  }, [history, resultsetData]);
-
-  const handleDeleteResultset = useCallback(() => {
-    console.log(`Delete resultset ${resultsetId}`);
-  }, [resultsetId]);
-
-  const handleDownloadResultSet = useCallback(() => {
-    console.log(`Download resultset ${resultsetId}`);
-  }, [resultsetId]);
-
-  const handleOpenRatingDialog = useCallback(() => {
-    setOpenRatingDialog(true);
-  }, []);
-
-  const handleCloseRatingDialog = useCallback(() => {
-    setOpenRatingDialog(false);
-    setRating(0);
-  }, []);
-
-  const handleSendRating = useCallback(() => {
-    console.log(`sent rating :>> ${rating}`);
-    handleCloseRatingDialog();
-  }, [handleCloseRatingDialog, rating]);
-
-  const handleRatingChange = useCallback((_, newValue: number | null) => {
-    if (newValue !== null) {
-      setRating(newValue);
-    }
-  }, []);
-
-  useEffect(() => {
-    setResultsetData(fetchResultsetDetails(resultsetId));
-  }, [resultsetId]);
   return (
     <StyledExecutionDetails>
-      {resultsetData ? (
+      {resultsetDetails ? (
         <>
           <div>
             <InfoHeader
@@ -122,19 +77,19 @@ export const ExecutionDetails: FC = () => {
             <CustomOvalBoxContainer>
               <MainInfoContainer>
                 <H5>Dataset name:&nbsp;</H5>
-                <P>{resultsetData.datasetDisplayName}</P>
+                <P>{resultsetDetails.datasetDisplayName}</P>
               </MainInfoContainer>
               <MainInfoContainer>
                 <H5>Algorithm name:&nbsp;</H5>
-                <P>{resultsetData.algorithmDisplayName}</P>
+                <P>{resultsetDetails.algorithmDisplayName}</P>
               </MainInfoContainer>
               <MainInfoContainer>
                 <H5>Billed:&nbsp;</H5>
-                <P>{resultsetData.billed} PLN</P>
+                <P>{resultsetDetails.billed} PLN</P>
               </MainInfoContainer>
               <MainInfoContainer>
                 <H5>Execution date:&nbsp;</H5>
-                <P>{resultsetData.date}</P>
+                <P>{resultsetDetails.date}</P>
               </MainInfoContainer>
             </CustomOvalBoxContainer>
             <OptionButtonsContainer>
@@ -183,7 +138,7 @@ export const ExecutionDetails: FC = () => {
       ) : (
         <br />
       )}
-      <BackButton />
+      <BackButton onClick={handleBackClick} />
     </StyledExecutionDetails>
   );
 };

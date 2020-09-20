@@ -3,10 +3,11 @@ import { CellContainer, BaseButton } from '@smarthome/common/ui';
 import { ExecutionBilling } from './billing.interface';
 import { ExecutionBillingDTO } from '@smarthome/data';
 import { TableDataParser } from '@smarthome/common/logic';
+import { DeepReadonly } from 'utility-types';
 
 export const executionsBillingDataParser: TableDataParser<
   ExecutionBilling,
-  Array<ExecutionBillingDTO>,
+  DeepReadonly<Array<ExecutionBillingDTO>>,
   (resultsetId: string) => () => void
 > = (data, rowButtonText, rowButtonHandlerFactory) =>
   data.map(

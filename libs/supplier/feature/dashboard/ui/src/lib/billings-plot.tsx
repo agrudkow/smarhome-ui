@@ -2,7 +2,8 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { OvalBoxContainer, H5 } from '@smarthome/common/ui';
 import Plot from './plot';
-import { DailyBilling } from '@smarthome/consumer/feature/resultsets/logic';
+import { DeepReadonly } from 'utility-types';
+import { DailySupplierBillingDTO } from '@smarthome/data';
 
 const PlotContainer = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ const PlotContainer = styled.div`
 `;
 
 export const BillingsPlot: FC<{
-  incomes: DailyBilling[];
+  incomes: DeepReadonly<DailySupplierBillingDTO[]>;
 }> = ({ incomes }) => {
   return (
     <OvalBoxContainer height={400}>

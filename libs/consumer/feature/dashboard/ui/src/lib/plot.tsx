@@ -11,11 +11,12 @@ import {
   TooltipProps,
   Label,
 } from 'recharts';
-import { DailyBilling } from '@smarthome/consumer/feature/resultsets/logic';
 import { OvalBoxContainer } from '@smarthome/common/ui';
+import { DailyBillingDTO } from '@smarthome/data';
+import { DeepReadonly } from 'utility-types';
 
 export interface PlotProps {
-  data: DailyBilling[];
+  data: DeepReadonly<DailyBillingDTO[]>;
 }
 
 const CustomTooltip: FC<TooltipProps> = ({ active, payload }) => {

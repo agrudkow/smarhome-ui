@@ -1,83 +1,37 @@
-import React, {
-  FC,
-  useState,
-  useContext,
-  useEffect,
-  useCallback,
-  ChangeEvent,
-} from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React, { FC } from 'react';
+import styled from 'styled-components';
 import {
   InfoHeader,
   SearchBar,
   PaginatedTable,
-  Cell,
   FloatingAddButton,
   OvalBoxContainer,
   UnderlinedContainer,
 } from '@smarthome/common/ui';
 import {
   BaseDataset,
-  datasetsDataParser,
-  datasetsCellsParser,
+  useDatasetsList,
 } from '@smarthome/consumer/feature/datasets/logic';
-import { fetchDatasetsList } from '@smarthome/consumer/feature/datasets/service';
-import { useWindowDimensions } from '@smarthome/common/logic';
-import { useHistory } from 'react-router-dom';
-import { CustomerRoutes } from '@smarthome/common/service';
 import { AddDataset } from './add-dataset';
-
-type CurrentView = 'list' | 'add-dataset';
 
 const StyledDataset = styled.div`
   padding-bottom: 60px; //Accommodate floating buttom
 `;
 
 export const Datasets: FC = () => {
-  const history = useHistory();
-  const [currentView, setCurrentView] = useState<CurrentView>('list');
-  const [tableData, setTableData] = useState<BaseDataset[]>([]);
-  const [searchValue, setSearchValue] = useState<string | undefined>();
-  const [tableCells, setTableCells] = useState<Cell<keyof BaseDataset>[]>([]);
-  const [orderBy, setOrderBy] = useState<keyof BaseDataset>('name');
-  const [tableBodyPlaceholder, setTableBodyPlaceholder] = useState<string>(
-    'Click search button to fetch datasets'
-  );
-  const { width } = useWindowDimensions();
   const {
-    breakpoints: {
-      inPixels: { tablet, desktop },
-    },
-  } = useContext(ThemeContext);
-
-  const handleSearchInputChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      setSearchValue(event.target.value);
-    },
-    []
-  );
-
-  const handleSearch = useCallback(() => {
-    console.log('searchValue :>> ', searchValue);
-    setTableData(
-      datasetsDataParser(fetchDatasetsList(), 'more', (id: string) => () => {
-        history.push(`${CustomerRoutes.Datasets}/${encodeURIComponent(id)}`);
-      })
-    );
-    setTableBodyPlaceholder('No results, please try again using diffrent tags');
-  }, [history, searchValue]);
-
-  const handleChangeViewFactory = useCallback(
-    (view: CurrentView) => () => {
-      setCurrentView(view);
-    },
-    []
-  );
-
-  useEffect(() => {
-    const cells = datasetsCellsParser(width, { desktop, tablet });
-    setTableCells(cells);
-  }, [width, tablet, desktop]);
+    currentView,
+    tableData,
+    searchValue,
+    searchPhrase,
+    tableCells,
+    orderBy,
+    setOrderBy,
+    tableBodyPlaceholder,
+    handleSearchInputChange,
+    handleSearch,
+    handleChangeViewFactory,
+  } = useDatasetsList();
 
   return (
     <StyledDataset>
@@ -98,7 +52,7 @@ export const Datasets: FC = () => {
             inputPlaceHolder={
               'Type comma seperated tags or leave it empty to search all datasets'
             }
-            inputValue={searchValue || ''}
+            inputValue={searchValue ?? searchPhrase}
             onSearch={handleSearch}
             onInputValueChange={handleSearchInputChange}
           />

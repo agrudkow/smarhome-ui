@@ -21,6 +21,6 @@ export const fetchAlgorithmsList: (
               }))
             )
           : reject(new Error('Server error')),
-      2000
+      500
     )
   );

@@ -1,1 +1,1 @@
-export * from './lib/consumer-feature-dashboard-logic';
+export * from './lib/use-billings';

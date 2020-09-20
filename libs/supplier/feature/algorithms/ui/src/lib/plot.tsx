@@ -13,9 +13,10 @@ import {
 } from 'recharts';
 import { OvalBoxContainer } from '@smarthome/common/ui';
 import { AlgorithmStatistics } from '@smarthome/supplier/feature/algorithms/logic';
+import { DeepReadonly } from 'utility-types';
 
 export interface PlotProps {
-  data: AlgorithmStatistics[];
+  data: DeepReadonly<Array<AlgorithmStatistics>>;
 }
 
 const CustomTooltip: FC<TooltipProps> = ({ active, payload }) => {

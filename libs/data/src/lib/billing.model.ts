@@ -3,7 +3,7 @@ export interface DailyBillingDTO {
   billed: number;
 }
 
-export interface TotalMonthlyBillingDTO {
+export interface ConsumerTotalMonthlyBillingDTO {
   billed: number;
   milliseconds: number;
   dailyBillings: DailyBillingDTO[];
@@ -15,4 +15,9 @@ export interface ExecutionBillingDTO {
   datasetDisplayName: string;
   date: string;
   billed: number;
+}
+
+export interface PeriodDTO {
+  begine: number;
+  end: number;
 }

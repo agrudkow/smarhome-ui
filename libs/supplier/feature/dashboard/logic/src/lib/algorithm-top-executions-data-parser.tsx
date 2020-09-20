@@ -3,10 +3,11 @@ import { AlgorithmTopExec } from './algorithms-top.interface';
 import { CellContainer, BaseButton } from '@smarthome/common/ui';
 import { AlgorithmTopExecDTO } from '@smarthome/data';
 import { TableDataParser } from '@smarthome/common/logic';
+import { DeepReadonly } from 'utility-types';
 
 export const algorithmTopExecutionsDataParser: TableDataParser<
   AlgorithmTopExec,
-  Array<AlgorithmTopExecDTO>
+  DeepReadonly<Array<AlgorithmTopExecDTO>>
 > = (data, rowButtonText, rowButtonHandlerFactory) => {
   return data.map(
     ({ algorithmId, algorithmSummary, displayName, algorithmExecutions }) => {

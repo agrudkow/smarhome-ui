@@ -1,7 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { call, put } from '@redux-saga/core/effects';
-import { all, fork, takeEvery, SagaReturnType } from '@redux-saga/core/effects';
-import { ErrorSlice, LoadingSlice } from '@smarthome/common/state';
+import {
+  all,
+  fork,
+  takeLeading,
+  SagaReturnType,
+} from '@redux-saga/core/effects';
+import { SnackbarSlice, LoadingSlice } from '@smarthome/common/state';
 import { AlgorithmDTO } from '@smarthome/data';
 import { fetchAlgorithmsList } from '@smarthome/supplier/feature/algorithms/service';
 
@@ -54,28 +59,28 @@ export const {
 } = algorithms.actions;
 export const { reducer } = algorithms;
 
-function* handlePostAlgorithmsStart(action: PayloadAction<string>) {
+function* handleFetchAlgorithmsStart(action: PayloadAction<string>) {
   try {
     yield put(LoadingSlice.pushLoading());
     const response: SagaReturnType<typeof fetchAlgorithmsList> = yield call(
       fetchAlgorithmsList,
       action.payload
     );
-    if (!response)
-      throw new Error('Timeout error. Cannot connect to the server.');
     yield put(fetchAlgorithmsSuccess(response));
   } catch (error) {
-    yield put(ErrorSlice.pushError(error.message));
+    yield put(
+      SnackbarSlice.pushMessage({ message: error.message, variant: 'error' })
+    );
     yield put(fetchAlgorithmsFailure(error.message));
   } finally {
     yield put(LoadingSlice.popLoading());
   }
 }
 
-function* watchPostAlgorithmsStart() {
-  yield takeEvery(fetchAlgorithmsStart.type, handlePostAlgorithmsStart);
+function* watchFetchAlgorithmsStart() {
+  yield takeLeading(fetchAlgorithmsStart.type, handleFetchAlgorithmsStart);
 }
 
 export function* saga() {
-  yield all([fork(watchPostAlgorithmsStart)]);
+  yield all([fork(watchFetchAlgorithmsStart)]);
 }

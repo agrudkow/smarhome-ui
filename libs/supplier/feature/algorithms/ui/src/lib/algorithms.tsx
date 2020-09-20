@@ -21,6 +21,7 @@ export const Algorithms: FC = () => {
     currentView,
     tableData,
     searchValue,
+    searchPhrase,
     tableCells,
     orderBy,
     setOrderBy,
@@ -51,7 +52,7 @@ export const Algorithms: FC = () => {
             inputPlaceHolder={
               'Type comma seperated tags or leave it empty to get all algorithms'
             }
-            inputValue={searchValue || ''}
+            inputValue={searchValue ?? searchPhrase}
             onSearch={handleSearch}
             onInputValueChange={handleSearchInputChange}
           />

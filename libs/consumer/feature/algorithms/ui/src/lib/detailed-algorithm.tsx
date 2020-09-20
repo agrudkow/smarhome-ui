@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import {
   InfoHeader,
@@ -11,13 +11,10 @@ import {
   regularSpaceBetweenViewStyle,
   RatingDialog,
 } from '@smarthome/common/ui';
-import { useHistory, useParams } from 'react-router';
 import {
-  CustomerRoutes,
-  CustomerAlgorithmRoutes,
-} from '@smarthome/common/service';
-import { fetchAlgorithmDetails } from '@smarthome/consumer/feature/algorithms/service';
-import { AlgorithmDetailsDTO } from '@smarthome/data';
+  useAlgorithmDetails,
+  useAlgorithmRating,
+} from '@smarthome/consumer/feature/algorithms/logic';
 
 const DescriptionContainer = styled(H6)`
   padding: 0;
@@ -62,76 +59,44 @@ const OptionButtonContainer = styled.div<{ margin: 'left' | 'right' }>`
 `;
 
 export const DetailedAlgorithm: FC = () => {
-  const history = useHistory();
-  const { id: algorithmId } = useParams<{ id: string }>();
-  const [algorithmData, setAlgorithmData] = useState<
-    AlgorithmDetailsDTO | undefined
-  >(undefined);
-  const [openRatingDialog, setOpenRatingDialog] = useState<boolean>(false);
-  const [rating, setRating] = useState<number>(0);
-
-  const handleBackClick = useCallback(() => {
-    history.push(`/${CustomerRoutes.Algorithms}`);
-  }, [history]);
-
-  const handleRunOnDatasetClick = useCallback(() => {
-    history.push(
-      `/${CustomerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
-        CustomerAlgorithmRoutes.SelectDataset
-      }`
-    );
-  }, [algorithmId, history]);
-
-  const handleOpenRatingDialog = useCallback(() => {
-    setOpenRatingDialog(true);
-  }, []);
-
-  const handleCloseRatingDialog = useCallback(() => {
-    setOpenRatingDialog(false);
-    setRating(0);
-  }, []);
-
-  const handleSendRating = useCallback(() => {
-    console.log(`sent rating :>> ${rating}`);
-    handleCloseRatingDialog();
-  }, [handleCloseRatingDialog, rating]);
-
-  const handleRatingChange = useCallback((_, newValue: number | null) => {
-    if (newValue !== null) {
-      setRating(newValue);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (algorithmId !== undefined) {
-      setAlgorithmData(fetchAlgorithmDetails(algorithmId));
-    }
-  }, [algorithmId]);
+  const {
+    handleBackClick,
+    handleRunOnDatasetClick,
+    algorithmDetails,
+  } = useAlgorithmDetails();
+  const {
+    rating,
+    openRatingDialog,
+    handleOpenRatingDialog,
+    handleCloseRatingDialog,
+    handleSendRating,
+    handleRatingChange,
+  } = useAlgorithmRating();
 
   return (
     <StyledDetailedAlgorithm>
-      {algorithmData && (
+      {algorithmDetails && (
         <>
           <div>
             <InfoHeader
-              headerText={algorithmData.displayName}
+              headerText={algorithmDetails.displayName}
               infoMessageText={
                 'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating. '
               }
             />
             <UnderlinedContainer>
-              <H6>Author:&nbsp;&nbsp;{algorithmData.author}</H6>
+              <H6>Author:&nbsp;&nbsp;{algorithmDetails.author}</H6>
               <RatingContainer>
                 <H6>Rating:&nbsp;&nbsp;</H6>
                 <CustomRating
-                  value={algorithmData.algorithmRating}
+                  value={algorithmDetails.algorithmRating}
                   readOnly={true}
                 />
               </RatingContainer>
             </UnderlinedContainer>
             <OvalBoxContainer>
               <DescriptionContainer>
-                {algorithmData.algorithmDescription}
+                {algorithmDetails.algorithmDescription}
               </DescriptionContainer>
             </OvalBoxContainer>
             <OptionButtons>

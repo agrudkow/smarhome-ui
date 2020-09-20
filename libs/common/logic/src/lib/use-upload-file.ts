@@ -3,7 +3,7 @@ import { useState, useCallback, ChangeEvent } from 'react';
 export function useUploadFile({
   onFileSend,
 }: {
-  onFileSend: (file: File) => Promise<void>;
+  onFileSend: (file: File) => Promise<void> | void;
 }) {
   const [file, setFile] = useState<File | undefined>();
 

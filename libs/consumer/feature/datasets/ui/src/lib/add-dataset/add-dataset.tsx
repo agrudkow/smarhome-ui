@@ -1,8 +1,7 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { EditDatasetFrom } from '../edit-dataset-form';
-import { useHistory } from 'react-router-dom';
-import { CustomerRoutes } from '@smarthome/common/service';
+import { useAddDataset } from '@smarthome/consumer/feature/datasets/logic';
 
 export interface AddDatasetProps {
   onCancle: () => void;
@@ -14,17 +13,17 @@ const StyledAddDataset = styled.div`
 `;
 
 export const AddDataset: FC<AddDatasetProps> = ({ onCancle }) => {
-  const history = useHistory();
+  const {
+    datasetData: { displayName, datasetSummary, datasetDescription },
+    handleAddDataset,
+  } = useAddDataset();
 
-  const handleAddDataset = useCallback(() => {
-    history.push(`${CustomerRoutes.Datasets}/${encodeURIComponent(2)}`);
-  }, [history]);
   return (
     <StyledAddDataset>
       <EditDatasetFrom
-        name=""
-        summary=""
-        description=""
+        name={displayName}
+        summary={datasetSummary}
+        description={datasetDescription}
         onCancle={onCancle}
         onSave={handleAddDataset}
       />

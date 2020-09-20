@@ -7,6 +7,7 @@ import {
   PollIcon,
   UserIcon,
   SidebarLinkProps,
+  SnackbarSubscriber,
 } from '@smarthome/common/ui';
 import { SupplierRoutes } from '@smarthome/common/service';
 import { User, SignIn } from '@smarthome/supplier/feature/user/ui';
@@ -18,6 +19,7 @@ import { Dashboard } from '@smarthome/supplier/feature/dashboard/ui';
 import { history } from '@smarthome/common/state';
 import { useLoading } from '@smarthome/common/logic';
 import { RootState } from '@smarthome/supplier/store';
+import { SnackbarProvider } from 'notistack';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -39,27 +41,37 @@ const SidebarLinks: SidebarLinkProps[] = [
 
 export const SupplierScreenUi: FC = () => {
   const { loading } = useLoading<RootState>();
+
   return (
     <ConnectedRouter history={history}>
       <Switch>
         <Route path={`/${SupplierRoutes.SignIn}`} exact component={SignIn} />
         <Layout sidebarLinks={SidebarLinks} loading={loading}>
-          <Route
-            path={`/${SupplierRoutes.Dashboard}`}
-            exact
-            component={Dashboard}
-          />
-          <Route
-            path={`/${SupplierRoutes.Algorithms}`}
-            exact
-            component={Algorithms}
-          />
-          <Route
-            path={`/${SupplierRoutes.Algorithms}/:id`}
-            exact
-            component={DetailedAlgorithm}
-          />
-          <Route path={`/${SupplierRoutes.User}`} exact component={User} />
+          <SnackbarProvider
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+          >
+            <SnackbarSubscriber>
+              <Route
+                path={`/${SupplierRoutes.Dashboard}`}
+                exact
+                component={Dashboard}
+              />
+              <Route
+                path={`/${SupplierRoutes.Algorithms}`}
+                exact
+                component={Algorithms}
+              />
+              <Route
+                path={`/${SupplierRoutes.Algorithms}/:id`}
+                exact
+                component={DetailedAlgorithm}
+              />
+              <Route path={`/${SupplierRoutes.User}`} exact component={User} />
+            </SnackbarSubscriber>
+          </SnackbarProvider>
         </Layout>
       </Switch>
     </ConnectedRouter>

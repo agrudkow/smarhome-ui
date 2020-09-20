@@ -11,6 +11,14 @@ const OptionButtons = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: -2px;
+
+  ${({
+    theme: {
+      breakpoints: { tabletDF },
+    },
+  }) => tabletDF} {
+    margin: 0;
+  }
 `;
 
 const OptionButtonContainer = styled.div`

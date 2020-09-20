@@ -1,1 +1,1 @@
-export * from './lib/supplier-feature-user-logic';
+export * from './lib/use-user';

@@ -1,1 +1,1 @@
-export * from './lib/consumer-feature-dashboard-service';
+export * from './lib/fetch-total-billing';

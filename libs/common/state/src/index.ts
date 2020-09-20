@@ -1,5 +1,5 @@
-import * as ErrorSlice from './lib/error-redux.slice';
+import * as SnackbarSlice from './lib/snackbar.slice';
 import * as LoadingSlice from './lib/loading.slice';
-export { ErrorSlice, LoadingSlice };
+export { SnackbarSlice, LoadingSlice };
 
 export * from './lib/history';

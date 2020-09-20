@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { useAccordion, useUploadFile } from '@smarthome/common/logic';
+import { useAccordion } from '@smarthome/common/logic';
 import { Accordion, H6 } from '@smarthome/common/ui';
 import TestSyntax from './test-syntax';
 import UploadNewFile from './upload-new-file';
 import AlgorithmStatistics from './algorithm-statistics';
+import { useUploadSourceCode } from '@smarthome/supplier/feature/algorithms/logic';
 
 export interface AccordionsProps {
-  handleTestSyntex: () => void;
   algorithmId: string;
 }
 
@@ -29,27 +29,19 @@ const StyledAccordions = styled.div`
   }
 `;
 
-export const Accordions: FC<AccordionsProps> = ({
-  handleTestSyntex,
-  algorithmId,
-}) => {
+export const Accordions: FC<AccordionsProps> = ({ algorithmId }) => {
   const {
     fileName,
     handleDeleteFile,
     handleSendFile,
     handleUploadFile,
-  } = useUploadFile({
-    onFileSend: (file: File) =>
-      new Promise((resolve) => {
-        console.log(file.name);
-        resolve();
-      }),
-  });
+  } = useUploadSourceCode(algorithmId);
   const { expandedAccordion, toggleAccordionFactory } = useAccordion<
     AccordionTypes
   >({
     preToggleFunction: handleDeleteFile,
   });
+
   return (
     <StyledAccordions>
       <Accordion
@@ -64,7 +56,7 @@ export const Accordions: FC<AccordionsProps> = ({
         onChange={toggleAccordionFactory(AccordionTypes.TestSyntax)}
         expanded={expandedAccordion === AccordionTypes.TestSyntax}
       >
-        <TestSyntax onTestSyntex={handleTestSyntex} />
+        <TestSyntax algorithmId={algorithmId} />
       </Accordion>
       <Accordion
         summary={<H6>Upload new source code</H6>}
