@@ -1,6 +1,5 @@
-import React, { FC, useState, useEffect, useCallback, useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { useParams, useHistory, useLocation } from 'react-router-dom';
 import {
   InfoHeader,
   UnderlinedContainer,
@@ -12,14 +11,7 @@ import {
   OutlinedButton,
   DeleteDialog,
 } from '@smarthome/common/ui';
-import { AlgorithmDetailsDTO, DatasetDetailsDTO } from '@smarthome/data';
-import { fetchAlgorithmDetails } from '@smarthome/consumer/feature/algorithms/service';
-import { fetchDatasetDetails } from '@smarthome/consumer/feature/datasets/service';
-import {
-  ConsumerRoutes,
-  ConsumerAlgorithmRoutes,
-  ConsumerDatasetRoutes,
-} from '@smarthome/common/service';
+import { useExecute } from '@smarthome/consumer/feature/resultsets/logic';
 
 const StyledExecute = styled.div`
   ${regularSpaceBetweenViewStyle}
@@ -89,69 +81,21 @@ const OptionButtonContainer = styled.div<{ margin: 'left' | 'right' }>`
 `;
 
 export const Execute: FC = () => {
-  const history = useHistory();
-  const { pathname } = useLocation();
-  const { algorithmId, datasetId } = useParams<{
-    algorithmId: string;
-    datasetId: string;
-  }>();
-  const [algorithmData, setAlgorithmData] = useState<
-    AlgorithmDetailsDTO | undefined
-  >(undefined);
-  const [datasetData, setDatasetData] = useState<DatasetDetailsDTO | undefined>(
-    undefined
-  );
-  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-
+  const {
+    handleBackClick,
+    handleExecute,
+    handleDeleteDialogClose,
+    handleDeleteDialogOpen,
+    handleDeleteResultset,
+    openDeleteDialog,
+    algorithmDetails,
+    datasetDetails,
+    allowActionButtons,
+  } = useExecute();
   const {
     palette: { success, error },
   } = useContext(ThemeContext);
 
-  const handleBackClick = useCallback(() => {
-    if (RegExp(`^/${ConsumerRoutes.Datasets}`).test(pathname)) {
-      history.push(
-        `/${ConsumerRoutes.Datasets}/${encodeURIComponent(datasetId)}/${
-          ConsumerDatasetRoutes.SelectAlgorithm
-        }`
-      );
-    } else if (RegExp(`^/${ConsumerRoutes.Algorithms}`).test(pathname)) {
-      history.push(
-        `/${ConsumerRoutes.Algorithms}/${encodeURIComponent(algorithmId)}/${
-          ConsumerAlgorithmRoutes.SelectDataset
-        }`
-      );
-    } else {
-      history.push(`/${ConsumerRoutes.Dashboard}`);
-    }
-  }, [algorithmId, datasetId, history, pathname]);
-
-  const handleExecute = useCallback(() => {
-    console.log(`run :>> algorithm: ${algorithmId} - dataset: ${datasetId}`);
-  }, [algorithmId, datasetId]);
-
-  const handleDeleteDialogClose = useCallback(() => {
-    setOpenDeleteDialog(false);
-  }, []);
-
-  const handleDeleteDialogOpen = useCallback(() => {
-    setOpenDeleteDialog(true);
-  }, []);
-
-  const handleDeleteResultset = useCallback(() => {
-    console.log(`Delete resultset`);
-    setOpenDeleteDialog(false);
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      if (datasetId !== undefined) {
-        setDatasetData(await fetchDatasetDetails(datasetId));
-      }
-      if (algorithmId !== undefined) {
-        setAlgorithmData(await fetchAlgorithmDetails(algorithmId));
-      }
-    })();
-  }, [datasetId, algorithmId]);
   return (
     <StyledExecute>
       <div>
@@ -162,48 +106,55 @@ export const Execute: FC = () => {
           }
         />
         <UnderlinedContainer />
-        <MainInformaitionContainer>
-          <OvalBoxContainerWrapper margin="right">
-            <OvalBoxContainer>
-              <PaddingBox>
-                <H5>Dataset</H5>
-                <P>{datasetData?.displayName}</P>
-              </PaddingBox>
-            </OvalBoxContainer>
-          </OvalBoxContainerWrapper>
-          <OvalBoxContainerWrapper margin="left">
-            <OvalBoxContainer>
-              <PaddingBox>
-                <H5>Algorithm</H5>
-                <P>{algorithmData?.displayName}</P>
-              </PaddingBox>
-            </OvalBoxContainer>
-          </OvalBoxContainerWrapper>
-        </MainInformaitionContainer>
-        <OptionButtons>
-          <OutlinedButton
-            onClick={handleExecute}
-            customColor={success}
-            customBorderColor={success}
-          >
-            Run
-          </OutlinedButton>
-          <OptionButtonContainer margin="right">
-            <OutlinedButton onClick={handleExecute} disabled={true}>
-              Download resultset
-            </OutlinedButton>
-          </OptionButtonContainer>
-          <OptionButtonContainer margin="left">
-            <OutlinedButton
-              onClick={handleDeleteDialogOpen}
-              customColor={error}
-              customBorderColor={error}
-              disabled={true}
-            >
-              Delete resultset
-            </OutlinedButton>
-          </OptionButtonContainer>
-        </OptionButtons>
+        {datasetDetails && algorithmDetails && (
+          <>
+            <MainInformaitionContainer>
+              <OvalBoxContainerWrapper margin="right">
+                <OvalBoxContainer>
+                  <PaddingBox>
+                    <H5>Dataset</H5>
+                    <P>{datasetDetails.displayName}</P>
+                  </PaddingBox>
+                </OvalBoxContainer>
+              </OvalBoxContainerWrapper>
+              <OvalBoxContainerWrapper margin="left">
+                <OvalBoxContainer>
+                  <PaddingBox>
+                    <H5>Algorithm</H5>
+                    <P>{algorithmDetails.displayName}</P>
+                  </PaddingBox>
+                </OvalBoxContainer>
+              </OvalBoxContainerWrapper>
+            </MainInformaitionContainer>
+            <OptionButtons>
+              <OutlinedButton
+                onClick={handleExecute}
+                customColor={success}
+                customBorderColor={success}
+              >
+                Run
+              </OutlinedButton>
+              <OptionButtonContainer margin="right">
+                <OutlinedButton
+                  onClick={handleExecute}
+                  disabled={!allowActionButtons}
+                >
+                  Download resultset
+                </OutlinedButton>
+              </OptionButtonContainer>
+              <OptionButtonContainer margin="left">
+                <OutlinedButton
+                  onClick={handleDeleteDialogOpen}
+                  customColor={error}
+                  customBorderColor={error}
+                  disabled={!allowActionButtons}
+                >
+                  Delete resultset
+                </OutlinedButton>
+              </OptionButtonContainer>
+            </OptionButtons>
+          </>
+        )}
       </div>
       <DeleteDialog
         open={openDeleteDialog}

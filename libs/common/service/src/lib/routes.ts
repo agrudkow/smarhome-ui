@@ -25,8 +25,3 @@ export enum SupplierRoutes {
   SignIn = 'sign-in',
   SignUp = 'sign-up',
 }
-
-export enum SupplierAlgorithmRoutes {
-  Edit = 'execute',
-  Add = 'select-dataset',
-}
