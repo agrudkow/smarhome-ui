@@ -8,6 +8,7 @@ import {
   UserIcon,
   SidebarLinkProps,
   SnackbarSubscriber,
+  NotFoundPage,
 } from '@smarthome/common/ui';
 import { SupplierRoutes } from '@smarthome/common/service';
 import { User, SignIn } from '@smarthome/supplier/feature/user/ui';
@@ -70,6 +71,7 @@ export const SupplierScreenUi: FC = () => {
                 component={DetailedAlgorithm}
               />
               <Route path={`/${SupplierRoutes.User}`} exact component={User} />
+              <Route component={NotFoundPage} />
             </SnackbarSubscriber>
           </SnackbarProvider>
         </Layout>

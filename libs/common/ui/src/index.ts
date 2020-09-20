@@ -1,5 +1,7 @@
 import './lib/base-theme.d';
 
+export * from './lib/not-found-page';
+
 export * from './lib/snackbar-subscriber';
 
 export * from './lib/sign-in';
