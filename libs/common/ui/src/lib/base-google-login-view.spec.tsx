@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import SignIn from './sign-in';
+import BaseGoogleLoginView from './base-google-login-view';
 
-describe(' SignIn', () => {
+describe(' BaseGoogleLoginView', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SignIn />);
+    const { baseElement } = render(<BaseGoogleLoginView />);
     expect(baseElement).toBeTruthy();
   });
 });
