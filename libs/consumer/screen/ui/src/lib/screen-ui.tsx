@@ -15,7 +15,7 @@ import {
   ConsumerAlgorithmRoutes,
   ConsumerDatasetRoutes,
 } from '@smarthome/common/service';
-import { User, SignIn } from '@smarthome/consumer/feature/user/ui';
+import { User, SignIn, SignUp } from '@smarthome/consumer/feature/user/ui';
 import {
   Algorithms,
   DetailedAlgorithm,
@@ -66,6 +66,7 @@ export const ScreenUi: FC = () => {
     <ConnectedRouter history={history}>
       <Switch>
         <Route path={`/${ConsumerRoutes.SignIn}`} component={SignIn} exact />
+        <Route path={`/${ConsumerRoutes.SignUp}`} component={SignUp} exact />
         <Layout sidebarLinks={SidebarLinks} loading={loading}>
           <SnackbarProvider
             anchorOrigin={{

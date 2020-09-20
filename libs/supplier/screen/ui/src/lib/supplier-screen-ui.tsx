@@ -10,7 +10,7 @@ import {
   SnackbarSubscriber,
 } from '@smarthome/common/ui';
 import { SupplierRoutes } from '@smarthome/common/service';
-import { User, SignIn } from '@smarthome/supplier/feature/user/ui';
+import { User, SignIn, SignUp } from '@smarthome/supplier/feature/user/ui';
 import {
   Algorithms,
   DetailedAlgorithm,
@@ -46,6 +46,7 @@ export const SupplierScreenUi: FC = () => {
     <ConnectedRouter history={history}>
       <Switch>
         <Route path={`/${SupplierRoutes.SignIn}`} exact component={SignIn} />
+        <Route path={`/${SupplierRoutes.SignUp}`} exact component={SignUp} />
         <Layout sidebarLinks={SidebarLinks} loading={loading}>
           <SnackbarProvider
             anchorOrigin={{

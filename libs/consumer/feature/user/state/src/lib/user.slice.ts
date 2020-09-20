@@ -8,18 +8,26 @@ import {
 } from '@redux-saga/core/effects';
 import { SnackbarSlice, LoadingSlice } from '@smarthome/common/state';
 import { UserDTO } from '@smarthome/data';
-import { fetchUserDetails } from '@smarthome/consumer/feature/user/service';
+import {
+  fetchUserDetails,
+  signUp,
+  SignUpProps,
+} from '@smarthome/consumer/feature/user/service';
+import { push } from 'connected-react-router';
+import { ConsumerRoutes } from '@smarthome/common/service';
 
 interface UserState {
   loading: boolean;
   error: string | null;
   user: UserDTO | null;
+  idToken: string | null;
 }
 
 const initialState: UserState = {
   loading: false,
   error: null,
   user: null,
+  idToken: null,
 };
 
 export const name = 'user' as const;
@@ -41,6 +49,31 @@ const user = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    signUpStart(state, action: PayloadAction<SignUpProps>) {
+      state.loading = true;
+      state.error = null;
+      state.idToken = null;
+    },
+    signUpSuccess(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = null;
+      state.idToken = action.payload;
+    },
+    signUpFailure(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    login(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = null;
+      state.idToken = action.payload;
+    },
+    logout(state) {
+      state.loading = false;
+      state.error = null;
+      state.idToken = null;
+    },
   },
 });
 
@@ -48,6 +81,11 @@ export const {
   fetchUserFailure,
   fetchUserStart,
   fetchUserSuccess,
+  signUpFailure,
+  signUpStart,
+  signUpSuccess,
+  login,
+  logout,
 } = user.actions;
 export const { reducer } = user;
 
@@ -68,10 +106,59 @@ function* handleFetchUserStart() {
   }
 }
 
+function* handleSignUpStart(action: PayloadAction<SignUpProps>) {
+  try {
+    yield put(LoadingSlice.pushLoading());
+    yield call(signUp, action.payload);
+    yield put(signUpSuccess(action.payload.idToken));
+  } catch (error) {
+    yield put(
+      SnackbarSlice.pushMessage({ message: error.message, variant: 'error' })
+    );
+    yield put(signUpFailure(error.message));
+  } finally {
+    yield put(LoadingSlice.popLoading());
+  }
+}
+
+function* handleSignUpSuccess() {
+  yield put(push(`/${ConsumerRoutes.Dashboard}`));
+}
+
+function* handleLogin() {
+  yield put(push(`/${ConsumerRoutes.Dashboard}`));
+}
+
+function* handleLogout() {
+  yield put(push(`/${ConsumerRoutes.SignIn}`));
+}
+
 function* watchFetchUserStart() {
   yield takeLeading(fetchUserStart.type, handleFetchUserStart);
 }
 
+function* watchSingUpStart() {
+  yield takeLeading(signUpStart.type, handleSignUpStart);
+}
+
+function* watchSingUpSuccess() {
+  yield takeLeading(signUpSuccess.type, handleSignUpSuccess);
+}
+
+function* watchLogin() {
+  yield takeLeading(login.type, handleLogin);
+}
+
+function* watchLogout() {
+  yield takeLeading(logout.type, handleLogout);
+}
+
 export function* saga() {
-  yield all([fork(watchFetchUserStart)]);
+  yield all([
+    fork(watchFetchUserStart),
+    fork(watchSingUpStart),
+    fork(watchSingUpSuccess),
+    fork(watchLogin),
+    fork(watchLogout),
+  ]);
 }

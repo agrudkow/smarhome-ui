@@ -1,11 +1,11 @@
 import { useState, useContext, useCallback, useEffect } from 'react';
 import { ThemeContext } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@smarthome/consumer/store';
+import { RootState } from '@smarthome/supplier/store';
 import {
   UserSlice,
   UpdateUserSlice,
-} from '@smarthome/consumer/feature/user/state';
+} from '@smarthome/supplier/feature/user/state';
 import { UserDTO } from '@smarthome/data';
 
 export function useUser() {
@@ -29,10 +29,6 @@ export function useUser() {
     }
   }, [dispatch, user]);
 
-  const handleLogout = useCallback(() => {
-    console.log('logout');
-  }, []);
-
   useEffect(() => {
     dispatch(UserSlice.fetchUserStart());
   }, [dispatch]);
@@ -46,7 +42,6 @@ export function useUser() {
   return {
     handleToggleEditView,
     handleSaveChanges,
-    handleLogout,
     userDetails: userData,
     edit,
     errorColor,

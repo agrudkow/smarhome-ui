@@ -1,19 +1,39 @@
 import React, { FC, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
-import { GoogleSignIn } from '@smarthome/common/ui';
+import { SignIn as GoogleSignIn } from '@smarthome/common/ui';
+import {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from 'react-google-login';
+import { useLogin } from '@smarthome/supplier/feature/user/logic';
 import { SupplierRoutes } from '@smarthome/common/service';
+import { isGoogleLoginResponseOffline } from '@smarthome/common/logic';
 
 export const SignIn: FC = () => {
-  const history = useHistory();
+  const { handleLogin, handleLoginFailure } = useLogin();
   const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
-  const handleSignIn = useCallback(() => {
-    history.push(SupplierRoutes.Dashboard);
-  }, [history]);
+  const handleSignIn = useCallback(
+    (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+      if (isGoogleLoginResponseOffline(response)) {
+        handleLoginFailure({
+          message: 'Login error. Google login respone offline.',
+        });
+        return;
+      }
+      const { tokenId } = response;
+      handleLogin(tokenId);
+    },
+    [handleLogin, handleLoginFailure]
+  );
 
   return (
-    <GoogleSignIn clientId={GOOGLE_CLIENT_ID ?? ''} onSuccess={handleSignIn} />
+    <GoogleSignIn
+      clientId={GOOGLE_CLIENT_ID ?? ''}
+      onSuccess={handleSignIn}
+      onFailure={handleLoginFailure}
+      navlinkRoute={SupplierRoutes.SignUp}
+    />
   );
 };
 
-export default GoogleSignIn;
+export default SignIn;

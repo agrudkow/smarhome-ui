@@ -29,10 +29,6 @@ export function useUser() {
     }
   }, [dispatch, user]);
 
-  const handleLogout = useCallback(() => {
-    console.log('logout');
-  }, []);
-
   useEffect(() => {
     dispatch(UserSlice.fetchUserStart());
   }, [dispatch]);
@@ -46,7 +42,6 @@ export function useUser() {
   return {
     handleToggleEditView,
     handleSaveChanges,
-    handleLogout,
     userDetails: userData,
     edit,
     errorColor,

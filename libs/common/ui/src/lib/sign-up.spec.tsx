@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import SignIn from './sign-in';
+import SignUp from './sign-up';
 
-describe(' SignIn', () => {
+describe(' SignUp', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SignIn />);
+    const { baseElement } = render(<SignUp />);
     expect(baseElement).toBeTruthy();
   });
 });
