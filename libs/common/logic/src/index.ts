@@ -1,3 +1,4 @@
+export * from './lib/parse-miliseconds-to-human-readable-time';
 export * from './lib/is-google-login-response-offline';
 export * from './lib/use-month-switch';
 export * from './lib/use-accordion';

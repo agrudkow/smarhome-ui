@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@smarthome/consumer/store';
 import { BillingSlice } from '@smarthome/consumer/feature/dashboard/state';
-import { useMonthSwitch } from '@smarthome/common/logic';
+import {
+  useMonthSwitch,
+  parseMilisecondsToHumanReadableTime,
+} from '@smarthome/common/logic';
 
 export function useBillings() {
   const dispatch = useDispatch();
@@ -29,10 +32,13 @@ export function useBillings() {
   }, [currentDate, dispatch]);
 
   useEffect(() => {
-    setTime(billing?.milliseconds.toString());
-  }, [billing?.milliseconds?.toString]);
+    if (billing) {
+      setTime(parseMilisecondsToHumanReadableTime(billing.milliseconds));
+    }
+  }, [billing]);
 
   return {
+    time,
     billing,
     currentDate,
     handleChangeMonthFactory,

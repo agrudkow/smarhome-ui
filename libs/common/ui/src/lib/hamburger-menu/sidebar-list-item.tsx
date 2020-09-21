@@ -92,7 +92,8 @@ export const SidebarListItem: React.FC<SidebarListItemProps> = ({
 
   const isCurrentView =
     pathname === linkRoute ||
-    (linkRoute !== '/' && RegExp(`^${linkRoute}`).test(pathname));
+    (linkRoute !== '/' && RegExp(`^${linkRoute}`).test(pathname)) ||
+    (linkRoute === '/' && RegExp(`^/execution`).test(pathname));
   return (
     <li>
       <StyledSidebarListItem to={linkRoute} clicked={isCurrentView}>
