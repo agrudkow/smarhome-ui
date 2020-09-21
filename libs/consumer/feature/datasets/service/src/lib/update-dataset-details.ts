@@ -2,8 +2,7 @@ import { DatasetDetailsDTO } from '@smarthome/data';
 
 export const updateDatasetDetails: (
   data: DatasetDetailsDTO
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-) => Promise<void> = (data) =>
+) => Promise<void> = () =>
   new Promise((resolve, reject) =>
     setTimeout(
       () =>
