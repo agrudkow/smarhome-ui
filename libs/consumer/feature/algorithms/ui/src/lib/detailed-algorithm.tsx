@@ -83,7 +83,7 @@ export const DetailedAlgorithm: FC = () => {
             <InfoHeader
               headerText={algorithmDetails.displayName}
               infoMessageText={
-                'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating. '
+                'This view allows you to view informations about given algorithm and perfomr actions like rating and running dataset on algorithm.'
               }
             />
             <UnderlinedContainer>

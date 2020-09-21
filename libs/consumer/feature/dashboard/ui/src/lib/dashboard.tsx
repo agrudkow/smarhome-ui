@@ -39,7 +39,7 @@ export const Dashboard: React.FC = () => {
       <InfoHeader
         headerText={'Dashboard'}
         infoMessageText={
-          'This view allows you to check your current billinng information like an overall billing for month, a plot the most billed datsets and list of recentliy billed execuitons of algorithms on datasets.'
+          'This view allows you to check your current billinng information like an overall billing for the month and the list of recentliy billed execuitons of algorithms on datasets.'
         }
       />
       <UnderlinedContainer />
@@ -59,7 +59,7 @@ export const Dashboard: React.FC = () => {
           bodyPlaceholderText={tableBodyPlaceholder}
           title={
             <RecentBillingsTabelTitle>
-              <H5>Latest billed executions</H5>
+              <H5>Latest executions</H5>
             </RecentBillingsTabelTitle>
           }
         />

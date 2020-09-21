@@ -33,9 +33,7 @@ export const Algorithms: FC = () => {
       />
       <UnderlinedContainer />
       <SearchBar
-        inputPlaceHolder={
-          'Type comma seperated tags or leave it empty to search all algorithms'
-        }
+        inputPlaceHolder={'Type search phrase'}
         inputValue={searchValue ?? searchPhrase}
         onSearch={handleSearch}
         onInputValueChange={handleSearchInputChange}

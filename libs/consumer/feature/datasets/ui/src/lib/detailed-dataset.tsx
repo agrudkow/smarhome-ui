@@ -60,7 +60,7 @@ export const DetailedDataset: FC = () => {
             <InfoHeader
               headerText={datasetDetails.displayName}
               infoMessageText={
-                'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all datasets by leaving search input empty or you can fill it up and search datasets by key words (provided text will be treated as separate tags by which datasets will be searched). Additionaly you can sort result by name and rating. '
+                'This view allows you to view details of dataset and perform actions like adding new entity, editing information, deleting dataset or running it with algorithm.'
               }
             />
             <UnderlinedContainer />

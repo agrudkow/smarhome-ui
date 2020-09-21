@@ -36,13 +36,11 @@ export const SelectAlgorithm: FC = () => {
         <InfoHeader
           headerText={'Select algorithm'}
           infoMessageText={
-            'This view allows you to search through owned dataset. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name.'
+            'This view allows you to select algorithm which will be used to calculate resultset of previously selected dataset.'
           }
         />
         <SearchBar
-          inputPlaceHolder={
-            'Type comma seperated tags or leave it empty to search all algorithms'
-          }
+          inputPlaceHolder={'Type search phrase'}
           inputValue={searchValue ?? searchPhrase}
           onSearch={handleSearch}
           onInputValueChange={handleSearchInputChange}
