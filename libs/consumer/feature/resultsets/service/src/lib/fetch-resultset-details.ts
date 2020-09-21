@@ -1,4 +1,5 @@
 import { ResultsetDTO } from '@smarthome/data';
+import { LoremIpsumGenerator } from '@smarthome/common/logic';
 
 const createDate = (day: number) => (day < 10 ? `0${day}` : day);
 
@@ -12,9 +13,13 @@ export const fetchResultsetDetails = (
           ? resolve({
               resultsetId,
               algorithmId: '23',
-              algorithmDisplayName: 'Algorithm test name',
+              algorithmDisplayName: `Algorithm ${LoremIpsumGenerator.generateWords(
+                3
+              )}`,
               datasetId: '12',
-              datasetDisplayName: 'Detaset test name',
+              datasetDisplayName: `Detaset ${LoremIpsumGenerator.generateWords(
+                3
+              )}`,
               billed: Number((Math.random() * 6).toFixed(4)),
               date: `${createDate(
                 Math.round(Math.random() * 30) + 1

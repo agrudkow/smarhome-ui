@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { UserSlice } from '@smarthome/supplier/feature/user/state';
-import { SignUpProps } from '@smarthome/supplier/feature/user/service';
+import { UserSlice } from '@smarthome/consumer/feature/user/state';
+import { SignUpProps } from '@smarthome/consumer/feature/user/service';
 import { SnackbarSlice } from '@smarthome/common/state';
 
 export function useSignUp() {

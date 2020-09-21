@@ -8,3 +8,4 @@ export * from './lib/use-upload-file';
 export * from './lib/use-month-switch';
 export * from './lib/use-loading';
 export * from './lib/use-snackbar-subscriber';
+export * from './lib/lorem-generator';

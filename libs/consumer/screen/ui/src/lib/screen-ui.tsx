@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import {
   Layout,
@@ -127,7 +127,8 @@ export const ScreenUi: FC = () => {
                 exact
               />
               <Route path={`/${ConsumerRoutes.User}`} component={User} exact />
-              <Route component={NotFoundPage} />
+              <Route path="/404" component={NotFoundPage} />
+              <Redirect to="/404" />
             </SnackbarSubscriber>
           </SnackbarProvider>
         </Layout>

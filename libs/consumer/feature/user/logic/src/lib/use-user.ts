@@ -1,11 +1,11 @@
 import { useState, useContext, useCallback, useEffect } from 'react';
 import { ThemeContext } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@smarthome/supplier/store';
+import { RootState } from '@smarthome/consumer/store';
 import {
   UserSlice,
   UpdateUserSlice,
-} from '@smarthome/supplier/feature/user/state';
+} from '@smarthome/consumer/feature/user/state';
 import { UserDTO } from '@smarthome/data';
 
 export function useUser() {

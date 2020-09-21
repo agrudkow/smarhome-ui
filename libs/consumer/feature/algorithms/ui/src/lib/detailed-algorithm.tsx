@@ -10,6 +10,8 @@ import {
   BackButton,
   regularSpaceBetweenViewStyle,
   RatingDialog,
+  UnderlinedSubtitle,
+  H5,
 } from '@smarthome/common/ui';
 import {
   useAlgorithmDetails,
@@ -94,6 +96,17 @@ export const DetailedAlgorithm: FC = () => {
                 />
               </RatingContainer>
             </UnderlinedContainer>
+            <UnderlinedSubtitle>
+              <H5>Summary: </H5>
+            </UnderlinedSubtitle>
+            <OvalBoxContainer>
+              <DescriptionContainer>
+                {algorithmDetails.algorithmSummary}
+              </DescriptionContainer>
+            </OvalBoxContainer>
+            <UnderlinedSubtitle>
+              <H5>Description: </H5>
+            </UnderlinedSubtitle>
             <OvalBoxContainer>
               <DescriptionContainer>
                 {algorithmDetails.algorithmDescription}

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import {
   Layout,
@@ -72,7 +72,8 @@ export const SupplierScreenUi: FC = () => {
                 component={DetailedAlgorithm}
               />
               <Route path={`/${SupplierRoutes.User}`} exact component={User} />
-              <Route component={NotFoundPage} />
+              <Route path="/404" component={NotFoundPage} />
+              <Redirect to="/404" />
             </SnackbarSubscriber>
           </SnackbarProvider>
         </Layout>
