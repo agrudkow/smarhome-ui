@@ -12,7 +12,7 @@ import { Algorithm } from '@smarthome/supplier/feature/algorithms/logic';
 import AddAlgorithm from './add-algorithm';
 import { useAlgorithmsList } from '@smarthome/supplier/feature/algorithms/logic';
 
-const StyledDataset = styled.div`
+const StyledAlgorithm = styled.div`
   padding-bottom: 60px; //Accommodate floating buttom
 `;
 
@@ -32,7 +32,7 @@ export const Algorithms: FC = () => {
   } = useAlgorithmsList();
 
   return (
-    <StyledDataset>
+    <StyledAlgorithm>
       <InfoHeader
         headerText={
           currentView === 'list'
@@ -41,17 +41,15 @@ export const Algorithms: FC = () => {
         }
         infoMessageText={
           currentView === 'list'
-            ? 'This view allows you to search through owned algorithms. You can dispaly all dataset by leaving search input empty or you can fill it up and search dataset by key words (provided text will be treated as separate tags by which datasets will be searched). Additionaly you can sort result by name.'
-            : "This view alllow you to add create new algorithm. To do so you have to fill the form with name, summary and description. After clicking 'ADD' button dataset will be created and you will be moved to page where you can add new entities."
+            ? 'This view allows you to search through owned algorithms. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithm by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name.'
+            : "This view alllow you to add create new algorithm. To do so you have to fill the form with name, summary and description. After clicking 'ADD' button algorithm will be created and you will be moved to page where you can add new entities."
         }
       />
       <UnderlinedContainer />
       {currentView === 'list' ? (
         <>
           <SearchBar
-            inputPlaceHolder={
-              'Type comma seperated tags or leave it empty to get all algorithms'
-            }
+            inputPlaceHolder={'Type search phrase'}
             inputValue={searchValue ?? searchPhrase}
             onSearch={handleSearch}
             onInputValueChange={handleSearchInputChange}
@@ -74,7 +72,7 @@ export const Algorithms: FC = () => {
           <AddAlgorithm onCancle={handleChangeViewFactory('list')} />
         </OvalBoxContainer>
       )}
-    </StyledDataset>
+    </StyledAlgorithm>
   );
 };
 

@@ -56,24 +56,29 @@ export const SupplierScreenUi: FC = () => {
             }}
           >
             <SnackbarSubscriber>
-              <Route
-                path={`/${SupplierRoutes.Dashboard}`}
-                exact
-                component={Dashboard}
-              />
-              <Route
-                path={`/${SupplierRoutes.Algorithms}`}
-                exact
-                component={Algorithms}
-              />
-              <Route
-                path={`/${SupplierRoutes.Algorithms}/:id`}
-                exact
-                component={DetailedAlgorithm}
-              />
-              <Route path={`/${SupplierRoutes.User}`} exact component={User} />
-              <Route path="/404" component={NotFoundPage} />
-              <Redirect to="/404" />
+              <Switch>
+                <Route
+                  path={`/${SupplierRoutes.Dashboard}`}
+                  exact
+                  component={Dashboard}
+                />
+                <Route
+                  path={`/${SupplierRoutes.Algorithms}`}
+                  exact
+                  component={Algorithms}
+                />
+                <Route
+                  path={`/${SupplierRoutes.Algorithms}/:id`}
+                  exact
+                  component={DetailedAlgorithm}
+                />
+                <Route
+                  path={`/${SupplierRoutes.User}`}
+                  exact
+                  component={User}
+                />
+                <Route path="*" component={NotFoundPage} />
+              </Switch>
             </SnackbarSubscriber>
           </SnackbarProvider>
         </Layout>

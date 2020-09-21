@@ -61,7 +61,7 @@ export const Layout: React.FC<LayoutProps> = ({
         onShowSidebarClick={handleShowSidebarClick}
         items={sidebarLinks}
       >
-        <MainContainer>{children}</MainContainer>
+        <MainContainer dissableScroll={showSidebar}>{children}</MainContainer>
       </Sidebar>
     </>
   );

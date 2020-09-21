@@ -24,6 +24,14 @@ const MainInfoContainer = styled.div`
   align-items: baseline;
   white-space: nowrap;
   margin: 15px;
+
+  ${({
+    theme: {
+      breakpoints: { mobileDF },
+    },
+  }) => mobileDF} {
+    margin: 5px 0;
+  }
 `;
 
 const CustomOvalBoxContainer = styled(StyledOvalBoxContainer)`
@@ -42,6 +50,14 @@ const OptionButtonsContainer = styled.div`
 const OutlinedButtonContainer = styled.div`
   width: calc(50% - 10px);
   margin: 5px;
+
+  ${({
+    theme: {
+      breakpoints: { mobileDF },
+    },
+  }) => mobileDF} {
+    width: 100%;
+  }
 `;
 
 export const ExecutionDetails: FC = () => {

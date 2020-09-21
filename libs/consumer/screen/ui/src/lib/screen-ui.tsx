@@ -66,8 +66,8 @@ export const ScreenUi: FC = () => {
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path={`/${ConsumerRoutes.SignIn}`} component={SignIn} exact />
-        <Route path={`/${ConsumerRoutes.SignUp}`} component={SignUp} exact />
+        <Route exact path={`/${ConsumerRoutes.SignIn}`} component={SignIn} />
+        <Route exact path={`/${ConsumerRoutes.SignUp}`} component={SignUp} />
         <Layout sidebarLinks={SidebarLinks} loading={loading}>
           <SnackbarProvider
             anchorOrigin={{
@@ -76,59 +76,64 @@ export const ScreenUi: FC = () => {
             }}
           >
             <SnackbarSubscriber>
-              <Route
-                path={`/${ConsumerRoutes.Dashboard}`}
-                component={Dashboard}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Algorithms}`}
-                component={Algorithms}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Algorithms}/:id`}
-                component={DetailedAlgorithm}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Algorithms}/:id/${ConsumerAlgorithmRoutes.SelectDataset}`}
-                component={SelectDataset}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Algorithms}/:algorithmId/${ConsumerAlgorithmRoutes.Execute}/:datasetId`}
-                component={Execute}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Datasets}`}
-                component={Datasets}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Datasets}/:id`}
-                component={DetailedDataset}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Datasets}/:id/${ConsumerDatasetRoutes.SelectAlgorithm}`}
-                component={SelectAlgorithm}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Datasets}/:datasetId/${ConsumerDatasetRoutes.Execute}/:algorithmId`}
-                component={Execute}
-                exact
-              />
-              <Route
-                path={`/${ConsumerRoutes.Execution}/:resultsetId`}
-                component={ExecutionDetails}
-                exact
-              />
-              <Route path={`/${ConsumerRoutes.User}`} component={User} exact />
-              <Route path="/404" component={NotFoundPage} />
-              <Redirect to="/404" />
+              <Switch>
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Dashboard}`}
+                  component={Dashboard}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Algorithms}`}
+                  component={Algorithms}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Algorithms}/:id`}
+                  component={DetailedAlgorithm}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Algorithms}/:id/${ConsumerAlgorithmRoutes.SelectDataset}`}
+                  component={SelectDataset}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Algorithms}/:algorithmId/${ConsumerAlgorithmRoutes.Execute}/:datasetId`}
+                  component={Execute}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Datasets}`}
+                  component={Datasets}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Datasets}/:id`}
+                  component={DetailedDataset}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Datasets}/:id/${ConsumerDatasetRoutes.SelectAlgorithm}`}
+                  component={SelectAlgorithm}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Datasets}/:datasetId/${ConsumerDatasetRoutes.Execute}/:algorithmId`}
+                  component={Execute}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.Execution}/:resultsetId`}
+                  component={ExecutionDetails}
+                />
+                <Route
+                  exact
+                  path={`/${ConsumerRoutes.User}`}
+                  component={User}
+                />
+                <Route path="*" component={NotFoundPage} />
+              </Switch>
             </SnackbarSubscriber>
           </SnackbarProvider>
         </Layout>

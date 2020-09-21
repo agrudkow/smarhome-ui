@@ -24,8 +24,7 @@ interface ContainerProps {
 }
 
 const SidebarContainer = styled.div<ContainerProps>`
-  position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   width: ${({
     show,
     theme: {
@@ -57,6 +56,8 @@ const SidebarContainer = styled.div<ContainerProps>`
   overflow: hidden;
 
   ${({ theme }) => theme.breakpoints.tablet} {
+    position: -webkit-sticky;
+    position: sticky;
     transition: flex-basis 0.3s ease-in-out, left 0.3s ease-in-out;
     flex-basis: ${({
       show,

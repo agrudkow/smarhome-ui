@@ -70,7 +70,7 @@ export const DetailedAlgorithm: FC = () => {
             <InfoHeader
               headerText={algorithmDetails.displayName}
               infoMessageText={
-                'This view allows you to search through avaliable algortihms provided by suppliers. You can dispaly all algorithms by leaving search input empty or you can fill it up and search algorithms by key words (provided text will be treated as separate tags by which algorithms will be searched). Additionaly you can sort result by name and rating. '
+                'This view allows you to view details and statistics of algorithm and perform actions like uploding new source code, testing syntax etc..'
               }
             />
             <UnderlinedContainer>
@@ -127,8 +127,8 @@ export const DetailedAlgorithm: FC = () => {
             open={openDeleteDialog}
             onClose={handleDeleteDialogClose}
             onConfirm={handleDeleteAlgorithm}
-            title={'Delete datase'}
-            description={'Please confirm deleting dataset.'}
+            title={'Delete algorithm'}
+            description={'Please confirm deleting algorithm.'}
           />
           <BackButton onClick={handleBackClick} />
         </>
