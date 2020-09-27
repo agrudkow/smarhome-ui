@@ -1,15 +1,15 @@
 import React from 'react';
+import { DeepReadonly } from 'utility-types';
 import { Algorithm } from './algorithm.interface';
 import { CellContainer, BaseButton, CustomRating } from '@smarthome/common/ui';
 import { AlgorithmDTO } from '@smarthome/data';
 import { TableDataParser } from '@smarthome/common/logic';
-import { DeepReadonly } from 'utility-types';
-
+//test
 export const algorithmsDataParser: TableDataParser<
   Algorithm,
   DeepReadonly<Array<AlgorithmDTO>>
-> = (data, rowButtonText, rowButtonHandlerFactory) => {
-  return data.map(
+> = (data, rowButtonText, rowButtonHandlerFactory) =>
+  data.map(
     ({ algorithmId, algorithmSummary, displayName, algorithmRating }) => {
       return {
         name: <CellContainer>{displayName}</CellContainer>,
@@ -40,4 +40,3 @@ export const algorithmsDataParser: TableDataParser<
       };
     }
   );
-};
