@@ -20,8 +20,11 @@ export const SignIn: FC = () => {
         });
         return;
       }
-      const { tokenId } = response;
-      handleLogin(tokenId);
+      const {
+        tokenId,
+        tokenObj: { expires_at: expiresAt },
+      } = response;
+      handleLogin(tokenId, expiresAt);
     },
     [handleLogin, handleLoginFailure]
   );

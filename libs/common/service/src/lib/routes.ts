@@ -7,7 +7,6 @@ export enum ConsumerRoutes {
   SignIn = 'sign-in',
   SignUp = 'sign-up',
 }
-
 export enum ConsumerAlgorithmRoutes {
   Execute = 'execute',
   SelectDataset = 'select-dataset',

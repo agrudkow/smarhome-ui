@@ -21,11 +21,13 @@ export const SignUp: FC = () => {
         return;
       }
       const {
-        tokenId,
+        tokenId: idToken,
         profileObj: { email, givenName, familyName },
+        tokenObj: { expires_at: expiresAt },
       } = response;
       handleSignUpRedux({
-        idToken: tokenId,
+        idToken,
+        expiresAt,
         email,
         firstName: givenName,
         lastName: familyName,

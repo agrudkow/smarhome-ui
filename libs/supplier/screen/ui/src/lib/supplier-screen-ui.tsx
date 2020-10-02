@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import {
   Layout,
@@ -21,6 +21,7 @@ import { history } from '@smarthome/common/state';
 import { useLoading } from '@smarthome/common/logic';
 import { RootState } from '@smarthome/supplier/store';
 import { SnackbarProvider } from 'notistack';
+import PrivateRoute from './private-route';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -57,27 +58,27 @@ export const SupplierScreenUi: FC = () => {
           >
             <SnackbarSubscriber>
               <Switch>
-                <Route
+                <PrivateRoute
                   path={`/${SupplierRoutes.Dashboard}`}
                   exact
                   component={Dashboard}
                 />
-                <Route
+                <PrivateRoute
                   path={`/${SupplierRoutes.Algorithms}`}
                   exact
                   component={Algorithms}
                 />
-                <Route
+                <PrivateRoute
                   path={`/${SupplierRoutes.Algorithms}/:id`}
                   exact
                   component={DetailedAlgorithm}
                 />
-                <Route
+                <PrivateRoute
                   path={`/${SupplierRoutes.User}`}
                   exact
                   component={User}
                 />
-                <Route path="*" component={NotFoundPage} />
+                <PrivateRoute path="*" component={NotFoundPage} />
               </Switch>
             </SnackbarSubscriber>
           </SnackbarProvider>

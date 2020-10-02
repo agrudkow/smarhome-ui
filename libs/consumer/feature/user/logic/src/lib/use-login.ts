@@ -7,8 +7,8 @@ export function useLogin() {
   const dispatch = useDispatch();
 
   const handleLogin = useCallback(
-    (token: string) => {
-      dispatch(UserSlice.login(token));
+    (idToken: string, expiresAt: number) => {
+      dispatch(UserSlice.login({ idToken, expiresAt }));
     },
     [dispatch]
   );

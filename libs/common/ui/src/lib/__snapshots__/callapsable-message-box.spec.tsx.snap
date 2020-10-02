@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` CallapsableMessageBox should match snapshot 1`] = `
+.c0 {
+  color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-letter-spacing: -0.3px;
+  -moz-letter-spacing: -0.3px;
+  -ms-letter-spacing: -0.3px;
+  letter-spacing: -0.3px;
+  padding: 5px;
+  width: calc(100% - 14px);
+  height: 0px;
+  margin: 10px 0;
+  visibility: visible;
+  overflow: hidden;
+  -webkit-transition: height 0.3s ease-in-out,visibility 0.3s ease-in-out, margin 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out,visibility 0.3s ease-in-out, margin 0.3s ease-in-out;
+  border: 2px dashed #1BBDCE;
+  border-radius: 6px;
+  text-align: justify;
+}
+
+@media (min-width:769px) {
+  .c0 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c0 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width:480px) {
+  .c0 {
+    margin: 5px 0;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div />
+  </div>
+</div>
+`;

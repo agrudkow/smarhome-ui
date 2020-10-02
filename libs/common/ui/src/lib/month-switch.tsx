@@ -1,7 +1,6 @@
-import { getMonthName } from '@smarthome/common/logic';
 import React, { FC } from 'react';
-
 import styled from 'styled-components';
+import { getMonthName } from '@smarthome/common/logic';
 import ArrowButton from './arrow-button';
 import { H4 } from './headings';
 

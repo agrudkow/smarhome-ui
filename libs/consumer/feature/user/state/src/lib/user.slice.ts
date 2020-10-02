@@ -12,6 +12,7 @@ import {
   fetchUserDetails,
   signUp,
   SignUpProps,
+  SessionProps,
 } from '@smarthome/consumer/feature/user/service';
 import { push } from 'connected-react-router';
 import { ConsumerRoutes } from '@smarthome/common/service';
@@ -21,6 +22,7 @@ interface UserState {
   error: string | null;
   user: UserDTO | null;
   idToken: string | null;
+  expiresAt: number | null;
 }
 
 const initialState: UserState = {
@@ -28,6 +30,7 @@ const initialState: UserState = {
   error: null,
   user: null,
   idToken: null,
+  expiresAt: null,
 };
 
 export const name = 'user' as const;
@@ -54,25 +57,38 @@ const user = createSlice({
       state.loading = true;
       state.error = null;
       state.idToken = null;
+      state.expiresAt = null;
     },
-    signUpSuccess(state, action: PayloadAction<string>) {
+    signUpSuccess(
+      state,
+      { payload: { expiresAt, idToken } }: PayloadAction<SessionProps>
+    ) {
       state.loading = false;
       state.error = null;
-      state.idToken = action.payload;
+      state.idToken = idToken;
+      state.expiresAt = expiresAt;
     },
     signUpFailure(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
     },
-    login(state, action: PayloadAction<string>) {
+    login(
+      state,
+      { payload: { expiresAt, idToken } }: PayloadAction<SessionProps>
+    ) {
       state.loading = false;
       state.error = null;
-      state.idToken = action.payload;
+      state.idToken = idToken;
+      state.expiresAt = expiresAt;
     },
     logout(state) {
       state.loading = false;
       state.error = null;
       state.idToken = null;
+      state.expiresAt = null;
+    },
+    clear(state) {
+      state.expiresAt = 0;
     },
   },
 });
@@ -110,7 +126,10 @@ function* handleSignUpStart(action: PayloadAction<SignUpProps>) {
   try {
     yield put(LoadingSlice.pushLoading());
     yield call(signUp, action.payload);
-    yield put(signUpSuccess(action.payload.idToken));
+
+    const { expiresAt, idToken } = action.payload;
+
+    yield put(signUpSuccess({ expiresAt, idToken }));
   } catch (error) {
     yield put(
       SnackbarSlice.pushMessage({ message: error.message, variant: 'error' })

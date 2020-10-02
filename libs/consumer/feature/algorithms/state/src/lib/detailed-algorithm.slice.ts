@@ -58,7 +58,8 @@ const algorithmDetails = createSlice({
       state.loading = true;
       state.error = null;
     },
-    rateAlgorithmSuccess(state) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    rateAlgorithmSuccess(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = null;
     },
@@ -104,7 +105,7 @@ function* handleRateAlgorithmStart(action: PayloadAction<RateAlgorithmProps>) {
   try {
     yield put(LoadingSlice.pushLoading());
     yield call(rateAlgorithm, action.payload);
-    yield put(rateAlgorithmSuccess());
+    yield put(rateAlgorithmSuccess(action.payload.algorithmId));
   } catch (error) {
     yield put(
       SnackbarSlice.pushMessage({ message: error.message, variant: 'error' })
@@ -115,13 +116,14 @@ function* handleRateAlgorithmStart(action: PayloadAction<RateAlgorithmProps>) {
   }
 }
 
-function* handleRateAlgorithmSuccess() {
+function* handleRateAlgorithmSuccess(action: PayloadAction<string>) {
   yield put(
     SnackbarSlice.pushMessage({
       message: 'Algorithm was successfully rated.',
       variant: 'success',
     })
   );
+  yield put(fetchAlgorithmDetailsStart(action.payload));
 }
 
 // ------------------watchers--------------------------------------------

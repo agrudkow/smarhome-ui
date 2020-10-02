@@ -8,8 +8,10 @@ import {
 } from '@redux-saga/core/effects';
 import { SnackbarSlice, LoadingSlice } from '@smarthome/common/state';
 import { AlgorithmDTO, AlgorithmTopExecDTO } from '@smarthome/data';
-import { fetchTopRatingAlgorithms } from '../../../service/src/lib/fetch-top-rating-algorithms';
-import { fetchTopExecutionsAlgorithms } from '../../../service/src/lib/fetch-top-executions-algorithms';
+import {
+  fetchTopRatingAlgorithms,
+  fetchTopExecutionsAlgorithms,
+} from '@smarthome/supplier/feature/dashboard/service';
 
 interface TopAlgorithmsState {
   loading: boolean;

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import {
   Layout,
@@ -36,6 +36,7 @@ import { history } from '@smarthome/common/state';
 import { SnackbarProvider } from 'notistack';
 import { useLoading } from '@smarthome/common/logic';
 import { RootState } from '@smarthome/consumer/store';
+import PrivateRoute from './private-route';
 
 const SidebarLinks: SidebarLinkProps[] = [
   {
@@ -77,7 +78,7 @@ export const ScreenUi: FC = () => {
           >
             <SnackbarSubscriber>
               <Switch>
-                <Route
+                <PrivateRoute
                   exact
                   path={`/${ConsumerRoutes.Dashboard}`}
                   component={Dashboard}
@@ -92,37 +93,37 @@ export const ScreenUi: FC = () => {
                   path={`/${ConsumerRoutes.Algorithms}/:id`}
                   component={DetailedAlgorithm}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={`/${ConsumerRoutes.Algorithms}/:id/${ConsumerAlgorithmRoutes.SelectDataset}`}
                   component={SelectDataset}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={`/${ConsumerRoutes.Algorithms}/:algorithmId/${ConsumerAlgorithmRoutes.Execute}/:datasetId`}
                   component={Execute}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={`/${ConsumerRoutes.Datasets}`}
                   component={Datasets}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={`/${ConsumerRoutes.Datasets}/:id`}
                   component={DetailedDataset}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={`/${ConsumerRoutes.Datasets}/:id/${ConsumerDatasetRoutes.SelectAlgorithm}`}
                   component={SelectAlgorithm}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={`/${ConsumerRoutes.Datasets}/:datasetId/${ConsumerDatasetRoutes.Execute}/:algorithmId`}
                   component={Execute}
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path={`/${ConsumerRoutes.Execution}/:resultsetId`}
                   component={ExecutionDetails}

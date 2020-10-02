@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` MonthSwitch should match snapshot 1`] = `
+.c2 {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  color: #1BBDCE;
+}
+
+.c4 {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+  color: #1BBDCE;
+}
+
+.c0 {
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.c3 {
+  margin: 0;
+  padding: 0;
+  color: #444;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 22px;
+  text-align: center;
+  width: 50%;
+}
+
+@media (max-width:769px) {
+  .c2 {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width:769px) {
+  .c4 {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width:769px) {
+  .c1 {
+    padding: 0;
+  }
+}
+
+@media (min-width:1024px) {
+  .c3 {
+    font-size: 26px;
+    line-height: 24px;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root c1"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root c2"
+          focusable="false"
+          rotate="180deg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+          />
+        </svg>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <h4
+      class="c3"
+    >
+      June
+       
+      2020
+    </h4>
+    <button
+      class="MuiButtonBase-root MuiIconButton-root c1"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root c4"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+          />
+        </svg>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;

@@ -5,10 +5,7 @@ import MUIRating, {
 } from '@material-ui/lab/Rating';
 import { useWindowDimensions } from '@smarthome/common/logic';
 
-/* eslint-disable-next-line */
-export interface CustomRatingProps extends MUIRatingProps {}
-
-export const CustomRating: FC<CustomRatingProps> = (props) => {
+export const CustomRating: FC<MUIRatingProps> = (props) => {
   const { width } = useWindowDimensions();
   const {
     breakpoints: {

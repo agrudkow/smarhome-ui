@@ -9,6 +9,7 @@ import {
 import { UserDTO } from '@smarthome/data';
 
 export function useUser() {
+  const date = Date.now();
   const dispatch = useDispatch();
   const [userData, setUserData] = useState<UserDTO>();
   const [edit, setEdit] = useState<boolean>(false);
@@ -16,7 +17,11 @@ export function useUser() {
     palette: { error: errorColor },
   } = useContext(ThemeContext);
 
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user, idToken, expiresAt } = useSelector(
+    (state: RootState) => state.user
+  );
+
+  const isLoggedIn = idToken !== null && (expiresAt ?? 0) > date;
 
   const handleToggleEditView = useCallback(() => {
     setEdit((prevState) => !prevState);
@@ -43,6 +48,9 @@ export function useUser() {
     handleToggleEditView,
     handleSaveChanges,
     userDetails: userData,
+    idToken,
+    isLoggedIn,
+    expiresAt,
     edit,
     errorColor,
   } as const;

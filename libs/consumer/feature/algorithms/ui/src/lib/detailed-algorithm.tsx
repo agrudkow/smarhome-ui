@@ -17,6 +17,7 @@ import {
   useAlgorithmDetails,
   useAlgorithmRating,
 } from '@smarthome/consumer/feature/algorithms/logic';
+import { useUser } from '@smarthome/consumer/feature/user/logic';
 
 const DescriptionContainer = styled(H6)`
   padding: 0;
@@ -74,6 +75,7 @@ export const DetailedAlgorithm: FC = () => {
     handleSendRating,
     handleRatingChange,
   } = useAlgorithmRating();
+  const { isLoggedIn } = useUser();
 
   return (
     <StyledDetailedAlgorithm>
@@ -112,36 +114,40 @@ export const DetailedAlgorithm: FC = () => {
                 {algorithmDetails.algorithmDescription}
               </DescriptionContainer>
             </OvalBoxContainer>
-            <OptionButtons>
-              <OptionButtonContainer margin="right">
-                <OutlinedButton
-                  onClick={handleRunOnDatasetClick}
-                  style={{ width: '100%' }}
-                >
-                  Run on dataset
-                </OutlinedButton>
-              </OptionButtonContainer>
-              <OptionButtonContainer margin="left">
-                <OutlinedButton
-                  onClick={handleOpenRatingDialog}
-                  style={{ width: '100%' }}
-                >
-                  Rate algorithm
-                </OutlinedButton>
-              </OptionButtonContainer>
-            </OptionButtons>
+            {isLoggedIn && (
+              <OptionButtons>
+                <OptionButtonContainer margin="right">
+                  <OutlinedButton
+                    onClick={handleRunOnDatasetClick}
+                    style={{ width: '100%' }}
+                  >
+                    Run on dataset
+                  </OutlinedButton>
+                </OptionButtonContainer>
+                <OptionButtonContainer margin="left">
+                  <OutlinedButton
+                    onClick={handleOpenRatingDialog}
+                    style={{ width: '100%' }}
+                  >
+                    Rate algorithm
+                  </OutlinedButton>
+                </OptionButtonContainer>
+              </OptionButtons>
+            )}
           </div>
-          <RatingDialog
-            rating={rating}
-            open={openRatingDialog}
-            onSend={handleSendRating}
-            onClose={handleCloseRatingDialog}
-            onRatingChange={handleRatingChange}
-            title={'Rate algorithm'}
-            description={
-              'Please select number of stars (1-5) which corresponds with how well given algorithm do its job.'
-            }
-          />
+          {isLoggedIn && (
+            <RatingDialog
+              rating={rating}
+              open={openRatingDialog}
+              onSend={handleSendRating}
+              onClose={handleCloseRatingDialog}
+              onRatingChange={handleRatingChange}
+              title={'Rate algorithm'}
+              description={
+                'Please select number of stars (1-5) which corresponds with how well given algorithm do its job.'
+              }
+            />
+          )}
           <BackButton onClick={handleBackClick} />
         </>
       )}

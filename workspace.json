@@ -857,6 +857,16 @@
             }
           }
         },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "echo deploy consumer"
+              }
+            ]
+          }
+        },
         "serve": {
           "builder": "@nrwl/web:dev-server",
           "options": {
@@ -964,6 +974,16 @@
                 }
               ]
             }
+          }
+        },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "echo deploy supplier"
+              }
+            ]
           }
         },
         "serve": {

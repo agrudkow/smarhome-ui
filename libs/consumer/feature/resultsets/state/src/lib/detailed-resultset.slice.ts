@@ -53,6 +53,9 @@ const resultsetDetails = createSlice({
       state.error = action.payload;
       state.resultsetDetails = null;
     },
+    clearResultsetId(state) {
+      state.newResultsetId = null;
+    },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     executeStart(state, action: PayloadAction<ExecuteProps>) {
       state.loading = true;
@@ -94,6 +97,7 @@ export const {
   executeFailure,
   executeStart,
   executeSuccess,
+  clearResultsetId,
 } = resultsetDetails.actions;
 export const { reducer } = resultsetDetails;
 // -------------------------handlers-------------------------------

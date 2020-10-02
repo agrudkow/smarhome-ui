@@ -4,8 +4,8 @@ import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from 'react-google-login';
-import { useSignUp } from '@smarthome/supplier/feature/user/logic';
-import { SupplierRoutes } from '@smarthome/common/service';
+import { useSignUp } from '@smarthome/consumer/feature/user/logic';
+import { ConsumerRoutes } from '@smarthome/common/service';
 import { isGoogleLoginResponseOffline } from '@smarthome/common/logic';
 
 export const SignUp: FC = () => {
@@ -21,11 +21,13 @@ export const SignUp: FC = () => {
         return;
       }
       const {
-        tokenId,
+        tokenId: idToken,
         profileObj: { email, givenName, familyName },
+        tokenObj: { expires_at: expiresAt },
       } = response;
       handleSignUpRedux({
-        idToken: tokenId,
+        idToken,
+        expiresAt,
         email,
         firstName: givenName,
         lastName: familyName,
@@ -38,7 +40,7 @@ export const SignUp: FC = () => {
       clientId={GOOGLE_CLIENT_ID ?? ''}
       onSuccess={handleSignUp}
       onFailure={handleSignUpFailure}
-      navlinkRoute={SupplierRoutes.SignIn}
+      navlinkRoute={ConsumerRoutes.SignIn}
     />
   );
 };

@@ -32,7 +32,12 @@ const TableContainer = styled.div`
 
 export const Dashboard: React.FC = () => {
   const { tableData, tableCells, tableBodyPlaceholder } = useResultsetsList();
-  const { billing, currentDate, handleChangeMonthFactory } = useBillings();
+  const {
+    billing,
+    currentDate,
+    handleChangeMonthFactory,
+    time,
+  } = useBillings();
 
   return (
     <>
@@ -45,7 +50,7 @@ export const Dashboard: React.FC = () => {
       <UnderlinedContainer />
       <TotalBilling
         billedAmount={billing?.billed ?? '-'}
-        billedTime={billing?.milliseconds ?? '-'}
+        billedTime={time ?? '-'}
         month={currentDate.getMonth()}
         year={currentDate.getFullYear()}
         onNextMonthClick={handleChangeMonthFactory(1)}

@@ -49,6 +49,7 @@ export function useExecute() {
   }, [dispatch, newResultsetId]);
 
   useEffect(() => {
+    dispatch(ResultsetDetailsSlice.clearResultsetId());
     dispatch(AlgorithmDetailsSlice.fetchAlgorithmDetailsStart(algorithmId));
     dispatch(DatasetDetailsSlice.fetchDatasetDetailsStart(datasetId));
   }, [algorithmId, datasetId, dispatch]);

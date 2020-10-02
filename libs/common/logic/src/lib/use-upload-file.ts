@@ -12,7 +12,6 @@ export function useUploadFile({
   }, []);
 
   const handleSendFile = useCallback(async () => {
-    console.log('Send file');
     if (file) {
       await onFileSend(file);
       setFile(undefined);

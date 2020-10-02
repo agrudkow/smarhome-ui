@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import SnackbarSubscriber from './snackbar-subscriber';
+import PrivateRoute from './private-route';
 
-describe(' SnackbarSubscriber', () => {
+describe(' PrivateRoute', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SnackbarSubscriber />);
+    const { baseElement } = render(<PrivateRoute />);
     expect(baseElement).toBeTruthy();
   });
 });

@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` SearchBar should match snapshot 1`] = `
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 0 8px;
+}
+
+.c1 .MuiInput-underline:after {
+  border-color: #1BBDCE;
+}
+
+.c3 {
+  width: 100%;
+  font-weight: 550;
+  white-space: nowrap;
+  background-color: #4E4E4E;
+  color: #E3E2E1;
+  opacity: 0.7;
+  -webkit-transition: color 0.3s ease-in-out,background-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out,background-color 0.3s ease-in-out;
+}
+
+.c3:hover {
+  background-color: #1BBDCE;
+  color: #102128;
+}
+
+.c0 {
+  padding: 5px 15px;
+  margin: 15px 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: auto;
+  width: auto;
+  max-height: auto;
+  max-width: auto;
+  background-color: #fff;
+  opacity: 1;
+  border-radius: 6px;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c2 {
+  -webkit-flex-basis: 100px;
+  -ms-flex-preferred-size: 100px;
+  flex-basis: 100px;
+  margin: auto;
+}
+
+@media (max-width:769px) {
+  .c0 {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width:480px) {
+  .c0 {
+    padding: 5px 5px;
+  }
+}
+
+@media (max-width:480px) {
+  .c2 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+}
+
+<body>
+  <div>
+    <div
+      class="c0"
+    >
+      <div
+        class="c1"
+      >
+        <div
+          class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+        >
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiInput-input"
+              id="input-normal"
+              placeholder=""
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="c2"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained c3 MuiButton-containedPrimary"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Search
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;

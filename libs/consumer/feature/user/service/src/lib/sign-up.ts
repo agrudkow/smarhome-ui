@@ -1,8 +1,11 @@
 import { UserDTO } from '@smarthome/data';
 
-export type SignUpProps = Omit<UserDTO, 'userId' | 'userStatus'> & {
+export interface SessionProps {
   idToken: string;
-};
+  expiresAt: number;
+}
+
+export type SignUpProps = Omit<UserDTO, 'userId' | 'userStatus'> & SessionProps;
 
 export const signUp: (data: SignUpProps) => Promise<void> = async () =>
   new Promise((resolve, reject) =>

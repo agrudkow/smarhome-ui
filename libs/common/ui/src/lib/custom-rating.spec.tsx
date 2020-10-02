@@ -1,11 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-
 import CustomRating from './custom-rating';
+import { customRender } from '@smarthome/common/logic';
 
 describe(' Rating', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<CustomRating />);
+    const { baseElement } = customRender(<CustomRating name="test-name" />);
     expect(baseElement).toBeTruthy();
   });
 });

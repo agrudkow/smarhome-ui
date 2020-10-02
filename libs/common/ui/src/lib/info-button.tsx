@@ -16,7 +16,11 @@ const StyledInfoButton = styled.div`
 export const InfoButton: FC<InfoButtonProps> = ({ onClick }) => {
   return (
     <StyledInfoButton>
-      <IconButton aria-label="info" onClick={onClick}>
+      <IconButton
+        data-testid="info-button-icon"
+        aria-label="info"
+        onClick={onClick}
+      >
         <Tooltip
           title={
             <span style={{ fontSize: '12px' }}>

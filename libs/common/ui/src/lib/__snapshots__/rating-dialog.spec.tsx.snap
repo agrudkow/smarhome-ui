@@ -1,0 +1,485 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` RatingDialog should match snapshot 1`] = `
+.c2 {
+  color: #555;
+  border-color: #555;
+  -webkit-transition: color 0.3s ease-in-out,border-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out,border-color 0.3s ease-in-out;
+  font-weight: 550;
+  width: 100%;
+}
+
+.c2:hover {
+  color: #1BBDCE;
+  border-color: #1BBDCE;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width:480px) {
+  .c1 {
+    padding: 0;
+  }
+}
+
+<body
+  style="padding-right: 0px; overflow: hidden;"
+>
+  <div
+    aria-hidden="true"
+  />
+  <div
+    class="MuiDialog-root"
+    role="presentation"
+    style="position: fixed; z-index: 1300; right: 0px; bottom: 0px; top: 0px; left: 0px;"
+  >
+    <div
+      aria-hidden="true"
+      class="MuiBackdrop-root"
+      style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+    />
+    <div
+      data-test="sentinelStart"
+      tabindex="0"
+    />
+    <div
+      class="MuiDialog-container MuiDialog-scrollPaper"
+      role="none presentation"
+      style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      tabindex="-1"
+    >
+      <div
+        aria-labelledby="rating-dialog"
+        class="MuiPaper-root MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthSm MuiPaper-elevation24 MuiPaper-rounded"
+        role="dialog"
+      >
+        <div
+          class="MuiDialogTitle-root"
+          id="'rating-dialogg-title"
+        >
+          <h2
+            class="MuiTypography-root MuiTypography-h6"
+          />
+        </div>
+        <div
+          class="MuiDialogContent-root"
+        >
+          <p
+            class="MuiTypography-root MuiDialogContentText-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          />
+          <div
+            class="c0"
+          >
+            <span
+              class="MuiRating-root MuiRating-sizeLarge"
+            >
+              <span
+                class="MuiRating-decimal"
+              >
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-0-5"
+                  style="width: 0%; overflow: hidden; z-index: 1; position: absolute;"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    0.5 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-0-5"
+                  name="rating-dialog"
+                  type="radio"
+                  value="0.5"
+                />
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-1"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    1 Star
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-1"
+                  name="rating-dialog"
+                  type="radio"
+                  value="1"
+                />
+              </span>
+              <span
+                class="MuiRating-decimal"
+              >
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-1-5"
+                  style="width: 0%; overflow: hidden; z-index: 1; position: absolute;"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    1.5 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-1-5"
+                  name="rating-dialog"
+                  type="radio"
+                  value="1.5"
+                />
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-2"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    2 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-2"
+                  name="rating-dialog"
+                  type="radio"
+                  value="2"
+                />
+              </span>
+              <span
+                class="MuiRating-decimal"
+              >
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-2-5"
+                  style="width: 0%; overflow: hidden; z-index: 1; position: absolute;"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    2.5 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-2-5"
+                  name="rating-dialog"
+                  type="radio"
+                  value="2.5"
+                />
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-3"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    3 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-3"
+                  name="rating-dialog"
+                  type="radio"
+                  value="3"
+                />
+              </span>
+              <span
+                class="MuiRating-decimal"
+              >
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-3-5"
+                  style="width: 0%; overflow: hidden; z-index: 1; position: absolute;"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    3.5 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-3-5"
+                  name="rating-dialog"
+                  type="radio"
+                  value="3.5"
+                />
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-4"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    4 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-4"
+                  name="rating-dialog"
+                  type="radio"
+                  value="4"
+                />
+              </span>
+              <span
+                class="MuiRating-decimal"
+              >
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-4-5"
+                  style="width: 0%; overflow: hidden; z-index: 1; position: absolute;"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    4.5 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-4-5"
+                  name="rating-dialog"
+                  type="radio"
+                  value="4.5"
+                />
+                <label
+                  class="MuiRating-label"
+                  for="rating-dialog-5"
+                >
+                  <span
+                    class="MuiRating-icon MuiRating-iconEmpty"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiRating-visuallyhidden"
+                  >
+                    5 Stars
+                  </span>
+                </label>
+                <input
+                  class="MuiRating-visuallyhidden"
+                  id="rating-dialog-5"
+                  name="rating-dialog"
+                  type="radio"
+                  value="5"
+                />
+              </span>
+            </span>
+          </div>
+        </div>
+        <div
+          class="MuiDialogActions-root MuiDialogActions-spacing"
+        >
+          <div
+            class="c1"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined c2 MuiButton-outlinedPrimary"
+              style="margin: 5px 0px 0px;"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Send
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined c2 MuiButton-outlinedPrimary"
+              style="margin: 5px 0px 0px;"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Close
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      data-test="sentinelEnd"
+      tabindex="0"
+    />
+  </div>
+</body>
+`;
