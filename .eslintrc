@@ -7,7 +7,6 @@
     "project": "./tsconfig.json",
     // TODO: https://github.com/typescript-eslint/typescript-eslint/issues/890
     "createDefaultProgram": true
-
   },
   "plugins": ["@typescript-eslint", "@nrwl/nx"],
   "extends": [
@@ -26,7 +25,98 @@
       {
         "allow": [],
         "depConstraints": [
-          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
+          {
+            "sourceTag": "type:store",
+            "onlyDependOnLibsWithTags": [
+              "type:feature",
+              "scope:common",
+              "type:store",
+              "type:state"
+            ]
+          },
+          {
+            "sourceTag": "type:service",
+            "onlyDependOnLibsWithTags": [
+              "scope:common",
+              "scope:data",
+              "type:service"
+            ]
+          },
+          {
+            "sourceTag": "type:state",
+            "onlyDependOnLibsWithTags": [
+              "scope:common",
+              "scope:data",
+              "type:state",
+              "type:service"
+            ]
+          },
+          {
+            "sourceTag": "type:logic",
+            "onlyDependOnLibsWithTags": [
+              "scope:common",
+              "scope:data",
+              "type:state",
+              "type:store",
+              "type:service",
+              "type:logic"
+            ]
+          },
+          {
+            "sourceTag": "type:ui",
+            "onlyDependOnLibsWithTags": [
+              "scope:data",
+              "scope:common",
+              "type:ui",
+              "type:logic"
+            ]
+          },
+          {
+            "sourceTag": "type:feature",
+            "onlyDependOnLibsWithTags": [
+              "scope:data",
+              "scope:common",
+              "type:feature",
+              "type:store"
+            ]
+          },
+          {
+            "sourceTag": "type:screen",
+            "onlyDependOnLibsWithTags": [
+              "type:screen",
+              "type:feature",
+              "scope:common",
+              "type:store"
+            ]
+          },
+          {
+            "sourceTag": "scope:consumer",
+            "onlyDependOnLibsWithTags": [
+              "scope:data",
+              "scope:consumer",
+              "scope:common"
+            ]
+          },
+          {
+            "sourceTag": "scope:supplier",
+            "onlyDependOnLibsWithTags": [
+              "scope:data",
+              "scope:supplier",
+              "scope:common"
+            ]
+          },
+          {
+            "sourceTag": "scope:common",
+            "onlyDependOnLibsWithTags": ["scope:common"]
+          },
+          {
+            "sourceTag": "app:consumer",
+            "onlyDependOnLibsWithTags": ["scope:common", "scope:consumer"]
+          },
+          {
+            "sourceTag": "app:supplier",
+            "onlyDependOnLibsWithTags": ["scope:common", "scope:supplier"]
+          }
         ]
       }
     ]

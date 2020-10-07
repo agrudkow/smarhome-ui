@@ -9,141 +9,141 @@
   },
   "projects": {
     "data": {
-      "tags": []
+      "tags": ["scope:data"]
     },
     "common-ui": {
-      "tags": []
+      "tags": ["scope:common", "type:ui"]
     },
     "common-logic": {
-      "tags": []
+      "tags": ["scope:common", "type:logic"]
     },
     "common-service": {
-      "tags": []
+      "tags": ["scope:common", "type:service"]
     },
     "common-state": {
-      "tags": []
+      "tags": ["scope:common", "type:state"]
     },
     "consumer-store": {
-      "tags": []
+      "tags": ["scope:consumer", "type:store"]
     },
     "consumer-screen-ui": {
-      "tags": []
+      "tags": ["scope:consumer", "type:screen"]
     },
     "consumer-feature-user-ui": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:ui"]
     },
     "consumer-feature-user-logic": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:logic"]
     },
     "consumer-feature-user-state": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:state"]
     },
     "consumer-feature-user-service": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:service"]
     },
     "consumer-feature-datasets-ui": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:ui"]
     },
     "consumer-feature-datasets-logic": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:logic"]
     },
     "consumer-feature-datasets-state": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:state"]
     },
     "consumer-feature-datasets-service": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:service"]
     },
     "consumer-feature-algorithms-ui": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:ui"]
     },
     "consumer-feature-algorithms-logic": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:logic"]
     },
     "consumer-feature-algorithms-state": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:state"]
     },
     "consumer-feature-algorithms-service": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:service"]
     },
     "consumer-feature-dashboard-ui": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:ui"]
     },
     "consumer-feature-dashboard-logic": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:logic"]
     },
     "consumer-feature-dashboard-state": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:state"]
     },
     "consumer-feature-dashboard-service": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:service"]
     },
     "consumer-feature-resultsets-ui": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:ui"]
     },
     "consumer-feature-resultsets-logic": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:logic"]
     },
     "consumer-feature-resultsets-state": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:state"]
     },
     "consumer-feature-resultsets-service": {
-      "tags": []
+      "tags": ["scope:consumer", "type:feature", "type:service"]
     },
     "consumer": {
-      "tags": []
+      "tags": ["app:consumer"]
     },
     "consumer-e2e": {
-      "tags": [],
+      "tags": ["app:consumer"],
       "implicitDependencies": ["consumer"]
     },
     "supplier": {
-      "tags": []
+      "tags": ["app:supplier"]
     },
     "supplier-e2e": {
-      "tags": [],
+      "tags": ["app:supplier"],
       "implicitDependencies": ["supplier"]
     },
     "supplier-feature-user-ui": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:ui"]
     },
     "supplier-feature-user-logic": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:logic"]
     },
     "supplier-feature-user-state": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:state"]
     },
     "supplier-feature-user-service": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:service"]
     },
     "supplier-feature-algorithms-ui": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:ui"]
     },
     "supplier-feature-algorithms-logic": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:logic"]
     },
     "supplier-feature-algorithms-state": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:state"]
     },
     "supplier-feature-algorithms-service": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:service"]
     },
     "supplier-feature-dashboard-ui": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:ui"]
     },
     "supplier-feature-dashboard-logic": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:logic"]
     },
     "supplier-feature-dashboard-state": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:state"]
     },
     "supplier-feature-dashboard-service": {
-      "tags": []
+      "tags": ["scope:supplier", "type:feature", "type:service"]
     },
     "supplier-screen-ui": {
-      "tags": []
+      "tags": ["scope:supplier", "type:screen"]
     },
     "supplier-store": {
-      "tags": []
+      "tags": ["scope:supplier", "type:store"]
     }
   }
 }
