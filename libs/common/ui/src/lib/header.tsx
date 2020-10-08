@@ -12,8 +12,11 @@ interface AppNameProps {
 type ViewNameProps = AppNameProps;
 
 interface HeaderProps extends ViewNameProps {
+  /**NAme displayed in header.*/
   viewName: string;
+  /**Callback funcition fired on click of hamburger menu button in mobile view.*/
   onButtonClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  /**State of loading bar.*/
   loading: boolean;
 }
 
@@ -98,6 +101,11 @@ const LinearProgressWrapper = styled.div`
   }
 `;
 
+/**
+ * Header component display main header bor of application (works alongside of Sidebar component @see {@link libs/common/ui/src/lib/hamburger-menu/sidebar.tsx}). Components contains also loading bar and hamburger menu button which appears in mobile view.
+ *
+ * @param props HeaderProps
+ */
 export const Header: React.FC<HeaderProps> = ({
   showViewName,
   viewName,

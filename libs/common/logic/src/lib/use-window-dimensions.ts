@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * @function getWindowDimensions - custom hook which handles window resize events.
+ *
+ * @returns
+ * @var windowDimensions - current window dimensions.
+ */
 function getWindowDimensions() {
   const { outerWidth: width, outerHeight: height } = window;
   return {

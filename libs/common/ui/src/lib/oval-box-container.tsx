@@ -6,6 +6,7 @@ interface StyledOvalBoxContainerProps {
   width?: number;
   backgroundColor?: string;
   opacity?: number;
+  /**State of boxShadow. If true display boxShadow for component.*/
   boxShadow?: boolean;
 }
 
@@ -62,6 +63,11 @@ export const StyledOvalBoxContainer = styled.div<StyledOvalBoxContainerProps>`
   ${({ boxShadow }) => boxShadow !== false && boxShadowCSS}
 `;
 
+/**
+ * OvalBoxContainer component displays rounded container.
+ *
+ * @param props OvalBoxContainerProps
+ */
 export const OvalBoxContainer: FC<OvalBoxContainerProps> = ({
   height,
   width,

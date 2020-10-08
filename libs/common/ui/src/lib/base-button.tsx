@@ -38,6 +38,11 @@ const StyledBaseButton = styled(Button)`
   }
 `;
 
+/**
+ * BaseButton component extending MaterialUI Button
+ * @see https://material-ui.com/components/buttons/#contained-buttons
+ * @param props BaseButtonProps
+ */
 export const BaseButton: FC<BaseButtonProps> = ({ children, ...props }) => {
   return (
     <StyledBaseButton variant="contained" color="primary" {...props}>

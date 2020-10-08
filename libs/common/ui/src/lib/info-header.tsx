@@ -5,7 +5,9 @@ import InfoButton from './info-button';
 import CallapsableMessageBox from './callapsable-message-box';
 
 export interface InfoHeaderProps {
+  /**Header text*/
   headerText: string;
+  /**Current view description/info-message.*/
   infoMessageText: string;
 }
 
@@ -28,7 +30,11 @@ const HeaderRowContainer = styled.div`
     justify-content: center;
   }
 `;
-
+/**
+ * InfoHeader component displays view header with collapsable description of given view.accordion
+ *
+ * @param props InfoHeaderProps
+ */
 export const InfoHeader: FC<InfoHeaderProps> = ({
   headerText,
   infoMessageText,

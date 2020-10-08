@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { IconButton, IconButtonProps } from '@material-ui/core';
 
-export interface ArrowIconProps {
+export interface ArrowIconProps extends IconButtonProps {
+  /**Rotation in degres.*/
   rotate?: string;
 }
 
@@ -41,13 +42,10 @@ const CustomIconButton = styled(IconButton)`
 /**
  * Arrow button extending MaterialUI IconButton
  * @see https://material-ui.com/components/buttons/#icon-buttons
- * @param rotate rotation in degres
+ * @param props IconButtonProps - MaterialUI props
  * @example <ArrowButton rotate='90deg' />
  */
-export const ArrowButton: FC<IconButtonProps & ArrowIconProps> = ({
-  rotate,
-  ...props
-}) => {
+export const ArrowButton: FC<ArrowIconProps> = ({ rotate, ...props }) => {
   return (
     <CustomIconButton {...props}>
       <ArrowIcon rotate={rotate} />

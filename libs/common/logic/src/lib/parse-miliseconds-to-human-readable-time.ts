@@ -1,3 +1,8 @@
+/**
+ * @function parseMilisecondsToHumanReadableTime - converts time provided in miliseconds to strign in format: `HH`h `MM`m `ss`s eg. `2h 32m 11s`.
+ *
+ * @param miliseconds - time in miliseconds
+ */
 export const parseMilisecondsToHumanReadableTime = (
   miliseconds: number
 ): string => {

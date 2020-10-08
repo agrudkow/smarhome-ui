@@ -10,13 +10,19 @@ import P from './p';
 import { NavLink } from 'react-router-dom';
 
 export interface BaseGoogleLoginViewProps {
+  /**Google project client id.*/
   clientId: string;
+  /**Callback funcion called on success of login request.*/
   onSuccess?: (
     response: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => void;
+  /**Callback funcion called on failure of login request.*/
   onFailure?: (error: unknown) => void;
+  /**Navlink route.*/
   navlinkRoute: string;
+  /**Main button text.*/
   mainButtonText: string;
+  /**Navlink button text.*/
   navlinkText: string;
 }
 
@@ -80,6 +86,13 @@ const CustomParagraph = styled(P)`
   text-decoration: underline;
 `;
 
+/**
+ * BaseGoogleLoginView component displays login box with `Login in with Google` capability.
+ *
+ * Component displays main button which allow to call GoogleOauth2 API and second button which allow to redirect to different page (eg. sign up/ register).
+ *
+ * @param props BaseGoogleLoginViewProps
+ */
 export const BaseGoogleLoginView: FC<BaseGoogleLoginViewProps> = ({
   onSuccess,
   onFailure,

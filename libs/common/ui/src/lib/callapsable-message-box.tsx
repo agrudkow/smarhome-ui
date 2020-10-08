@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { regularTypography } from './p';
 
 export interface CallapsableMessageBoxProps {
+  /**Show collapsable content.*/
   show: boolean;
 }
 
@@ -45,6 +46,11 @@ const StyledCallapsableMessageBox = styled.div<
   }
 `;
 
+/**
+ * CallapsableMessageBox component displays div with collapse capability. Components addapts height to text/children height.
+ *
+ * @param props CallapsableMessageBoxProps
+ */
 export const CallapsableMessageBox: FC<CallapsableMessageBoxProps> = ({
   show,
   children,

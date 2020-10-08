@@ -6,6 +6,11 @@ export interface PrivateRouteProps extends RouteProps {
   isUserLoggedIn: boolean;
 }
 
+/**
+ * PrivateRoute component handles redirecting if user is not logged in.
+ *
+ * @param props PrivateRouteProps
+ */
 export const PrivateRoute: FC<PrivateRouteProps> = ({
   children,
   redirectPath,

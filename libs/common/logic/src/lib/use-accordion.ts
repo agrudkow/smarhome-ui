@@ -1,5 +1,13 @@
 import { useState, useCallback } from 'react';
 
+/**
+ * @function useAccordion<T> -custom hook which handles Accordion state where `T` is enum with accordions names.
+ *
+ * @returns
+ * @var expandedAccordion - Accordion state (enum `T` value).
+ * @function toggleAccordionFactory - factory function which retruns toggle function for provided Accordion name(enum `T` value).
+ * @function toggleAccordionFactory - factory function which retruns close function for provided Accordion name(enum `T` value).
+ */
 export function useAccordion<T>({
   postToggleFunction,
   preToggleFunction,

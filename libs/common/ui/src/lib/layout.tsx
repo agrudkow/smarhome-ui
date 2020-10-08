@@ -12,10 +12,17 @@ import MainContainer from './main-container';
 import { useWindowDimensions } from '@smarthome/common/logic';
 
 interface LayoutProps {
+  /**List of sidebar links (icon, name, url).alert-heading*/
   sidebarLinks: SidebarLinkProps[];
+  /**Loading bar state.*/
   loading: boolean;
 }
 
+/**
+ * Layout component composes main header, sidebar and main conteiner.
+ *
+ * @param props LayoutProps
+ */
 export const Layout: React.FC<LayoutProps> = ({
   children,
   sidebarLinks,

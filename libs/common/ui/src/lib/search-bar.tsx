@@ -5,7 +5,9 @@ import Input from './input';
 import BaseButton from './base-button';
 
 export interface SearchBarProps {
+  /**Search button click handler.*/
   onSearch: () => void;
+  /**Search input change handler.*/
   onInputValueChange: (event: ChangeEvent<HTMLInputElement>) => void;
   inputValue: string;
   inputPlaceHolder: string;
@@ -28,6 +30,11 @@ const SearchButtonContainer = styled.div`
   }
 `;
 
+/**
+ * SearchBar component displays search input with search button.
+ *
+ * @param props SearchBarProps
+ */
 export const SearchBar: FC<SearchBarProps> = ({
   inputPlaceHolder,
   onInputValueChange,

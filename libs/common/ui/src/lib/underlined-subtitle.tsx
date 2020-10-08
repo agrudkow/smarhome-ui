@@ -30,6 +30,11 @@ const StyledUnderlinedSubtitle = styled.div<UnderlinedSubtitleProps>`
   }
 `;
 
+/**
+ * UnderlinedSubtitle component displays underlined container.
+ *
+ * @param props UnderlinedSubtitleProps
+ */
 export const UnderlinedSubtitle: FC<UnderlinedSubtitleProps> = ({
   children,
   color,

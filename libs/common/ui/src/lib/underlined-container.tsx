@@ -27,6 +27,11 @@ const StyledUnderlinedContainer = styled.div<UnderlinedContainerProps>`
   }
 `;
 
+/**
+ * UnderlinedContainer component displays underlined container.
+ *
+ * @param props UnderlinedContainerProps
+ */
 export const UnderlinedContainer: FC<UnderlinedContainerProps> = ({
   children,
   color,

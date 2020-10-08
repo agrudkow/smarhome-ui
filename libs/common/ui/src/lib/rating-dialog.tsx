@@ -11,12 +11,19 @@ import Rating from '@material-ui/lab/Rating';
 import OutlinedButton from './outlined-button';
 
 export interface RatingDialogProps {
+  /**Dialog window title.*/
   title: string;
+  /**Dialog window description.*/
   description: string;
+  /**Dialog window state.*/
   open: boolean;
+  /**Current rating value.*/
   rating: number;
+  /**Callback function handling close actions.*/
   onClose: () => void;
+  /**Callback function handling change events of Rating component.*/
   onRatingChange: (_: unknown, newValue: number | null) => void;
+  /**Callback function handling send actions.*/
   onSend: () => void;
 }
 
@@ -40,6 +47,12 @@ const ButtonsContainer = styled.div`
   }
 `;
 
+/**
+ * RatingDialog compoent displays ediatable Rating component in Dialog component with additional buttons for handling actions like `Send` or `Cancel`.
+ * @see https://material-ui.com/components/rating/
+ *
+ * @param props RatingDialogProps
+ */
 export const RatingDialog: FC<RatingDialogProps> = ({
   open,
   title,

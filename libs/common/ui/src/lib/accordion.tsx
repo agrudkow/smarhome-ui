@@ -8,8 +8,11 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 export interface AccordionProps {
+  /**Text visible when accordion is closed.*/
   summary: ReactNode;
+  /**Callback funcion called when accrodion is toggeled.*/
   onChange: (event: ChangeEvent<{}>) => void;
+  /**Accordion state.*/
   expanded: boolean;
 }
 
@@ -34,6 +37,11 @@ const StyledAccordion = styled(MUIAccordion)`
   }) => borderRadius}px;
 `;
 
+/**
+ * Accordion component
+ *
+ * @param props AccordionProps
+ */
 export const Accordion: FC<AccordionProps> = ({
   children,
   summary,

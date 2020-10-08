@@ -11,10 +11,15 @@ import {
 import OutlinedButton from './outlined-button';
 
 export interface DeleteDialogProps {
+  /**State of dialog window.*/
   open: boolean;
+  /**Callback funcion called on dialog window close or cancel button click.*/
   onClose: () => void;
+  /**Callback funcion called on confirm button click.*/
   onConfirm: () => void;
+  /**Title fo dialog window.*/
   title: string;
+  /**Descritpion displayed under title text.*/
   description: string;
 }
 
@@ -33,6 +38,11 @@ const ButtonsContainer = styled.div`
   }
 `;
 
+/**
+ * DeleteDialog compoent displays dialog window (@see https://material-ui.com/components/dialogs/) for confirmating or cancelling deleting acition
+ *
+ * @param props DeleteDialogProps
+ */
 export const DeleteDialog: FC<DeleteDialogProps> = ({
   open,
   onClose,

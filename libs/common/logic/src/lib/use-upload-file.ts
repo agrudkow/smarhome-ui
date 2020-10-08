@@ -1,5 +1,16 @@
 import { useState, useCallback, ChangeEvent } from 'react';
 
+/**
+ * @function useUploadFile - custom hook which handles UploadFile component logic.
+ *
+ * @param onFileSend - callback funciton called in handleSendFile
+ *
+ * @returns
+ * @var fileName - name of selected file
+ * @function handleDeleteFile - delete selection handler.
+ * @function handleSendFile - send file handler.
+ * @function handleUploadFile - upload button click handler.
+ */
 export function useUploadFile({
   onFileSend,
 }: {

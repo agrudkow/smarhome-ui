@@ -10,6 +10,9 @@ const StyledNotFoundPage = styled.div`
   align-items: center;
 `;
 
+/**
+ * NotFoundPage component
+ */
 export const NotFoundPage: FC = () => {
   return (
     <StyledNotFoundPage>

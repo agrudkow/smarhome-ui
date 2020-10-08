@@ -9,6 +9,7 @@ interface CustomButtonProps {
 
 export interface OutlinedButtonProps extends CustomButtonProps {
   onClick: () => void;
+  /**CSS object for button.*/
   style?: CSSProperties;
   disabled?: boolean;
 }
@@ -50,6 +51,11 @@ const StyledOutlinedButton = styled(
   }
 `;
 
+/**
+ * OutlinedButton component extending MaterialUI Button
+ * @see https://material-ui.com/components/buttons/#contained-buttons
+ * @param props OutlinedButtonProps
+ */
 export const OutlinedButton: FC<OutlinedButtonProps> = ({
   onClick,
   style,

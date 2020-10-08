@@ -24,6 +24,11 @@ const StyledMainContainer = styled.div<{ dissableScroll: boolean }>`
   }
 `;
 
+/**
+ * MainContainer component is main div for app views.
+ *
+ * @param dissableScroll - cuts off overflow elements and set height to max of avaliable space.
+ */
 export const MainContainer: FC<{ dissableScroll: boolean }> = ({
   children,
   dissableScroll,

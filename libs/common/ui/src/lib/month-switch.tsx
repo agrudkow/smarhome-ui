@@ -5,9 +5,13 @@ import ArrowButton from './arrow-button';
 import { H4 } from './headings';
 
 export interface MonthSwitchProps {
+  /**Displayed month.*/
   month: number;
+  /**Displayed year.*/
   year: number;
+  /**Next month button click handler.*/
   onNextMonthClick: () => void;
+  /**Previous month button click handler.*/
   onPreviousMonthClick: () => void;
 }
 
@@ -24,6 +28,11 @@ const MonthName = styled(H4)`
   width: 50%;
 `;
 
+/**
+ * MonthSwitch component displays provided month and year and provide hadlers for prev and next month buttons.
+ *
+ * @param props MonthSwitchProps
+ */
 export const MonthSwitch: FC<MonthSwitchProps> = ({
   month,
   onNextMonthClick,

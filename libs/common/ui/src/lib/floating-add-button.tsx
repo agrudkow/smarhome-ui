@@ -5,8 +5,11 @@ import { Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 export interface FloatingAddButtonProps {
+  /**Button click callback handler.*/
   onClick: () => void;
+  /**Text dispplayed on hover action.*/
   hoverText: string;
+  /**Aproximate text width.*/
   textWidth?: number;
 }
 
@@ -73,6 +76,10 @@ const HoverText = styled.span<{ textWidth: number }>`
   }
 `;
 
+/**FloatingAddButton component displays modified Fab component (@see https://material-ui.com/components/floating-action-button/) with additional '+' icon and other capabilities.
+ *
+ * @param props FloatingAddButtonProps
+ */
 export const FloatingAddButton: FC<FloatingAddButtonProps> = ({
   onClick,
   hoverText,

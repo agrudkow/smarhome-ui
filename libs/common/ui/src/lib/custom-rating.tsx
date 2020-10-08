@@ -5,6 +5,10 @@ import MUIRating, {
 } from '@material-ui/lab/Rating';
 import { useWindowDimensions } from '@smarthome/common/logic';
 
+/**
+ * CustomRating compoent displays MUIRating component adaptted to RWB layout (if mobile view then component size is small).
+ * @see https://material-ui.com/components/rating/
+ */
 export const CustomRating: FC<MUIRatingProps> = (props) => {
   const { width } = useWindowDimensions();
   const {

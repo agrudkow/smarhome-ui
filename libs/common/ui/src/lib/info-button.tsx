@@ -13,6 +13,9 @@ const StyledInfoButton = styled.div`
   align-items: center;
 `;
 
+/**
+ * InfoButton component
+ */
 export const InfoButton: FC<InfoButtonProps> = ({ onClick }) => {
   return (
     <StyledInfoButton>
