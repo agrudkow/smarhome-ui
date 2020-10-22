@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` SidebarListItem should match snapshot when expanded 1`] = `
+.c0 {
+  height: 45px;
+  padding: 12px 16px;
+  background-color: transparent;
+  border-left: 2px solid transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: background-color 0.3s ease-in-out,border-left 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out,border-left 0.3s ease-in-out;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  background-color: #4E4E4E;
+}
+
+.c2 {
+  color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-letter-spacing: -0.3px;
+  -moz-letter-spacing: -0.3px;
+  -ms-letter-spacing: -0.3px;
+  letter-spacing: -0.3px;
+  color: #DFE3D5;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-top: 2px;
+  -webkit-transition: max-width 0.3s ease-in-out,opacity 0.3s ease-in-out, padding-left 0.3s ease-in-out,color 0.3s ease-in-out;
+  transition: max-width 0.3s ease-in-out,opacity 0.3s ease-in-out, padding-left 0.3s ease-in-out,color 0.3s ease-in-out;
+  max-width: 220px;
+  opacity: 1;
+  padding-left: 20px;
+}
+
+.c1 {
+  min-width: 24px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 path {
+  -webkit-transition: fill 0.3s ease-in-out;
+  transition: fill 0.3s ease-in-out;
+  fill: #DFE3D5;
+}
+
+@media (min-width:769px) {
+  .c2 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c2 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+<div>
+  <li>
+    <a
+      class="c0"
+      data-testid="styled-sidebar-list-item"
+      href="/test"
+    >
+      <div
+        class="c1"
+      >
+        <div />
+      </div>
+      <div
+        class="c2"
+        data-testid="text"
+      />
+    </a>
+  </li>
+</div>
+`;

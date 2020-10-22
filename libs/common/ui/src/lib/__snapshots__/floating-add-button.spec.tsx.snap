@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` FloatingAddButton should match snapshot 1`] = `
+.c0 {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  width: 56px;
+  height: 56px;
+  border-radius: 26px;
+  overflow: hidden;
+  opacity: 0.6;
+  -webkit-transition: color 0.3s ease-in-out,background-color 0.3s ease-in-out, opacity 0.3s ease-in-out,width 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out,background-color 0.3s ease-in-out, opacity 0.3s ease-in-out,width 0.3s ease-in-out;
+  background-color: #1BBDCE;
+  color: #102128;
+}
+
+.c2 .add-icon {
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+
+.c2:hover {
+  background-color: #1BBDCE;
+  color: #102128;
+  width: 140px;
+  opacity: 1;
+}
+
+.c2:hover .add-icon {
+  width: 0;
+}
+
+.c3 {
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+  font-weight: 550;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+
+.c1:hover .c3 {
+  width: 140px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <button
+      aria-label="add"
+      class="MuiButtonBase-root MuiFab-root c1 c2 MuiFab-primary"
+      tabindex="0"
+      textwidth="140"
+      type="button"
+    >
+      <span
+        class="MuiFab-label"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root add-icon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+        <span
+          class="c3"
+        />
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;

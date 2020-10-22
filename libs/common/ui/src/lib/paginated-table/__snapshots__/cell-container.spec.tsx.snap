@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` CellContainer should match snapshot 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: none;
+  max-height: none;
+}
+
+<div>
+  <div
+    class="c0"
+  />
+</div>
+`;

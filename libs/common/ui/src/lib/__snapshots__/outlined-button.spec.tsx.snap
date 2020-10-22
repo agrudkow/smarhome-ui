@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` OutlinedButton should match snapshot 1`] = `
+.c0 {
+  color: #555;
+  border-color: #555;
+  -webkit-transition: color 0.3s ease-in-out,border-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out,border-color 0.3s ease-in-out;
+  font-weight: 550;
+  width: 100%;
+}
+
+.c0:hover {
+  color: #1BBDCE;
+  border-color: #1BBDCE;
+}
+
+<div>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined c0 MuiButton-outlinedPrimary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    />
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;

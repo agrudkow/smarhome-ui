@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Header should match snapshot 1`] = `
+.c0 {
+  position: -webkit-sticky;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 9999;
+  width: 100%;
+  height: 40px;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.c1 {
+  background-color: #102128;
+  width: 100%;
+  height: 36px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.c2 {
+  color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-letter-spacing: -0.3px;
+  -moz-letter-spacing: -0.3px;
+  -ms-letter-spacing: -0.3px;
+  letter-spacing: -0.3px;
+  color: #E3E2E1;
+  white-space: nowrap;
+  margin: 0 15px;
+}
+
+.c3 {
+  color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-letter-spacing: -0.3px;
+  -moz-letter-spacing: -0.3px;
+  -ms-letter-spacing: -0.3px;
+  letter-spacing: -0.3px;
+  color: #E3E2E1;
+  white-space: nowrap;
+  margin: 0 15px;
+}
+
+.c4 {
+  width: 100%;
+  background-color: #102128;
+  height: 4px;
+}
+
+.c4 .MuiLinearProgress-colorPrimary {
+  background-color: #1BBDCE;
+}
+
+.c4 .MuiLinearProgress-barColorPrimary {
+  background-color: #102128;
+}
+
+@media (min-width:769px) {
+  .c2 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width:769px) {
+  .c2 {
+    font-size: 22px;
+    line-height: 24px;
+    position: absolute;
+    -webkit-transition: left 0.3s ease-in-out,-webkit-transform 0.3s ease-in-out;
+    -webkit-transition: left 0.3s ease-in-out,transform 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out,transform 0.3s ease-in-out;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width:1024px) {
+  .c2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width:769px) {
+  .c3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c3 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width:769px) {
+  .c3 {
+    font-size: 22px;
+    line-height: 24px;
+    position: absolute;
+    -webkit-transition: left 0.3s ease-in-out,-webkit-transform 0.3s ease-in-out;
+    -webkit-transition: left 0.3s ease-in-out,transform 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out,transform 0.3s ease-in-out;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width:1024px) {
+  .c3 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width:769px) {
+  .c3 {
+    left: 100%;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        Smarthome
+      </div>
+      <div
+        class="c3"
+      >
+        Test
+      </div>
+    </div>
+    <div
+      class="c4"
+    />
+  </div>
+</div>
+`;

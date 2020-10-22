@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` ArrowButton should match snapshot 1`] = `
+.c1 {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+  color: #1BBDCE;
+}
+
+@media (max-width:769px) {
+  .c1 {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width:769px) {
+  .c0 {
+    padding: 0;
+  }
+}
+
+<div>
+  <button
+    class="MuiButtonBase-root MuiIconButton-root c0"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiIconButton-label"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root c1"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"
+        />
+      </svg>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;

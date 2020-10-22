@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` PaginatedTable should match snapshot (without footer) 1`] = `
+.c0 .MuiPaper-root {
+  margin: 0;
+  padding: 5px 0;
+  background-color: rgba(255,255,255,1);
+}
+
+.c0 .MuiPaper-rounded {
+  border-radius: 6px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="MuiPaper-root makeStyles-paper-4 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <table
+        aria-label="table"
+        class="MuiTable-root makeStyles-table-5"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+              scope="col"
+            >
+              <b>
+                Test
+              </b>
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+              scope="col"
+            >
+              <b>
+                Test
+              </b>
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+            >
+              test-1
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+            >
+              test-name
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+            >
+              test-2
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+            >
+              test-name
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+            >
+              test-3
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+            >
+              test-name
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+            style="height: 406px;"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="2"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;

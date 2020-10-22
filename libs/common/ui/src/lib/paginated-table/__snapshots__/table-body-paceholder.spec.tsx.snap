@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` TableDataPaceholder should match snapshot when expanded 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  color: #444;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  opacity: 0.25;
+  text-align: center;
+}
+
+@media (min-width:1024px) {
+  .c1 {
+    font-size: 30px;
+    -webkit-letter-spacing: -0.3px;
+    -moz-letter-spacing: -0.3px;
+    -ms-letter-spacing: -0.3px;
+    letter-spacing: -0.3px;
+    line-height: 30px;
+  }
+}
+
+<div>
+  <table>
+    <tbody>
+      <tr
+        class="MuiTableRow-root"
+        style="height: 40px;"
+      >
+        <td
+          class="MuiTableCell-root"
+          colspan="2"
+        >
+          <div
+            class="c0"
+            height="40"
+          >
+            <h3
+              class="c1"
+            >
+              Test text
+            </h3>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

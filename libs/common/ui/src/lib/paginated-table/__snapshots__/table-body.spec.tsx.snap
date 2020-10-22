@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` TableBody should match snapshot when expanded 1`] = `
+<div>
+  <table>
+    <tbody
+      class="MuiTableBody-root"
+    >
+      <tr
+        class="MuiTableRow-root"
+      >
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+        >
+          test-1
+        </td>
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+        >
+          test-name
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+        >
+          test-2
+        </td>
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+        >
+          test-name
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+        >
+          test-3
+        </td>
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter"
+        >
+          test-name
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+        style="height: 406px;"
+      >
+        <td
+          class="MuiTableCell-root MuiTableCell-body"
+          colspan="2"
+        />
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

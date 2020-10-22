@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` TableHeader should match snapshot when expanded 1`] = `
+<div>
+  <table>
+    <thead
+      class="MuiTableHead-root"
+    >
+      <tr
+        class="MuiTableRow-root MuiTableRow-head"
+      >
+        <th
+          aria-sort="ascending"
+          class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+          scope="col"
+        >
+          <b>
+            Test
+          </b>
+        </th>
+        <th
+          aria-sort="ascending"
+          class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter"
+          scope="col"
+        >
+          <b>
+            Test
+          </b>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+`;

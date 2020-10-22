@@ -1,0 +1,88 @@
+variables:
+  GIT_SSL_NO_VERIFY: 'true'
+  AWS_REGION: eu-central-1
+
+cache:
+  paths:
+    - node_modules
+
+stages:
+  - test
+  - build
+  - deploy
+
+.lint_web_template: &lint_web_definition
+  image: node:latest
+  stage: test
+  before_script:
+    - echo "cicd"
+    # - yarn
+
+lint_web:
+  <<: *lint_web_definition
+  except:
+    - develop
+    - master
+  script:
+    - echo "cicd"
+    # - yarn format:check --base=origin/develop --verbose
+    # - yarn nx workspace-lint
+    # - yarn nx affected:lint --parallel --base=origin/develop | tee lintresult
+    # - '! cat lintresult | grep -q warning'
+
+.build_web_template: &build_web_definition
+  image: 'node:latest'
+  stage: build
+  # artifacts:
+  #   paths:
+  #     - dist/
+  before_script:
+    - echo "cicd"
+    # - yarn
+
+build_web_dev:
+  <<: *build_web_definition
+  except:
+    - master
+  script:
+    - echo "cicd"
+    # - yarn nx run consumer:build --prod
+
+build_web_prd:
+  <<: *build_web_definition
+  only:
+    - master
+  script:
+    - echo "cicd"
+    # - yarn nx run consumer:build --prod
+
+.deploy_web_template: &deploy_web_definition
+  image: python:latest
+  stage: deploy
+  before_script:
+    # - pip install awscli
+    - echo "cicd"
+  script:
+    - echo "cicd"
+    # - aws s3 sync dist/apps/consumer s3://$AWS_BUCKET_NAME --region $AWS_REGION --delete
+
+deploy_web_dev:
+  <<: *deploy_web_definition
+  dependencies:
+    - build_web_dev
+  only:
+    - develop
+  variables:
+    AWS_BUCKET_NAME: smarthome-app-dev
+
+deploy_web_prd:
+  <<: *deploy_web_definition
+  dependencies:
+    - build_web_prd
+  only:
+    - master
+  variables:
+    AWS_BUCKET_NAME: smarthome-app-prod
+  script:
+    - echo "cicd"
+    # - yarn release

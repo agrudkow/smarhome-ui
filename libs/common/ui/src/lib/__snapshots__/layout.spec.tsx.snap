@@ -1,0 +1,682 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Layout should match snapshot 1`] = `
+.c8 {
+  height: 45px;
+  padding: 12px 16px;
+  background-color: transparent;
+  border-left: 2px solid transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: background-color 0.3s ease-in-out,border-left 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out,border-left 0.3s ease-in-out;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8:hover {
+  background-color: #4E4E4E;
+}
+
+.c10 {
+  color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-letter-spacing: -0.3px;
+  -moz-letter-spacing: -0.3px;
+  -ms-letter-spacing: -0.3px;
+  letter-spacing: -0.3px;
+  color: #DFE3D5;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-top: 2px;
+  -webkit-transition: max-width 0.3s ease-in-out,opacity 0.3s ease-in-out, padding-left 0.3s ease-in-out,color 0.3s ease-in-out;
+  transition: max-width 0.3s ease-in-out,opacity 0.3s ease-in-out, padding-left 0.3s ease-in-out,color 0.3s ease-in-out;
+  max-width: 220px;
+  opacity: 1;
+  padding-left: 20px;
+}
+
+.c9 {
+  min-width: 24px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9 path {
+  -webkit-transition: fill 0.3s ease-in-out;
+  transition: fill 0.3s ease-in-out;
+  fill: #DFE3D5;
+}
+
+.c7 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  position: absolute;
+  width: 220px;
+  height: calc( 100vh - 40px );
+  z-index: 9999;
+  top: 40px;
+  background-color: #2E2C2D;
+  -webkit-transition: width 0.3s ease-in-out,left 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out,left 0.3s ease-in-out;
+  color: #DFE3D5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.c15 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  min-height: calc( 100vh - 40px );
+}
+
+.c11 {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  height: 40px;
+  border-top: 1px solid black;
+  padding: 10px 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c13 {
+  color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-letter-spacing: -0.3px;
+  -moz-letter-spacing: -0.3px;
+  -ms-letter-spacing: -0.3px;
+  letter-spacing: -0.3px;
+  color: #DFE3D5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-transition: max-width 0.3s ease-in-out,opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+  transition: max-width 0.3s ease-in-out,opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+  max-width: 220px;
+  opacity: 1;
+  padding: 2px 10px 0;
+}
+
+.c12 {
+  max-width: 24px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: rotateZ(180deg);
+  -ms-transform: rotateZ(180deg);
+  transform: rotateZ(180deg);
+}
+
+.c14 {
+  display: block;
+  position: fixed;
+  background-color: rgba(0,0,0,0.3);
+  height: 100%;
+  width: 100%;
+  z-index: 300;
+  height: calc( 100vh - 40px );
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 {
+  position: -webkit-sticky;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 9999;
+  width: 100%;
+  height: 40px;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.c1 {
+  background-color: #102128;
+  width: 100%;
+  height: 36px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.c2 {
+  color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-letter-spacing: -0.3px;
+  -moz-letter-spacing: -0.3px;
+  -ms-letter-spacing: -0.3px;
+  letter-spacing: -0.3px;
+  color: #E3E2E1;
+  white-space: nowrap;
+  margin: 0 15px;
+}
+
+.c3 {
+  color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-letter-spacing: -0.3px;
+  -moz-letter-spacing: -0.3px;
+  -ms-letter-spacing: -0.3px;
+  letter-spacing: -0.3px;
+  color: #E3E2E1;
+  white-space: nowrap;
+  margin: 0 15px;
+}
+
+.c4 {
+  width: 100%;
+  background-color: #102128;
+  height: 4px;
+}
+
+.c4 .MuiLinearProgress-colorPrimary {
+  background-color: #1BBDCE;
+}
+
+.c4 .MuiLinearProgress-barColorPrimary {
+  background-color: #102128;
+}
+
+.c16 {
+  min-height: 100%;
+  margin: 0;
+  padding: 5px;
+  overflow: hidden;
+  height: calc(100vh - 50px);
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:769px) {
+  .c10 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c10 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c10 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:769px) {
+  .c6 {
+    position: -webkit-sticky;
+    position: -webkit-sticky;
+    position: sticky;
+    -webkit-transition: flex-basis 0.3s ease-in-out,left 0.3s ease-in-out;
+    transition: flex-basis 0.3s ease-in-out,left 0.3s ease-in-out;
+    -webkit-flex-basis: 220px;
+    -ms-flex-preferred-size: 220px;
+    flex-basis: 220px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c6 {
+    z-index: 0;
+  }
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:769px) {
+  .c13 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c13 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c13 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c14 {
+    display: none;
+  }
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:769px) {
+  .c2 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width:769px) {
+  .c2 {
+    font-size: 22px;
+    line-height: 24px;
+    position: absolute;
+    -webkit-transition: left 0.3s ease-in-out,-webkit-transform 0.3s ease-in-out;
+    -webkit-transition: left 0.3s ease-in-out,transform 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out,transform 0.3s ease-in-out;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width:1024px) {
+  .c2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:769px) {
+  .c3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c3 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width:769px) {
+  .c3 {
+    font-size: 22px;
+    line-height: 24px;
+    position: absolute;
+    -webkit-transition: left 0.3s ease-in-out,-webkit-transform 0.3s ease-in-out;
+    -webkit-transition: left 0.3s ease-in-out,transform 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out,transform 0.3s ease-in-out;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width:1024px) {
+  .c3 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width:769px) {
+  .c3 {
+    left: 100%;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+}
+
+@media (min-width:769px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:769px) {
+  .c16 {
+    padding: 10px;
+    overflow: unset;
+    height: unset;
+  }
+}
+
+@media (min-width:1024px) {
+  .c16 {
+    padding: 20px;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        Smarthome
+      </div>
+      <div
+        class="c3"
+      />
+    </div>
+    <div
+      class="c4"
+    />
+  </div>
+  <div
+    class="c5"
+  >
+    <div
+      class="c6"
+    >
+      <ul
+        class="c7"
+      >
+        <li>
+          <a
+            class="c8"
+            data-testid="styled-sidebar-list-item"
+            href="/test"
+          >
+            <div
+              class="c9"
+            >
+              <div />
+            </div>
+            <div
+              class="c10"
+              data-testid="text"
+            >
+              Dashboard
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            class="c8"
+            data-testid="styled-sidebar-list-item"
+            href="/test"
+          >
+            <div
+              class="c9"
+            >
+              <div />
+            </div>
+            <div
+              class="c10"
+              data-testid="text"
+            >
+              Algorithms
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            class="c8"
+            data-testid="styled-sidebar-list-item"
+            href="/test"
+          >
+            <div
+              class="c9"
+            >
+              <div />
+            </div>
+            <div
+              class="c10"
+              data-testid="text"
+            >
+              Datasets
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            class="c8"
+            data-testid="styled-sidebar-list-item"
+            href="/test"
+          >
+            <div
+              class="c9"
+            >
+              <div />
+            </div>
+            <div
+              class="c10"
+              data-testid="text"
+            >
+              User
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div
+        class="c11"
+      >
+        <div
+          class="c12"
+        >
+          <svg
+            height="20px"
+            version="1.1"
+            viewBox="0 0 448 512"
+            width="20px"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+              fill="#DFE3D5"
+            />
+          </svg>
+        </div>
+        <div
+          class="c13"
+        >
+          Collapse sidebar
+        </div>
+      </div>
+    </div>
+    <div
+      class="c14"
+    />
+    <div
+      class="c15"
+    >
+      <div
+        class="c16"
+      />
+    </div>
+  </div>
+</div>
+`;
